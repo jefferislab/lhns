@@ -28,7 +28,8 @@ df$anatomy.group=NA
 df$cell.type = NA
 df$coreLH=FALSE
 df$good.trace = TRUE
-
+df$dendritic.cable.in.lh = NA
+df$dendritic.cable = NA
 
 
 
@@ -1743,15 +1744,19 @@ lhns.pn.overlap.matrix = t(apply(t(lhns.pn.overlap.matrix), 2, function(x) tappl
 
 # Decide
 d = catnat::dendritic.cable(lhns.chosen,mixed=TRUE)
-d.data = summary(d)$cable.length
+d.data.skels = summary(d)$cable.length
 message("Pruning neurons to LH!")
-d.lh = unlist(nlapply(d,function(x) tryCatch(summary(prune_in_volume(x,neuropil="LH_R",brain=FCWBNP.surf))$cable.length,error = function(e) 0)))
-names(d.lh) = names(d.data) = lhns.chosen[names(d),"cell.type"]
-d.lh = tapply(d.lh, names(d.lh), mean, na.rm = TRUE)
-d.data = tapply(d.data, names(d.data), mean, na.rm = TRUE)
+d.lh.skels = unlist(nlapply(d,function(x) tryCatch(summary(prune_in_volume(x,neuropil="LH_R",brain=FCWBNP.surf))$cable.length,error = function(e) 0)))
+names(d.lh.skels) = names(d.data.skels) = lhns.chosen[names(d),"cell.type"]
+d.lh = tapply(d.lh.skels, names(d.lh.skels), mean, na.rm = TRUE)
+d.data = tapply(d.data.skels, names(d.data.skels), mean, na.rm = TRUE)
 o.d = lhns.pn.overlap.matrix[,names(d.lh)]
 skeleton.no = c(table(d[,"cell.type"]))[colnames(o.d)]
 df.decision = data.frame(ct = colnames(o.d), overlap = colSums(o.d), proportion.dendritic.lh = d.lh/d.data,skeleton.no=skeleton.no)
+
+# Add in cable length info
+df[names(d),]$dendritic.cable = d.data.skels
+df[names(d),]$dendritic.cable.in.lh = d.lh.skels
 
 # Chop!
 poss_non_core_lh=subset(df.decision,overlap<50000 & proportion.dendritic.lh<0.15)$ct
