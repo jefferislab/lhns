@@ -35,7 +35,7 @@ i = marta(names(lh.inputs))
 g = grepl("VAsomething",names(i))
 names(i[g]) = "VA4"
 g = grepl("VA4",names(i))
-names(i[g]) = "VA3"
+names(i[g]) = "VM4"
 df[i,]$glomerulus = names(i)
 # Add notes from FlyCircuit
 
@@ -167,9 +167,9 @@ ad.upns = c("fru-M-500154", "VGlut-F-400532", "fru-M-400041", "VGlut-F-700359",
             "Gad1-F-400353", "fru-M-400130", "fru-F-600263", "fru-F-700165",
             "fru-F-500466", "fru-F-400276", "Gad1-F-500298", "VGlut-F-000035",
             "VGlut-F-500497", "VGlut-F-500169", "VGlut-F-500826", "VGlut-F-700539",
-            "npf-F-200009", "npf-M-100022", "npf-F-300020","npf-M-100006", "npf-M-100012", "npf-M-200038", "Cha-F-200397",
+            "npf-F-200009", "npf-M-100006", "npf-M-100012", "npf-M-200038", "Cha-F-200397",
             "Cha-F-200265", "Gad1-F-300381", "fru-M-800212", "Gad1-F-000063",
-            "fru-F-400444", "npf-M-200059", "VGlut-F-200029", "Gad1-F-500298",
+            "fru-F-400444", "npf-M-200059", "VGlut-F-200029",
             "Gad1-F-000391", "fru-F-000183", "VGlut-F-400927", "fru-M-000325",
             "Gad1-F-000090")
 l.upns = c("npf-M-300032", "VGlut-F-300491", "VGlut-F-600326", "fru-F-400149",
@@ -194,18 +194,15 @@ l.upns = c("npf-M-300032", "VGlut-F-300491", "VGlut-F-600326", "fru-F-400149",
            "VGlut-F-600450", "npf-M-300041", "Gad1-F-900035", "Cha-F-300252",
            "fru-M-400325", "VGlut-F-400678", "fru-F-400051", "Cha-F-300104",
            "Gad1-F-000192", "fru-F-000025", "Gad1-F-400171", "fru-M-400223",
-           "fru-M-400380", "npf-M-300048", "npf-M-100022", "npf-F-300020","npf-F-000006",
-           "VGlut-F-300369","fru-M-000134", "fru-M-400296", "Trh-F-600015", "VGlut-F-700476",
-           "Gad1-F-400072", "Cha-F-000353", "Gad1-F-000384", "fru-M-600178",
-           "Cha-F-300238", "fru-F-400235", "fru-M-000134", "fru-M-400296",
-           "VGlut-F-900120", "VGlut-F-400620", "Trh-F-600015", "VGlut-F-700476",
-           "Gad1-F-400072", "VGlut-F-500461", "VGlut-F-200569", "VGlut-F-700463",
-           "Cha-F-000353", "Gad1-F-000384", "fru-M-600178", "fru-F-400235",
+           "fru-M-400380", "npf-M-300048", "npf-M-100022", "npf-F-300020",
+            "fru-M-600178",
+           "Cha-F-300238",
+           "VGlut-F-900120", "VGlut-F-400620", "VGlut-F-500461", "VGlut-F-200569", "VGlut-F-700463",
            "npf-M-200063", "fru-M-400375", "Cha-F-800120", "Gad1-F-100269",
-           "Gad1-F-300329", "VGlut-F-500412", "VGlut-F-700167", "npf-F-000006",
+           "Gad1-F-300329", "VGlut-F-500412", "VGlut-F-700167",
            "VGlut-F-200568", "VGlut-F-400000", "VGlut-F-300596", "VGlut-F-500431",
            "VGlut-F-600209", "VGlut-F-700465", "Gad1-F-300227", "Gad1-F-400346",
-           "VGlut-F-300369", "VGlut-F-400794", "VGlut-F-600175", "VGlut-F-300573",
+            "VGlut-F-400794", "VGlut-F-600175", "VGlut-F-300573",
            "fru-M-100396", "fru-M-100331")
 
 bilateral.VL1.upns = c("Gad1-F-000286","Gad1-F-700120") # GNG cell body Vl1
@@ -215,7 +212,7 @@ bilateral.VP3.upns = c("Cha-F-000250",  "Gad1-F-200188") # GNG cell body VP3
 malt.upns = c(ad.upns,l.upns,bilateral.VL1.upns,bilateral.VP3.upns)
 df[malt.upns,]$modality = "Olfactory"
 df[malt.upns,]$reference = "Jefferis et al. 2007"
-df[malt.upns,]$type = "uPN"
+df[c(malt.upns,bilateral.VL1.upns,bilateral.VP3.upns),]$type = "uPN"
 df[malt.upns,]$dendritic.location = "AL"
 df[malt.upns,]$tract = "mALT"
 df[malt.upns,]$neurotransmitter = "ACh"
@@ -230,7 +227,7 @@ df[c(bilateral.VL1.upns,bilateral.VP3.upns),]$cell.body.position = "GNG"
 df[c(bilateral.VL1.upns),]$glomerulus = "VL1"
 df[c(bilateral.VP3.upns),]$glomerulus = "VP3"
 
-df[bilateral.VP3.upns,]$modality = "Thermosensory"
+df[c(bilateral.VP3.upns),]$modality = "Thermosensory"
 df[bilateral.VP3.upns,]$reference = "Stocker et al. 1990"
 
 
@@ -331,7 +328,7 @@ df[al.gng.ca.lh.malt,]$modality = "Neuromodulatory"
 df[al.gng.ca.lh.malt,]$tract = "mALT"
 df[al.gng.ca.lh.malt,]$dendritic.location = "Eosophagus"
 df[al.gng.ca.lh.malt,]$neurotransmitter = "Oct"
-df[al.ca.lh.malt,]$cell.body.position = "GNG"
+df[al.gng.ca.lh.malt,]$cell.body.position = "GNG"
 
 
 
@@ -345,7 +342,7 @@ df[al.ca.lh.malt,]$cell.body.position = "GNG"
 
 mlalt.upns = c("Gad1-F-500077", "VGlut-F-400917", "VGlut-F-800247", "fru-F-300036",
                "5-HT1B-M-300003", "Gad1-F-400088","fru-F-500420", "Gad1-F-000185", "Cha-F-500249", "Gad1-F-200451")
-df[mlalt.upns,"anatomy.group"] = "AL-mlALT-uPN1"
+df[mlalt.upns,"anatomy.group"] = "AL-mlALT-PN1"
 
 mlalt.mpns = c("VGlut-F-300636", "VGlut-F-700218", "VGlut-F-400167", "VGlut-F-600556",
                "VGlut-F-400263", "VGlut-F-700473", "Trh-F-600066", "VGlut-F-500817",
@@ -402,10 +399,10 @@ mlalt.mpns = c("VGlut-F-300636", "VGlut-F-700218", "VGlut-F-400167", "VGlut-F-60
                "fru-M-600148", "fru-F-500485", "fru-F-500412", "Gad1-F-600294",
                "5HT1A-F-600006", "fru-F-600185", "Gad1-F-400314","Cha-F-300458","Gad1-F-900093",
                "5HT1A-M-600015", "VGlut-F-300564","Gad1-F-300382")
-df[mlalt.mpns,"anatomy.group"] = "AL-mlALT-mPN2"
+df[mlalt.mpns,"anatomy.group"] = "AL-mlALT-PN2"
 
 al.mlpn3 = c("GH146-M-000001", "GH146-F-300000", "GH146-M-400000")
-df[al.mlpn3,"anatomy.group"] = "AL-mlALT-mPN3"
+df[al.mlpn3,"anatomy.group"] = "AL-mlALT-PN3"
 
 # Meta data
 mlalt.mpns = c(mlalt.upns,mlalt.mpns,al.mlpn3)
@@ -429,7 +426,8 @@ df[mlalt.mpns,]$neurotransmitter = "GABA"
 
 
 lalt.uni = "Gad1-F-200095" #V
-df[lalt.uni,"anatomy.group"] = "AL-lALT-uPN1"
+df[lalt.uni,"anatomy.group"] = "AL-lALT-PN1"
+df[lalt.uni,"glomerulus"] = "V"
 
 lalt.mpns2 = c("Trh-M-000170", "Trh-M-000008", "Trh-M-000070", "VGlut-F-100003",
                "Trh-M-000172", "Trh-M-100037", "Trh-F-000043", "Trh-F-000041",
@@ -437,22 +435,22 @@ lalt.mpns2 = c("Trh-M-000170", "Trh-M-000008", "Trh-M-000070", "VGlut-F-100003",
                "Trh-F-000008", "Trh-F-000009", "Trh-F-100032", "VGlut-F-000259",
                "VGlut-F-000370", "Gad1-F-000431", "VGlut-F-100272", "VGlut-F-100184",
                "5HT1A-F-100004", "5HT1A-F-100032", "Cha-F-500056", "Gad1-F-200299")
-df[lalt.mpns2,"anatomy.group"] = "AL-lALT-mPN2"
+df[lalt.mpns2,"anatomy.group"] = "AL-lALT-PN2"
 
 lalt.mpns3 ="Cha-F-900038"
-df[lalt.mpns3,"anatomy.group"] = "AL-lALT-mPN3"
+df[lalt.mpns3,"anatomy.group"] = "AL-lALT-PN3"
 
 lalt.mpns5 = c("Trh-M-200074", "Gad1-F-400223", "fru-M-200462", "Cha-F-500003",
                "Gad1-F-200342", "fru-F-000086", "fru-F-000197", "GH146-M-000000",
                "Gad1-F-400131", "fru-M-000094", "fru-M-400192")
-df[lalt.mpns5,"anatomy.group"] = "AL-lALT-mPN5"
+df[lalt.mpns5,"anatomy.group"] = "AL-lALT-PN5"
 
 from.contra.lalt = c("Trh-M-000103", "Trh-M-200128",
                      "Trh-M-100007", "Trh-M-100003", "Trh-M-100095")
-df[from.contra.lalt,"anatomy.group"] = "AL-lALT-mPN6"
+df[from.contra.lalt,"anatomy.group"] = "AL-lALT-PN6"
 
 from.contra.ipsi.lalt = c("VGlut-F-200051", "VGlut-F-200077")
-df[from.contra.ipsi.lalt,"anatomy.group"] = "AL-lALT-mPN7"
+df[from.contra.ipsi.lalt,"anatomy.group"] = "AL-lALT-PN7"
 
 # Meta data
 lalt.pns = c(lalt.uni,lalt.mpns2,lalt.mpns3,lalt.mpns5,from.contra.lalt,from.contra.ipsi.lalt)
@@ -691,4 +689,8 @@ attr(lh.inputs,"df") = df
 
 ### save
 devtools::use_data(lh.inputs,overwrite=TRUE)
+
+
+
+
 

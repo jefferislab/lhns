@@ -86,3 +86,9 @@
 #'
 #' @seealso \code{\link{most.lhns}}, \code{\link{lh.inputs}}
 "lhns.pn.overlap.matrix"
+
+#' Light level tracign of PN axons
+#'
+#' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
+#'
+"light.pn.axons"
