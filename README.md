@@ -1,3 +1,4 @@
+[![Travis-CI Build Status](https://travis-ci.org/jefferislab/lhns.svg?branch=master)](https://travis-ci.org/jefferislab/lhns)
 # lhns
 R Package containing neuron skeleton data relevant to the lateral horn of the vinegar fly, Drosophila melanogaster. For use with [nat](https://github.com/jefferis/rcatmaid). In development.
 
