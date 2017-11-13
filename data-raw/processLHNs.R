@@ -10,6 +10,7 @@ SF_clusters=read.neurons("data-raw/swc/Clusters_SF")
 JFRCSH.DS_clusters=read.neurons("data-raw/swc/Clusters_JFRC2013DS")
 
 # Get data together in FCWB brainspace
+library(nat.flybrains)
 JFRCSH_clusters.FCWB= nat.templatebrains::xform_brain(JFRCSH_clusters, sample=JFRC2, ref=FCWB)
 JFRCSH.DS_clusters.FCWB= nat.templatebrains::xform_brain(JFRCSH.DS_clusters, sample=JFRC2013DS, ref=FCWB)
 SF_clusters.FCWB= nat.templatebrains::xform_brain(SF_clusters, IS2, FCWB)
@@ -1837,6 +1838,7 @@ pnts = pnts[pnts!="notLHproper"]
 message("Finding primary.neurite.tracts for all neurons!")
 most.lhns.pnts = catnat::primary.neurite(most.lhns)
 message("Making average primary.neurite.tracts!")
+library(nat.nblast) # nb to avoid: Error in get(smat) : object 'smat.fcwb' not found
 primary.neurite.tracts = nlapply(pnts,function(z) catnat::average.tracts(subset(most.lhns.pnts,pnt==z),mode=1))
 names(primary.neurite.tracts) = pnts
 attr(primary.neurite.tracts,"df") = data.frame(pnt=names(primary.neurite.tracts))
