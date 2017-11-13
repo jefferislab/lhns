@@ -6,7 +6,7 @@
 # Get data
 load("data-raw/lh.inputs.rda")
 df = lh.inputs[,]
-df = df[,c(1:4,6,8)]
+df = df[,c("gene","sex","LH_side","glomerulus")]
 df$anatomy.group = NA
 df$modality = NA
 df$type = "non-glomerular"

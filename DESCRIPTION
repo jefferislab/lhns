@@ -11,8 +11,8 @@ License: GPL-3
 LazyData: TRUE
 RoxygenNote: 6.0.1
 Suggests: testthat, gplots, ggplot2, easyGgplot2, doMC, elmr, yaml
-Depends:  R (>= 2.10), nat, catnat, nat.flybrains, nat.templatebrains
+Depends:  R (>= 2.10), nat, catnat, nat.flybrains, nat.templatebrains, flycircuit
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
-Remotes: alexanderbates/catnat
+Remotes: alexanderbates/catnat, jefferis/flycircuit
 Encoding: UTF-8

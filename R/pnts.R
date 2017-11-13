@@ -8,7 +8,7 @@ plot_pnts <- function(){
   nat::nopen3d()
   rgl::plot3d(nat.flybrains::FCWB)
   rgl::plot3d(lhns::primary.neurite.tracts,soma=T,lwd=5)
-  pxyz= amount = t(sapply(lhns::primary.neurite.tracts, function(x) xyzmatrix(x)[rootpoints(x),]))
+  pxyz= amount = t(sapply(lhns::primary.neurite.tracts, function(x) xyzmatrix(x)[nat::rootpoints(x),]))
   rownames(pxyz) = gsub(pattern = "LH|lh","",names(lhns::primary.neurite.tracts))
   shift <- matrix(c(-3, 3, 0), nrow(pxyz), 3, byrow = TRUE)
   rgl::text3d(pxyz + shift,texts =rownames(pxyz))
