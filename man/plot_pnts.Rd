@@ -4,8 +4,16 @@
 \alias{plot_pnts}
 \title{Plot adult Lateral Horn primary neurite tracts}
 \usage{
-plot_pnts()
+plot_pnts(open = TRUE)
+}
+\arguments{
+\item{open}{Whether to open a new RGL window for plotting
+(default=\code{TRUE})}
 }
 \description{
-Plots the primary neurite tracts from Frechter et al. 2017 in FCWB space.
+Plots the primary neurite tracts from Frechter et al. 2017 in
+  \code{\link[nat.flybrains]{FCWB}} space.
+}
+\seealso{
+\code{\link[nat.flybrains]{FCWB}}
 }
