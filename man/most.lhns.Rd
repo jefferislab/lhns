@@ -12,6 +12,26 @@
 most.lhns
 }
 \description{
-A dataset containing all of the FlyCircuit lateral horn neurons that seem to have dendrite in the LH, as well as traced dye-fills from Fretcher et al. 2017
+A dataset containing all of the FlyCircuit neurons that seem to have
+dendrites in the lateral horn (LH), as well as traced dye-fills from Frechter
+et al. 2017. The neurons are in the \code{nat} package's
+\code{\link[nat]{neuron}} format.
+}
+\examples{
+\donttest{
+library(nat)
+head(most.lhns)
+# summarise numbers of neurons per Primary Neurite tract
+table(most.lhns[,'pnt'])
+}
+\dontrun{
+good_lhns=subset(most.lhns, good.trace & !is.na(anatomy.group) &
+                 anatomy.group!="notLHproper")
+write.neurons(good_lhns, "/path/to/ouput/dir", subdir=file.path(pnt,anatomy.group),
+              files=paste0(id, '.swc'))
+}
+}
+\seealso{
+most.lhns.dps
 }
 \keyword{datasets}
