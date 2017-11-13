@@ -10,9 +10,9 @@ Description: Skeleton data from FlyCircuit (http://flycircuit.tw) and Frechter e
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 6.0.1
-Suggests: testthat, gplots, ggplot2, easyGgplot2, doMC, elmr, yaml
-Depends:  R (>= 2.10), nat, catnat, nat.flybrains, nat.templatebrains, flycircuit
+Suggests: testthat
+Depends:  R (>= 2.10), nat, nat.flybrains
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
-Remotes: alexanderbates/catnat, jefferis/flycircuit
+Remotes: jefferislab/nat.flybrains
 Encoding: UTF-8
