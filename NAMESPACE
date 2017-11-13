@@ -2,3 +2,7 @@
 
 export(plot_pnts)
 import(nat.flybrains)
+importFrom(rgl,par3d)
+importFrom(rgl,plot3d)
+importFrom(rgl,scaleMatrix)
+importFrom(rgl,text3d)
