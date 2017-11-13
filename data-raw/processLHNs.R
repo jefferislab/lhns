@@ -1,7 +1,7 @@
 # Process LHN data
 
 # Get Data
-load("data-raw/most.lhns.dps.rda")
+message("Reading in raw neuron skeleton data!")
 load("data-raw/SF_dye_fills_FCWB.rda")
 load("data-raw/Segmented_FlyCircuit_LHNs_FCWB.rda")
 load("data-raw/Segmented_FlyCircuit_LHNs_FCWB.rda")
@@ -10,6 +10,7 @@ SF_clusters=read.neurons("data-raw/swc/Clusters_SF")
 JFRCSH.DS_clusters=read.neurons("data-raw/swc/Clusters_JFRC2013DS")
 
 # Get data together in FCWB brainspace
+library(nat.flybrains)
 JFRCSH_clusters.FCWB= nat.templatebrains::xform_brain(JFRCSH_clusters, sample=JFRC2, ref=FCWB)
 JFRCSH.DS_clusters.FCWB= nat.templatebrains::xform_brain(JFRCSH.DS_clusters, sample=JFRC2013DS, ref=FCWB)
 SF_clusters.FCWB= nat.templatebrains::xform_brain(SF_clusters, IS2, FCWB)
@@ -1743,6 +1744,7 @@ lhns.pn.overlap.matrix = t(apply(t(lhns.pn.overlap.matrix), 2, function(x) tappl
 # Decide
 d = catnat::dendritic.cable(lhns.chosen,mixed=TRUE)
 d.data = summary(d)$cable.length
+message("Pruning neurons to LH!")
 d.lh = unlist(nlapply(d,function(x) tryCatch(summary(prune_in_volume(x,neuropil="LH_R",brain=FCWBNP.surf))$cable.length,error = function(e) 0)))
 names(d.lh) = names(d.data) = lhns.chosen[names(d),"cell.type"]
 d.lh = tapply(d.lh, names(d.lh), mean, na.rm = TRUE)
@@ -1825,25 +1827,18 @@ df[names(c(JFRCSH_clusters.FCWB,JFRCSH.DS_clusters.FCWB,SF_clusters.FCWB)),]$ske
 names_in_common=intersect(names(most.lhns), rownames(df))
 most.lhns = most.lhns[names_in_common]
 most.lhns[,]=df[names_in_common,]
-#most.lhns.dps = dotprops(most.lhns,resample=1)
-names_in_common=intersect(names(most.lhns.dps), rownames(df))
-most.lhns.dps = most.lhns.dps[names_in_common]
-most.lhns.dps[,]=df[names_in_common,]
-
-
-
 
 
 ###### Generate Primary Neurite Tracts ######
 
 
-
-
-
 ### Make a model of all the tracts that can be viewed easily
 pnts = sort(unique(most.lhns[,"pnt"]))
 pnts = pnts[pnts!="notLHproper"]
+message("Finding primary.neurite.tracts for all neurons!")
 most.lhns.pnts = catnat::primary.neurite(most.lhns)
+message("Making average primary.neurite.tracts!")
+library(nat.nblast) # nb to avoid: Error in get(smat) : object 'smat.fcwb' not found
 primary.neurite.tracts = nlapply(pnts,function(z) catnat::average.tracts(subset(most.lhns.pnts,pnt==z),mode=1))
 names(primary.neurite.tracts) = pnts
 attr(primary.neurite.tracts,"df") = data.frame(pnt=names(primary.neurite.tracts))
@@ -1855,23 +1850,7 @@ attr(primary.neurite.tracts,"df") = data.frame(pnt=names(primary.neurite.tracts)
 ###### Generate data objects ######
 
 
-# Propagate labels
-dotpropsr.neuron<-function (x, Labels = NULL, resample = NA, ...)
-{
-  if (is.null(Labels) || isTRUE(Labels))
-    Labels = x$d$Label
-  else if (is.logical(labels) && labels == FALSE)
-    Labels = NULL
-  if (is.finite(resample))
-    x = nat::resample(x, stepsize = resample)
-  nat::dotprops(xyzmatrix(x), Labels = Labels, ...)
-}
-#most.lhns.dps = nat::nlapply(most.lhns,dotpropsr.neuron,resample=1, Labels = TRUE)
-#devtools::use_data(most.lhns.dps,overwrite=TRUE)
+
+message("Saving data!")
 devtools::use_data(most.lhns,overwrite=TRUE)
-devtools::use_data(most.lhns.dps,overwrite=TRUE)
 devtools::use_data(primary.neurite.tracts,overwrite=TRUE)
-
-
-
-

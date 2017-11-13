@@ -12,6 +12,11 @@
 most.lhns.dps
 }
 \description{
-A dotprops dataset containing all of the FlyCircuit lateral horn neurons that seem to have dendrite in the LH, as well as traced dye-fills from Fretcher et al. 2017
+A \code{\link[nat]{dotprops}} dataset containing all of the FlyCircuit
+lateral horn neurons that seem to have dendrite in the LH, as well as traced
+dye-fills from Frechter et al. 2017
+}
+\seealso{
+\code{\link{most.lhns}}
 }
 \keyword{datasets}

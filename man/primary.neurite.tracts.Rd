@@ -9,6 +9,24 @@
 primary.neurite.tracts
 }
 \description{
-The known primary neurite tracts that lateral horn neurons can take from their somata, from Frechter et al. 2017.
+The known primary neurite tracts that lateral horn neurons can take from
+their somata, from Frechter et al. 2017.
+}
+\examples{
+\donttest{
+library(nat)
+plot_pnts()
+plot3d(most.lhns, pnt=='av6', col='black', soma=T)
+
+## a bit messy, so maybe try just with the spine (longest path of neuron)
+# removes neurons
+npop3d()
+# nb UseStartPoint => longest path from soma
+av6.spines=nlapply(subset(most.lhns, pnt=='av6'), spine, UseStartPoint=T)
+plot3d(av6.spines, col='black')
+}
+}
+\seealso{
+\code{\link{plot_pnts}}
 }
 \keyword{datasets}
