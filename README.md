@@ -1,7 +1,5 @@
-
-
 # lhns
-R Package for use with [rcatmaid](https://github.com/jefferis/rcatmaid) and [nat](https://github.com/jefferis/rcatmaid). In development.
+R Package containing neuron skeleton data relevant to the lateral horn of the vinegar fly, Drosophila melanogaster. For use with [nat](https://github.com/jefferis/rcatmaid). In development.
 
 ## What's in the package currently?
 ```r
