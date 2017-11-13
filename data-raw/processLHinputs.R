@@ -587,25 +587,25 @@ mbonap2ap3 = c("Gad1-F-400259","E0585-F-200015","E0585-F-300042")
 mbonap= c(mbonap3,mbonap2ap3)
 df[mbonap2ap3,"anatomy.group"] = "MBON-a'2-a'3"
 df[mbonap3,"anatomy.group"] = "MBON-a'2-a'3"
-df[mbonap,"anatomy.group"] = "Centrofugal"
-df[mbonap,]$modality = "Centrofugal"
+df[mbonap,"anatomy.group"] = "Centrifugal"
+df[mbonap,]$modality = "Centrifugal"
 df[mbonap,]$reference = "ASB"
 df[mbonap3,]$reference = "Aso et al. 2014"
 df[mbonap,]$dendritic.location = "MB"
 df[mbonap,]$cell.body.position = "SP"
-df[mbonap,]$tract = "Centrofugal"
+df[mbonap,]$tract = "Centrifugal"
 df[mbonap,]$neurotransmitter = "ACh"
 
 ###
 
-centrofugal = c("VGlut-F-200116","Gad1-F-700066")
-df[centrofugal,"anatomy.group"] = "Centrofugal"
-df[centrofugal,]$modality = "Centrofugal"
-df[centrofugal,]$reference = "ASB"
-df[centrofugal,]$dendritic.location = "SP"
-df[centrofugal,]$cell.body.position = "SP"
-df[centrofugal,]$tract = "Centrofugal"
-df[centrofugal,]$neurotransmitter = "Unknown"
+centrifugal = c("VGlut-F-200116","Gad1-F-700066")
+df[centrifugal,"anatomy.group"] = "Centrifugal"
+df[centrifugal,]$modality = "Centrifugal"
+df[centrifugal,]$reference = "ASB"
+df[centrifugal,]$dendritic.location = "SP"
+df[centrifugal,]$cell.body.position = "SP"
+df[centrifugal,]$tract = "Centrifugal"
+df[centrifugal,]$neurotransmitter = "Unknown"
 
 ###
 
@@ -634,12 +634,12 @@ unknowns = c("fru-M-300418", "fru-M-800154", "TH-M-100006", "TH-M-000001",
              "fru-M-100392", "fru-M-200422", "fru-M-400364", "fru-M-200246",
              "fru-M-600093")
 df[unknowns,"anatomy.group"] = "Expansive-Putative"
-df[centrofugal,]$modality = "Unknown"
-df[centrofugal,]$reference = "ASB"
-df[centrofugal,]$dendritic.location = "Uncertain"
-df[centrofugal,]$cell.body.position = "PD6"
-df[centrofugal,]$tract = "Uncertain"
-df[centrofugal,]$neurotransmitter = "Unknown"
+df[centrifugal,]$modality = "Unknown"
+df[centrifugal,]$reference = "ASB"
+df[centrifugal,]$dendritic.location = "Uncertain"
+df[centrifugal,]$cell.body.position = "PD6"
+df[centrifugal,]$tract = "Uncertain"
+df[centrifugal,]$neurotransmitter = "Unknown"
 
 
 
