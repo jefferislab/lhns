@@ -62,3 +62,27 @@
 #'
 #' @source \url{http://dx.doi.org/10.1016/j.neuron.2016.05.022}
 "Badel.PN.responses"
+
+#' A categorised database of neurons providing input to the lateral horn
+#'
+#' @source \url{http://www.flycircuit.tw/}
+#' @details See \url{http://virtualflybrain.org} for definitions of tract
+#'   abbreviations.
+#' @seealso \code{\link{most.lhns}}
+#' @examples
+#' \donttest{
+#' library(nat)
+#' head(lh.inputs)
+#' # summarise numbers of neurons per modality/axon tract
+#' with(lh.inputs, table(modality, tract))
+#' table(most.lhns[,'pnt'])
+#' }
+"lh.inputs"
+
+#' Dendritic overlap of LHN cell types with axon terminals of PN inputs to LH
+#'
+#' This matrix is organised by the identifier of the PN inputs (rows) and the
+#' LHN cell type (columns).
+#'
+#' @seealso \code{\link{most.lhns}}, \code{\link{lh.inputs}}
+"lhns.pn.overlap.matrix"
