@@ -3,7 +3,6 @@
 #' @description Plots the primary neurite tracts from Frechter et al. 2017 in FCWB space.
 #'
 #' @export
-#' @rdname plot.pnts
 plot_pnts <- function(){
   nat::nopen3d()
   rgl::plot3d(nat.flybrains::FCWB)
