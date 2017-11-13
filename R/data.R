@@ -98,3 +98,15 @@
 #' Collated in Frechter et al. 2017.
 #'
 "lhn.lines"
+
+#' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors
+#'
+#' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors from DoOR.
+#' @details Information collated in: \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
+"olf.info"
+
+#' Information on projection neurons
+#'
+#' Information on projection neurons, their glomeruli and their cognate olfactory sensaroy neurons and receptors.
+#' @details Data largely from \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
+"pn.info"

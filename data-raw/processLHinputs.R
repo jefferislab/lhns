@@ -203,7 +203,7 @@ l.upns = c("npf-M-300032", "VGlut-F-300491", "VGlut-F-600326", "fru-F-400149",
            "VGlut-F-200568", "VGlut-F-400000", "VGlut-F-300596", "VGlut-F-500431",
            "VGlut-F-600209", "VGlut-F-700465", "Gad1-F-300227", "Gad1-F-400346",
             "VGlut-F-400794", "VGlut-F-600175", "VGlut-F-300573",
-           "fru-M-100396", "fru-M-100331")
+           "fru-M-100396", "fru-M-100331", "npf-F-000006", "fru-F-400235", "Gad1-F-400072")
 
 bilateral.VL1.upns = c("Gad1-F-000286","Gad1-F-700120") # GNG cell body Vl1
 bilateral.VP3.upns = c("Cha-F-000250",  "Gad1-F-200188") # GNG cell body VP3
@@ -570,7 +570,7 @@ df[mAL,]$reference ="Kimura et al. 2010"
 
 wedge.pn = c("VGlut-F-600117", "Gad1-F-100133", "VGlut-F-500810",
              "VGlut-F-100375", "fru-M-300059", "Cha-F-000514", "Cha-F-600036")
-df[wedge.pn,"anatomy.group"] = "AMMC-PN1"
+df[wedge.pn,"anatomy.group"] = "WED-PN1"
 df[wedge.pn,]$modality = "Mechanosensation"
 df[wedge.pn,]$reference = "ASB"
 df[wedge.pn,]$dendritic.location = "WED"
