@@ -1855,8 +1855,19 @@ attr(primary.neurite.tracts,"df") = data.frame(pnt=names(primary.neurite.tracts)
 ###### Generate data objects ######
 
 
-
-
+# Propagate labels
+dotpropsr.neuron<-function (x, Labels = NULL, resample = NA, ...)
+{
+  if (is.null(Labels) || isTRUE(Labels))
+    Labels = x$d$Label
+  else if (is.logical(labels) && labels == FALSE)
+    Labels = NULL
+  if (is.finite(resample))
+    x = nat::resample(x, stepsize = resample)
+  nat::dotprops(xyzmatrix(x), Labels = Labels, ...)
+}
+#most.lhns.dps = nat::nlapply(most.lhns,dotpropsr.neuron,resample=1, Labels = TRUE)
+#devtools::use_data(most.lhns.dps,overwrite=TRUE)
 devtools::use_data(most.lhns,overwrite=TRUE)
 devtools::use_data(most.lhns.dps,overwrite=TRUE)
 devtools::use_data(primary.neurite.tracts,overwrite=TRUE)

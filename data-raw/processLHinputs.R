@@ -35,7 +35,7 @@ i = marta(names(lh.inputs))
 g = grepl("VAsomething",names(i))
 names(i[g]) = "VA4"
 g = grepl("VA4",names(i))
-names(i[g]) = "VA3"
+names(i[g]) = "VM4"
 df[i,]$glomerulus = names(i)
 # Add notes from FlyCircuit
 
@@ -215,7 +215,7 @@ bilateral.VP3.upns = c("Cha-F-000250",  "Gad1-F-200188") # GNG cell body VP3
 malt.upns = c(ad.upns,l.upns,bilateral.VL1.upns,bilateral.VP3.upns)
 df[malt.upns,]$modality = "Olfactory"
 df[malt.upns,]$reference = "Jefferis et al. 2007"
-df[malt.upns,]$type = "uPN"
+df[c(malt.upns,bilateral.VL1.upns,bilateral.VP3.upns),]$type = "uPN"
 df[malt.upns,]$dendritic.location = "AL"
 df[malt.upns,]$tract = "mALT"
 df[malt.upns,]$neurotransmitter = "ACh"
@@ -230,7 +230,7 @@ df[c(bilateral.VL1.upns,bilateral.VP3.upns),]$cell.body.position = "GNG"
 df[c(bilateral.VL1.upns),]$glomerulus = "VL1"
 df[c(bilateral.VP3.upns),]$glomerulus = "VP3"
 
-df[bilateral.VP3.upns,]$modality = "Thermosensory"
+df[c(bilateral.VP3.upns),]$modality = "Thermosensory"
 df[bilateral.VP3.upns,]$reference = "Stocker et al. 1990"
 
 
@@ -331,7 +331,7 @@ df[al.gng.ca.lh.malt,]$modality = "Neuromodulatory"
 df[al.gng.ca.lh.malt,]$tract = "mALT"
 df[al.gng.ca.lh.malt,]$dendritic.location = "Eosophagus"
 df[al.gng.ca.lh.malt,]$neurotransmitter = "Oct"
-df[al.ca.lh.malt,]$cell.body.position = "GNG"
+df[al.gng.ca.lh.malt,]$cell.body.position = "GNG"
 
 
 
@@ -345,7 +345,7 @@ df[al.ca.lh.malt,]$cell.body.position = "GNG"
 
 mlalt.upns = c("Gad1-F-500077", "VGlut-F-400917", "VGlut-F-800247", "fru-F-300036",
                "5-HT1B-M-300003", "Gad1-F-400088","fru-F-500420", "Gad1-F-000185", "Cha-F-500249", "Gad1-F-200451")
-df[mlalt.upns,"anatomy.group"] = "AL-mlALT-uPN1"
+df[mlalt.upns,"anatomy.group"] = "AL-mlALT-PN1"
 
 mlalt.mpns = c("VGlut-F-300636", "VGlut-F-700218", "VGlut-F-400167", "VGlut-F-600556",
                "VGlut-F-400263", "VGlut-F-700473", "Trh-F-600066", "VGlut-F-500817",
@@ -402,10 +402,10 @@ mlalt.mpns = c("VGlut-F-300636", "VGlut-F-700218", "VGlut-F-400167", "VGlut-F-60
                "fru-M-600148", "fru-F-500485", "fru-F-500412", "Gad1-F-600294",
                "5HT1A-F-600006", "fru-F-600185", "Gad1-F-400314","Cha-F-300458","Gad1-F-900093",
                "5HT1A-M-600015", "VGlut-F-300564","Gad1-F-300382")
-df[mlalt.mpns,"anatomy.group"] = "AL-mlALT-mPN2"
+df[mlalt.mpns,"anatomy.group"] = "AL-mlALT-PN2"
 
 al.mlpn3 = c("GH146-M-000001", "GH146-F-300000", "GH146-M-400000")
-df[al.mlpn3,"anatomy.group"] = "AL-mlALT-mPN3"
+df[al.mlpn3,"anatomy.group"] = "AL-mlALT-PN3"
 
 # Meta data
 mlalt.mpns = c(mlalt.upns,mlalt.mpns,al.mlpn3)
@@ -429,7 +429,8 @@ df[mlalt.mpns,]$neurotransmitter = "GABA"
 
 
 lalt.uni = "Gad1-F-200095" #V
-df[lalt.uni,"anatomy.group"] = "AL-lALT-uPN1"
+df[lalt.uni,"anatomy.group"] = "AL-lALT-PN1"
+df[lalt.uni,"glomerulus"] = "V"
 
 lalt.mpns2 = c("Trh-M-000170", "Trh-M-000008", "Trh-M-000070", "VGlut-F-100003",
                "Trh-M-000172", "Trh-M-100037", "Trh-F-000043", "Trh-F-000041",
@@ -437,22 +438,22 @@ lalt.mpns2 = c("Trh-M-000170", "Trh-M-000008", "Trh-M-000070", "VGlut-F-100003",
                "Trh-F-000008", "Trh-F-000009", "Trh-F-100032", "VGlut-F-000259",
                "VGlut-F-000370", "Gad1-F-000431", "VGlut-F-100272", "VGlut-F-100184",
                "5HT1A-F-100004", "5HT1A-F-100032", "Cha-F-500056", "Gad1-F-200299")
-df[lalt.mpns2,"anatomy.group"] = "AL-lALT-mPN2"
+df[lalt.mpns2,"anatomy.group"] = "AL-lALT-PN2"
 
 lalt.mpns3 ="Cha-F-900038"
-df[lalt.mpns3,"anatomy.group"] = "AL-lALT-mPN3"
+df[lalt.mpns3,"anatomy.group"] = "AL-lALT-PN3"
 
 lalt.mpns5 = c("Trh-M-200074", "Gad1-F-400223", "fru-M-200462", "Cha-F-500003",
                "Gad1-F-200342", "fru-F-000086", "fru-F-000197", "GH146-M-000000",
                "Gad1-F-400131", "fru-M-000094", "fru-M-400192")
-df[lalt.mpns5,"anatomy.group"] = "AL-lALT-mPN5"
+df[lalt.mpns5,"anatomy.group"] = "AL-lALT-PN5"
 
 from.contra.lalt = c("Trh-M-000103", "Trh-M-200128",
                      "Trh-M-100007", "Trh-M-100003", "Trh-M-100095")
-df[from.contra.lalt,"anatomy.group"] = "AL-lALT-mPN6"
+df[from.contra.lalt,"anatomy.group"] = "AL-lALT-PN6"
 
 from.contra.ipsi.lalt = c("VGlut-F-200051", "VGlut-F-200077")
-df[from.contra.ipsi.lalt,"anatomy.group"] = "AL-lALT-mPN7"
+df[from.contra.ipsi.lalt,"anatomy.group"] = "AL-lALT-PN7"
 
 # Meta data
 lalt.pns = c(lalt.uni,lalt.mpns2,lalt.mpns3,lalt.mpns5,from.contra.lalt,from.contra.ipsi.lalt)
@@ -634,12 +635,12 @@ unknowns = c("fru-M-300418", "fru-M-800154", "TH-M-100006", "TH-M-000001",
              "fru-M-100392", "fru-M-200422", "fru-M-400364", "fru-M-200246",
              "fru-M-600093")
 df[unknowns,"anatomy.group"] = "Expansive-Putative"
-df[centrofugal,]$modality = "Unknown"
-df[centrofugal,]$reference = "ASB"
-df[centrofugal,]$dendritic.location = "Uncertain"
-df[centrofugal,]$cell.body.position = "PD6"
-df[centrofugal,]$tract = "Uncertain"
-df[centrofugal,]$neurotransmitter = "Unknown"
+df[unknowns,]$modality = "Unknown"
+df[unknowns,]$reference = "ASB"
+df[unknowns,]$dendritic.location = "Uncertain"
+df[unknowns,]$cell.body.position = "PD6"
+df[unknowns,]$tract = "Uncertain"
+df[unknowns,]$neurotransmitter = "Unknown"
 
 
 
@@ -691,4 +692,52 @@ attr(lh.inputs,"df") = df
 
 ### save
 devtools::use_data(lh.inputs,overwrite=TRUE)
+
+
+
+
+
+
+
+
+modalities =  as.character(sapply(unique(inputs[,"anatomy.group"]),function(x) paste0(subset(inputs,anatomy.group==x)[,"modality"][1],"-",subset(inputs,anatomy.group==x)[,"neurotransmitter"][1])))
+names(modalities) = as.character(unique(inputs[,"anatomy.group"]))
+modalities[unique(inputs[,"anatomy.group"])%in%c("AL-mALT-PN1","AL-lALT-PN1")] = "Uniglomerular.Olfactory-ACh"
+modalities[grepl("^Olfactory-ACh$",modalities)] = "Multiglomerular.Olfactory-ACh"
+
+modalities[grepl("mlALT",names(modalities))] = "Inhibitory.Olfactory-GABA"
+modalities = gsub("\\-.*","",modalities)
+mods = unique(modalities)
+
+# Plot and take images
+nopen3d(userMatrix = structure(c(0.977067112922668, 0.0665112510323524,
+                                 -0.202278465032578, 0, 0.000458627939224243, -0.950619757175446,
+                                 -0.310358107089996, 0, -0.212932333350182, 0.303147882223129,
+                                 -0.928849160671234, 0, 0.552961830161394, -0.291564037362036,
+                                 -0.103123785978823, 1), .Dim = c(4L, 4L)), zoom = 0.746215641498566,
+        windowRect = c(1529L, 90L, 2690L, 1023L))
+for(m in mods){
+  if(grepl("Uniglomerular",m)){
+    m.col = "yellow"
+  }else if (grepl("Inhib",m)){
+    m.col="cyan"
+  }else if (grepl("Multi",m)){
+    m.col="orange"
+  }else if (grepl("\\+",m)){
+    m.col="brown"
+  }else if (grepl("Thermo",m)){
+    m.col="red"
+  }else if (grepl("Gustatory",m)){
+    m.col="green"
+  } else if (grepl("Mech",m)){
+    m.col="blue"
+  }
+  signal = names(modalities[modalities==m])
+  plot3d(inputs.termini,anatomy.group%in%signal,col=m.col,lwd=3,alpha=0.5,soma=F)
+  plot3d(subset(FCWBNP.surf,"LH_R"),alpha=0.1,add=T,col="grey")
+  rgl.snapshot(paste0("/GD/LMBD/Papers/2015lhns/fig/Alex/images/Fig2_LHPNModalities_",m,"_.png"),fmt="png")
+  Sys.sleep(5)
+  clear3d()
+}
+
 
