@@ -9,7 +9,7 @@ devtools::install_github("jefferislab/lhns")
 library(lhns)
 plot3d(most.lhns)
 ?most.lhns
-plot.pnts()
+plot_pnts()
 ```
 
 Note: Windows users need [Rtools](http://www.murdoch-sutherland.com/Rtools/) and
