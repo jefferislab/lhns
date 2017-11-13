@@ -167,9 +167,9 @@ ad.upns = c("fru-M-500154", "VGlut-F-400532", "fru-M-400041", "VGlut-F-700359",
             "Gad1-F-400353", "fru-M-400130", "fru-F-600263", "fru-F-700165",
             "fru-F-500466", "fru-F-400276", "Gad1-F-500298", "VGlut-F-000035",
             "VGlut-F-500497", "VGlut-F-500169", "VGlut-F-500826", "VGlut-F-700539",
-            "npf-F-200009", "npf-M-100022", "npf-F-300020","npf-M-100006", "npf-M-100012", "npf-M-200038", "Cha-F-200397",
+            "npf-F-200009", "npf-M-100006", "npf-M-100012", "npf-M-200038", "Cha-F-200397",
             "Cha-F-200265", "Gad1-F-300381", "fru-M-800212", "Gad1-F-000063",
-            "fru-F-400444", "npf-M-200059", "VGlut-F-200029", "Gad1-F-500298",
+            "fru-F-400444", "npf-M-200059", "VGlut-F-200029",
             "Gad1-F-000391", "fru-F-000183", "VGlut-F-400927", "fru-M-000325",
             "Gad1-F-000090")
 l.upns = c("npf-M-300032", "VGlut-F-300491", "VGlut-F-600326", "fru-F-400149",
@@ -194,18 +194,15 @@ l.upns = c("npf-M-300032", "VGlut-F-300491", "VGlut-F-600326", "fru-F-400149",
            "VGlut-F-600450", "npf-M-300041", "Gad1-F-900035", "Cha-F-300252",
            "fru-M-400325", "VGlut-F-400678", "fru-F-400051", "Cha-F-300104",
            "Gad1-F-000192", "fru-F-000025", "Gad1-F-400171", "fru-M-400223",
-           "fru-M-400380", "npf-M-300048", "npf-M-100022", "npf-F-300020","npf-F-000006",
-           "VGlut-F-300369","fru-M-000134", "fru-M-400296", "Trh-F-600015", "VGlut-F-700476",
-           "Gad1-F-400072", "Cha-F-000353", "Gad1-F-000384", "fru-M-600178",
-           "Cha-F-300238", "fru-F-400235", "fru-M-000134", "fru-M-400296",
-           "VGlut-F-900120", "VGlut-F-400620", "Trh-F-600015", "VGlut-F-700476",
-           "Gad1-F-400072", "VGlut-F-500461", "VGlut-F-200569", "VGlut-F-700463",
-           "Cha-F-000353", "Gad1-F-000384", "fru-M-600178", "fru-F-400235",
+           "fru-M-400380", "npf-M-300048", "npf-M-100022", "npf-F-300020",
+            "fru-M-600178",
+           "Cha-F-300238",
+           "VGlut-F-900120", "VGlut-F-400620", "VGlut-F-500461", "VGlut-F-200569", "VGlut-F-700463",
            "npf-M-200063", "fru-M-400375", "Cha-F-800120", "Gad1-F-100269",
-           "Gad1-F-300329", "VGlut-F-500412", "VGlut-F-700167", "npf-F-000006",
+           "Gad1-F-300329", "VGlut-F-500412", "VGlut-F-700167",
            "VGlut-F-200568", "VGlut-F-400000", "VGlut-F-300596", "VGlut-F-500431",
            "VGlut-F-600209", "VGlut-F-700465", "Gad1-F-300227", "Gad1-F-400346",
-           "VGlut-F-300369", "VGlut-F-400794", "VGlut-F-600175", "VGlut-F-300573",
+            "VGlut-F-400794", "VGlut-F-600175", "VGlut-F-300573",
            "fru-M-100396", "fru-M-100331")
 
 bilateral.VL1.upns = c("Gad1-F-000286","Gad1-F-700120") # GNG cell body Vl1
@@ -695,49 +692,5 @@ devtools::use_data(lh.inputs,overwrite=TRUE)
 
 
 
-
-
-
-
-
-modalities =  as.character(sapply(unique(inputs[,"anatomy.group"]),function(x) paste0(subset(inputs,anatomy.group==x)[,"modality"][1],"-",subset(inputs,anatomy.group==x)[,"neurotransmitter"][1])))
-names(modalities) = as.character(unique(inputs[,"anatomy.group"]))
-modalities[unique(inputs[,"anatomy.group"])%in%c("AL-mALT-PN1","AL-lALT-PN1")] = "Uniglomerular.Olfactory-ACh"
-modalities[grepl("^Olfactory-ACh$",modalities)] = "Multiglomerular.Olfactory-ACh"
-
-modalities[grepl("mlALT",names(modalities))] = "Inhibitory.Olfactory-GABA"
-modalities = gsub("\\-.*","",modalities)
-mods = unique(modalities)
-
-# Plot and take images
-nopen3d(userMatrix = structure(c(0.977067112922668, 0.0665112510323524,
-                                 -0.202278465032578, 0, 0.000458627939224243, -0.950619757175446,
-                                 -0.310358107089996, 0, -0.212932333350182, 0.303147882223129,
-                                 -0.928849160671234, 0, 0.552961830161394, -0.291564037362036,
-                                 -0.103123785978823, 1), .Dim = c(4L, 4L)), zoom = 0.746215641498566,
-        windowRect = c(1529L, 90L, 2690L, 1023L))
-for(m in mods){
-  if(grepl("Uniglomerular",m)){
-    m.col = "yellow"
-  }else if (grepl("Inhib",m)){
-    m.col="cyan"
-  }else if (grepl("Multi",m)){
-    m.col="orange"
-  }else if (grepl("\\+",m)){
-    m.col="brown"
-  }else if (grepl("Thermo",m)){
-    m.col="red"
-  }else if (grepl("Gustatory",m)){
-    m.col="green"
-  } else if (grepl("Mech",m)){
-    m.col="blue"
-  }
-  signal = names(modalities[modalities==m])
-  plot3d(inputs.termini,anatomy.group%in%signal,col=m.col,lwd=3,alpha=0.5,soma=F)
-  plot3d(subset(FCWBNP.surf,"LH_R"),alpha=0.1,add=T,col="grey")
-  rgl.snapshot(paste0("/GD/LMBD/Papers/2015lhns/fig/Alex/images/Fig2_LHPNModalities_",m,"_.png"),fmt="png")
-  Sys.sleep(5)
-  clear3d()
-}
 
 

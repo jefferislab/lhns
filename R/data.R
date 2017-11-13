@@ -25,3 +25,9 @@
 #' Ca2+ responses in the dendrite of Drosophila, uniglomerular GH146 positive projection neurons from Badel et al. 2017.
 #'
 "Badel.PN.responses"
+
+#' Light level tracign of PN axons
+#'
+#' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
+#'
+"light.pn.axons"
