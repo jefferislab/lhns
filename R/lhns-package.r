@@ -5,5 +5,5 @@
 #'
 #' @name lhns
 #' @docType package
-#' @import nat.flybains
+#' @import nat.flybrains
 NULL
