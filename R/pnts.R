@@ -4,7 +4,7 @@
 #'
 #' @export
 #' @rdname plot.pnts
-plot.pnts <- function(){
+plot_pnts <- function(){
   nat::nopen3d()
   rgl::plot3d(nat.flybrains::FCWB)
   rgl::plot3d(lhns::primary.neurite.tracts,soma=T,lwd=5)
