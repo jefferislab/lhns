@@ -15,9 +15,9 @@
 
 #' Lateral horn primary neurite tracts as a dotprops object
 #'
-#' A dotprops dataset containing the known primary neurite tracts that lateral horn neurons can occupy
+#' The known primary neurite tracts that lateral horn neurons can take from their somata, from Frechter et al. 2017.
 #'
-"most.lhns.pnts.dps"
+"primary.neurite.tracts"
 
 
 #' Projection neuron response data
