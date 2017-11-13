@@ -269,7 +269,7 @@ ad.mpns.calyx = c("VGlut-F-500407", "Trh-F-000062", "VGlut-F-400407", "VGlut-F-4
 ) # AD cell body position. Calycal projection
 ad.mpns.no.calyx = c("VGlut-F-500031", "VGlut-F-400662", "VGlut-F-300628", "Gad1-F-500312",
                      "fru-M-500036")
-l.mpns.no.calyx = c("Cha-F-000353", "Gad1-F-000384")
+l.mpns.no.calyx = c("Cha-F-000353", "Gad1-F-000384","Cha-F-200388")
 df[c(ad.mpns.calyx,ad.mpns.no.calyx,l.mpns.no.calyx),"anatomy.group"] = "AL-mALT-PN6"
 
 l.mpns = c("fru-M-000134", "fru-M-400296", "Trh-F-600015", "VGlut-F-700476",
@@ -288,7 +288,7 @@ l.mpns.sp = c("Cha-F-300398", "Gad1-F-100169", "Cha-F-000183", "E0585-F-200014")
 df[l.mpns.sp,"anatomy.group"] = "AL-mALT-PN10"
 
 l.gng.mpns.sp = c("Gad1-F-400282", "5HT1A-F-800014", "VGlut-F-700270")
-df[l.mpns,"anatomy.group"] = "AL-mALT-PN11"
+df[l.gng.mpns.sp,"anatomy.group"] = "AL-mALT-PN11"
 
 # Meta data
 malt.mpns = c(l.malt.mpns.pal, l.malt.mpns.pal.plp, ad.mpns.calyx,ad.mpns.no.calyx,l.mpns.no.calyx,l.mpns,l.mpns.claw,ad.mpns.sp,l.mpns.sp,l.gng.mpns.sp)
@@ -449,7 +449,7 @@ df[lalt.mpns5,"anatomy.group"] = "AL-lALT-mPN5"
 
 from.contra.lalt = c("Trh-M-000103", "Trh-M-200128",
                      "Trh-M-100007", "Trh-M-100003", "Trh-M-100095")
-df[lalt.mpns2,"anatomy.group"] = "AL-lALT-mPN6"
+df[from.contra.lalt,"anatomy.group"] = "AL-lALT-mPN6"
 
 from.contra.ipsi.lalt = c("VGlut-F-200051", "VGlut-F-200077")
 df[from.contra.ipsi.lalt,"anatomy.group"] = "AL-lALT-mPN7"
@@ -574,7 +574,7 @@ wedge.pn = c("VGlut-F-600117", "Gad1-F-100133", "VGlut-F-500810",
              "VGlut-F-100375", "fru-M-300059", "Cha-F-000514", "Cha-F-600036")
 df[wedge.pn,"anatomy.group"] = "AMMC-PN1"
 df[wedge.pn,]$modality = "Mechanosensation"
-df[wedge.pn,]$reference = "Lai et al. 2012"
+df[wedge.pn,]$reference = "ASB"
 df[wedge.pn,]$dendritic.location = "WED"
 df[wedge.pn,]$cell.body.position = "WED"
 df[wedge.pn,]$tract = "WEDT"
@@ -656,7 +656,6 @@ notLHPNproper = c("VGlut-F-300371","fru-M-300137","fru-M-600016","fru-M-000092",
                   "fru-F-100103","Gad1-F-100227","fru-M-900056","TH-F-100094","fru-F-200195","fru-M-400235","Gad1-F-800188","fru-M-300291","Gad1-F-600120",
                   "fru-M-500164", "Trh-M-200073", "Cha-F-700234", "Gad1-F-500259","npf-M-400021","VGlut-F-000488","VGlut-F-300369","GH146-M-400001","VGlut-F-000344","VGlut-F-000547") #Some suspected developmental wiring errors
 df[notLHPNproper,"anatomy.group"] = "notLHproper"
-df[notLHPNproper,"anatomy.group"] = "Expansive-Putative"
 df[notLHPNproper,]$modality = "Unknown"
 df[notLHPNproper,]$reference = "ASB"
 df[notLHPNproper,]$dendritic.location = "Uncertain"
