@@ -6,7 +6,7 @@
 #' \code{\link[nat]{neuron}} format.
 #'
 #' @source \url{http://www.flycircuit.tw/}
-#' @seealso most.lhns.dps
+#' @seealso \code{\link{most.lhns.dps}}
 #' @examples
 #' \donttest{
 #' library(nat)
@@ -29,7 +29,7 @@
 #' dye-fills from Frechter et al. 2017
 #'
 #' @source \url{http://www.flycircuit.tw/}
-#' @seealso most.lhns
+#' @seealso \code{\link{most.lhns}}
 "most.lhns.dps"
 
 

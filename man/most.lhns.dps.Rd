@@ -17,6 +17,6 @@ lateral horn neurons that seem to have dendrite in the LH, as well as traced
 dye-fills from Frechter et al. 2017
 }
 \seealso{
-most.lhns
+\code{\link{most.lhns}}
 }
 \keyword{datasets}

@@ -32,6 +32,6 @@ write.neurons(good_lhns, "/path/to/ouput/dir", subdir=file.path(pnt,anatomy.grou
 }
 }
 \seealso{
-most.lhns.dps
+\code{\link{most.lhns.dps}}
 }
 \keyword{datasets}
