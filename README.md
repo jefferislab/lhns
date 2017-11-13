@@ -7,7 +7,6 @@ R Package containing neuron skeleton data relevant to the lateral horn of the vi
 if (!require("devtools")) install.packages("devtools")
 devtools::install_github("jefferislab/lhns")
 library(lhns)
-devtools::load_all()
 plot3d(most.lhns)
 ?most.lhns
 plot.pnts()
