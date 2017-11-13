@@ -12,6 +12,14 @@ plot3d(most.lhns)
 plot_pnts()
 ```
 
+## Remaking data
+
+To remake the data from scratch, I recommend opening the rstudio project and then:
+
+```r
+source("data-raw/make.R")
+```
+
 Note: Windows users need [Rtools](http://www.murdoch-sutherland.com/Rtools/) and
 [devtools](http://CRAN.R-project.org/package=devtools) to install this way.
 
