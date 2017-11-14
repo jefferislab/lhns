@@ -1,7 +1,7 @@
 # Process FlyCircuit data
 
 library(nat)
-
+library(flycircuit)
 
 # Get data
 load("data-raw/lh.inputs.rda")
@@ -18,8 +18,11 @@ df$dendritic.location = NA
 df$cell.body.position = NA
 marta <- function(n){
   e = n[n%in%flycircuit::fc_neuron(names(flycircuit::fc_glom()))]
-  names(e) = flycircuit::fc_glom()[flycircuit::fc_neuron(names(flycircuit::fc_glom()))%in%e]
-  e
+  f = flycircuit::fc_glom()[flycircuit::fc_neuron(names(flycircuit::fc_glom()))%in%e]
+  names(f) = flycircuit::fc_neuron(names(f))
+  g = names(f)
+  names(g) = f
+  g
 }
 
 
@@ -31,13 +34,14 @@ marta <- function(n){
 
 
 i = marta(names(lh.inputs))
-# VAsomething appears to be VA4, VA4 appears to be something else, VA3 perhaps
-g = grepl("VAsomething",names(i))
-names(i[g]) = "VA4"
-g = grepl("VA4",names(i))
-names(i[g]) = "VM4"
 df[i,]$glomerulus = names(i)
-# Add notes from FlyCircuit
+# VAsomething appears to be VA4, VA4 appears to be something else, VA3 perhaps
+g = i[grepl("VAsomething",names(i))]
+df[g,]$glomerulus = "VA4"
+g = i[grepl("VA4",names(i))]
+df[g,]$glomerulus = "VM4"
+
+
 
 
 
