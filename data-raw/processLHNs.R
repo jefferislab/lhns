@@ -4,7 +4,6 @@
 message("Reading in raw neuron skeleton data!")
 load("data-raw/SF_dye_fills_FCWB.rda")
 load("data-raw/Segmented_FlyCircuit_LHNs_FCWB.rda")
-load("data-raw/Segmented_FlyCircuit_LHNs_FCWB.rda")
 JFRCSH_clusters=read.neurons("data-raw/swc/Clusters_JFRCSH")
 SF_clusters=read.neurons("data-raw/swc/Clusters_SF")
 JFRCSH.DS_clusters=read.neurons("data-raw/swc/Clusters_JFRC2013DS")
@@ -26,7 +25,7 @@ df$id[is.na(df$id)] = "dyefill"
 df$pnt=NA
 df$anatomy.group=NA
 df$cell.type = NA
-df$coreLH=FALSE
+df$coreLH= TRUE
 df$good.trace = TRUE
 df$dendritic.cable.in.lh = NA
 df$dendritic.cable = NA
