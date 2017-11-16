@@ -692,7 +692,7 @@ attr(lh.inputs,"df") = df
 
 
 ### save
-devtools::use_data(lh.inputs,overwrite=TRUE)
+devtools::use_data(lh.inputs,overwrite=TRUE,compress=FALSE)
 
 
 

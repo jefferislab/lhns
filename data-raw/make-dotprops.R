@@ -10,4 +10,4 @@ names_in_common=intersect(names(most.lhns.dps), rownames(df))
 most.lhns.dps = most.lhns.dps[names_in_common]
 most.lhns.dps[,]=df[names_in_common,]
 
-devtools::use_data(most.lhns.dps,overwrite=TRUE)
+devtools::use_data(most.lhns.dps, overwrite=TRUE, compress = F)
