@@ -1856,5 +1856,5 @@ attr(primary.neurite.tracts,"df") = data.frame(pnt=names(primary.neurite.tracts)
 
 
 message("Saving data!")
-devtools::use_data(most.lhns,overwrite=TRUE)
+devtools::use_data(most.lhns,overwrite=TRUE, compress=FALSE)
 devtools::use_data(primary.neurite.tracts,overwrite=TRUE)
