@@ -131,12 +131,12 @@ md["GMR_53B06_AV_01-20150619_32_I3",]$match = "Gad1-F-500244"
 md["GMR_MB036B-20160415_31_I1",]$match = "Gad1-F-900098"
 md["GMR_MB036B-20160415_31_I2",]$match = "Gad1-F-900098"
 md["GMR_MB036B-20160415_31_I3",]$match = "Gad1-F-900098"
-md["GMR_MB380B-20150814_31_B6",]$match = "Gad1-F-700138"
-md["GMR_MB380B-20151014_33_D1",]$match = "Gad1-F-700138"
-md["GMR_MB380B-20151014_33_D4",]$match = "Gad1-F-700138"
-md["GMR_SS01371-20150814_31_F1",]$match = "140612c0"
-md["GMR_SS01371-20150814_31_F4",]$match = "140612c0"
-md["GMR_SS01371-20150814_31_F6",]$match = "140612c0"
+md["GMR_MB380B-20150814_31_B6",]$match = "Gad1-F-700138" # MB C1?
+md["GMR_MB380B-20151014_33_D1",]$match = "Gad1-F-700138"# MB C1?
+md["GMR_MB380B-20151014_33_D4",]$match = "Gad1-F-700138"# MB C1?
+md["GMR_SS01371-20150814_31_F1",]$match = "Gad1-F-700076"
+md["GMR_SS01371-20150814_31_F4",]$match = "Gad1-F-700076"
+md["GMR_SS01371-20150814_31_F6",]$match = "Gad1-F-700076"
 md["JRC_SS03237-20151014_32_B1",]$match = "Gad1-F-300290"
 md["JRC_SS03237-20151014_32_B2",]$match = "Gad1-F-300290"
 md["JRC_SS03237-20151014_32_B3",]$match = "Gad1-F-300290"
@@ -244,13 +244,18 @@ md[c("JRC_SS22377-20160622_32_C4"),]$cell.type = "PD2a1b1"
 md[c("JRC_SS04956-20150828_31_D2"),]$cell.type = "PD2a1b1"
 md["JRC_SS16059-20151111_32_G1",]$cell.type = "PD2a1b1"
 
-
-
-
+md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
+md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
+md[c("GMR_MB380B-20151014_33_D4"),]$anatomy.group = "MB-C1"
+md[c("GMR_MB380B-20151014_33_D1"),]$cell.type = "MB-C1"
+md[c("JRC_SS04956-20150828_31_D2"),]$cell.type =  "MB-C1"
+md["GMR_MB380B-20151014_33_D4",]$cell.type =  "MB-C1"
 
 
 
 ### Save ###
+
+
 
 
 attr(dolan.splits,"df") = md
