@@ -227,8 +227,8 @@ md["JRC_SS04960-20150929_33_C1",]$match = "VGlut-F-500810"
 
 
 
-df.a = most.lhns[,c("anatomy.group","cell.type")]
-df.b = data.frame(anatomy.group=lh.inputs[,c("anatomy.group")],cell.type=lh.inputs[,c("anatomy.group")])
+df.a = most.lhns[,c("anatomy.group","cell.type","type")]
+df.b = data.frame(anatomy.group=lh.inputs[,c("anatomy.group")],cell.type=lh.inputs[,c("anatomy.group")], type = "IN")
 rownames(df.b) = names(lh.inputs)
 df = rbind(df.b,df.a[!rownames(df.a)%in%rownames(df.b),])
 md$anatomy.group = as.character(sapply(md$match,function(x) df[x,]$anatomy.group))
@@ -255,7 +255,7 @@ md["JRC_SS16059-20151111_32_G1",]$cell.type = "PD2a1b1"
 
 attr(dolan.splits,"df") = md
 lh.splits = dolan.splits
-devtools::use_data(lh.splits,overwrite=TRUE)
+devtools::use_data(lh.splits,overwrite=TRUE, compress = FALSE)
 #  Trh-M-500183 same as Trh-M-400020??
 # Mike's 1C and 3b are actually two cell types
 
