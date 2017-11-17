@@ -148,7 +148,7 @@ notLH= c("Cha-F-100387", "Cha-F-700265", "VGlut-F-200296", "Gad1-F-200198",
          "5HT1A-M-300003", "fru-M-400080", "fru-M-800060", "fru-M-700108",
          "Trh-M-500144", "fru-M-500259", "fru-F-000130", "Trh-M-100052",
          "Gad1-F-200110", "VGlut-F-900053", "VGlut-F-000454", "Cha-F-500087",
-         "VGlut-F-000336", "VGlut-F-300515")
+         "VGlut-F-000336", "VGlut-F-300515", "Trh-F-500222","Trh-M-500183")
 df[unique(notLH),]$pnt = df[notLH,]$anatomy.group = df[notLH,]$cell.type = "notLHproper"
 
 
@@ -569,7 +569,7 @@ df[pv3.g.1,]$cell.type = "pv3g1"
 
 
 ### pv4
-pv4 = c("Gad1-F-500038","Cha-F-800134","VGlut-F-500323","Cha-F-500303",
+pv4 = c("Gad1-F-000381","Gad1-F-500038","Cha-F-800134","VGlut-F-500323","Cha-F-500303",
         "fru-F-400011","VGlut-F-500046","CL100R_26C12","CL98R_26G09",
         "Gad1-F-000201", "fru-F-400180",  "Cha-F-000507",
         "Cha-F-600243", "Cha-F-300221", "Cha-F-100221", "VGlut-F-400084",
@@ -611,7 +611,7 @@ pv4.a.3 = c("Cha-F-100456", "Cha-F-300186", "Gad1-F-500281", "Gad1-F-100345","Ga
 
 pv4.a.4=c("VGlut-F-500253","VGlut-F-600752", "VGlut-F-600090", "VGlut-F-700430", "VGlut-F-700436","130724c0","130219c0","130703c0")
 pv4.a.5 = c("Cha-F-500234","fru-M-500368","130625c0","130619c0",
-            "fru-F-500177","fru-F-400219","fru-F-500479","fru-F-400011")
+            "fru-F-500177","fru-F-400219","fru-F-500479","fru-F-400011","Gad1-F-000381")
 pv4.a.6 = c("Gad1-F-100132")
 pv4.a.7 = c("Gad1-F-700108","130627c0","Cha-F-600207")
 pv4.a.8 = c("Gad1-F-400124","Cha-F-800134","Gad1-F-500038")
@@ -750,18 +750,17 @@ pv2.b.1 =  c("Gad1-F-800092")
 pv2.b.2 = "Gad1-F-100074"
 pv2.b.3 ="CL133R_39D07"
 pv2.b=c(pv2.b.1,pv2.b.2,pv2.b.3)
-pv2.c = pv2.c.1 = c("Trh-F-500222","Trh-M-500183")
-pv2.d.1 = c("Gad1-F-700138","131031c1")
-pv2.d.2 = c("140613c0","131118c1")
-pv2.d=c(pv2.d.1,pv2.d.2)
-pv2.e = pv2.e.1 = "Gad1-F-500328"
-pv2.f = pv2.f.1 = "Cha-F-000086"
-pv2.g = pv2.g.1 = "ICL151B_IS24671"
-pv2.h = pv2.h.1 = c("Gad1-F-500266", "Cha-F-200448")
-pv2.i = pv2.i.1 = "Gad1-F-800126"# Could be its own tract
-pv2.j = pv2.j.1 = "Cha-F-600097"
-pv2.k = pv2.k.1 = "CL52R_11E08"
-pv2.l = pv2.l.1 = "CL135R_10A11"
+pv2.c.1 = c("Gad1-F-700138","131031c1")
+pv2.c.2 = c("140613c0","131118c1")
+pv2.c=c(pv2.c.1,pv2.c.2)
+pv2.d = pv2.d.1 = "Gad1-F-500328"
+pv2.e = pv2.e.1 = "Cha-F-000086"
+pv2.f = pv2.f.1 = "ICL151B_IS24671"
+pv2.g = pv2.g.1 = c("Gad1-F-500266", "Cha-F-200448")
+pv2.h = pv2.h.1 = "Gad1-F-800126"# Could be its own tract
+pv2.i = pv2.i.1 = "Cha-F-600097"
+pv2.j = pv2.j.1 = "CL52R_11E08"
+pv2.k = pv2.k.1 = "CL135R_10A11"
 
 df[pv2.a,]$anatomy.group = "pv2a"
 df[pv2.b,]$anatomy.group = "pv2b"
@@ -774,7 +773,7 @@ df[pv2.h,]$anatomy.group = "pv2h"
 df[pv2.i,]$anatomy.group = "pv2i"
 df[pv2.j,]$anatomy.group = "pv2j"
 df[pv2.k,]$anatomy.group = "pv2k"
-df[pv2.l,]$anatomy.group = "pv2l"
+
 
 
 df[pv2.a.1,]$cell.type = "pv2a1"
@@ -784,6 +783,7 @@ df[pv2.a.4,]$cell.type = "pv2a4"
 df[pv2.b.1,]$cell.type = "pv2b1"
 df[pv2.b.2,]$cell.type = "pv2b2"
 df[pv2.c.1,]$cell.type = "pv2c1"
+df[pv2.c.2,]$cell.type = "pv2c2"
 df[pv2.d.1,]$cell.type = "pv2d1"
 df[pv2.e.1,]$cell.type = "pv2e1"
 df[pv2.f.1,]$cell.type = "pv2f1"
@@ -792,7 +792,7 @@ df[pv2.h.1,]$cell.type = "pv2h1"
 df[pv2.i.1,]$cell.type = "pv2i1"
 df[pv2.j.1,]$cell.type = "pv2j1"
 df[pv2.k.1,]$cell.type = "pv2k1"
-df[pv2.l.1,]$cell.type = "pv2l1"
+
 
 
 
@@ -1381,7 +1381,7 @@ av2 = c("Gad1-F-100264","Gad1-F-800214", "Gad1-F-000096", "Gad1-F-500321", "Cha-
         "Gad1-F-600005", "Gad1-F-400156", "Cha-F-300136", "Cha-F-200034",
         "Cha-F-100444", "Cha-F-400280","Gad1-F-600114","Gad1-F-000298"
         ,"Cha-F-500135","Gad1-F-900160",
-        "Gad1-F-000153","VGlut-F-200260","Gad1-F-200431","Cha-F-600061","Gad1-F-000381")
+        "Gad1-F-000153","VGlut-F-200260","Gad1-F-200431","Cha-F-600061")
 df[unique(av2),]$pnt = "av2"
 av2.a.1 = c("Gad1-F-000240","Cha-F-000048","fru-F-200126","Gad1-F-000298")
 av2.a.2 = c("Cha-F-500105","Gad1-F-600244","Gad1-F-000096")
@@ -1406,8 +1406,7 @@ av2.i = av2.i.1 = "VGlut-F-200260"
 av2.j = av2.j.1 = "Gad1-F-100264" # dont use missregistration or different pnt probably the first
 av2.k = av2.k.1 = "Gad1-F-200431"  # dont use
 av2.l = av2.l.1 ="Cha-F-600061" # Dont plot
-av2.m = av2.m.1 ="Gad1-F-000381" # Don't plot
-av2.n = av2.n.1 ="CL125R_87B06"
+av2.m = av2.m.1 ="CL125R_87B06"
 df[av2.a,]$anatomy.group = "av2a"
 df[av2.b,]$anatomy.group = "av2b"
 df[av2.b,]$anatomy.group = "av2b"

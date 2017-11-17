@@ -108,5 +108,12 @@
 #' Information on projection neurons
 #'
 #' Information on projection neurons, their glomeruli and their cognate olfactory sensaroy neurons and receptors.
-#' @details Data largely from \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
+#' @details Data largely from Grabe et al. 2016 \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
 "pn.info"
+
+
+#' Point clouds of LH related neurons from split GAL4 lines
+#'
+#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2017, upcoming.
+"lh.splits"

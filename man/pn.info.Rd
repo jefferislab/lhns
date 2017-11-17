@@ -12,6 +12,6 @@ pn.info
 Information on projection neurons, their glomeruli and their cognate olfactory sensaroy neurons and receptors.
 }
 \details{
-Data largely from \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
+Data largely from Grabe et al. 2016 \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
 }
 \keyword{datasets}

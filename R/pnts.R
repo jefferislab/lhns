@@ -22,3 +22,5 @@ plot_pnts <- function(open=TRUE){
   text3d(amount + shift2,texts =rownames(amount),col="red",cex=0.75)
   plot3d(nat.flybrains::FCWB)
 }
+
+
