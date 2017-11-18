@@ -11,9 +11,9 @@ License: GPL-3
 LazyData: TRUE
 RoxygenNote: 6.0.1
 Suggests: testthat
-Imports: rgl, reshape2
+Imports: rgl, reshape2, flycircuit
 Depends:  R (>= 2.10), nat, nat.flybrains
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
-Remotes: jefferislab/nat.flybrains
+Remotes: jefferislab/nat.flybrains, jefferis/flycircuit
 Encoding: UTF-8

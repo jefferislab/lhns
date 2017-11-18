@@ -6,6 +6,7 @@
 #' @source \url{http://www.flycircuit.tw/}
 #' @export
 #' @importFrom utils browseURL
+#' @importFrom flycircuit fc_neuron
 see_fc <- function (fc_id, max = 10){
   if(length(fc_id)>10){
     stop("Too many FlyCircuit IDs!!!")
