@@ -7,3 +7,4 @@ cache: packages
 env:
   global:
     - RGL_USE_NULL=TRUE
+    - _R_CHECK_COMPACT_DATA_=TRUE
