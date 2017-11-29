@@ -1421,7 +1421,6 @@ df[av2.j,]$anatomy.group = "av2j"
 df[av2.k,]$anatomy.group = "av2k"
 df[av2.l,]$anatomy.group = "av2l"
 df[av2.m,]$anatomy.group = "av2m"
-df[av2.n,]$anatomy.group = "av2n"
 
 df[av2.a.1,]$cell.type = "av2a1"
 df[av2.a.2,]$cell.type = "av2a2"
@@ -1445,7 +1444,6 @@ df[av2.j.1,]$cell.type = "av2j1"
 df[av2.k.1,]$cell.type = "av2k1"
 df[av2.l.1,]$cell.type = "av2l1"
 df[av2.m.1,]$cell.type = "av2m1"
-df[av2.n.1,]$cell.type = "av2n1"
 
 
 
@@ -1773,7 +1771,7 @@ df[c(notLH,notLHcore),]$coreLH = FALSE
 
 
 
-lh.output.neurons = c("av2a2","av2b3","pv4b1","pv4c1","pv4d1","av2c1","av4a1","av4a4","av4a8","pd2c1","pv4b1","pv4c1","pv4c2","pv4d1","pv4f1","ad1a1", "ad1a2", "ad1a3", "ad1a4", "ad1a5", "ad1a6", "ad1a7",
+lh.output.neurons = c("av2a2","av2b3","pv4b1","pv4c1","pv4d1","av2c1","pd2c1","pv4b1","pv4c1","pv4d1","pv4f1","ad1a1", "ad1a2", "ad1a3", "ad1a4", "ad1a5", "ad1a6", "ad1a7",
                       "ad1b1", "ad1b2", "ad1c1", "ad1c2", "ad1c3", "ad1c4", "ad1d1",
                       "ad1d2", "ad1e1", "ad2a1", "ad2a2", "ad2b1", "ad2c1", "ad3a1",
                       "ad3b1", "ad3c1", "ad3d1", "ad4a1", "ad5a1", "av1a1", "av1a2",
@@ -1807,7 +1805,7 @@ lh.local.neurons = c("av4c1","pv4b2","pv2a2","pd3a2","pv4a2","pv4b2", "av1b1", "
                      "av4b9", "av4c2", "av4c3", "av4h1", "av5b1", "av5d1", "av6g1",
                      "pd2c2", "pd3a1", "pd4d1", "pv2a1", "pv2a3", "pv2a4", "pv2e1",
                      "pv3g1", "pv4a1", "pv4a10", "pv4a2", "pv4a4", "pv4a5", "pv4a6",
-                     "pv4a7", "pv4a8", "pv4a9", "pv4e2", "pv7a1","pv4.a.3")
+                     "pv4a7", "pv4a8", "pv4a9", "pv4e2", "pv7a1","pv4.a.3","av4a8","av4a1","av4a4","pv4a3","pv4c2")
 
 df$type = NA
 df[df$cell.type%in%lh.local.neurons,]$type="LN"
