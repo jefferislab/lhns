@@ -248,9 +248,8 @@ md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D4"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$cell.type = "MB-C1"
-md[c("JRC_SS04956-20150828_31_D2"),]$cell.type =  "MB-C1"
 md["GMR_MB380B-20151014_33_D4",]$cell.type =  "MB-C1"
-
+md[c("GMR_MB380B-20151014_33_D4"),]$cell.type = "MB-C1"
 
 
 ### Save ###

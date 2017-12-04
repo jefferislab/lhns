@@ -117,3 +117,9 @@
 #' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2017, upcoming.
 "lh.splits"
+
+#' Mushroom body output neuron vector clouds representing
+#'
+#' Point cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
+#' @details Aso et al. 2014 \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}
+"mbons.light"
