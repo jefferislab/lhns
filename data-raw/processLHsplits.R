@@ -68,8 +68,8 @@ md["JRC_SS04718-20151231_33_F2",]$match = "E0585-F-300040"
 md["JRC_SS04951-20150929_33_B1",]$match="Cha-F-600032"
 md["JRC_SS04951-20150929_33_B1",]$match ="Cha-F-500250"
 md["JRC_SS04951-20150929_33_B4",]$match = "Cha-F-500250"
-md["JRC_SS04956-20150828_31_D1",]$match = "PD2a1b1"
-md["JRC_SS04956-20150828_31_D2",]$match= "Pd2a1b1"
+md["JRC_SS04956-20150828_31_D1",]$match = "pd2a1b1"
+md["JRC_SS04956-20150828_31_D2",]$match= "pd2a1b1"
 md["JRC_SS04957-20150828_31_E1",]$match="Cha-F-600207"
 md["JRC_SS04957-20150828_31_E6",]$match = "Cha-F-600207"
 md["JRC_SS04957-20160415_31_E3",]$match = "Cha-F-600207"
@@ -92,7 +92,7 @@ md["JRC_SS15267-20160427_32_I3",]$match="Gad1-F-500252" # Input apparently
 md["JRC_SS16036-20151231_33_D1",]$match = "E0585-F-300069"
 md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069"
 md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069" # Not sure
-md["JRC_SS16059-20151111_32_G1",]$match = "PD2a1b1"
+md["JRC_SS16059-20151111_32_G1",]$match = "pd2a1b1"
 md["JRC_SS16345-20160518_31_C2",]$match = "VGlut-F-700430"
 md["JRC_SS16345-20160518_31_C3",]$match  = "VGlut-F-700430"
 md["JRC_SS16373-20160518_31_E1",]$match = "Cha-F-100370"
@@ -238,22 +238,23 @@ md$type = as.character(sapply(md$match,function(x) df[x,]$type))
 
 
 # Some fixes
-md[c("JRC_SS22377-20160622_32_C4"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D2"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS16059-20151111_32_G1"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS22377-20160622_32_C4"),]$cell.type = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D1"),]$cell.type = "PD2a1b1"
-md["JRC_SS16059-20151111_32_G1",]$cell.type = "PD2a1b1"
+md[c("JRC_SS04956-20150828_31_D1"),]$anatomy.group = "pd2a1b1"
+md[c("JRC_SS04956-20150828_31_D2"),]$anatomy.group = "pd2a1b1"
+md[c("JRC_SS16059-20151111_32_G1"),]$anatomy.group = "pd2a1b1"
+md[c("JRC_SS04956-20150828_31_D2"),]$cell.type = "pd2a1b1"
+md[c("JRC_SS04956-20150828_31_D1"),]$cell.type = "pd2a1b1"
+md["JRC_SS16059-20151111_32_G1",]$cell.type = "pd2a1b1"
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D4"),]$anatomy.group = "MB-C1"
-md[c("GMR_MB380B-20151014_33_D1"),]$cell.type = "MB-C1"
-md["GMR_MB380B-20151014_33_D4",]$cell.type =  "MB-C1"
+md[c("GMR_MB380B-20150814_31_B6"),]$cell.type = "MB-C1"
+md["GMR_MB380B-20151014_33_D1",]$cell.type =  "MB-C1"
 md[c("GMR_MB380B-20151014_33_D4"),]$cell.type = "MB-C1"
 
 md["JRC_SS03788-20160621_33_A5",]$cell.type = "PVLP-PN1"
 md["JRC_SS03788-20160621_33_A1",]$cell.type = "PVLP-PN1"
+md["JRC_SS03788-20160621_33_B3",]$cell.type = "PVLP-PN1"
 
 md["JRC_SS03801-20151111_32_F4",]$cell.type = "WED-PN2"
 md["JRC_SS03801-20151111_32_F5",]$cell.type = "WED-PN2"
@@ -262,7 +263,7 @@ md["JRC_SS03801-20151111_32_F3",]$cell.type = "WED-PN2"
 md["JRC_SS03797-20160621_33_C3",]$cell.type = "WED-PN3"
 md["JRC_SS03797-20160621_33_D1",]$cell.type = "WED-PN3"
 md["JRC_SS03797-20160621_33_C6",]$cell.type = "WED-PN3"
-md["JRC_SS03788-20160621_33_B3",]$cell.type = "WED-PN3"
+
 
 
 ### Save ###
