@@ -118,6 +118,7 @@
 #' @details Dolan et al. 2017, upcoming.
 "lh.splits"
 
+
 #' Mushroom body output neuron vector clouds representing
 #'
 #' Point cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.

@@ -39,7 +39,7 @@ md$anatomy.group = ags
 
 
 md["JRC_SS04972-20150929_33_A5",]$match ="Cha-F-600209"
-md["JRC_SS16373-20160518_31_E4",]$match = "Cha-F-300357"
+md["JRC_SS16373-20160518_31_E4",]$match = "Cha-F-100370"
 md["JRC_SS16345-20160518_31_D4",]$match  ="VGlut-F-700430"
 md["JRC_SS04718-20151231_33_F4",]$match  = "E0585-F-300040"
 md["JRC_SS04949-20150828_31_J3",]$match="fru-M-200351"
@@ -87,7 +87,7 @@ md["JRC_SS15112-20160622_32_B2",]$match = "Gad1-F-200177"
 md["JRC_SS15125-20160422_32_C1",]$match = "Gad1-F-100168"
 md["JRC_SS15125-20160422_32_C3",]$match = "Gad1-F-100168"
 md["JRC_SS15125-20160422_32_D1",]$match = "Gad1-F-100168"
-md["JRC_SS15126-20151007_31_F5",]$match = "Cha-F-200454" # OR Cha-F-200454? "av6c" DUNNO MAN JST. MIGHT BE NEW.
+md["JRC_SS15126-20151007_31_F5",]$match = "Gad1-F-100258"
 md["JRC_SS15267-20160427_32_I3",]$match="Gad1-F-500252" # Input apparently
 md["JRC_SS16036-20151231_33_D1",]$match = "E0585-F-300069"
 md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069"
@@ -95,19 +95,20 @@ md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069" # Not sure
 md["JRC_SS16059-20151111_32_G1",]$match = "PD2a1b1"
 md["JRC_SS16345-20160518_31_C2",]$match = "VGlut-F-700430"
 md["JRC_SS16345-20160518_31_C3",]$match  = "VGlut-F-700430"
-md["JRC_SS16373-20160518_31_E1",]$match = "Cha-F-300357"
-md["JRC_SS16373-20160518_31_F1",]$match = "Cha-F-300357"
+md["JRC_SS16373-20160518_31_E1",]$match = "Cha-F-100370"
+md["JRC_SS16373-20160518_31_F1",]$match = "Cha-F-100370"
 md["JRC_SS16583-20160525_31_G1",]$match = "Cha-F-500105" # Maybe
 md["JRC_SS16571-20160504_31_B1",]$match =  "Cha-F-000507"
 md["JRC_SS16583-20160525_31_G1",]$match = "Gad1-F-100077"
 md["JRC_SS16583-20160525_31_H1",]$match = "Gad1-F-100077"
+md["JRC_SS16583-20160525_31_G3",]$match = "Gad1-F-100077" # Looks totally different...
 md["JRC_SS16786-20151202_33_I1",]$match = "Cha-F-200282"
-md["JRC_SS16787-20151231_33_G2",]$match = "E0585-F-300073"
-md["JRC_SS16787-20151231_33_G4",]$match = "E0585-F-300073"
+md["JRC_SS16787-20151231_33_G2",]$match = "E0585-F-400021"
+md["JRC_SS16787-20151231_33_G4",]$match = "E0585-F-400021"
 md["JRC_SS16979-20151231_33_H1",]$match = "Gad1-F-100077"
 md["JRC_SS16979-20151231_33_H2",]$match = "Gad1-F-100077"
 md["JRC_SS16979-20151231_33_H4",]$match = "Gad1-F-100077"
-md["JRC_SS16980-20151231_33_I2",]$match = "Gad1-F-300163"
+md["JRC_SS16980-20151231_33_I2",]$match = "E0585-F-400021"
 md["JRC_SS22377-20160622_32_C4",]$match = "VGlut-F-400863"
 md["JRC_SS22377-20160622_32_D4",]$match = "VGlut-F-400863"
 md["JRC_SS22377-20160622_32_D6",]$match = "VGlut-F-400863"
@@ -176,8 +177,8 @@ md["JRC_SS23097-20160629_31_D3",]$match = "Gad1-F-200237"
 md["JRC_SS23107-20160629_31_E6",]$match = "Gad1-F-600202"
 md["JRC_SS23107-20160629_31_F6",]$match = "Gad1-F-600202"
 md["JRC_SS23112-20160629_31_H1",]$match = "Gad1-F-600202"
-md["JRC_SS24794-20160629_32_E2",]$match = "Cha-F-200454"
-md["JRC_SS24794-20160629_32_F1",]$match = "Cha-F-200454"
+md["JRC_SS24794-20160629_32_E2",]$match = "Gad1-F-100258"
+md["JRC_SS24794-20160629_32_F1",]$match = "Gad1-F-100258"
 
 
 
@@ -241,7 +242,7 @@ md[c("JRC_SS22377-20160622_32_C4"),]$anatomy.group = "PD2a1b1"
 md[c("JRC_SS04956-20150828_31_D2"),]$anatomy.group = "PD2a1b1"
 md[c("JRC_SS16059-20151111_32_G1"),]$anatomy.group = "PD2a1b1"
 md[c("JRC_SS22377-20160622_32_C4"),]$cell.type = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D2"),]$cell.type = "PD2a1b1"
+md[c("JRC_SS04956-20150828_31_D1"),]$cell.type = "PD2a1b1"
 md["JRC_SS16059-20151111_32_G1",]$cell.type = "PD2a1b1"
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
@@ -250,6 +251,18 @@ md[c("GMR_MB380B-20151014_33_D4"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$cell.type = "MB-C1"
 md["GMR_MB380B-20151014_33_D4",]$cell.type =  "MB-C1"
 md[c("GMR_MB380B-20151014_33_D4"),]$cell.type = "MB-C1"
+
+md["JRC_SS03788-20160621_33_A5",]$cell.type = "PVLP-PN1"
+md["JRC_SS03788-20160621_33_A1",]$cell.type = "PVLP-PN1"
+
+md["JRC_SS03801-20151111_32_F4",]$cell.type = "WED-PN2"
+md["JRC_SS03801-20151111_32_F5",]$cell.type = "WED-PN2"
+md["JRC_SS03801-20151111_32_F3",]$cell.type = "WED-PN2"
+
+md["JRC_SS03797-20160621_33_C3",]$cell.type = "WED-PN3"
+md["JRC_SS03797-20160621_33_D1",]$cell.type = "WED-PN3"
+md["JRC_SS03797-20160621_33_C6",]$cell.type = "WED-PN3"
+md["JRC_SS03788-20160621_33_B3",]$cell.type = "WED-PN3"
 
 
 ### Save ###
