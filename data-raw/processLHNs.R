@@ -1556,23 +1556,25 @@ df[ad4.a.1,]$cell.type = "ad4a1"
 
 
 ### AD3
-ad3 = c("Gad1-F-000108", "Cha-F-000533", "Cha-F-100001","Cha-F-200386","Gad1-F-100124")
+ad3 = c("Gad1-F-000108", "Cha-F-000533", "Cha-F-100001","Cha-F-200386","Gad1-F-100124","Gad1-F-700066")
 df[unique(ad3),]$pnt = "ad3"
 ad3.a = ad3.a.1 = "Gad1-F-000108"
 ad3.b = ad3.b.1 = "Cha-F-000533"
 ad3.c = ad3.c.1 = c("Cha-F-100001")
 ad3.d = ad3.d.1 = "Gad1-F-100124"
+ad3.e = ad3.e.1 = "Gad1-F-700066"
 
 df[ad3.a,]$anatomy.group = "ad3a"
 df[ad3.b,]$anatomy.group = "ad3b"
 df[ad3.c,]$anatomy.group = "ad3c"
 df[ad3.d,]$anatomy.group = "ad3d"
+df[ad3.e,]$anatomy.group = "ad3e"
 
 df[ad3.a.1,]$cell.type = "ad3a1"
 df[ad3.b.1,]$cell.type = "ad3b1"
 df[ad3.c.1,]$cell.type = "ad3c1"
 df[ad3.d.1,]$cell.type = "ad3d1"
-
+df[ad3.e.1,]$cell.type = "ad3e1"
 
 
 
