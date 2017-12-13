@@ -150,7 +150,7 @@ md["JRC_SS03800-20151111_32_E4",]$match = "Gad1-F-700243"
 md["JRC_SS03800-20151111_32_E5",]$match = "Gad1-F-700243"
 md["JRC_SS04028-20151007_31_H2",]$match = "Cha-F-200282"
 md["JRC_SS04028-20151007_31_H4",]$match = "Cha-F-200282"
-md["JRC_SS03788-20160621_33_B3",]$match = "New:PVLP Projection"
+md["JRC_SS03788-20160621_33_B3",]$match = "Gad1-F-500328"
 md["JRC_SS04948-20150828_31_F1",]$match = "E0585-F-400028"
 md["JRC_SS04948-20150828_31_F3",]$match = "E0585-F-400028"
 md["JRC_SS04955-20150821_31_B1",]$match = "5HT1A-M-100027"
@@ -212,12 +212,11 @@ md["GMR_MB390B-20150814_31_C4",]$match =  "E0585-F-200014" # Hm, same as above
 md["GMR_SS01331-20150814_31_G4",]$match = "Trh-M-000008"
 md["GMR_SS01331-20150814_31_G5",]$match  ="VGlut-F-100003"
 md["GMR_SS01331-20150814_31_G6",]$match = "E0585-F-200014" # Could also be Gad1-F-100169. More definite situation than the above
-md["JRC_SS03788-20160621_33_A5",]$match = "New:PVLP Projection"
-md["JRC_SS03788-20160621_33_A1",]$match = "New:PVLP Projection"
+md["JRC_SS03788-20160621_33_A5",]$match = "Gad1-F-500328"
+md["JRC_SS03788-20160621_33_A1",]$match = "Gad1-F-500328"
 md["JRC_SS03801-20151111_32_F4",]$match = "New:Wedge Projection"
 md["JRC_SS03801-20151111_32_F5",]$match = "New:Wedge Projection"
 md["JRC_SS04960-20150929_33_C1",]$match = "VGlut-F-500810"
-
 
 
 
@@ -251,10 +250,6 @@ md[c("GMR_MB380B-20151014_33_D4"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20150814_31_B6"),]$cell.type = "MB-C1"
 md["GMR_MB380B-20151014_33_D1",]$cell.type =  "MB-C1"
 md[c("GMR_MB380B-20151014_33_D4"),]$cell.type = "MB-C1"
-
-md["JRC_SS03788-20160621_33_A5",]$cell.type = "PVLP-PN1"
-md["JRC_SS03788-20160621_33_A1",]$cell.type = "PVLP-PN1"
-md["JRC_SS03788-20160621_33_B3",]$cell.type = "PVLP-PN1"
 
 md["JRC_SS03801-20151111_32_F4",]$cell.type = "WED-PN2"
 md["JRC_SS03801-20151111_32_F5",]$cell.type = "WED-PN2"

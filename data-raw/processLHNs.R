@@ -1651,6 +1651,7 @@ ad1.a.10 = "VGlut-F-800061"
 ad1.b.1 = c("130726c1", "130731c1", "130802c0", "130801c1","130729c0","120816c1",
             "120813c1", "120911c0", "120726c3", "130910c0", "140514c1")
 ad1.b.2 = c("120704c1", "120730c0", "140616c0","140612c0", "121101c0","Gad1-F-900037", "Gad1-F-200039")
+# ad1.b.3 in Wilson data
 ad1.b = c(ad1.b.1,ad1.b.2)
 
 ad1.c.1 = c( "Gad1-F-300229","Cha-F-200360","fru-F-300009","Gad1-F-200365")
@@ -1733,6 +1734,7 @@ most.lhns[,]=df[names_in_common,]
 
 # Get scores
 load('data-raw/LHN_PN_Overlap_Scores.rda')
+#lhns.pn.overlap.matrix = LHN_PN_Full_Overlap_Scores
 i = intersect(colnames(lhns.pn.overlap.matrix),names(most.lhns))
 lhns.chosen = most.lhns[i]
 colnames(lhns.pn.overlap.matrix) = lhns.chosen[,"cell.type"]
