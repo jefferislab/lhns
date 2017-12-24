@@ -124,3 +124,9 @@
 #' Point cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
 #' @details Aso et al. 2014 \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}
 "mbons.light"
+
+#' EM skeletons for LHNs
+#'
+#' EM skeletons for LHNs identified in the Dolan split lines. Tracing in progress.
+#' @details Dolan et al. 2017, upcoming.
+"emlhns"
