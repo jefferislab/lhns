@@ -8,13 +8,14 @@
 #' @seealso \code{\link[nat.flybrains]{FCWB}}
 #' @export
 #' @importFrom rgl par3d plot3d text3d scaleMatrix
+#' @importFrom nat.templatebrains xform_brain
 plot_pnts <- function(open=TRUE, brain = nat.flybrains::FCWB){
   if(open){
     nat::nopen3d()
     par3d(userMatrix=scaleMatrix(1,-1,-1))
   }
   if(brain!=nat.flybrains::FCWB){
-    pnts = nat.templatebrains::xform_brain(lhns::primary.neurite.tracts,sample=nat.flybrains::FCWB,reference = brain)
+    pnts = xform_brain(lhns::primary.neurite.tracts,sample=nat.flybrains::FCWB,reference = brain)
   } else{
     pnts = lhns::primary.neurite.tracts
   }
