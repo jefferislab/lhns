@@ -4,10 +4,12 @@
 \alias{plot_pnts}
 \title{Plot adult Lateral Horn primary neurite tracts}
 \usage{
-plot_pnts(open = TRUE)
+plot_pnts(open = TRUE, brain = nat.flybrains::FCWB)
 }
 \arguments{
-\item{open}{Whether to open a new RGL window for plotting
+\item{open}{whether to open a new RGL window for plotting}
+
+\item{brain}{the brainspace in which to plot the primary neurite tracts. Defaults to FCWB
 (default=\code{TRUE})}
 }
 \description{
