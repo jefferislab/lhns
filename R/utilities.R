@@ -22,7 +22,7 @@ see_fc <- function (fc_id, max = 10){
 #' Capitalise cell type names
 #'
 #' @description Capitalise the first two letters of the cell type names
-#' @param v Cell type names
+#' @param x Cell type names
 #' @param inverse If TRUE, makes the first two letters lowercase
 #' @export
 capitalise_cell_type_name  <- function(x, inverse = FALSE){
