@@ -43,7 +43,7 @@ badly.traced = c("5HT1A-F-200014", "Gad1-F-300266", "npf-F-000002", "VGlut-F-300
                  "120714c4","131206c0","Cha-F-200386","120605c0",
                  "VGlut-F-900127", "VGlut-F-500145", "VGlut-F-500393", "5HT1A-F-200014",
                  "Gad1-F-300266", "npf-F-300047", "npf-M-200017", "npf-M-300045",
-                 "npf-M-300051", "Cha-F-800106", "fru-M-700211", "Gad1-F-500038", "VGlut-F-500323",
+                 "npf-M-300051", "Cha-F-800106", "fru-M-700211", "Gad1-F-500038",
                  "Gad1-F-200366", "Gad1-F-000381", "Gad1-F-000349", "fru-M-800040",
                  "fru-F-600043", "5HT1A-F-800008", "Cha-F-200378", "Cha-F-300146",
                  "Cha-F-400324", "VGlut-F-500032", "Cha-F-000395", "Cha-F-000515",
@@ -382,7 +382,7 @@ pv5 = c("Gad1-F-000349","Cha-F-400324","Gad1-F-200177","E0585-F-300073","Gad1-F-
         "Gad1-F-000393", "Gad1-F-100091", "Gad1-F-100093", "Gad1-F-100099",
         "Gad1-F-100247", "Gad1-F-100357", "Cha-F-300025", "Cha-F-600051",
         "Cha-F-500138", "Cha-F-300204", "Cha-F-300241", "Cha-F-200169",
-        "Cha-F-800045", "Cha-F-200186", "Cha-F-100141", "Cha-F-200204",
+        "Cha-F-800045", "Cha-F-100141", "Cha-F-200204",
         "Cha-F-500187", "VGlut-F-400058", "Gad1-F-100023","TH-M-200014",
         "Gad1-F-700165", "Gad1-F-600214", "Gad1-F-400335", "Gad1-F-400304",
         "Gad1-F-400226", "Gad1-F-400166", "Gad1-F-300298", "Gad1-F-300184",
@@ -657,6 +657,7 @@ pv4.g.2=c("fru-M-200351","VGlut-F-000390")
 pv4.g=c(pv4.g.1,pv4.g.2)
 pv4.h = pv4.h.1 = "fru-F-100052"
 pv4.i = pv4.i.1 = c("Cha-F-200186","CL29CR_30H02","CL29CR_14B11")
+# pv4.i.2 # Dr. Caligari
 pv4.j = pv4.j.1 = "Gad1-F-900064"
 pv4.k.1 = "Cha-F-000395"
 pv4.k.2 = "CL29FR_IS24835"
@@ -664,6 +665,7 @@ pv4.k=c(pv4.k.1,pv4.k.2)
 pv4.l = pv4.l.1 = "CL98R_26G09"
 pv4.m = pv4.m.1 = "CL97R_26C12"
 pv4.n = pv4.n.1 = "CL29GR_JRC_IS23354-000.swc"
+
 
 df[pv4.a,]$anatomy.group = "pv4a"
 df[pv4.b,]$anatomy.group = "pv4b"
@@ -1743,7 +1745,7 @@ colnames(lhns.pn.overlap.matrix) = lhns.chosen[,"cell.type"]
 lhns.pn.overlap.matrix = t(apply(t(lhns.pn.overlap.matrix), 2, function(x) tapply(x, colnames(lhns.pn.overlap.matrix), mean, na.rm = TRUE)))
 
 # Decide
-d = catnat::dendritic.cable(lhns.chosen,mixed=TRUE)
+d = catnat::dendritic_cable(lhns.chosen,mixed=TRUE)
 d.data.skels = summary(d)$cable.length
 message("Pruning neurons to LH!")
 d.lh.skels = unlist(nlapply(d,function(x) tryCatch(summary(prune_in_volume(x,neuropil="LH_R",brain=FCWBNP.surf))$cable.length,error = function(e) 0)))
@@ -1855,7 +1857,9 @@ attr(primary.neurite.tracts,"df") = data.frame(pnt=names(primary.neurite.tracts)
 ###### Generate data objects ######
 
 
-
+most.lhns = most.lhns[!names(most.lhns)%in%names(most.lhins)] # Remove skeletons also in most.lhins
 message("Saving data!")
+most.lhns.dps = nat::dotprops(most.lhns)
 devtools::use_data(most.lhns,overwrite=TRUE, compress=FALSE)
+devtools::use_data(most.lhns.dps,overwrite=TRUE, compress=FALSE)
 devtools::use_data(primary.neurite.tracts,overwrite=TRUE)

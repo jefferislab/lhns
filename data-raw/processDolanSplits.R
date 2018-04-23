@@ -37,7 +37,6 @@ if(!exists("most.lhns")){
 load('data-raw/dolan_splits_1_dotprops.rda')
 load('data-raw/dolan_splits_2_dotprops.rda')
 splits = c(splits1,splits2)
-splits =
 files = names(splits)
 names(splits) = unlist(sapply(files, function(x) paste(strsplit(as.character(x), "~|-")[[1]][1:2],collapse="-")))
 
@@ -357,12 +356,12 @@ md$type = as.character(sapply(md$match,function(x) df[x,]$type))
 
 
 
-md[c("JRC_SS04956-20150828_31_D1"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D2"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS16059-20151111_32_G1"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D2"),]$cell.type = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D1"),]$cell.type = "PD2a1b1"
-md["JRC_SS16059-20151111_32_G1",]$cell.type = "PD2a1b1"
+md[c("JRC_SS04956-20150828_31_D1"),]$anatomy.group = "pd2a1/b1"
+md[c("JRC_SS04956-20150828_31_D2"),]$anatomy.group = "pd2a1/b1"
+md[c("JRC_SS16059-20151111_32_G1"),]$anatomy.group = "pd2a1/b1"
+md[c("JRC_SS04956-20150828_31_D2"),]$cell.type = "pd2a1/b1"
+md[c("JRC_SS04956-20150828_31_D1"),]$cell.type = "pd2a1/b1"
+md["JRC_SS16059-20151111_32_G1",]$cell.type = "pd2a1/b1"
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
@@ -391,19 +390,18 @@ md["JRC_SS03797-20160621_33_C3",]$cell.type = "WED-PN3"
 md["JRC_SS03797-20160621_33_D1",]$cell.type = "WED-PN3"
 md["JRC_SS03797-20160621_33_C6",]$cell.type = "WED-PN3"
 
-
-md["GMR_SS01159-20161207_32_F6",]$cell.type = "TPN-2"
-md["GMR_SS01159-20161207_32_G1",]$cell.type = "TPN-2"
-md["GMR_SS01159-20161207_32_G5",]$cell.type = "TPN-2"
-md["JRC_SS24671-20170308_32_A1",]$cell.type = "TPN-1"
-md["JRC_SS24671-20170308_32_A4",]$cell.type = "TPN-1"
-md["JRC_SS24671-20170308_32_A6",]$cell.type = "TPN-1"
-md["JRC_SS04924-20160812_32_D2",]$cell.type = "VPN-1"
-md["JRC_SS04924-20160812_32_E1",]$cell.type = "VPN-1"
-md["JRC_SS04924-20160812_32_E4",]$cell.type = "VPN-1"
-md["JRC_SS15129-20161207_31_A1",]$cell.type = "VPN-2"
-md["JRC_SS15129-20161207_31_A3",]$cell.type = "VPN-2"
-md["JRC_SS15129-20161207_31_A4",]$cell.type = "VPN-2"
+md["GMR_SS01159-20161207_32_F6",]$cell.type = "GNG-PN2" # Previous: "TPN-2"
+md["GMR_SS01159-20161207_32_G1",]$cell.type = "GNG-PN2"
+md["GMR_SS01159-20161207_32_G5",]$cell.type = "GNG-PN2"
+md["JRC_SS24671-20170308_32_A1",]$cell.type = "GNG-PN1"
+md["JRC_SS24671-20170308_32_A4",]$cell.type = "GNG-PN1" # Previous: "TPN-1"
+md["JRC_SS24671-20170308_32_A6",]$cell.type = "GNG-PN1"
+md["JRC_SS04924-20160812_32_D2",]$cell.type = "LO-PN1" # Previous: "VPN-1"
+md["JRC_SS04924-20160812_32_E1",]$cell.type = "LO-PN1"
+md["JRC_SS04924-20160812_32_E4",]$cell.type = "LO-PN1"
+md["JRC_SS15129-20161207_31_A1",]$cell.type = "LO-PN2" # Previous: "VPN-2"
+md["JRC_SS15129-20161207_31_A3",]$cell.type = "LO-PN2"
+md["JRC_SS15129-20161207_31_A4",]$cell.type = "LO-PN2"
 
 md[c("JRC_SS15267-20160427_32_H1"),]$anatomy.group = "notLHproper"
 md[c("JRC_SS15267-20160427_32_H2"),]$anatomy.group = "notLHproper"
@@ -422,7 +420,7 @@ md["GMR_30E03_XD_01-20150706_31_B5",]$cell.type = "notLHproper"
 
 md[grepl("PN",md$cell.type),]$type = "IN"
 md[grepl("notLHproper",md$cell.type),]$type = "notLHproper"
-md[grepl("PD2a1b1",md$cell.type),]$type = "ON"
+md[grepl("pd2a1/b1",md$cell.type),]$type = "ON"
 md[grepl("MBON-Calyx",md$cell.type),]$type = "ON"
 md[grepl("av4b11",md$cell.type),]$type = "ON"
 
@@ -431,32 +429,28 @@ md[c("JRC_SS23107-20160629_31_E6", "JRC_SS23107-20160629_31_F6",
      "JRC_SS23112-20160629_31_H1"),]$type = "ON/IN"
 
 
-
+# c("GMR_47B03_AV_01-20150626_32_I4", "JRC_SS16583-20160525_31_G3", "JRC_SS23187-20160622_31_H3") # Not named!!
 
 ### Save ###
 
 
 
-
+# Sort
 md$file = rownames(md)
 attr(dolan.splits,"df") = md
-lhn.splits = dolan.splits[rownames(subset(md,type!="IN"))]
-lh.inputs.splits = dolan.splits[rownames(subset(md,type=="IN|ON/IN"))]
-lh.inputs.splits = c(lh.inputs.splits,dolan.splits[rownames(subset(md,type=="LHON/Input"))])
-devtools::use_data(lhn.splits,overwrite=TRUE, compress = FALSE)
-devtools::use_data(lh.inputs.splits,overwrite=TRUE, compress = FALSE)
-#  Trh-M-500183 same as Trh-M-400020??
+dolan.splits[,"skeleton.type"] = "ConfocalStack"
+lhon.splits = dolan.splits[rownames(subset(md,type=="ON"))]
+lhln.splits = dolan.splits[rownames(subset(md,type=="LN"))]
+lhin.splits = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
+almost.lh.splits = dolan.splits[rownames(subset(md,type=="notLHproper"))]
+
+# Save
+devtools::use_data(lhon.splits,overwrite=TRUE, compress = FALSE)
+devtools::use_data(lhln.splits,overwrite=TRUE, compress = FALSE)
+devtools::use_data(lhin.splits,overwrite=TRUE, compress = FALSE)
+devtools::use_data(almost.lh.splits,overwrite=TRUE, compress = FALSE)
+# Trh-M-500183 same as Trh-M-400020??
 # Mike's 1C and 3b are actually two cell types
-
-
-
-
-
-
-
-
-
-
 
 
 # # Which have already been labelled?

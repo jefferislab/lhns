@@ -72,19 +72,19 @@
 #' @examples
 #' \donttest{
 #' library(nat)
-#' head(lh.inputs)
+#' head(most.lhins)
 #' # summarise numbers of neurons per modality/axon tract
-#' with(lh.inputs, table(modality, tract))
+#' with(most.lhins, table(modality, tract))
 #' table(most.lhns[,'pnt'])
 #' }
-"lh.inputs"
+"most.lhins"
 
 #' Dendritic overlap of LHN cell types with axon terminals of PN inputs to LH
 #'
 #' This matrix is organised by the identifier of the PN inputs (rows) and the
 #' LHN cell type (columns).
 #'
-#' @seealso \code{\link{most.lhns}}, \code{\link{lh.inputs}}
+#' @seealso \code{\link{most.lhns}}, \code{\link{most.lhins}}
 "lhns.pn.overlap.matrix"
 
 #' Light level tracign of PN axons
@@ -112,18 +112,37 @@
 "pn.info"
 
 
-#' Point clouds of LH related neurons from split GAL4 lines
+#' Point clouds of LH output neurons from split GAL4 lines
 #'
 #' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2017, upcoming.
-"lh.splits"
+"lhon.splits"
+
+#' Point clouds of LH local neurons from split GAL4 lines
+#'
+#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2017, upcoming.
+"lhin.splits"
+
+
+#' Point clouds of peri-LH  neurons from split GAL4 lines
+#'
+#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2017, upcoming.
+"almost.lh.splits"
+
+#' Point clouds of LH input neurons from split GAL4 lines
+#'
+#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2017, upcoming.
+"lhin.splits"
 
 
 #' Mushroom body output neuron vector clouds representing
 #'
 #' Point cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
 #' @details Aso et al. 2014 \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}
-"mbons.light"
+"mbons.light.dps"
 
 #' EM skeletons for LHNs
 #'

@@ -597,6 +597,7 @@ df[mbonap,]$dendritic.location = "MB"
 df[mbonap,]$cell.body.position = "SP"
 df[mbonap,]$tract = "Centrifugal"
 df[mbonap,]$neurotransmitter = "ACh"
+mbons = c(mbonap3,mbonap2ap3)
 
 ###
 
@@ -679,8 +680,9 @@ df[notLHPNproper,]$neurotransmitter = "Unknown"
 
 df$anatomy.group = factor(df$anatomy.group,levels = sort(unique(df$anatomy.group)))
 attr(lh.inputs,"df") = df
-
-
+lh.inputs[,"type"] = "IN"
+lh.inputs[mbons,"type"] = "IN/MBON"
+lh.inputs[,"skeleton.type"] = "FlyCircuit"
 
 
 
@@ -692,7 +694,10 @@ attr(lh.inputs,"df") = df
 
 
 ### save
-devtools::use_data(lh.inputs,overwrite=TRUE,compress=FALSE)
+most.lhins = lh.inputs
+most.lhins.dps = dotprops(most.lhins)
+devtools::use_data(most.lhins,overwrite=TRUE,compress=FALSE)
+devtools::use_data(most.lhins.dps,overwrite=TRUE,compress=FALSE)
 
 
 
