@@ -7,9 +7,9 @@
 capitalise_cell_type_name(x, inverse = FALSE)
 }
 \arguments{
-\item{inverse}{If TRUE, makes the first two letters lowercase}
+\item{x}{Cell type names}
 
-\item{v}{Cell type names}
+\item{inverse}{If TRUE, makes the first two letters lowercase}
 }
 \description{
 Capitalise the first two letters of the cell type names
