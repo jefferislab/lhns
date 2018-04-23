@@ -1,8 +1,3 @@
-# Prepare PN light tracing data
-load("data-raw/light_PN_tracings.rda")
-light.pn.axons=subset(light.pn.axons, !Glomerulus%in%c("acj6","NP5194","NP6099")) # Get rid of lingering LHNs
-light.pn.axons = light.pn.axons[light.pn.axons[,"PNType"]=="iPN"]
-light.pn.axons[,"tract"] = "mALT"
-light.pn.axons[,"type"] = "IN"
-light.pn.axons[,"skeleton.type"] = "FijiTracing"
-devtools::use_data(light.pn.axons,overwrite=TRUE)
+version https://git-lfs.github.com/spec/v1
+oid sha256:57f797ec7fc717b707ebe200547f6fa251a4b4ce3d1758931ce9604e5e95be9d
+size 411

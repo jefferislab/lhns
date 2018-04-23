@@ -1,7 +1,3 @@
-require(reshape2)
-line.cluster.clean = read.csv("data-raw/line_cluster.mer")
-line.ag.full = dplyr::select(line.cluster.clean,LineShortName,isLH,AnatomyGroup,AnatomyGroup1,AnatomyGroup2,AnatomyGroup3)
-line.ag.full = suppressWarnings(reshape2::melt(line.ag.full,id.vars=c("LineShortName","isLH"), na.rm=TRUE))
-lhn.lines = line.ag.full[,c("LineShortName","isLH","value")]
-colnames(lhn.lines) = c("LineShortName","type","anatomy.group")
-devtools::use_data(lhn.lines,overwrite=TRUE)
+version https://git-lfs.github.com/spec/v1
+oid sha256:654c5fbdd2d2470257f69ea1dff0b5e09646c48cebf20a8f48634602c9461a35
+size 478
