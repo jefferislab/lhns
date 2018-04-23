@@ -61,7 +61,7 @@
 #' projection neurons from Badel et al. 2017.
 #'
 #' @source \url{http://dx.doi.org/10.1016/j.neuron.2016.05.022}
-"Badel.PN.responses"
+"badel.PN.responses"
 
 #' A categorised database of neurons providing input to the lateral horn
 #'
