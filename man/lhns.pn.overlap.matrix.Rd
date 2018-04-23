@@ -4,7 +4,7 @@
 \name{lhns.pn.overlap.matrix}
 \alias{lhns.pn.overlap.matrix}
 \title{Dendritic overlap of LHN cell types with axon terminals of PN inputs to LH}
-\format{An object of class \code{matrix} with 1494 rows and 270 columns.}
+\format{An object of class \code{matrix} with 1494 rows and 269 columns.}
 \usage{
 lhns.pn.overlap.matrix
 }
@@ -13,6 +13,6 @@ This matrix is organised by the identifier of the PN inputs (rows) and the
 LHN cell type (columns).
 }
 \seealso{
-\code{\link{most.lhns}}, \code{\link{lh.inputs}}
+\code{\link{most.lhns}}, \code{\link{most.lhins}}
 }
 \keyword{datasets}
