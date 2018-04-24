@@ -149,3 +149,9 @@
 #' EM skeletons for LHNs identified in the Dolan split lines. Tracing in progress.
 #' @details Dolan et al. 2017, upcoming.
 "emlhns"
+
+#' Point clouds of EM skeletons for LHNs
+#'
+#' EM point clouds for LHNs identified in the Dolan split lines. Tracing in progress.
+#' @details Dolan et al. 2017, upcoming.
+"emlhns.dps"
