@@ -27,13 +27,18 @@ see_fc <- function (fc_id, max = 10){
 #' @export
 capitalise_cell_type_name  <- function(x, inverse = FALSE){
   f <- function(y,inverse){
-    y = unlist(strsplit(y,split=""))
-    if(inverse){
-      y[1:2] = tolower(y[1:2])
-    }else{
-      y[1:2] = toupper(y[1:2])
-    }
+    if(is.na(y)){return(NA)}
+    if(y!="notLHproper"){
+      y = unlist(strsplit(y,split=""))
+      if(inverse){
+        y[1:2] = tolower(y[1:2])
+      }else{
+        y[1:2] = toupper(y[1:2])
+      }
     paste(y,collapse="")
+    }else{
+      "notLHproper"
+    }
   }
   sapply(x,f,inverse=inverse)
 }

@@ -2,12 +2,22 @@
 # lhns
 R Package containing neuron skeleton data relevant to the lateral horn of the vinegar fly, Drosophila melanogaster. For use with [nat](https://github.com/jefferis/rcatmaid). In development.
 
-## What's in the package currently?
+
+## Installation
+
+This github repository uses Github Large File Storage. The Github APi does not currently support downloading files tracked with LFS, so you will need to clone this repo and then install directly. 
+
 ```r
 # install
 if (!require("devtools")) install.packages("devtools")
-devtools::install_github("jefferislab/lhns")
-  
+devtools::install("path_to_cloned_repo")
+
+```
+
+
+## What's in the package currently?
+```r
+
 # use
 library(lhns)
 plot3d(most.lhns)
