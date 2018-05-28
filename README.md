@@ -7,10 +7,12 @@ R Package containing neuron skeleton data relevant to the lateral horn of the vi
 
 This github repository uses Github Large File Storage. The Github API does not currently support downloading files tracked with LFS, so you will need to clone this repo and then install directly. 
 
-First install git lfs (if you don't have it). You can do this with homebrew on macosx. Otherwise see https://help.github.com/articles/installing-git-large-file-storage/
+First install git lfs (if you don't have it). You can get a binary installer for most platforms at https://git-lfs.github.com/. 
+You can also use a package manager like homebrew on macosx. For further details see https://help.github.com/articles/installing-git-large-file-storage/
 
 In the shell:
 ```sh
+# install git-lfs if requrired
 brew install git-lfs
 git clone https://github.com/jefferislab/lhns.git /path/to/some/folder/
 ```
