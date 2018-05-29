@@ -4,7 +4,7 @@
 \name{lh.splits.dps}
 \alias{lh.splits.dps}
 \title{Point clouds of LH output neurons from split GAL4 lines}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 220.}
+\format{An object of class \code{data.frame} with 220 rows and 20 columns.}
 \usage{
 lh.splits.dps
 }

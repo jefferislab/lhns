@@ -2,8 +2,8 @@
 library(nat)
 
 ## data frames, for exporting into NAMESPACE when attached to neuronlists. Export stated in data.R file.
-load("data/mbons.light.dps.rda")
 load("data/pn.axons.light.rda")
+load("data/mbons.light.dps.rda")
 load("data/pn.axons.light.dps.rda")
 load("data/most.lhns.rda")
 load("data/most.lhns.dps.rda")
