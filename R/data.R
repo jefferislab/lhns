@@ -20,6 +20,7 @@
 #' write.neurons(good_lhns, "/path/to/ouput/dir", subdir=file.path(pnt,anatomy.group),
 #'               files=paste0(id, '.swc'))
 #' }
+#' @export
 "most.lhns"
 
 #' A comprehensive lateral horn neuron dotprops dataset
@@ -30,6 +31,7 @@
 #'
 #' @source \url{http://www.flycircuit.tw/}
 #' @seealso \code{\link{most.lhns}}
+#' @export
 "most.lhns.dps"
 
 
@@ -54,7 +56,6 @@
 #' }
 "primary.neurite.tracts"
 
-
 #' Projection neuron response data
 #'
 #' Ca2+ responses in the dendrites of Drosophila, uniglomerular GH146 positive
@@ -77,7 +78,25 @@
 #' with(most.lhins, table(modality, tract))
 #' table(most.lhns[,'pnt'])
 #' }
+#' @export
 "most.lhins"
+
+#' A categorised database of vector clouds for neurons providing input to the lateral horn
+#'
+#' @source \url{http://www.flycircuit.tw/}
+#' @details See \url{http://virtualflybrain.org} for definitions of tract
+#'   abbreviations.
+#' @seealso \code{\link{most.lhns}}
+#' @examples
+#' \donttest{
+#' library(nat)
+#' head(most.lhins)
+#' # summarise numbers of neurons per modality/axon tract
+#' with(most.lhins, table(modality, tract))
+#' table(most.lhns[,'pnt'])
+#' }
+#' @export
+"most.lhins.dps"
 
 #' Dendritic overlap of LHN cell types with axon terminals of PN inputs to LH
 #'
@@ -87,11 +106,17 @@
 #' @seealso \code{\link{most.lhns}}, \code{\link{most.lhins}}
 "lhns.pn.overlap.matrix"
 
-#' Light level tracign of PN axons
+#' Light level tracing of PN axons
 #'
 #' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
-#'
+#' @export
 "light.pn.axons"
+
+#' Vector cloud fopr light level tracing of PN axons
+#'
+#' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
+#' @export
+"light.pn.axons.dps"
 
 #' Gal4 line codes for LHNs
 #'
@@ -111,37 +136,18 @@
 #' @details Data largely from Grabe et al. 2016 \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
 "pn.info"
 
-
 #' Point clouds of LH output neurons from split GAL4 lines
 #'
 #' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2017, upcoming.
-"lhon.splits"
-
-#' Point clouds of LH local neurons from split GAL4 lines
-#'
-#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
-#' @details Dolan et al. 2017, upcoming.
-"lhin.splits"
-
-
-#' Point clouds of peri-LH  neurons from split GAL4 lines
-#'
-#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
-#' @details Dolan et al. 2017, upcoming.
-"almost.lh.splits"
-
-#' Point clouds of LH input neurons from split GAL4 lines
-#'
-#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
-#' @details Dolan et al. 2017, upcoming.
-"lhin.splits"
-
+#' @export
+"lh.splits.dps"
 
 #' Mushroom body output neuron vector clouds representing
 #'
 #' Point cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
 #' @details Aso et al. 2014 \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}
+#' @export
 "mbons.light.dps"
 
 #' EM skeletons for LHNs

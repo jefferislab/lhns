@@ -4,7 +4,7 @@
 \name{emlhns}
 \alias{emlhns}
 \title{EM skeletons for LHNs}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 43.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 50.}
 \usage{
 emlhns
 }
