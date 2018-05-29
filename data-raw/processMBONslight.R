@@ -5,5 +5,5 @@ mbons.light.dps[,"skeleton.type"] = "ConfocalStack"
 lhmbons = c("MBON-a'1","MBON-a'3","MBON-a2sc","MBON-calyx")
 mbons.light.dps[lhmbons,"type"] = "IN/MBON"
 mbons.light.dps[,"id"] = names(mbons.light.dps)
-mbons.light.dps =mbons.light.dps[,]
-devtools::use_data(mbons.light.dps,overwrite=TRUE, compress = FALSE)
+mbons.light.dps = mbons.light.dps[,]
+devtools::use_data(mbons.light.dps,overwrite=TRUE, compress = TRUE)
