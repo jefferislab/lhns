@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0c251d252aac62a58919346f3179185ec289199f44f543107f92804935142c23
-size 288
+# Prepare Badel et al. PN data
+resp = readxl::read_excel("/GD/LMBD/Papers/2015lhns/fig/Alex/data/BadelPNData.xls")
+resp.df = as.data.frame(resp)
+badel.PN.responses = as.matrix(resp.df[,-1])
+rownames(badel.PN.responses) = resp.df$X__1
+devtools::use_data(badel.PN.responses,overwrite=TRUE)
