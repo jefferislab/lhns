@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7e590416be2fb621aa93a9d19322a4ae507823ea9af59e28ac632cbbbcb0a973
-size 476
+if(!exists('most.lhns', envir = .GlobalEnv, inherits = FALSE))
+  stop("Please run processLHNs.R or make.R to generate most.lhns")
+
+message("Making most.lhns.dps. This could take a minute!")
+doMC::registerDoMC()
+most.lhns.dps=dotprops(most.lhns, k=5, resample=1)
+
+
+names_in_common=intersect(names(most.lhns.dps), rownames(df))
+most.lhns.dps = most.lhns.dps[names_in_common]
+most.lhns.dps[,]=df[names_in_common,]
+
+devtools::use_data(most.lhns.dps, overwrite=TRUE, compress = F)
