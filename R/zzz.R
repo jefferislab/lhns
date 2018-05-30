@@ -12,7 +12,7 @@ load("data/most.lhins.dps.rda")
 load("data/lh.splits.dps.rda")
 #load("data/lh.mcfo.rda")
 #load("data/lh.mcfo.dps.rda")
-
+# Sort out some of the raw data
 ## load raw data
 load("data-raw/mbons.dps.rda")
 load("data-raw/light_PN_tracings.rda")
@@ -33,7 +33,6 @@ load("data-raw/dolan_mcfo.rda")
 # Add updatable metadata to data object
 .onLoad <- function(libname, pkgname) {
   message("Assigning meta-data to neuronlists")
-  # Sort out some of the raw data
   light.pn.axons=subset(light.pn.axons, !Glomerulus%in%c("acj6","NP5194","NP6099")) # Get rid of lingering LHNs
   light.pn.axons = light.pn.axons[light.pn.axons[,"PNType"]=="iPN"]
   light.pn.axons.dps=subset(light.pn.axons.dps, !Glomerulus%in%c("acj6","NP5194","NP6099")) # Get rid of lingering LHNs

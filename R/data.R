@@ -110,13 +110,13 @@
 #'
 #' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
 #' @export
-"light.pn.axons"
+"pn.axons.light"
 
 #' Vector cloud fopr light level tracing of PN axons
 #'
 #' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
 #' @export
-"light.pn.axons.dps"
+"pn.axons.light.dps"
 
 #' Gal4 line codes for LHNs
 #'
