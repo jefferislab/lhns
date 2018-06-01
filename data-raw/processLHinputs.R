@@ -675,15 +675,30 @@ df[notLHPNproper,]$neurotransmitter = "Unknown"
 
 
 
-
-### save
 df$anatomy.group = factor(df$anatomy.group,levels = sort(unique(df$anatomy.group)))
 df$type = "IN"
 df[mbons,"type"] = "IN/MBON"
 df$skeleton.type = "FlyCircuit"
-most.lhins = most.lhins.dps = df
-devtools::use_data(most.lhins,overwrite=TRUE,compress=FALSE)
-devtools::use_data(most.lhins.dps,overwrite=TRUE,compress=FALSE)
+most.lhins = lh.inputs
+attr(most.lhins,"df") = df
+
+
+# #################
+# Update Meta-Data #
+###################
+
+
+most.lhins = as.neuronlistfh(most.lhins,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+most.lhins.dps = nat::dotprops(most.lhins,resample=1)
+most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+
+
+#####################
+# Write neuronlistfh #
+#####################
+
+# write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE)
+# write.neuronlistfh(most.lhins.dps, file='inst/extdata/most.lhins.dps.rds',overwrite = TRUE)
 
 
 

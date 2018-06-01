@@ -1,3 +1,8 @@
+# #################
+# Process Raw Data #
+###################
+
+
 # Prepare data on Mike's splits
 if(!exists("most.lhns")){
   stop("Please run processLHNs.R!")
@@ -79,8 +84,8 @@ if(!exists("most.lhns")){
 # names(dolan.splits) = unlist(sapply(names(dolan.splits), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
 # # names(dolan.splits.axons) = unlist(sapply(names(dolan.splits.axons), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
 # # names(dolan.splits.dendrites) = unlist(sapply(names(dolan.splits.dendrites), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
-#dolan.splits.1 = dolan.splits[1:(length(dolan.splits)/2)]
-#dolan.splits.2 = dolan.splits[((length(dolan.splits)/2)+1):length(dolan.splits)]
+# dolan.splits.1 = dolan.splits[1:(length(dolan.splits)/2)]
+# dolan.splits.2 = dolan.splits[((length(dolan.splits)/2)+1):length(dolan.splits)]
 # save(dolan.splits.1,file = paste0(getwd(),"/data-raw/segmented.splits.1.dps.rda"))
 # save(dolan.splits.2,file = paste0(getwd(),"/data-raw/segmented.splits.2.dps.rda"))
 
@@ -284,9 +289,9 @@ md["JRC_SS23187-20160622_31_H3",]$match="Cha-F-200398"
 md["JRC_SS23354-20160824_31_F5",]$match="VGlut-F-900028"
 md["JRC_SS23354-20170104_33_D2",]$match="VGlut-F-900028"
 md["JRC_SS23354-20170104_33_D4",]$match="VGlut-F-900028"
-md["JRC_SS23807-20160812_32_A2",]$match="Gad1-F-400124" # Definitely need MCFO
-md["JRC_SS23807-20160812_32_A3",]$match="Gad1-F-400124" # Definitely need MCFO
-md["JRC_SS23807-20160812_32_A6",]$match="Gad1-F-400124" # Definitely need MCFO
+md["JRC_SS23807-20160812_32_A2",]$match="Gad1-F-700258"
+md["JRC_SS23807-20160812_32_A3",]$match="Gad1-F-700258"
+md["JRC_SS23807-20160812_32_A6",]$match="Gad1-F-700258"
 md["JRC_SS24155-20161207_32_H2",]$match="5HT1A-F-300030"
 md["JRC_SS24155-20161207_32_H4",]$match="5HT1A-F-300030"
 md["JRC_SS24155-20161207_32_H6",]$match="5HT1A-F-300030"
@@ -359,7 +364,7 @@ md["GMR_MB072C-20161019_32_E1",]$match= "fru-M-000179" # Not LH?
 
 df.a = most.lhns[,c("anatomy.group","cell.type","type")]
 df.b = data.frame(anatomy.group=most.lhins[,c("anatomy.group")],cell.type=most.lhins[,c("anatomy.group")], type = "IN")
-rownames(df.b) = rownames(most.lhins)
+rownames(df.b) = names(most.lhins)
 df = rbind(df.b,df.a[!rownames(df.a)%in%rownames(df.b),])
 md$anatomy.group = as.character(sapply(md$match,function(x) df[x,]$anatomy.group))
 md$cell.type = as.character(sapply(md$match,function(x) df[x,]$cell.type))
@@ -439,7 +444,7 @@ md[grepl("PN",md$cell.type),]$type = "IN"
 md[grepl("notLHproper",md$cell.type),]$type = "notLHproper"
 md[grepl("PD2a1b1",md$cell.type),]$type = "ON"
 md[grepl("MBON-Calyx",md$cell.type),]$type = "ON"
-md[grepl("AV4b11",md$cell.type),]$type = "ON"
+
 
 # 145 is both an input and output neuron
 md[c("JRC_SS23107-20160629_31_E6", "JRC_SS23107-20160629_31_F6",
@@ -451,11 +456,35 @@ md[c("JRC_SS23107-20160629_31_E6", "JRC_SS23107-20160629_31_F6",
 ### Save ###
 
 
-# Save
-md$skeleton.type = "ConfocalStack"
+# Sort
 md$file = rownames(md)
-lh.splits.dps = md # Save just the meta data
-devtools::use_data(lh.splits.dps,overwrite=TRUE, compress = FALSE)
+attr(dolan.splits,"df") = md
+dolan.splits[,"skeleton.type"] = "ConfocalStack"
+lhon.splits.dps = dolan.splits[rownames(subset(md,type=="ON"))]
+lhln.splits.dps = dolan.splits[rownames(subset(md,type=="LN"))]
+lhin.splits.dps = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
+almost.lh.splits.dps = dolan.splits[rownames(subset(md,type=="notLHproper"))]
+
+
+# #################
+# Update Meta-Data #
+###################
+
+
+lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+
+
+#####################
+# Write neuronlistfh #
+#####################
+
+
+write.neuronlistfh(lhon.splits.dps, file='inst/extdata/lhon.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+write.neuronlistfh(lhln.splits.dps, file='inst/extdata/lhln.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+write.neuronlistfh(lhin.splits.dps, file='inst/extdata/lhin.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+
 # Trh-M-500183 same as Trh-M-400020??
 # Mike's 1C and 3b are actually two cell types
 
