@@ -1,5 +1,6 @@
 ## Export stated in data.R file.
-lh.splits.dps <- NULL
+# make fake neuronlist so that docs are correct
+lh.splits.dps <- structure(as.list(1:209), class=c('neuronlist', 'list'))
 
 .onLoad <- function(libname, pkgname) {
   # message("Building lh.splits")
