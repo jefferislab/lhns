@@ -3,13 +3,13 @@
 \docType{data}
 \name{mbons.light.dps}
 \alias{mbons.light.dps}
-\title{Mushroom body output neuron vector clouds representing}
-\format{An object of class \code{data.frame} with 17 rows and 10 columns.}
+\title{Mushroom body output neuron Vector clouds representing}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 17.}
 \usage{
 mbons.light.dps
 }
 \description{
-Point cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
+Vector cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
 }
 \details{
 Aso et al. 2014 \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}

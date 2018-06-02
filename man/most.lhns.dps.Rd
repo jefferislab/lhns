@@ -4,7 +4,7 @@
 \name{most.lhns.dps}
 \alias{most.lhns.dps}
 \title{A comprehensive lateral horn neuron dotprops dataset}
-\format{An object of class \code{data.frame} with 1172 rows and 12 columns.}
+\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 1172.}
 \source{
 \url{http://www.flycircuit.tw/}
 }
@@ -14,7 +14,7 @@ most.lhns.dps
 \description{
 A \code{\link[nat]{dotprops}} dataset containing all of the FlyCircuit
 lateral horn neurons that seem to have dendrite in the LH, as well as traced
-dye-fills from Frechter et al. 2017
+dye-fills from Frechter et al. 2018
 }
 \seealso{
 \code{\link{most.lhns}}

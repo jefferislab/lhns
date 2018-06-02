@@ -143,8 +143,8 @@ md["JRC_SS04718-20151231_33_F2",]$match = "E0585-F-300040"
 md["JRC_SS04951-20150929_33_B1",]$match="Cha-F-600032"
 md["JRC_SS04951-20150929_33_B1",]$match ="Cha-F-500250"
 md["JRC_SS04951-20150929_33_B4",]$match = "Cha-F-500250"
-md["JRC_SS04956-20150828_31_D1",]$match = "PD2a1b1"
-md["JRC_SS04956-20150828_31_D2",]$match= "PD2a1b1"
+md["JRC_SS04956-20150828_31_D1",]$match = "PD2a1/b1"
+md["JRC_SS04956-20150828_31_D2",]$match= "PD2a1/b1"
 md["JRC_SS04957-20150828_31_E1",]$match="Cha-F-600207"
 md["JRC_SS04957-20150828_31_E6",]$match = "Cha-F-600207"
 md["JRC_SS04957-20160415_31_E3",]$match = "Cha-F-600207"
@@ -167,7 +167,7 @@ md["JRC_SS15267-20160427_32_I3",]$match="Gad1-F-500252" # Input apparently
 md["JRC_SS16036-20151231_33_D1",]$match = "E0585-F-300069"
 md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069"
 md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069" # Not sure
-md["JRC_SS16059-20151111_32_G1",]$match = "PD2a1b1"
+md["JRC_SS16059-20151111_32_G1",]$match = "PD2a1/b1"
 md["JRC_SS16345-20160518_31_C2",]$match = "VGlut-F-700430"
 md["JRC_SS16345-20160518_31_C3",]$match  = "VGlut-F-700430"
 md["JRC_SS16373-20160518_31_E1",]$match = "Cha-F-100370"
@@ -256,9 +256,9 @@ md["JRC_SS24794-20160629_32_F1",]$match = "Gad1-F-100258"
 md["GMR_MB242A-20161019_32_G5",]$match= "MBON-Calyx"
 md["GMR_MB242A-20161019_32_H2",]$match= "MBON-Calyx"
 md["GMR_MB242A-20161019_32_H6",]$match= "MBON-Calyx"
-md["JRC_SS03226-20161123_33_A4",]$match= "Cha-F-000507" # Not a brilliant match
-md["JRC_SS03226-20161123_33_B3",]$match= "Cha-F-000507" # Not a brilliant match
-md["JRC_SS03226-20161123_33_B5",]$match= "Cha-F-000507" # Not a brilliant match
+md["JRC_SS03226-20161123_33_A4",]$match= "VGlut-F-500323"
+md["JRC_SS03226-20161123_33_B3",]$match= "VGlut-F-500323"
+md["JRC_SS03226-20161123_33_B5",]$match= "VGlut-F-500323"
 md["JRC_SS04965-20151111_32_A1",]$match= "Cha-F-000515"
 md["JRC_SS04965-20151111_32_A2",]$match= "Cha-F-000515"
 md["JRC_SS04965-20160525_31_C2",]$match= "Cha-F-000515"
@@ -271,9 +271,9 @@ md["JRC_SS16038-20170214_31_A2",]$match= "Gad1-F-800028" # Several possibilities
 md["JRC_SS16353-20160923_31_H4",]$match= "5HT1A-M-100027"
 md["JRC_SS21825-20160928_31_A2",]$match= "5HT1A-M-100027"
 md["JRC_SS21825-20160928_31_A3",]$match= "5HT1A-M-100027"
-md["JRC_SS16986-20161207_31_F2",]$match= "Cha-F-200387"
-md["JRC_SS16986-20161207_31_F6",]$match= "Cha-F-200387"
-md["JRC_SS16986-20161207_31_G1",]$match= "Cha-F-200387"
+md["JRC_SS16986-20161207_31_F2",]$match= "Cha-F-800067"
+md["JRC_SS16986-20161207_31_F6",]$match= "Cha-F-800067"
+md["JRC_SS16986-20161207_31_G1",]$match= "Cha-F-800067"
 md["JRC_SS22549-20170103_33_F3",]$match="Gad1-F-600143"
 md["JRC_SS22549-20170103_33_F4",]$match="Gad1-F-600143"
 md["JRC_SS22549-20170103_33_G1",]$match="Gad1-F-600143"
@@ -346,6 +346,7 @@ md["JRC_SS15129-20161207_31_A4",]$match= "LO-PN2"
 
 ### Not LH
 
+
 md["JRC_SS15267-20160427_32_H1",]$match= "NOT-LH-1"
 md["JRC_SS15267-20160427_32_H2",]$match= "NOT-LH-1"
 md["JRC_SS15267-20160427_32_I3",]$match= "NOT-LH-1"
@@ -362,10 +363,11 @@ md["GMR_MB072C-20161019_32_E1",]$match= "fru-M-000179" # Not LH?
 
 
 
-df.a = most.lhns[,c("anatomy.group","cell.type","type")]
-df.b = data.frame(anatomy.group=most.lhins[,c("anatomy.group")],cell.type=most.lhins[,c("anatomy.group")], type = "IN")
+df.b = data.frame(pnt = most.lhins[,c("tract")],anatomy.group=most.lhins[,c("anatomy.group")],cell.type=most.lhins[,c("anatomy.group")], type = "IN")
+rownames(df.b) = names(lhns::most.lhins)
 rownames(df.b) = names(most.lhins)
 df = rbind(df.b,df.a[!rownames(df.a)%in%rownames(df.b),])
+md$pnt = as.character(sapply(md$match,function(x) df[x,]$pnt))
 md$anatomy.group = as.character(sapply(md$match,function(x) df[x,]$anatomy.group))
 md$cell.type = as.character(sapply(md$match,function(x) df[x,]$cell.type))
 md$type = as.character(sapply(md$match,function(x) df[x,]$type))
@@ -377,13 +379,16 @@ md$type = as.character(sapply(md$match,function(x) df[x,]$type))
 
 
 
+md[c("JRC_SS04956-20150828_31_D1",
+     "JRC_SS04956-20150828_31_D2",
+     "JRC_SS16059-20151111_32_G1"),]$pnt = "PD2"
+md[c("JRC_SS04956-20150828_31_D1",
+     "JRC_SS04956-20150828_31_D2",
+     "JRC_SS16059-20151111_32_G1"),]$anatomy.group = "PD2a1/b1"
+md[c("JRC_SS04956-20150828_31_D1",
+     "JRC_SS04956-20150828_31_D2",
+     "JRC_SS16059-20151111_32_G1"),]$cell.type = "PD2a1/b1"
 
-md[c("JRC_SS04956-20150828_31_D1"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D2"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS16059-20151111_32_G1"),]$anatomy.group = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D2"),]$cell.type = "PD2a1b1"
-md[c("JRC_SS04956-20150828_31_D1"),]$cell.type = "PD2a1b1"
-md["JRC_SS16059-20151111_32_G1",]$cell.type = "PD2a1b1"
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
@@ -408,9 +413,9 @@ md["JRC_SS04962-20150828_31_C5",]$cell.type = "WED-PN2"
 md["JRC_SS03801-20151111_32_F4",]$cell.type = "WED-PN3"
 md["JRC_SS03801-20151111_32_F5",]$cell.type = "WED-PN3"
 md["JRC_SS03801-20151111_32_F3",]$cell.type = "WED-PN3"
-md["JRC_SS03797-20160621_33_C3",]$cell.type = "WED-PN3"
-md["JRC_SS03797-20160621_33_D1",]$cell.type = "WED-PN3"
-md["JRC_SS03797-20160621_33_C6",]$cell.type = "WED-PN3"
+md["JRC_SS03797-20160621_33_C3",]$cell.type = "WED-PN4"
+md["JRC_SS03797-20160621_33_D1",]$cell.type = "WED-PN4"
+md["JRC_SS03797-20160621_33_C6",]$cell.type = "WED-PN4"
 
 md["GMR_SS01159-20161207_32_F6",]$cell.type = "GNG-PN2" # Previous: "TPN-2"
 md["GMR_SS01159-20161207_32_G1",]$cell.type = "GNG-PN2"
@@ -442,7 +447,7 @@ md["GMR_30E03_XD_01-20150706_31_B5",]$cell.type = "notLHproper"
 
 md[grepl("PN",md$cell.type),]$type = "IN"
 md[grepl("notLHproper",md$cell.type),]$type = "notLHproper"
-md[grepl("PD2a1b1",md$cell.type),]$type = "ON"
+md[grepl("PD2a1/b1",md$cell.type),]$type = "ON"
 md[grepl("MBON-Calyx",md$cell.type),]$type = "ON"
 
 
@@ -450,7 +455,8 @@ md[grepl("MBON-Calyx",md$cell.type),]$type = "ON"
 md[c("JRC_SS23107-20160629_31_E6", "JRC_SS23107-20160629_31_F6",
      "JRC_SS23112-20160629_31_H1"),]$type = "ON/IN"
 
-
+# There appear to be 'new old names' in Mike's filemaker DB, so we need to add those in here
+md[md$cell.type=="GNG-PN2","linecode"] = "L2387"
 
 
 ### Save ###
@@ -474,6 +480,7 @@ almost.lh.splits.dps = dolan.splits[rownames(subset(md,type=="notLHproper"))]
 lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
 lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
 lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+almost.lh.splits.dps = as.neuronlistfh(almost.lh.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
 
 
 #####################
@@ -481,9 +488,10 @@ lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', 
 #####################
 
 
-write.neuronlistfh(lhon.splits.dps, file='inst/extdata/lhon.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-write.neuronlistfh(lhln.splits.dps, file='inst/extdata/lhln.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-write.neuronlistfh(lhin.splits.dps, file='inst/extdata/lhin.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+#write.neuronlistfh(lhon.splits.dps, file='inst/extdata/lhon.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+#write.neuronlistfh(lhln.splits.dps, file='inst/extdata/lhln.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+#write.neuronlistfh(lhin.splits.dps, file='inst/extdata/lhin.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+#write.neuronlistfh(almost.lh.splits.dps, file='inst/extdata/almost.lh.splits.dps.rds',overwrite = TRUE,compress=TRUE)
 
 # Trh-M-500183 same as Trh-M-400020??
 # Mike's 1C and 3b are actually two cell types

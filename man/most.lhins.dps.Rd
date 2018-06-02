@@ -3,8 +3,8 @@
 \docType{data}
 \name{most.lhins.dps}
 \alias{most.lhins.dps}
-\title{A categorised database of vector clouds for neurons providing input to the lateral horn}
-\format{An object of class \code{data.frame} with 1188 rows and 13 columns.}
+\title{A categorised database of Vector clouds for neurons providing input to the lateral horn}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1188.}
 \source{
 \url{http://www.flycircuit.tw/}
 }
@@ -12,7 +12,7 @@
 most.lhins.dps
 }
 \description{
-A categorised database of vector clouds for neurons providing input to the lateral horn
+A categorised database of Vector clouds for neurons providing input to the lateral horn
 }
 \details{
 See \url{http://virtualflybrain.org} for definitions of tract

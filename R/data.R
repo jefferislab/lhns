@@ -2,7 +2,7 @@
 #'
 #' A dataset containing all of the FlyCircuit neurons that seem to have
 #' dendrites in the lateral horn (LH), as well as traced dye-fills from Frechter
-#' et al. 2017. The neurons are in the \code{nat} package's
+#' et al. 2018. The neurons are in the \code{nat} package's
 #' \code{\link[nat]{neuron}} format.
 #'
 #' @source \url{http://www.flycircuit.tw/}
@@ -26,7 +26,7 @@
 #'
 #' A \code{\link[nat]{dotprops}} dataset containing all of the FlyCircuit
 #' lateral horn neurons that seem to have dendrite in the LH, as well as traced
-#' dye-fills from Frechter et al. 2017
+#' dye-fills from Frechter et al. 2018
 #'
 #' @source \url{http://www.flycircuit.tw/}
 #' @seealso \code{\link{most.lhns}}
@@ -36,7 +36,7 @@
 #' Lateral horn primary neurite tracts as a dotprops object
 #'
 #' The known primary neurite tracts that lateral horn neurons can take from
-#' their somata, from Frechter et al. 2017.
+#' their somata, from Frechter et al. 2018.
 #'
 #' @seealso \code{\link{plot_pnts}}
 #' @examples
@@ -78,7 +78,7 @@
 #' }
 "most.lhins"
 
-#' A categorised database of vector clouds for neurons providing input to the lateral horn
+#' A categorised database of Vector clouds for neurons providing input to the lateral horn
 #'
 #' @source \url{http://www.flycircuit.tw/}
 #' @details See \url{http://virtualflybrain.org} for definitions of tract
@@ -114,9 +114,9 @@
 
 #' Gal4 line codes for LHNs
 #'
-#' Collated in Frechter et al. 2017.
+#' Collated in Frechter et al. 2018.
 #'
-"lhn.lines"
+"lh.lines"
 
 #' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors
 #'
@@ -130,47 +130,70 @@
 #' @details Data largely from Grabe et al. 2016 \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
 "pn.info"
 
-#' Point clouds of LH output neurons from split GAL4 lines
+#' Vector clouds of LH output neurons from split GAL4 lines
 #'
-#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
-#' @details Dolan et al. 2017, upcoming.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2018, upcoming.
 #' @export
 "lh.splits.dps"
 
-#' Point clouds of LH output neurons from split GAL4 lines
+
+#' Single skeletons of LHNs from MCFO
 #'
-#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
-#' @details Dolan et al. 2017, upcoming.
+#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out dat. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2018, upcoming.
+"lh.mcfo"
+
+
+#' Vector clouds for single LHNs from MCFO
+#'
+#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out dat. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2018, upcoming.
+"lh.mcfo.dps"
+
+
+#' Vector clouds of LH output neurons from split GAL4 lines
+#'
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2018, upcoming.
 "lhon.splits.dps"
 
-#' Point clouds of LH local neurons from split GAL4 lines
+
+#' Vector clouds of LH local neurons from split GAL4 lines
 #'
-#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
-#' @details Dolan et al. 2017, upcoming.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2018, upcoming.
 "lhln.splits.dps"
 
 
-#' Point clouds of LH input neurons from split GAL4 lines
+#' Vector clouds of LH input neurons from split GAL4 lines
 #'
-#' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
-#' @details Dolan et al. 2017, upcoming.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2018, upcoming.
 "lhin.splits.dps"
 
 
-#' Mushroom body output neuron vector clouds representing
+#' Vector clouds of peri-LH  neurons from split GAL4 lines
 #'
-#' Point cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' @details Dolan et al. 2018, upcoming.
+"lhin.splits.dps"
+
+
+#' Mushroom body output neuron Vector clouds representing
+#'
+#' Vector cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
 #' @details Aso et al. 2014 \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}
 "mbons.light.dps"
 
 #' EM skeletons for LHNs
 #'
 #' EM skeletons for LHNs identified in the Dolan split lines. Tracing in progress.
-#' @details Dolan et al. 2017, upcoming.
+#' @details Dolan et al. 2018, upcoming.
 "emlhns"
 
-#' Point clouds of EM skeletons for LHNs
+#' Vector clouds of EM skeletons for LHNs
 #'
-#' EM point clouds for LHNs identified in the Dolan split lines. Tracing in progress.
-#' @details Dolan et al. 2017, upcoming.
+#' Vector clouds for EM LHNs identified in the Dolan split lines. Tracing in progress.
+#' @details Dolan et al. 2018, upcoming.
 "emlhns.dps"

@@ -9,6 +9,7 @@ lh.splits.dps <- NULL
   base::delayedAssign('lhon.splits.dps', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lhon.splits.dps.rds'))))
   base::delayedAssign('lhln.splits.dps', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lhln.splits.dps.rds'))))
   base::delayedAssign('lhin.splits.dps', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lhin.splits.dps.rds'))))
-  lh.splits.dps <<- c(lhln.splits.dps,lhin.splits.dps,lhon.splits.dps)
+  base::delayedAssign('almost.lh.splits.dps', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('almost.lh.splits.dps.rds'))))
+  lh.splits.dps <<- c(lhln.splits.dps,lhin.splits.dps,lhon.splits.dps,almost.lh.splits.dps)
   invisible()
 }

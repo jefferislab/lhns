@@ -3,15 +3,15 @@
 \docType{data}
 \name{lh.splits.dps}
 \alias{lh.splits.dps}
-\title{Point clouds of LH output neurons from split GAL4 lines}
-\format{An object of class \code{data.frame} with 220 rows and 20 columns.}
+\title{Vector clouds of LH output neurons from split GAL4 lines}
+\format{An object of class \code{NULL} of length 0.}
 \usage{
 lh.splits.dps
 }
 \description{
-Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
 }
 \details{
-Dolan et al. 2017, upcoming.
+Dolan et al. 2018, upcoming.
 }
 \keyword{datasets}

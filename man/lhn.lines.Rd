@@ -4,11 +4,11 @@
 \name{lhn.lines}
 \alias{lhn.lines}
 \title{Gal4 line codes for LHNs}
-\format{An object of class \code{data.frame} with 4152 rows and 3 columns.}
+\format{An object of class \code{data.frame} with 510 rows and 16 columns.}
 \usage{
 lhn.lines
 }
 \description{
-Collated in Frechter et al. 2017.
+Collated in Frechter et al. 2018.
 }
 \keyword{datasets}

@@ -3,15 +3,15 @@
 \docType{data}
 \name{emlhns.dps}
 \alias{emlhns.dps}
-\title{Point clouds of EM skeletons for LHNs}
+\title{Vector clouds of EM skeletons for LHNs}
 \format{An object of class \code{neuronlist} (inherits from \code{list}) of length 50.}
 \usage{
 emlhns.dps
 }
 \description{
-EM point clouds for LHNs identified in the Dolan split lines. Tracing in progress.
+Vector clouds for EM LHNs identified in the Dolan split lines. Tracing in progress.
 }
 \details{
-Dolan et al. 2017, upcoming.
+Dolan et al. 2018, upcoming.
 }
 \keyword{datasets}

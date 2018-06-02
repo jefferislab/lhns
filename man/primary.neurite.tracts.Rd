@@ -10,7 +10,7 @@ primary.neurite.tracts
 }
 \description{
 The known primary neurite tracts that lateral horn neurons can take from
-their somata, from Frechter et al. 2017.
+their somata, from Frechter et al. 2018.
 }
 \examples{
 \donttest{

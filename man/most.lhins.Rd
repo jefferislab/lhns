@@ -4,7 +4,7 @@
 \name{most.lhins}
 \alias{most.lhins}
 \title{A categorised database of neurons providing input to the lateral horn}
-\format{An object of class \code{data.frame} with 1188 rows and 13 columns.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1188.}
 \source{
 \url{http://www.flycircuit.tw/}
 }

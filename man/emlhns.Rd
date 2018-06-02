@@ -12,6 +12,6 @@ emlhns
 EM skeletons for LHNs identified in the Dolan split lines. Tracing in progress.
 }
 \details{
-Dolan et al. 2017, upcoming.
+Dolan et al. 2018, upcoming.
 }
 \keyword{datasets}
