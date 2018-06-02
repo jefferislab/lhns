@@ -38,7 +38,7 @@
 #' The known primary neurite tracts that lateral horn neurons can take from
 #' their somata, from Frechter et al. 2018.
 #'
-#' @seealso \code{\link{plot_pnts}}
+#' @seealso \code{\link{plot_pnts}}, \code{\link{lh_tract_data}}
 #' @examples
 #' \donttest{
 #' library(nat)
@@ -53,6 +53,19 @@
 #' plot3d(av6.spines, col='black')
 #' }
 "primary.neurite.tracts"
+
+#' Information about number/type of LHNs for each tract
+#'
+#' @details This was based on work by Arian Jamasb, Ruari Roberts, Alex Bates,
+#'   and Greg Jefferis as a contribution to Frechter et al. 2018.
+#'
+#'   The sampling strategy counted profiles in all the main LH associated tracts
+#'   and then used random sampling and tracing to the first branchpoint to
+#'   estimate the number of LHNs in each tract.
+#'
+#'   From LHN_Tract_Table_Tex.R @ b49e87462c938222313e4f6835572bbdb2fb5727
+#' @seealso \code{\link{primary.neurite.tracts}}
+"lh_tract_data"
 
 #' Projection neuron response data
 #'
@@ -134,7 +147,6 @@
 #'
 #' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
-#' @export
 "lh.splits.dps"
 
 

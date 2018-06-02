@@ -3,15 +3,27 @@
 \docType{data}
 \name{lhon.splits.dps}
 \alias{lhon.splits.dps}
+<<<<<<< HEAD
 \title{Vector clouds of LH output neurons from split GAL4 lines}
 \format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 116.}
+=======
+\title{Point clouds of LH output neurons from split GAL4 lines}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 119.}
+>>>>>>> origin/master
 \usage{
 lhon.splits.dps
 }
 \description{
+<<<<<<< HEAD
 Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
 }
 \details{
 Dolan et al. 2018, upcoming.
+=======
+Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+}
+\details{
+Dolan et al. 2017, upcoming.
+>>>>>>> origin/master
 }
 \keyword{datasets}

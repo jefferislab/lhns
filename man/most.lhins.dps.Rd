@@ -3,7 +3,11 @@
 \docType{data}
 \name{most.lhins.dps}
 \alias{most.lhins.dps}
+<<<<<<< HEAD
 \title{A categorised database of Vector clouds for neurons providing input to the lateral horn}
+=======
+\title{A categorised database of vector clouds for neurons providing input to the lateral horn}
+>>>>>>> origin/master
 \format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1188.}
 \source{
 \url{http://www.flycircuit.tw/}
