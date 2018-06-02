@@ -27,6 +27,6 @@ plot3d(av6.spines, col='black')
 }
 }
 \seealso{
-\code{\link{plot_pnts}}
+\code{\link{plot_pnts}}, \code{\link{lh_tract_data}}
 }
 \keyword{datasets}
