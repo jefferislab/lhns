@@ -134,7 +134,6 @@
 #'
 #' Point cloud objects from multi-colour flip-out image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2017, upcoming.
-#' @export
 "lh.splits.dps"
 
 #' Point clouds of LH output neurons from split GAL4 lines
