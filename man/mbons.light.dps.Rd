@@ -4,7 +4,7 @@
 \name{mbons.light.dps}
 \alias{mbons.light.dps}
 \title{Mushroom body output neuron vector clouds representing}
-\format{An object of class \code{data.frame} with 17 rows and 10 columns.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 17.}
 \usage{
 mbons.light.dps
 }
