@@ -1,6 +1,3 @@
-# Load relevant libraries
-library(nat)
-
 ## Export stated in data.R file.
 lh.splits.dps <- NULL
 
