@@ -3,11 +3,7 @@
 \docType{data}
 \name{mbons.light.dps}
 \alias{mbons.light.dps}
-<<<<<<< HEAD
 \title{Mushroom body output neuron Vector clouds representing}
-=======
-\title{Mushroom body output neuron vector clouds representing}
->>>>>>> origin/master
 \format{An object of class \code{neuronlist} (inherits from \code{list}) of length 17.}
 \usage{
 mbons.light.dps

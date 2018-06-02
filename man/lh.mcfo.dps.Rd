@@ -4,7 +4,7 @@
 \name{lh.mcfo.dps}
 \alias{lh.mcfo.dps}
 \title{Vector clouds for single LHNs from MCFO}
-\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 349.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 349.}
 \usage{
 lh.mcfo.dps
 }
