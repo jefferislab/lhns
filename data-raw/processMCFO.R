@@ -520,9 +520,9 @@ mf[c("JRC_SS16060-20151125_19_E7-Aligned63xScale_c1.Smt.SptGraph.swc",
 mf["JRC_SS16060-20151125_19_E7-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "VGlut-F-500253"
 mf["JRC_SS16060-20151125_19_E7-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "VGlut-F-500253" # Duplicated
 
-# L568; 52 + 1H; PV2a2 + AV4c1/b6
+# L568; 54A + 1H; PV2a2 + AV4c1/b6
 mf[c("JRC_SS16329-20151125_23_A6-Aligned63xScale_c1b.Smt.SptGraph.swc",
-     "JRC_SS16329-20151125_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "52"
+     "JRC_SS16329-20151125_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "54A"
 mf[c("JRC_SS16329-20151125_23_A1-Aligned63xScale_c2b.Smt.SptGraph.swc",
      "JRC_SS16329-20151125_23_A6-Aligned63xScale_c1a.Smt.SptGraph.swc",
      "JRC_SS16329-20151125_23_A6-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "1H"
