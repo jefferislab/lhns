@@ -162,7 +162,6 @@ md["JRC_SS15112-20160622_32_B2",]$match = "Gad1-F-200177"
 md["JRC_SS15125-20160422_32_C1",]$match = "Gad1-F-100168"
 md["JRC_SS15125-20160422_32_C3",]$match = "Gad1-F-100168"
 md["JRC_SS15125-20160422_32_D1",]$match = "Gad1-F-100168"
-md["JRC_SS15126-20151007_31_F5",]$match = "Gad1-F-100258"
 md["JRC_SS15267-20160427_32_I3",]$match="Gad1-F-500252" # Input apparently
 md["JRC_SS16036-20151231_33_D1",]$match = "E0585-F-300069"
 md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069"
@@ -199,7 +198,6 @@ md["GMR_22A12_AV_01-20150626_32_J3",]$match = "Cha-F-400165"
 md["GMR_22A12_AV_01-20150626_32_J4",]$match = "Cha-F-400165"
 md["GMR_25B07_AV_01-20150706_31_F5",]$match = "E0585-F-400021"
 md["GMR_30E03_XD_01-20150706_31_B4",]$match = "Cha-F-100427"
-md["GMR_41H09_AV_01-20150626_32_D1",]$match = "Trh-F-500222"
 md["GMR_53B06_AV_01-20150619_32_I1",]$match = "Gad1-F-900137"
 md["GMR_53B06_AV_01-20150619_32_I2",]$match = "Gad1-F-500244"
 md["GMR_53B06_AV_01-20150619_32_I3",]$match = "Gad1-F-500244"
@@ -251,8 +249,6 @@ md["JRC_SS23097-20160629_31_D3",]$match = "Gad1-F-200237"
 md["JRC_SS23107-20160629_31_E6",]$match = "Gad1-F-600202"
 md["JRC_SS23107-20160629_31_F6",]$match = "Gad1-F-600202"
 md["JRC_SS23112-20160629_31_H1",]$match = "Gad1-F-600202"
-md["JRC_SS24794-20160629_32_E2",]$match = "Gad1-F-100258"
-md["JRC_SS24794-20160629_32_F1",]$match = "Gad1-F-100258"
 md["GMR_MB242A-20161019_32_G5",]$match= "MBON-Calyx"
 md["GMR_MB242A-20161019_32_H2",]$match= "MBON-Calyx"
 md["GMR_MB242A-20161019_32_H6",]$match= "MBON-Calyx"
@@ -299,7 +295,12 @@ md["JRC_SS24177-20160622_31_A1",]$match ="Gad1-F-300218"
 md["JRC_SS24177-20160622_31_A2",]$match ="Gad1-F-300218"
 md["JRC_SS24177-20160622_31_B1",]$match ="Gad1-F-300218"
 md["JRC_SS16364-20151202_33_H1",]$match = "fru-F-200126"
-
+md["GMR_MB072C-20150814_31_D4",]$match= "fru-M-000179"
+md["GMR_MB072C-20150814_31_D5",]$match= "fru-M-000179"
+md["GMR_MB072C-20161019_32_E1",]$match= "fru-M-000179"
+md["JRC_SS24794-20160629_32_F1",]$match = "AV6c3"
+md["JRC_SS15126-20151007_31_F5",]$match = "AV6c3"
+md["JRC_SS24794-20160629_32_E2",]$match = "AV6c3"
 
 ### LH input
 
@@ -311,8 +312,6 @@ md["JRC_SS03797-20160621_33_C3",]$match = "WED-PN"
 md["JRC_SS03797-20160621_33_D1",]$match = "WED-PN"
 md["JRC_SS03797-20160621_33_C6",]$match = "WED-PN"
 md["JRC_SS03801-20151111_32_F3",]$match = "WED-PN" # Hmm, is present in most.lhns....
-md["JRC_SS15300-20160525_31_E1",]$match = "Trh-F-500222"
-md["JRC_SS15300-20160525_31_E2",]$match = "Trh-F-500222" # Hmm, is present in most.lhns....
 md["JRC_SS15297-20160309_31_J4",]$match = "Cha-F-000086"
 # md["GMR_SS00502-20150814_31_I4",]$match = "Trh-M-400020" # Hmm, is present in most.lhns.... # retired
 # md["GMR_SS00502-20150814_31_I6",]$match = "Trh-M-400020" # Hmm, is present in most.lhns.... # retired
@@ -342,17 +341,15 @@ md["JRC_SS04924-20160812_32_E4",]$match= "LO-PN1"
 md["JRC_SS15129-20161207_31_A1",]$match= "LO-PN2"
 md["JRC_SS15129-20161207_31_A3",]$match= "LO-PN2"
 md["JRC_SS15129-20161207_31_A4",]$match= "LO-PN2"
+md["JRC_SS15267-20160427_32_H1",]$match= "PLP-PN1"
+md["JRC_SS15267-20160427_32_H2",]$match= "PLP-PN1"
+md["JRC_SS15267-20160427_32_I3",]$match= "PLP-PN1"
+md["JRC_SS15300-20160525_31_E1",]$match = "Trh-F-500222"
+md["JRC_SS15300-20160525_31_E2",]$match = "Trh-F-500222"
+md["GMR_41H09_AV_01-20150626_32_D1",]$match = "Trh-F-500222"
 
 
-### Not LH
 
-
-md["JRC_SS15267-20160427_32_H1",]$match= "NOT-LH-1"
-md["JRC_SS15267-20160427_32_H2",]$match= "NOT-LH-1"
-md["JRC_SS15267-20160427_32_I3",]$match= "NOT-LH-1"
-md["GMR_MB072C-20150814_31_D4",]$match= "fru-M-000179" # Not LH?
-md["GMR_MB072C-20150814_31_D5",]$match= "fru-M-000179" # Not LH?
-md["GMR_MB072C-20161019_32_E1",]$match= "fru-M-000179" # Not LH?
 
 
 
@@ -362,9 +359,8 @@ md["GMR_MB072C-20161019_32_E1",]$match= "fru-M-000179" # Not LH?
 
 
 
-
-df.b = data.frame(pnt = most.lhins[,c("tract")],anatomy.group=most.lhins[,c("anatomy.group")],cell.type=most.lhins[,c("anatomy.group")], type = "IN")
-rownames(df.b) = names(lhns::most.lhins)
+df.a = most.lhns[,c("pnt","anatomy.group","cell.type","type")]
+df.b = data.frame(pnt = most.lhins[,c("tract")],anatomy.group= most.lhins[,c("anatomy.group")],cell.type= most.lhins[,c("anatomy.group")], type = "IN")
 rownames(df.b) = names(most.lhins)
 df = rbind(df.b,df.a[!rownames(df.a)%in%rownames(df.b),])
 md$pnt = as.character(sapply(md$match,function(x) df[x,]$pnt))
@@ -384,10 +380,20 @@ md[c("JRC_SS04956-20150828_31_D1",
      "JRC_SS16059-20151111_32_G1"),]$pnt = "PD2"
 md[c("JRC_SS04956-20150828_31_D1",
      "JRC_SS04956-20150828_31_D2",
-     "JRC_SS16059-20151111_32_G1"),]$anatomy.group = "PD2a1/b1"
+     "JRC_SS16059-20151111_32_G1"),]$anatomy.group = "PD2a/b"
 md[c("JRC_SS04956-20150828_31_D1",
      "JRC_SS04956-20150828_31_D2",
      "JRC_SS16059-20151111_32_G1"),]$cell.type = "PD2a1/b1"
+
+md[c("JRC_SS24794-20160629_32_F1",
+     "JRC_SS15126-20151007_31_F5",
+     "JRC_SS24794-20160629_32_E2"),]$pnt = "AV6"
+md[c("JRC_SS24794-20160629_32_F1",
+     "JRC_SS15126-20151007_31_F5",
+     "JRC_SS24794-20160629_32_E2"),]$anatomy.group = "AV6c"
+md[c("JRC_SS24794-20160629_32_F1",
+     "JRC_SS15126-20151007_31_F5",
+     "JRC_SS24794-20160629_32_E2"),]$cell.type = "AV6c3"
 
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
@@ -416,10 +422,9 @@ md["JRC_SS03801-20151111_32_F3",]$cell.type = "WED-PN3"
 md["JRC_SS03797-20160621_33_C3",]$cell.type = "WED-PN4"
 md["JRC_SS03797-20160621_33_D1",]$cell.type = "WED-PN4"
 md["JRC_SS03797-20160621_33_C6",]$cell.type = "WED-PN4"
-
-md["GMR_SS01159-20161207_32_F6",]$cell.type = "GNG-PN2" # Previous: "TPN-2"
-md["GMR_SS01159-20161207_32_G1",]$cell.type = "GNG-PN2"
-md["GMR_SS01159-20161207_32_G5",]$cell.type = "GNG-PN2"
+md["GMR_SS01159-20161207_32_F6",]$cell.type = "VNC-PN1" # Previous: "TPN-2"
+md["GMR_SS01159-20161207_32_G1",]$cell.type = "VNC-PN1"
+md["GMR_SS01159-20161207_32_G5",]$cell.type = "VNC-PN1"
 md["JRC_SS24671-20170308_32_A1",]$cell.type = "GNG-PN1"
 md["JRC_SS24671-20170308_32_A4",]$cell.type = "GNG-PN1" # Previous: "TPN-1"
 md["JRC_SS24671-20170308_32_A6",]$cell.type = "GNG-PN1"
@@ -429,25 +434,17 @@ md["JRC_SS04924-20160812_32_E4",]$cell.type = "LO-PN1"
 md["JRC_SS15129-20161207_31_A1",]$cell.type = "LO-PN2" # Previous: "VPN-2"
 md["JRC_SS15129-20161207_31_A3",]$cell.type = "LO-PN2"
 md["JRC_SS15129-20161207_31_A4",]$cell.type = "LO-PN2"
-
-md[c("JRC_SS15267-20160427_32_H1"),]$anatomy.group = "notLHproper"
-md[c("JRC_SS15267-20160427_32_H2"),]$anatomy.group = "notLHproper"
-md[c("JRC_SS15267-20160427_32_I3"),]$anatomy.group = "notLHproper"
-md["JRC_SS15267-20160427_32_H1",]$cell.type = "notLHproper"
-md["JRC_SS15267-20160427_32_H2",]$cell.type = "notLHproper"
-md["JRC_SS15267-20160427_32_I3",]$cell.type = "notLHproper"
-md["GMR_MB072C-20150814_31_D4",]$cell.type = "notLHproper"
-md["GMR_MB072C-20150814_31_D5",]$cell.type = "notLHproper"
-md["GMR_MB072C-20161019_32_E1",]$cell.type = "notLHproper"
-md[c("GMR_30E03_XD_01-20150706_31_B4"),]$anatomy.group = "notLHproper"
-md[c("GMR_30E03_XD_01-20150706_31_B5"),]$anatomy.group = "notLHproper"
-md["GMR_30E03_XD_01-20150706_31_B4",]$cell.type = "notLHproper"
-md["GMR_30E03_XD_01-20150706_31_B5",]$cell.type = "notLHproper"
-# av5
+md["JRC_SS15267-20160427_32_H1",]$cell.type= "PLP-PN1"
+md["JRC_SS15267-20160427_32_H2",]$cell.type= "PLP-PN1"
+md["JRC_SS15267-20160427_32_I3",]$cell.type = "PLP-PN1"
+md["JRC_SS15300-20160525_31_E1",]$cell.type = "LP-PN1"
+md["JRC_SS15300-20160525_31_E2",]$cell.type = "LP-PN1"
+md["GMR_41H09_AV_01-20150626_32_D1",]$cell.type = "LP-PN1"
 
 md[grepl("PN",md$cell.type),]$type = "IN"
 md[grepl("notLHproper",md$cell.type),]$type = "notLHproper"
 md[grepl("PD2a1/b1",md$cell.type),]$type = "ON"
+md[grepl("AV6c3",md$cell.type),]$type = "ON"
 md[grepl("MBON-Calyx",md$cell.type),]$type = "ON"
 
 
@@ -456,7 +453,7 @@ md[c("JRC_SS23107-20160629_31_E6", "JRC_SS23107-20160629_31_F6",
      "JRC_SS23112-20160629_31_H1"),]$type = "ON/IN"
 
 # There appear to be 'new old names' in Mike's filemaker DB, so we need to add those in here
-md[md$cell.type=="GNG-PN2","linecode"] = "L2387"
+#md[md$cell.type=="GNG-PN2","linecode"] = "L2387"
 
 
 ### Save ###
@@ -469,7 +466,6 @@ dolan.splits[,"skeleton.type"] = "ConfocalStack"
 lhon.splits.dps = dolan.splits[rownames(subset(md,type=="ON"))]
 lhln.splits.dps = dolan.splits[rownames(subset(md,type=="LN"))]
 lhin.splits.dps = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
-almost.lh.splits.dps = dolan.splits[rownames(subset(md,type=="notLHproper"))]
 
 
 # #################
@@ -480,7 +476,6 @@ almost.lh.splits.dps = dolan.splits[rownames(subset(md,type=="notLHproper"))]
 lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
 lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
 lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
-almost.lh.splits.dps = as.neuronlistfh(almost.lh.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
 
 
 #####################
@@ -491,10 +486,6 @@ almost.lh.splits.dps = as.neuronlistfh(almost.lh.splits.dps,dbdir = 'inst/extdat
 #write.neuronlistfh(lhon.splits.dps, file='inst/extdata/lhon.splits.dps.rds',overwrite = TRUE,compress=TRUE)
 #write.neuronlistfh(lhln.splits.dps, file='inst/extdata/lhln.splits.dps.rds',overwrite = TRUE,compress=TRUE)
 #write.neuronlistfh(lhin.splits.dps, file='inst/extdata/lhin.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-#write.neuronlistfh(almost.lh.splits.dps, file='inst/extdata/almost.lh.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-
-# Trh-M-500183 same as Trh-M-400020??
-# Mike's 1C and 3b are actually two cell types
 
 
 # # Which have already been labelled?

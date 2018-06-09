@@ -4,7 +4,7 @@
 \name{most.lhins.dps}
 \alias{most.lhins.dps}
 \title{A categorised database of Vector clouds for neurons providing input to the lateral horn}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1188.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1197.}
 \source{
 \url{http://www.flycircuit.tw/}
 }

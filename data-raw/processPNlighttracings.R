@@ -3,7 +3,6 @@
 ###################
 
 load("data-raw/light_PN_tracings.rda")
-load("data-raw/light_PN_tracings_dps.rda")
 pn.axons.light=subset(light.pn.axons, !Glomerulus%in%c("acj6","NP5194","NP6099")) # Get rid of lingering LHNs
 pn.axons.light = pn.axons.light[pn.axons.light[,"PNType"]=="iPN"]
 pn.axons.light[,"tract"] = "mALT"

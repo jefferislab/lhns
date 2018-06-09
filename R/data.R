@@ -129,7 +129,7 @@
 #'
 #' Collated in Frechter et al. 2018.
 #'
-"lh.lines"
+"lh_line_info"
 
 #' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors
 #'

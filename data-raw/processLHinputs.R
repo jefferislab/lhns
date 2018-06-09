@@ -611,6 +611,20 @@ df[centrifugal,]$neurotransmitter = "Unknown"
 
 ###
 
+lp.pns = c("Trh-M-500187", "Trh-M-500155", "Trh-M-500142", "Trh-M-500078",
+  "Trh-M-400020", "fru-M-000075", "Trh-M-500144", "Trh-F-500222",
+  "Trh-M-500183")
+df[lp.pns,"anatomy.group"] = "LP-PN1"
+df[lp.pns,]$modality = "Unknown"
+df[lp.pns,]$reference = "ASB"
+df[lp.pns,]$dendritic.location = "PV2"
+df[lp.pns,]$cell.body.position = "PLP/AVLP/PVLP/WED"
+df[lp.pns,]$tract = "LPT"
+df[lp.pns,]$neurotransmitter = "Unknown"
+
+
+###
+
 unknowns = c("fru-M-300418", "fru-M-800154", "TH-M-100006", "TH-M-000001",
              "TH-M-100010", "fru-M-700238", "TH-M-300030", "TH-M-100000",
              "fru-M-500333", "fru-M-200392", "TH-M-100083", "TH-M-000063",
@@ -636,12 +650,12 @@ unknowns = c("fru-M-300418", "fru-M-800154", "TH-M-100006", "TH-M-000001",
              "fru-M-100392", "fru-M-200422", "fru-M-400364", "fru-M-200246",
              "fru-M-600093")
 df[unknowns,"anatomy.group"] = "Expansive-Putative"
-df[centrifugal,]$modality = "Unknown"
-df[centrifugal,]$reference = "ASB"
-df[centrifugal,]$dendritic.location = "Uncertain"
-df[centrifugal,]$cell.body.position = "PD6"
-df[centrifugal,]$tract = "Uncertain"
-df[centrifugal,]$neurotransmitter = "Unknown"
+df[unknowns,]$modality = "Unknown"
+df[unknowns,]$reference = "ASB"
+df[unknowns,]$dendritic.location = "Uncertain"
+df[unknowns,]$cell.body.position = "PD6"
+df[unknowns,]$tract = "Uncertain"
+df[unknowns,]$neurotransmitter = "Unknown"
 
 
 
@@ -696,6 +710,7 @@ most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', Wr
 #####################
 # Write neuronlistfh #
 #####################
+
 
 # write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE)
 # write.neuronlistfh(most.lhins.dps, file='inst/extdata/most.lhins.dps.rds',overwrite = TRUE)
