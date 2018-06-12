@@ -207,9 +207,9 @@ md["GMR_MB036B-20160415_31_I3",]$match = "Gad1-F-900098"
 md["GMR_MB380B-20150814_31_B6",]$match = "Gad1-F-700138" # MB C1?
 md["GMR_MB380B-20151014_33_D1",]$match = "Gad1-F-700138"# MB C1?
 md["GMR_MB380B-20151014_33_D4",]$match = "Gad1-F-700138"# MB C1?
-md["GMR_SS01371-20150814_31_F1",]$match = "Gad1-F-700076" # NEW LHN? THIS ISN'T A GOOD MATCH
-md["GMR_SS01371-20150814_31_F4",]$match = "Gad1-F-700076" # NEW LHN? THIS ISN'T A GOOD MATCH
-md["GMR_SS01371-20150814_31_F6",]$match = "Gad1-F-700076" # NEW LHN? THIS ISN'T A GOOD MATCH
+md["GMR_SS01371-20150814_31_F1",]$match = "AD1a2" # NEW LHN? THIS ISN'T A GOOD MATCH
+md["GMR_SS01371-20150814_31_F4",]$match = "AD1a2" # NEW LHN? THIS ISN'T A GOOD MATCH
+md["GMR_SS01371-20150814_31_F6",]$match = "AD1a2" # NEW LHN? THIS ISN'T A GOOD MATCH
 md["JRC_SS03237-20151014_32_B1",]$match = "Gad1-F-300290"
 md["JRC_SS03237-20151014_32_B2",]$match = "Gad1-F-300290"
 md["JRC_SS03237-20151014_32_B3",]$match = "Gad1-F-300290"
@@ -395,6 +395,15 @@ md[c("JRC_SS24794-20160629_32_F1",
      "JRC_SS15126-20151007_31_F5",
      "JRC_SS24794-20160629_32_E2"),]$cell.type = "AV6c3"
 
+md[c("GMR_SS01371-20150814_31_F1",
+     "GMR_SS01371-20150814_31_F4",
+     "GMR_SS01371-20150814_31_F6"),]$pnt = "AD1"
+md[c("GMR_SS01371-20150814_31_F1",
+     "GMR_SS01371-20150814_31_F4",
+     "GMR_SS01371-20150814_31_F6"),]$anatomy.group = "AD1a"
+md[c("GMR_SS01371-20150814_31_F1",
+     "GMR_SS01371-20150814_31_F4",
+     "GMR_SS01371-20150814_31_F6"),]$cell.type = "AD1a2"
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
@@ -473,9 +482,9 @@ lhin.splits.dps = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
 ###################
 
 
-lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
-lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
-lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
+lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
+lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
 #####################
@@ -483,9 +492,9 @@ lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', 
 #####################
 
 
-#write.neuronlistfh(lhon.splits.dps, file='inst/extdata/lhon.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-#write.neuronlistfh(lhln.splits.dps, file='inst/extdata/lhln.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-#write.neuronlistfh(lhin.splits.dps, file='inst/extdata/lhin.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+write.neuronlistfh(lhon.splits.dps, file='inst/extdata/lhon.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+write.neuronlistfh(lhln.splits.dps, file='inst/extdata/lhln.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+write.neuronlistfh(lhin.splits.dps, file='inst/extdata/lhin.splits.dps.rds',overwrite = TRUE,compress=TRUE)
 
 
 # # Which have already been labelled?

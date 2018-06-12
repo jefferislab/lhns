@@ -1005,7 +1005,7 @@ pd2 = c("fru-M-000179","Gad1-F-500129", "Gad1-F-300303", "Gad1-F-200234", "5HT1A
         "VGlut-F-200258","fru-M-700108","121015c0", "121016c0", "121017c0",
         "121018c0", "121225c0","131007c0","121227c3", "130612c0", "131009c4",
         "131014c3","120806c0","120914c2","120926c0","130620c0","fru-F-600242",
-        "Cha-F-200325","fru-F-500330","Cha-F-400224","fru-F-200100")
+        "Cha-F-200325","fru-F-500330","Cha-F-400224","fru-F-200100","fru-F-600136")
 df[unique(pd2),]$pnt = "pd2"
 pd2.a.1 = c("Cha-F-600238", "Gad1-F-200234","5HT1A-F-300019", "5HT1A-F-300013")
 pd2.a.2 = c("130620c0", "130620c0", "121018c0", "121225c0", "130612c0",
@@ -1618,18 +1618,17 @@ ad1.a = c("VGlut-F-500032","Cha-F-100223","VGlut-F-200319","Cha-F-000258","VGlut
           "VGlut-F-600424","VGlut-F-700522","Gad1-F-700076","Gad1-F-400257","Gad1-F-400155",
           "VGlut-F-400170","Cha-F-400246","140402c0","140403c1","121206c0","120925c1",
           "121127c1","121122c1","121128c3","130123c1","130523c0","130524c0")
-
 ad1.a.1 = c("130123c1","130523c0", "130524c0","Cha-F-000258")
-ad1.a.2 = "Gad1-F-700076"
+#ad1a2 in Mike's split lines
 ad1.a.3 = c("Cha-F-100223", "VGlut-F-200319")
 ad1.a.4 = c("120925c1", "121127c1", "121122c1", "121128c3")
-ad1.a.5 = c("VGlut-F-500032","VGlut-F-400863")
-ad1.a.6 = c("Cha-F-300272","VGlut-F-400267","VGlut-F-600424","VGlut-F-700522")
-ad1.a.7 = c("VGlut-F-400170", "Cha-F-400246","140402c0", "140403c1","Gad1-F-400257", "121206c0")
+ad1.a.5 = c("Cha-F-300272","VGlut-F-400267","VGlut-F-600424","VGlut-F-700522")
+ad1.a.6 = c("VGlut-F-400170", "Cha-F-400246","140402c0", "140403c1","Gad1-F-400257", "121206c0")
+ad1.a.7 = "Gad1-F-700076"
 ad1.a.8 = "Cha-F-300384"
 ad1.a.9= "Gad1-F-400155"
 ad1.a.10 = "VGlut-F-800061"
-
+ad1.a = c(ad1.a.1,ad1.a.3,ad1.a.4,ad1.a.5,ad1.a.6,ad1.a.7,ad1.a.8,ad1.a.9,ad1.a.10)
 ad1.b.1 = c("130726c1", "130731c1", "130802c0", "130801c1","130729c0","120816c1",
             "120813c1", "120911c0", "120726c3", "130910c0", "140514c1", "121101c0")
 ad1.b.2 = c("120704c1", "120730c0", "140616c0","140612c0","120714c4","Gad1-F-900037", "Gad1-F-200039")
@@ -1640,7 +1639,6 @@ ad1.c.1=c("Gad1-F-600330", "Gad1-F-400233", "Gad1-F-300262", "Gad1-F-500014",
         "120830c2",  "121129c0", "130711c3", "120913c1")
 ad1.c.2=c("Gad1-F-600330")
 ad1.c=c(ad1.c.1,ad1.c.2)
-#c3:4
 
 ad1.d.1 = c("Gad1-F-300229","Cha-F-200360","fru-F-300009","Gad1-F-200365")
 ad1.d.2 = c("Gad1-F-700032","fru-F-200156")
@@ -1648,14 +1646,14 @@ ad1.d.3 = "Gad1-F-000249"
 ad1.d.4 = c("Gad1-F-200033","Cha-F-700185")
 ad1.d = c(ad1.d.1,ad1.d.2,ad1.d.3,ad1.d.4)
 
-ad1.e.1 = c("fru-M-300364","fru-M-200239")
-ad1.e.2=c("131204c1")
-ad1.e=c(ad1.e.1,ad1.e.2)
-
-ad1.f = ad1.f.1 =  "VGlut-F-200392"
-ad1.g = ad1.g.1 = "VGlut-F-500156"
-ad1.h = ad1.h.1 = "Gad1-F-200247"
-ad1.i = ad1.i.1 =  "VGlut-F-400170"
+ad1.e = ad1.e.1 = c("VGlut-F-500032","VGlut-F-400863")
+ad1.f.1 = c("fru-M-300364","fru-M-200239")
+ad1.f.2=c("131204c1")
+ad1.f=c(ad1.f.1,ad1.f.2)
+ad1.g = ad1.g.1 =  "VGlut-F-200392"
+ad1.h = ad1.h.1 = "VGlut-F-500156"
+ad1.i = ad1.i.1 = "Gad1-F-200247"
+ad1.j = ad1.j.1 =  "VGlut-F-400170"
 
 df[ad1.a,]$anatomy.group = "ad1a"
 df[ad1.b,]$anatomy.group = "ad1b"
@@ -1666,10 +1664,8 @@ df[ad1.f,]$anatomy.group = "ad1f"
 df[ad1.g,]$anatomy.group = "ad1g"
 df[ad1.h,]$anatomy.group = "ad1h"
 df[ad1.i,]$anatomy.group = "ad1i"
-
-
+df[ad1.j,]$anatomy.group = "ad1j"
 df[ad1.a.1,]$cell.type = "ad1a1"
-df[ad1.a.2,]$cell.type = "ad1a2"
 df[ad1.a.3,]$cell.type = "ad1a3"
 df[ad1.a.4,]$cell.type = "ad1a4"
 df[ad1.a.5,]$cell.type = "ad1a5"
@@ -1687,12 +1683,12 @@ df[ad1.d.2,]$cell.type = "ad1d2"
 df[ad1.d.3,]$cell.type = "ad1c3"
 df[ad1.d.4,]$cell.type = "ad1c4"
 df[ad1.e.1,]$cell.type = "ad1e1"
-df[ad1.e.2,]$cell.type = "ad1e2"
 df[ad1.f.1,]$cell.type= "ad1f1"
+df[ad1.f.2,]$cell.type = "ad1f2"
 df[ad1.g.1,]$cell.type = "ad1g1"
 df[ad1.h.1,]$cell.type = "ad1h1"
 df[ad1.i.1,]$cell.type = "ad1i1"
-
+df[ad1.j.1,]$cell.type = "ad1j1"
 
 
 
@@ -1749,10 +1745,10 @@ df[c(notLH,notLHcore),]$coreLH = FALSE
 
 
 
-lh.output.neurons = c("ad1a1", "ad1a10", "ad1a2", "ad1a3", "ad1a4", "ad1a5", "ad1a6",
+lh.output.neurons = c("ad1a1", "ad1a10",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "ad1a7", "ad1a8", "ad1a9", "ad1b1", "ad1b2", "ad1c1", "ad1c2",
                       "ad1c3", "ad1c4", "ad1d1", "ad1d2", "ad1d3", "ad1d4", "ad1e1",
-                      "ad1e2", "ad1f1", "ad1g1", "ad1h1", "ad1i1", "ad2a1", "ad2a2",
+                      "ad1f2", "ad1f1", "ad1g1", "ad1h1", "ad1i1", "ad1j1", "ad2a1", "ad2a2",
                       "ad2b1", "ad2c1", "ad3a1", "ad3b1", "ad3c1", "ad3d1", "ad4a1",
                       "ad5a1", "av1a1", "av1a2", "av1a3", "av1a4", "av1a5", "av1c1",
                       "av1d1", "av1e1", "av2a1", "av2a2", "av2a3", "av2a4", "av2b1",
@@ -1847,9 +1843,9 @@ message("Saving data!")
 ###################
 
 
-most.lhns = as.neuronlistfh(most.lhns,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+most.lhns = as.neuronlistfh(most.lhns,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 most.lhns.dps = nat::dotprops(most.lhns,resample=1)
-most.lhns.dps = as.neuronlistfh(most.lhns.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+most.lhns.dps = as.neuronlistfh(most.lhns.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
 #####################
@@ -1857,5 +1853,5 @@ most.lhns.dps = as.neuronlistfh(most.lhns.dps,dbdir = 'inst/extdata/data/', Writ
 #####################
 
 
-#write.neuronlistfh(most.lhns, file='inst/extdata/most.lhns.rds',overwrite = TRUE)
-#write.neuronlistfh(most.lhns.dps, file='inst/extdata/most.lhns.dps.rds',overwrite = TRUE)
+write.neuronlistfh(most.lhns, file='inst/extdata/most.lhns.rds',overwrite = TRUE)
+write.neuronlistfh(most.lhns.dps, file='inst/extdata/most.lhns.dps.rds',overwrite = TRUE)

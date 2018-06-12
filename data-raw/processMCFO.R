@@ -1052,9 +1052,9 @@ attr(lh.mcfo,"df") = mf
 
 
 lh.mcfo = nlapply(lh.mcfo,nat::resample,stepsize = 1)
-lh.mcfo = as.neuronlistfh(lh.mcfo,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+lh.mcfo = as.neuronlistfh(lh.mcfo,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 lh.mcfo.dps = nat::dotprops(lh.mcfo,OmitFailures=TRUE)
-lh.mcfo.dps = as.neuronlistfh(lh.mcfo.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+lh.mcfo.dps = as.neuronlistfh(lh.mcfo.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
 #####################
@@ -1062,7 +1062,7 @@ lh.mcfo.dps = as.neuronlistfh(lh.mcfo.dps,dbdir = 'inst/extdata/data/', WriteObj
 #####################
 
 
-#write.neuronlistfh(lh.mcfo, file='inst/extdata/lh.mcfo.rds',overwrite = TRUE)
-#write.neuronlistfh(lh.mcfo.dps, file='inst/extdata/lh.mcfo.dps.rds',overwrite = TRUE)
+write.neuronlistfh(lh.mcfo, file='inst/extdata/lh.mcfo.rds',overwrite = TRUE)
+write.neuronlistfh(lh.mcfo.dps, file='inst/extdata/lh.mcfo.dps.rds',overwrite = TRUE)
 
 

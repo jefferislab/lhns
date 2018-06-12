@@ -702,9 +702,9 @@ attr(most.lhins,"df") = df
 ###################
 
 
-most.lhins = as.neuronlistfh(most.lhins,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+most.lhins = as.neuronlistfh(most.lhins,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 most.lhins.dps = nat::dotprops(most.lhins,resample=1)
-most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
 #####################
@@ -712,8 +712,8 @@ most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', Wr
 #####################
 
 
-# write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE)
-# write.neuronlistfh(most.lhins.dps, file='inst/extdata/most.lhins.dps.rds',overwrite = TRUE)
+write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE)
+write.neuronlistfh(most.lhins.dps, file='inst/extdata/most.lhins.dps.rds',overwrite = TRUE)
 
 
 

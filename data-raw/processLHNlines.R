@@ -106,7 +106,7 @@ for(u in unassigned){
 
 # Create and old to new cell.type mapping
 old = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(lh_line_info$old.cell.type)))))
-old = old[!grepl("sleep|NotLH|\v|\\?",old)]
+old = old[!grepl("sleep|NotLH|\v|\\?| ",old)]
 old = sort(old)
 new = c()
 for(o in old){
@@ -119,6 +119,7 @@ old2new = data.frame(old=old,new=new)
 old2new[] = lapply(old2new, as.character)
 # Add some manual assignments
 old2new[old2new$old%in%c("151A"),"new"] = "VNC-PN1"
+old2new[old2new$old%in%c("V2"),"new"] = "LO-PN2"
 write.csv(old2new,file="data-raw/oldCTss_to_newCTs.csv")
 
 # Guess the cell types based on Mike's old.cell.type assignments

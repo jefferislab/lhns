@@ -15,11 +15,12 @@ mbons.light.dps = mbons.light.dps
 # Update Meta-Data #
 ###################
 
-mbons.light.dps = as.neuronlistfh(mbons.light.dps,dbdir = 'inst/extdata/data/', WriteObjects="yes")
+mbons.light.dps = as.neuronlistfh(mbons.light.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 #####################
 # Write neuronlistfh #
 #####################
 
-# write.neuronlistfh(mbons.light.dps, file='inst/extdata/mbons.light.dps.rds',overwrite = TRUE)
+
+write.neuronlistfh(mbons.light.dps, file='inst/extdata/mbons.light.dps.rds',overwrite = TRUE)
 
