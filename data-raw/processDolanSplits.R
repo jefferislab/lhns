@@ -114,14 +114,13 @@ md$match = NA
 # LHNs
 
 md["JRC_SS04972-20150929_33_A5",]$match ="Cha-F-600209"
-md["JRC_SS16373-20160518_31_E4",]$match = "Cha-F-100370"
+md["JRC_SS16373-20160518_31_E4",]$match = "VGlut-F-600069"
 md["JRC_SS16345-20160518_31_D4",]$match  ="VGlut-F-700430"
 md["JRC_SS04718-20151231_33_F4",]$match  = "E0585-F-300040"
 md["JRC_SS04949-20150828_31_J3",]$match="fru-M-200351"
 md["JRC_SS04970-20151014_33_A1",]$match = "Cha-F-500234"
 md["JRC_SS16036-20151231_33_D5",]$match = "E0585-F-300050"
 md["GMR_25B07_AV_01-20150626_32_C1",]$match = "Cha-F-500250"
-md["GMR_30E03_XD_01-20150706_31_B5",]$match = "Cha-F-100427"
 md["GMR_47B03_AV_01-20150626_32_I1",]$match = "Gad1-F-200366"
 md["GMR_47B03_AV_01-20150626_32_I3",]$match = "Gad1-F-200366"
 md["GMR_47B03_AV_01-20150626_32_I4",]$match = "Gad1-F-200366" # retired?
@@ -169,8 +168,8 @@ md["JRC_SS16036-20151231_33_D4",]$match = "E0585-F-300069" # Not sure
 md["JRC_SS16059-20151111_32_G1",]$match = "PD2a1/b1"
 md["JRC_SS16345-20160518_31_C2",]$match = "VGlut-F-700430"
 md["JRC_SS16345-20160518_31_C3",]$match  = "VGlut-F-700430"
-md["JRC_SS16373-20160518_31_E1",]$match = "Cha-F-100370"
-md["JRC_SS16373-20160518_31_F1",]$match = "Cha-F-100370"
+md["JRC_SS16373-20160518_31_E1",]$match = "VGlut-F-600069"
+md["JRC_SS16373-20160518_31_F1",]$match = "VGlut-F-600069"
 md["JRC_SS16571-20160504_31_B1",]$match =  "Cha-F-000507"
 md["JRC_SS16583-20160525_31_G1",]$match = "131007c1"
 md["JRC_SS16583-20160525_31_H1",]$match = "131007c1"
@@ -197,7 +196,6 @@ md["GMR_22A12_AV_01-20150626_32_J1",]$match = "Cha-F-400165"
 md["GMR_22A12_AV_01-20150626_32_J3",]$match = "Cha-F-400165"
 md["GMR_22A12_AV_01-20150626_32_J4",]$match = "Cha-F-400165"
 md["GMR_25B07_AV_01-20150706_31_F5",]$match = "E0585-F-400021"
-md["GMR_30E03_XD_01-20150706_31_B4",]$match = "Cha-F-100427"
 md["GMR_53B06_AV_01-20150619_32_I1",]$match = "Gad1-F-900137"
 md["GMR_53B06_AV_01-20150619_32_I2",]$match = "Gad1-F-500244"
 md["GMR_53B06_AV_01-20150619_32_I3",]$match = "Gad1-F-500244"
@@ -218,8 +216,8 @@ md["JRC_SS03799-20151014_32_F4",]$match = "Gad1-F-900217"
 md["JRC_SS03799-20151014_32_F5",]$match = "Gad1-F-900217"
 md["JRC_SS03799-20151014_32_F5",]$match = "Gad1-F-900217"
 # md["JRC_SS03799-20151014_32_F6",]$match = "Gad1-F-900217" # retired
-md["JRC_SS03800-20151111_32_E4",]$match = "Gad1-F-700243"
-md["JRC_SS03800-20151111_32_E5",]$match = "Gad1-F-700243"
+md["JRC_SS03800-20151111_32_E4",]$match = "Cha-F-100370"
+md["JRC_SS03800-20151111_32_E5",]$match = "Cha-F-100370"
 md["JRC_SS04028-20151007_31_H2",]$match = "Cha-F-200282"
 md["JRC_SS04028-20151007_31_H4",]$match = "Cha-F-200282"
 md["JRC_SS03788-20160621_33_B3",]$match = "Gad1-F-500328"
@@ -249,12 +247,6 @@ md["JRC_SS23097-20160629_31_D3",]$match = "Gad1-F-200237"
 md["JRC_SS23107-20160629_31_E6",]$match = "Gad1-F-600202"
 md["JRC_SS23107-20160629_31_F6",]$match = "Gad1-F-600202"
 md["JRC_SS23112-20160629_31_H1",]$match = "Gad1-F-600202"
-md["GMR_MB242A-20161019_32_G5",]$match= "MBON-Calyx"
-md["GMR_MB242A-20161019_32_H2",]$match= "MBON-Calyx"
-md["GMR_MB242A-20161019_32_H6",]$match= "MBON-Calyx"
-md["JRC_SS03226-20161123_33_A4",]$match= "VGlut-F-500323"
-md["JRC_SS03226-20161123_33_B3",]$match= "VGlut-F-500323"
-md["JRC_SS03226-20161123_33_B5",]$match= "VGlut-F-500323"
 md["JRC_SS04965-20151111_32_A1",]$match= "Cha-F-000515"
 md["JRC_SS04965-20151111_32_A2",]$match= "Cha-F-000515"
 md["JRC_SS04965-20160525_31_C2",]$match= "Cha-F-000515"
@@ -276,9 +268,9 @@ md["JRC_SS22549-20170103_33_G1",]$match="Gad1-F-600143"
 md["JRC_SS22732-20170214_31_C1",]$match="Gad1-F-300148"
 md["JRC_SS22732-20170214_31_C2",]$match="Gad1-F-300148"
 md["JRC_SS22732-20170214_31_D3",]$match="Gad1-F-300148"
-md["JRC_SS16571-20160504_31_B1",]$match= "VGlut-F-400394"
-md["JRC_SS23170-20160622_31_F3",]$match= "VGlut-F-400394"
-md["JRC_SS23170-20160622_31_F5",]$match= "VGlut-F-400394"
+md["JRC_SS16571-20160504_31_B1",]$match= "Cha-F-200186"
+md["JRC_SS23170-20160622_31_F3",]$match= "Cha-F-200186"
+md["JRC_SS23170-20160622_31_F5",]$match= "Cha-F-200186"
 md["JRC_SS23187-20160622_31_G2",]$match="Cha-F-200398"
 md["JRC_SS23187-20160622_31_G4",]$match="Cha-F-200398"
 md["JRC_SS23187-20160622_31_H3",]$match="Cha-F-200398"
@@ -298,9 +290,17 @@ md["JRC_SS16364-20151202_33_H1",]$match = "fru-F-200126"
 md["GMR_MB072C-20150814_31_D4",]$match= "fru-M-000179"
 md["GMR_MB072C-20150814_31_D5",]$match= "fru-M-000179"
 md["GMR_MB072C-20161019_32_E1",]$match= "fru-M-000179"
+md["GMR_MB242A-20161019_32_G5",]$match= "MBON-Calyx"
+md["GMR_MB242A-20161019_32_H2",]$match= "MBON-Calyx"
+md["GMR_MB242A-20161019_32_H6",]$match= "MBON-Calyx"
+md["JRC_SS03226-20161123_33_A4",]$match= "PV4d7"
+md["JRC_SS03226-20161123_33_B3",]$match= "PV4d7"
+md["JRC_SS03226-20161123_33_B5",]$match= "PV4d7"
 md["JRC_SS24794-20160629_32_F1",]$match = "AV6c3"
 md["JRC_SS15126-20151007_31_F5",]$match = "AV6c3"
 md["JRC_SS24794-20160629_32_E2",]$match = "AV6c3"
+md["GMR_30E03_XD_01-20150706_31_B5",]$match = "AV6b3"
+md["GMR_30E03_XD_01-20150706_31_B4",]$match = "AV6b3"
 
 ### LH input
 
@@ -395,6 +395,13 @@ md[c("JRC_SS24794-20160629_32_F1",
      "JRC_SS15126-20151007_31_F5",
      "JRC_SS24794-20160629_32_E2"),]$cell.type = "AV6c3"
 
+md[c("GMR_30E03_XD_01-20150706_31_B4",
+     "GMR_30E03_XD_01-20150706_31_B5"),]$pnt = "AV6"
+md[c("GMR_30E03_XD_01-20150706_31_B4",
+     "GMR_30E03_XD_01-20150706_31_B5"),]$anatomy.group = "AV6b"
+md[c("GMR_30E03_XD_01-20150706_31_B4",
+     "GMR_30E03_XD_01-20150706_31_B5"),]$cell.type = "AV6b3"
+
 md[c("GMR_SS01371-20150814_31_F1",
      "GMR_SS01371-20150814_31_F4",
      "GMR_SS01371-20150814_31_F6"),]$pnt = "AD1"
@@ -404,6 +411,16 @@ md[c("GMR_SS01371-20150814_31_F1",
 md[c("GMR_SS01371-20150814_31_F1",
      "GMR_SS01371-20150814_31_F4",
      "GMR_SS01371-20150814_31_F6"),]$cell.type = "AD1a2"
+
+md[c("JRC_SS03226-20161123_33_A4",
+     "JRC_SS03226-20161123_33_B3",
+     "JRC_SS03226-20161123_33_B5"),]$pnt = "PV4"
+md[c("JRC_SS03226-20161123_33_A4",
+     "JRC_SS03226-20161123_33_B3",
+     "JRC_SS03226-20161123_33_B5"),]$anatomy.group = "PV4"
+md[c("JRC_SS03226-20161123_33_A4",
+     "JRC_SS03226-20161123_33_B3",
+     "JRC_SS03226-20161123_33_B5"),]$cell.type = "PV4d7"
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
@@ -451,7 +468,7 @@ md["JRC_SS15300-20160525_31_E2",]$cell.type = "LP-PN1"
 md["GMR_41H09_AV_01-20150626_32_D1",]$cell.type = "LP-PN1"
 
 md[grepl("PN",md$cell.type),]$type = "IN"
-md[grepl("notLHproper",md$cell.type),]$type = "notLHproper"
+#md[grepl("notLHproper",md$cell.type),]$type = "notLHproper"
 md[grepl("PD2a1/b1",md$cell.type),]$type = "ON"
 md[grepl("AV6c3",md$cell.type),]$type = "ON"
 md[grepl("MBON-Calyx",md$cell.type),]$type = "ON"
