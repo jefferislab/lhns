@@ -504,6 +504,7 @@ dolan.splits[,"skeleton.type"] = "ConfocalStack"
 lhon.splits.dps = dolan.splits[rownames(subset(md,type=="ON"))]
 lhln.splits.dps = dolan.splits[rownames(subset(md,type=="LN"))]
 lhin.splits.dps = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
+lh.splits.dps = c(lhon.splits.dps,lhln.splits.dps,lhin.splits.dps)
 
 
 # #################
@@ -514,7 +515,6 @@ lhin.splits.dps = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
 lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-lh.splits.dps = c(lhon.splits.dps,lhln.splits.dps,lhin.splits.dps)
 
 
 #####################
