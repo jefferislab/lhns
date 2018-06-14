@@ -205,9 +205,12 @@ md["GMR_MB036B-20160415_31_I3",]$match = "Gad1-F-900098"
 md["GMR_MB380B-20150814_31_B6",]$match = "Gad1-F-700138" # MB C1?
 md["GMR_MB380B-20151014_33_D1",]$match = "Gad1-F-700138"# MB C1?
 md["GMR_MB380B-20151014_33_D4",]$match = "Gad1-F-700138"# MB C1?
-md["GMR_SS01371-20150814_31_F1",]$match = "AD1a2" # NEW LHN? THIS ISN'T A GOOD MATCH
-md["GMR_SS01371-20150814_31_F4",]$match = "AD1a2" # NEW LHN? THIS ISN'T A GOOD MATCH
-md["GMR_SS01371-20150814_31_F6",]$match = "AD1a2" # NEW LHN? THIS ISN'T A GOOD MATCH
+md["GMR_SS01371-20150814_31_F1",]$match = "AD1d1" # NEW LHN
+md["GMR_SS01371-20150814_31_F4",]$match = "AD1d1" # NEW LHN
+md["GMR_SS01371-20150814_31_F6",]$match = "AD1d1" # NEW LHN
+md["JRC_SS22613-20160621_33_G2",]$match = "Gad1-F-900037" # MEDIUM MATCH
+md["JRC_SS22613-20160621_33_G4",]$match = "Gad1-F-900037" # MEDIUM MATCH
+md["JRC_SS22613-20160621_33_G5",]$match = "Gad1-F-900037" # MEDIUM MATCH
 md["JRC_SS03237-20151014_32_B1",]$match = "Gad1-F-300290"
 md["JRC_SS03237-20151014_32_B2",]$match = "Gad1-F-300290"
 md["JRC_SS03237-20151014_32_B3",]$match = "Gad1-F-300290"
@@ -229,9 +232,6 @@ md["JRC_SS04959-20151007_31_A5",]$match = "Cha-F-000533"
 md["JRC_SS04971-20150821_31_I1",]$match = "Cha-F-100370"
 md["JRC_SS04973-20150828_31_B1",]$match = "Cha-F-700219" # Maybe
 md["JRC_SS15113-20151007_31_B1",]$match = "Cha-F-000533"
-md["JRC_SS22613-20160621_33_G2",]$match = "Gad1-F-900037" # NEW LHN? THIS ISN'T A GOOD MATCH
-md["JRC_SS22613-20160621_33_G4",]$match = "Gad1-F-900037" # NEW LHN? THIS ISN'T A GOOD MATCH
-md["JRC_SS22613-20160621_33_G5",]$match = "Gad1-F-900037" # NEW LHN? THIS ISN'T A GOOD MATCH
 md["JRC_SS22675-20160622_32_F1",]$match = "Gad1-F-200365"
 md["JRC_SS22675-20160622_32_G1",]$match = "Gad1-F-200365"
 md["JRC_SS22675-20160622_32_G4",]$match = "Gad1-F-200365"
@@ -293,9 +293,9 @@ md["GMR_MB072C-20161019_32_E1",]$match= "fru-M-000179"
 md["GMR_MB242A-20161019_32_G5",]$match= "MBON-Calyx"
 md["GMR_MB242A-20161019_32_H2",]$match= "MBON-Calyx"
 md["GMR_MB242A-20161019_32_H6",]$match= "MBON-Calyx"
-md["JRC_SS03226-20161123_33_A4",]$match= "PV4d7"
-md["JRC_SS03226-20161123_33_B3",]$match= "PV4d7"
-md["JRC_SS03226-20161123_33_B5",]$match= "PV4d7"
+md["JRC_SS03226-20161123_33_A4",]$match= "PV6a1"
+md["JRC_SS03226-20161123_33_B3",]$match= "PV6a1"
+md["JRC_SS03226-20161123_33_B5",]$match= "PV6a1"
 md["JRC_SS24794-20160629_32_F1",]$match = "AV6c3"
 md["JRC_SS15126-20151007_31_F5",]$match = "AV6c3"
 md["JRC_SS24794-20160629_32_E2",]$match = "AV6c3"
@@ -384,6 +384,9 @@ md[c("JRC_SS04956-20150828_31_D1",
 md[c("JRC_SS04956-20150828_31_D1",
      "JRC_SS04956-20150828_31_D2",
      "JRC_SS16059-20151111_32_G1"),]$cell.type = "PD2a1/b1"
+md[c("JRC_SS04956-20150828_31_D1",
+     "JRC_SS04956-20150828_31_D2",
+     "JRC_SS16059-20151111_32_G1"),]$type = "ON"
 
 md[c("JRC_SS24794-20160629_32_F1",
      "JRC_SS15126-20151007_31_F5",
@@ -394,6 +397,9 @@ md[c("JRC_SS24794-20160629_32_F1",
 md[c("JRC_SS24794-20160629_32_F1",
      "JRC_SS15126-20151007_31_F5",
      "JRC_SS24794-20160629_32_E2"),]$cell.type = "AV6c3"
+md[c("JRC_SS24794-20160629_32_F1",
+     "JRC_SS15126-20151007_31_F5",
+     "JRC_SS24794-20160629_32_E2"),]$type = "ON"
 
 md[c("GMR_30E03_XD_01-20150706_31_B4",
      "GMR_30E03_XD_01-20150706_31_B5"),]$pnt = "AV6"
@@ -401,26 +407,34 @@ md[c("GMR_30E03_XD_01-20150706_31_B4",
      "GMR_30E03_XD_01-20150706_31_B5"),]$anatomy.group = "AV6b"
 md[c("GMR_30E03_XD_01-20150706_31_B4",
      "GMR_30E03_XD_01-20150706_31_B5"),]$cell.type = "AV6b3"
+md[c("GMR_30E03_XD_01-20150706_31_B4",
+     "GMR_30E03_XD_01-20150706_31_B5"),]$type = "ON"
 
 md[c("GMR_SS01371-20150814_31_F1",
      "GMR_SS01371-20150814_31_F4",
      "GMR_SS01371-20150814_31_F6"),]$pnt = "AD1"
 md[c("GMR_SS01371-20150814_31_F1",
      "GMR_SS01371-20150814_31_F4",
-     "GMR_SS01371-20150814_31_F6"),]$anatomy.group = "AD1a"
+     "GMR_SS01371-20150814_31_F6"),]$anatomy.group = "AD1d"
 md[c("GMR_SS01371-20150814_31_F1",
      "GMR_SS01371-20150814_31_F4",
-     "GMR_SS01371-20150814_31_F6"),]$cell.type = "AD1a2"
+     "GMR_SS01371-20150814_31_F6"),]$cell.type = "AD1d1"
+md[c("GMR_SS01371-20150814_31_F1",
+     "GMR_SS01371-20150814_31_F4",
+     "GMR_SS01371-20150814_31_F6"),]$type = "ON"
 
 md[c("JRC_SS03226-20161123_33_A4",
      "JRC_SS03226-20161123_33_B3",
-     "JRC_SS03226-20161123_33_B5"),]$pnt = "PV4"
+     "JRC_SS03226-20161123_33_B5"),]$pnt = "PV6"
 md[c("JRC_SS03226-20161123_33_A4",
      "JRC_SS03226-20161123_33_B3",
-     "JRC_SS03226-20161123_33_B5"),]$anatomy.group = "PV4"
+     "JRC_SS03226-20161123_33_B5"),]$anatomy.group = "PV6a"
 md[c("JRC_SS03226-20161123_33_A4",
      "JRC_SS03226-20161123_33_B3",
-     "JRC_SS03226-20161123_33_B5"),]$cell.type = "PV4d7"
+     "JRC_SS03226-20161123_33_B5"),]$cell.type = "PV6a1"
+md[c("JRC_SS03226-20161123_33_A4",
+     "JRC_SS03226-20161123_33_B3",
+     "JRC_SS03226-20161123_33_B5"),]$type = "ON"
 
 md[c("GMR_MB380B-20150814_31_B6"),]$anatomy.group = "MB-C1"
 md[c("GMR_MB380B-20151014_33_D1"),]$anatomy.group = "MB-C1"
@@ -469,9 +483,7 @@ md["GMR_41H09_AV_01-20150626_32_D1",]$cell.type = "LP-PN1"
 
 md[grepl("PN",md$cell.type),]$type = "IN"
 #md[grepl("notLHproper",md$cell.type),]$type = "notLHproper"
-md[grepl("PD2a1/b1",md$cell.type),]$type = "ON"
-md[grepl("AV6c3",md$cell.type),]$type = "ON"
-md[grepl("MBON-Calyx",md$cell.type),]$type = "ON"
+md[grepl("MBON-Calyx|MB-C1",md$cell.type),]$type = "ON"
 
 
 # 145 is both an input and output neuron
@@ -502,6 +514,7 @@ lhin.splits.dps = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
 lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
+lh.splits.dps = c(lhon.splits.dps,lhln.splits.dps,lhin.splits.dps)
 
 
 #####################

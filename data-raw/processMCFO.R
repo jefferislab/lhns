@@ -678,7 +678,7 @@ mf["JRC_SS16786-20151022_19_B7-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "G
 
 # L1827; 29E & others; PV4b1/2
 mf[c("JRC_SS22732-20180209_20_B1-Aligned63xScale_c0a.Smt.SptGraph.swc",
-     "JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "29E"
+     "JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "29E" # Sure??
 mf[c("JRC_SS22732-20180209_20_B1-Aligned63xScale_c2b.Smt.SptGraph.swc"),]$old.cell.type = ""
 mf[c("JRC_SS22732-20180209_20_B2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B4-Aligned63xScale_c1.Smt.SptGraph.swc",
@@ -690,9 +690,9 @@ mf[c("JRC_SS22732-20180209_20_B2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B6-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B7-Aligned63xScale_c1a.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B7-Aligned63xScale_c1b.Smt.SptGraph.swc"),]$old.cell.type = "29E"
-# PV4b4
-mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c0a.Smt.SptGraph.swc",]$match = "PV4b4"
-mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "PV4b4"
+# PV6d1
+mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c0a.Smt.SptGraph.swc",]$match = "PV6d1"
+mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "PV6d1"
 # AD1d1
 mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c2b.Smt.SptGraph.swc",]$match = "Gad1-F-300229"
 # PV4b1/2
@@ -859,9 +859,9 @@ mf["JRC_SS15285-20150828_23_A1-Aligned63xScale_c1b.Smt.SptGraph.swc",]$match ="C
 mf["JRC_SS15285-20150828_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="5HT1A-F-100028"
 mf["JRC_SS15285-20150828_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "5HT1A-F-100028"
 
-# L62; 12B 4? 29C; PV4d7
-mf[c("JRC_SS15256-20151009_19_E1-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "4?"
-mf["JRC_SS15289-20160226_20_F2-Aligned63xScale_c0.Smt2.SptGraph.swc",]$match = "PV4d7"
+# L62; 12B 4? 29C; PV6a1
+mf[c("JRC_SS15256-20151009_19_E1-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "29C"
+mf["JRC_SS15289-20160226_20_F2-Aligned63xScale_c0.Smt2.SptGraph.swc",]$match = "PV6a1"
 
 # L1293; 12A; PV5c1
 mf[c("JRC_SS16977-20150828_24_D4-Aligned63xScale_c1a.Smt.SptGraph.swc",
@@ -1012,15 +1012,15 @@ mf$type = as.character(sapply(mf$match,function(x) df[x,]$type))
 
 
 
-mf[grepl("PV4d7",mf$match),]$pnt = "PV4"
-mf[grepl("PV4d7",mf$match),]$anatomy.group = "PV4d7"
-mf[grepl("PV4d7",mf$match),]$type = "ON"
-mf[grepl("PV4d7",mf$match),]$cell.type = "PV4d7"
+mf[grepl("PV6a1",mf$match),]$pnt = "PV4"
+mf[grepl("PV6a1",mf$match),]$anatomy.group = "PV6a1"
+mf[grepl("PV6a1",mf$match),]$type = "ON"
+mf[grepl("PV6a1",mf$match),]$cell.type = "PV6a1"
 
-mf[grepl("PV4b4",mf$match),]$pnt = "PV4"
-mf[grepl("PV4b4",mf$match),]$anatomy.group = "PV4b4"
-mf[grepl("PV4b4",mf$match),]$type = "ON"
-mf[grepl("PV4b4",mf$match),]$cell.type = "PV4b4"
+mf[grepl("PV6d1",mf$match),]$pnt = "PV4"
+mf[grepl("PV6d1",mf$match),]$anatomy.group = "PV6d1"
+mf[grepl("PV6d1",mf$match),]$type = "ON"
+mf[grepl("PV6d1",mf$match),]$cell.type = "PV6d1"
 
 mf[grepl("PD3a3",mf$match),]$pnt = "PD3"
 mf[grepl("PD3a3",mf$match),]$anatomy.group = "PD3a"
