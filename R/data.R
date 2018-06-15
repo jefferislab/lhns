@@ -209,3 +209,23 @@
 #' Vector clouds for EM LHNs identified in the Dolan split lines. Tracing in progress.
 #' @details Dolan et al. 2018, upcoming.
 "emlhns.dps"
+
+
+#' Lateral horn neuron morphologies from Jeanne and Fisek et al. 2018
+#'
+#' Skeletonized 3-D Morphologies of all Digitized LHNs related to Figure 4 in Jeanne and Fisek et al. 2018.
+#' Meta-data contains the LHN's voltage responses to GH146 glomerular photostimulation. Transformed into FCWB space.
+#'
+#' @source \url{https://doi.org/10.1016/j.neuron.2018.05.011}
+#' @seealso \code{\link{jfw.lhns.dps}}
+"jfw.lhns"
+
+
+#' Vector clouds for lateral horn neuron morphologies from Jeanne and Fisek et al. 2018
+#'
+#' Skeletonized 3-D Morphologies of all Digitized LHNs related to Figure 4 in Jeanne and Fisek et al. 2018.
+#' Meta-data contains the LHN's voltage responses to GH146 glomerular photostimulation. Transformed into FCWB space.
+#'
+#' @source \url{https://doi.org/10.1016/j.neuron.2018.05.011}
+#' @seealso \code{\link{jfw.lhns}}
+"jfw.lhns.dps"

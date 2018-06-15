@@ -15,3 +15,5 @@ base::delayedAssign('lhon.splits.dps', nat::as.neuronlist(nat::read.neuronlistfh
 base::delayedAssign('lh.mcfo', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lh.mcfo.rds',package='lhns'))))
 base::delayedAssign('lh.mcfo.dps', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lh.mcfo.dps.rds',package='lhns'))))
 base::delayedAssign('lh.splits.dps', c(lhln.splits.dps,lhin.splits.dps,lhon.splits.dps))
+base::delayedAssign('jfw.lhns', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('jfw.lhns.rds',package='lhns'))))
+base::delayedAssign('jfw.lhns.dps', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('jfw.lhns.dps.rds',package='lhns'))))

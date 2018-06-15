@@ -1,4 +1,4 @@
-# ################################
+##################################
 # Read and process MCFO skeletons #
 #################################
 
@@ -1216,9 +1216,9 @@ attr(lh.mcfo,"df") = mf
 #lh.mcfo = subset(lh.mcfo,!is.na(cell.type)|cell.type=="notLHproper")
 
 
-# #################
-# Update Meta-Data #
-###################
+#####################
+# Create neuronlistfh #
+#####################
 
 
 lh.mcfo = nlapply(lh.mcfo,nat::resample,stepsize = 1)
@@ -1227,9 +1227,10 @@ lh.mcfo.dps = nat::dotprops(lh.mcfo,OmitFailures=TRUE)
 lh.mcfo.dps = as.neuronlistfh(lh.mcfo.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
-#####################
-# Write neuronlistfh #
-#####################
+
+# #################
+# Update Meta-Data #
+###################
 
 
 write.neuronlistfh(lh.mcfo, file='inst/extdata/lh.mcfo.rds',overwrite = TRUE)
