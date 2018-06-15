@@ -158,7 +158,7 @@ colnames(d) = c("linecode","imagecode","AD","DBD","old.cell.type","num.clusters"
 d$imagecode = NULL
 d = d[!duplicated(d$linecode),]
 rownames(d) = d$linecode
-m = c();lines = c()
+m = c();lines = c(); nams = c()
 for(nam in names(mcfo)){
   n = gsub("^4a_","",nam)
   n = gsub("^cell1_","",n)
@@ -170,6 +170,7 @@ for(nam in names(mcfo)){
   mch = match(n,s)
   lines = c(lines,ifelse(is.na(mch),n,as.character(codes[mch,"LineCode"])))
   m = c(m,mch)
+  nams = c(nams, n)
 }
 #mf = data.frame(linecode = codes[m,"LineCode"])
 mf = data.frame(linecode = as.character(lines))
