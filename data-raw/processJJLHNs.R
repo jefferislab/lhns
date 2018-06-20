@@ -274,7 +274,7 @@ dfills.cts.not.in.jj = data.frame(JJtype = FALSE, cell.type = dfills.cts[!dfills
 c = rbind(c,dfills.cts.not.in.jj)
 
 # Add in the split info
-mt = lhns::lh.splits.dps[,]
+mt = rbind(lhns::lh.splits.dps[,],lhns::lh.mcfo[,])
 mt = subset(mt, type%in%c("LN","ON"))
 mt = mt[,c("old.cell.type","cell.type")]
 mt = dplyr::distinct(mt)
