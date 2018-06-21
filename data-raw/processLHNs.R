@@ -66,7 +66,7 @@ df[badly.traced,]$good.trace = FALSE
 
 notLH = c("5HT1A-F-100016", "5HT1A-F-300001", "5HT1A-F-300035", "5HT1A-M-300003",
          "5HT1A-M-400013", "5HT1A-M-400022", "5HT1A-M-500012", "5HT1A-M-800011",
-         "Cha-F-000152", "Cha-F-000428", "Cha-F-000432", "Cha-F-000452",
+         "Cha-F-000152", "Cha-F-000428", "Cha-F-000432", "Cha-F-000452", "Cha-F-000086",
          "Cha-F-000491", "Cha-F-000506", "Cha-F-100372", "Cha-F-100373",
          "Cha-F-100387", "Cha-F-100420", "Cha-F-100425", "Cha-F-200232",
          "Cha-F-200439", "Cha-F-300023", "Cha-F-300212", "Cha-F-300347",
@@ -723,7 +723,7 @@ df[pv6.b.1,]$cell.type = "pv6b1"
 ### PV2
 pv2 = c("Gad1-F-600088","Gad1-F-800194","Gad1-F-500328","Gad1-F-400232",
         "Gad1-F-100074","CL52R_11E08","CL123R_70G02","CL133R_39D07",
-        "5HT1A-M-100027", "Gad1-F-800092", "Gad1-F-700138", "Cha-F-000086",
+        "5HT1A-M-100027", "Gad1-F-800092", "Gad1-F-700138",
         "Cha-F-300168", "Cha-F-400222", "Cha-F-000242",
         "Gad1-F-800126", "Gad1-F-500266", "Cha-F-200448","Cha-F-600097",
         "5HT1A-M-200001","5HT1A-F-100028","131030c0",
@@ -741,13 +741,12 @@ pv2.c.2 = "Gad1-F-100074"
 pv2.c.3 ="CL133R_39D07"
 pv2.c=c(pv2.c.1,pv2.c.2,pv2.c.3)
 pv2.d = pv2.d.1 = "Gad1-F-500328"
-pv2.e = pv2.e.1 = "Cha-F-000086"
-pv2.f = pv2.f.1 = "ICL151B_IS24671"
-pv2.g = pv2.g.1 = c("Gad1-F-500266", "Cha-F-200448")
-pv2.h = pv2.h.1 = "Gad1-F-800126"# Could be its own tract
-pv2.i = pv2.i.1 = "Cha-F-600097"
-pv2.j = pv2.j.1 = "CL52R_11E08"
-pv2.k = pv2.k.1 = "CL135R_10A11"
+pv2.e = pv2.e.1 = "ICL151B_IS24671"
+pv2.f = pv2.f.1 = c("Gad1-F-500266", "Cha-F-200448")
+pv2.g = pv2.g.1 = "Gad1-F-800126"# Could be its own tract
+pv2.h = pv2.h.1 = "Cha-F-600097"
+pv2.i = pv2.i.1 = "CL52R_11E08"
+pv2.j = pv2.j.1 = "CL135R_10A11"
 
 df[pv2.a,]$anatomy.group = "pv2a"
 df[pv2.b,]$anatomy.group = "pv2b"
@@ -759,7 +758,6 @@ df[pv2.g,]$anatomy.group = "pv2g"#dont use for plotting
 df[pv2.h,]$anatomy.group = "pv2h"
 df[pv2.i,]$anatomy.group = "pv2i"
 df[pv2.j,]$anatomy.group = "pv2j"
-df[pv2.k,]$anatomy.group = "pv2k"
 
 
 
@@ -778,7 +776,6 @@ df[pv2.g.1,]$cell.type = "pv2g1"
 df[pv2.h.1,]$cell.type = "pv2h1"
 df[pv2.i.1,]$cell.type = "pv2i1"
 df[pv2.j.1,]$cell.type = "pv2j1"
-df[pv2.k.1,]$cell.type = "pv2k1"
 
 
 
@@ -1771,7 +1768,7 @@ lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "pv1a1", "pv1a2", "pv1a3", "pv1b1", "pv1b2", "pv1b3", "pv1b4",
                       "pv1b5", "pv1c1", "pv1d1", "pv1e1", "pv1f1", "pv1g1", "pv1h1",
                       "pv1i1", "pv2b1", "pv2c1", "pv2c2", "pv2c3", "pv2d1", "pv2f1",
-                      "pv2g1", "pv2h1", "pv2i1", "pv2j1", "pv2k1", "pv3a1", "pv3a2",
+                      "pv2g1", "pv2h1", "pv2i1", "pv2j1", "pv3a1", "pv3a2",
                       "pv3b1", "pv3c1", "pv3d1", "pv3e1", "pv3f1", "pv4b1", "pv4b2",
                       "pv4b3", "pv4b4", "pv4c1", "pv4c1", "pv4c2", "pv4c3", "pv4c4",
                       "pv4c5", "pv4c6", "pv4d1", "pv4d1", "pv4d2", "pv4d3", "pv4d4",

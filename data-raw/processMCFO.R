@@ -888,7 +888,7 @@ mf[c("JRC_SS23341-20160805_24_A1-Aligned63xScale_c0.Smt.SptGraph.swc",
      "JRC_SS23341-20160805_24_A4-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS23341-20160805_24_A4-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS23341-20160805_24_A5-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS23341-20160805_24_A7-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "27A"
+     "JRC_SS23341-20160805_24_A7-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "4G"
 mf["JRC_SS23341-20160805_24_A1-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Gad1-F-100178"
 mf["JRC_SS23341-20160805_24_A1-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-100178" # Duplicated
 mf["JRC_SS23341-20160805_24_A1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Gad1-F-100178" # Duplicated
