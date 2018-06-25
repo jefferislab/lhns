@@ -666,6 +666,21 @@ df[unknowns,]$tract = "Uncertain"
 df[unknowns,]$neurotransmitter = "Unknown"
 
 
+###### Dopaminergic input ######
+
+
+
+
+
+dope = c("Gad1-F-500004","TH-M-200079","TH-M-300048","TH-M-000042","TH-M-200033","TH-M-200035")
+df[dope,"anatomy.group"] = "PPL2ab-PN1"
+df[dope,]$modality = "Neuromodulatory"
+df[dope,]$reference = "ASB"
+df[dope,]$dendritic.location = "PV1"
+df[dope,]$cell.body.position = "PV1"
+df[dope,]$tract = "Uncertain"
+df[dope,]$neurotransmitter = "Dopamine"
+
 
 
 

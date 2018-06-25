@@ -1,4 +1,4 @@
-# #################
+###################
 # Process Raw Data #
 ###################
 library(elmr)
@@ -788,16 +788,15 @@ df[pv2.j.1,]$cell.type = "pv2j1"
 
 
 ### PV1
-pv1 = c("TH-M-200033", "TH-M-200079", "TH-M-300048", "TH-M-000013", "CL143R_MB583B",
-        "TH-M-000042", "TH-M-000071", "Trh-M-000025", "Cha-F-000461",
-        "TH-F-000011", "TH-F-000012", "TH-M-200035","Gad1-F-500004",
+pv1 = c("TH-M-000013", "CL143R_MB583B",
+         "TH-M-000071", "Trh-M-000025", "Cha-F-000461",
+        "TH-F-000011", "TH-F-000012",
         "Gad1-F-500089","TH-F-300078","Gad1-F-500325","Cha-F-000278","Cha-F-500094",
         "Cha-F-000310", "fru-F-000126", "fru-M-800060", "TH-M-000030","fru-F-000125")
 df[unique(pv1),]$pnt = "pv1"
-pv1.a.1 = c("Gad1-F-500004","TH-M-200079","TH-M-300048","TH-M-000042","TH-M-200033","TH-M-200035")
-pv1.a.2 = c( "Cha-F-000310","Cha-F-000461","TH-F-000012","TH-M-000013","TH-M-000030")
-pv1.a.3 = "Cha-F-000310"
-pv1.a=c(pv1.a.1,pv1.a.2,pv1.a.3)
+pv1.a.1 = c( "Cha-F-000310","Cha-F-000461","TH-F-000012","TH-M-000013","TH-M-000030")
+pv1.a.2 = "Cha-F-000310"
+pv1.a=c(pv1.a.1,pv1.a.2)
 pv1.b = c("TH-M-000071","TH-F-300078","Gad1-F-500089","TH-F-000011","Trh-M-000025")
 pv1.b.1 = "TH-M-000071"
 pv1.b.2 = "TH-F-300078"
@@ -822,7 +821,6 @@ df[pv1.h,]$anatomy.group = "pv1h"
 df[pv1.i,]$anatomy.group = "pv1i"
 df[pv1.a.1,]$cell.type = "pv1a1"
 df[pv1.a.2,]$cell.type = "pv1a2"
-df[pv1.a.3,]$cell.type = "pv1a3"
 df[pv1.b.1,]$cell.type = "pv1b1"
 df[pv1.b.2,]$cell.type = "pv1b2"
 df[pv1.b.3,]$cell.type = "pv1b3"
@@ -1765,7 +1763,7 @@ lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "pd4a2", "pd4a3", "pd4a4", "pd4b1", "pd4c1", "pd4c2", "pd4e1",
                       "pd4f1", "pd4g1", "pd4h1", "pd4i1", "pd5a1", "pd6a1", "pd6a2",
                       "pd6b1", "pd6c1", "pd6d1", "pd6e1", "pv11a1", "pv11a2", "pv12a1",
-                      "pv1a1", "pv1a2", "pv1a3", "pv1b1", "pv1b2", "pv1b3", "pv1b4",
+                      "pv1a1", "pv1a2",  "pv1b1", "pv1b2", "pv1b3", "pv1b4",
                       "pv1b5", "pv1c1", "pv1d1", "pv1e1", "pv1f1", "pv1g1", "pv1h1",
                       "pv1i1", "pv2b1", "pv2c1", "pv2c2", "pv2c3", "pv2d1", "pv2f1",
                       "pv2g1", "pv2h1", "pv2i1", "pv2j1", "pv3a1", "pv3a2",
@@ -1781,7 +1779,7 @@ lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "pv5l1", "pv7a1", "pv7b1", "pv8b1", "pv8c1", "pv9a1", "pv9b1",
                       "pv9c1", "pv9d1", "pv9d2", "pv10a1", "pv10b1", "pv10c1", "pv10c2",
                       "pv10d1", "pv10e1", "pv10f1", "pv10g1", "pv10h1", "pv10i1", "pv10j1", "pd7a1", "pd7b1")
-lh.local.neurons = c("av1b1", "av4a1", "av4a10", "av4a10", "av4a11", "av4a2", "av4a3",
+lh.local.neurons = c("av1b1", "av4a1", "av4a10", "av4a11", "av4a2", "av4a3",
                      "av4a4", "av4a5", "av4a6", "av4a7", "av4a8", "av4a9", "av4h1",
                      "av5b1", "av5d1", "av6g1", "pd3a1", "pd3a2", "pd4d1", "pv2a1",
                      "pv2a2", "pv2a3", "pv2a4", "pv2e1",  "pv4a3", "pv4a1",
