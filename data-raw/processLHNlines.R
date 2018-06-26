@@ -12,7 +12,7 @@ if(!exists("lh.mcfo")){
 }
 
 
-# ##############################################
+################################################
 # Read Dolan et al. 2018 split line information #
 ################################################
 
@@ -105,22 +105,26 @@ for(u in unassigned){
 
 
 # Create and old to new cell.type mapping
+most.lh = c(most.lhns,most.lhins)
 old = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(lh_line_info$old.cell.type)))))
 old = old[!grepl("sleep|NotLH|\v|\\?| ",old)]
 old = sort(old)
 new = c()
+types = c()
 for(o in old){
   cts = sort(na.omit(unique(subset(lh_line_info,old.cell.type==o)$cell.type)))
   cts = unique(unlist(strsplit(cts,"/")))
   cts = paste(sort(na.omit(unique(cts))),collapse="/")
   new = c(new,cts)
+  t = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"type"])),collapse="/")
+  types = c(types,t)
 }
-old2new = data.frame(old=old,new=new)
+old2new = data.frame(old=old,new=new, type=types)
 old2new[] = lapply(old2new, as.character)
 # Add some manual assignments
 old2new[old2new$old%in%c("151A"),"new"] = "VNC-PN1"
 old2new[old2new$old%in%c("V2"),"new"] = "LO-PN2"
-write.csv(old2new,file="data-raw/oldCTss_to_newCTs.csv")
+write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv")
 
 # Guess the cell types based on Mike's old.cell.type assignments
 for(l in 1:nrow(lh_line_info)){
@@ -128,7 +132,7 @@ for(l in 1:nrow(lh_line_info)){
 }
 
 
-# #####
+########
 # Save #
 #######
 

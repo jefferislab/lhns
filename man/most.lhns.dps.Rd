@@ -4,7 +4,7 @@
 \name{most.lhns.dps}
 \alias{most.lhns.dps}
 \title{A comprehensive lateral horn neuron dotprops dataset}
-\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 1163.}
+\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 1531.}
 \source{
 \url{http://www.flycircuit.tw/}
 }

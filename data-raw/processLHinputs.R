@@ -4,6 +4,10 @@ library(flycircuit)
 
 # Get data
 load("data-raw/lh.inputs.rda")
+md.mcfo = nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lh.mcfo.rds',package='lhns')))
+lhin.mcfo = lh.mcfo[names(lh.mcfo)%in%c("MB583B#1","MB583B#2","MB583B#3","L2444#1")]
+lh.inputs = c(lh.inputs,lhin.mcfo)
+
 df = lh.inputs[,]
 df = df[,c("gene","sex","LH_side","glomerulus")]
 df$anatomy.group = NA
@@ -440,7 +444,7 @@ lalt.mpns2 = c("Trh-M-000170", "Trh-M-000008", "Trh-M-000070", "VGlut-F-100003",
                "5HT1A-F-100004", "5HT1A-F-100032", "Cha-F-500056", "Gad1-F-200299")
 df[lalt.mpns2,"anatomy.group"] = "AL-lALT-PN2"
 
-lalt.mpns3 ="Cha-F-900038"
+lalt.mpns3 = c("Cha-F-900038","L2444#1")
 df[lalt.mpns3,"anatomy.group"] = "AL-lALT-PN3"
 
 lalt.mpns5 = c("Trh-M-200074", "Gad1-F-400223", "fru-M-200462", "Cha-F-500003",
@@ -672,7 +676,8 @@ df[unknowns,]$neurotransmitter = "Unknown"
 
 
 
-dope = c("Gad1-F-500004","TH-M-200079","TH-M-300048","TH-M-000042","TH-M-200033","TH-M-200035")
+dope = c("Gad1-F-500004","TH-M-200079","TH-M-300048","TH-M-000042","TH-M-200033","TH-M-200035",
+         "MB583B#1","MB583B#2","MB583B#3")
 df[dope,"anatomy.group"] = "PPL2ab-PN1"
 df[dope,]$modality = "Neuromodulatory"
 df[dope,]$reference = "ASB"

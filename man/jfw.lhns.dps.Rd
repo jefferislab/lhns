@@ -4,7 +4,7 @@
 \name{jfw.lhns.dps}
 \alias{jfw.lhns.dps}
 \title{Vector clouds for lateral horn neuron morphologies from Jeanne and Fisek et al. 2018}
-\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 414.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 414.}
 \source{
 \url{https://doi.org/10.1016/j.neuron.2018.05.011}
 }

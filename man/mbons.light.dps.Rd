@@ -4,7 +4,7 @@
 \name{mbons.light.dps}
 \alias{mbons.light.dps}
 \title{Mushroom body output neuron Vector clouds representing}
-\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 17.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 17.}
 \usage{
 mbons.light.dps
 }

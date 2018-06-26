@@ -18,7 +18,6 @@ see_fc <- function (fc_id, max = 10){
   }
 }
 
-
 #' Capitalise cell type names
 #'
 #' @description Capitalise the first two letters of the cell type names
@@ -41,4 +40,14 @@ capitalise_cell_type_name  <- function(x, inverse = FALSE){
     }
   }
   sapply(x,f,inverse=inverse)
+}
+
+#' Get primary neurite tract name and anatomy group from cell types
+#'
+#' @description Get primary neurite tract name and anatomy group from cell types
+#' @param x Cell type names
+#' @export
+process_lhn_name <- function(x) {
+  res=stringr::str_match(x, "([AP][DV][1-9][0-9]{0,1})([a-z])([1-9][0-9]{0,2})")
+  data.frame(pnt=res[,2], anatomy.group=paste0(res[,2], res[,3]), cell.type=res[,1],stringsAsFactors = F)
 }

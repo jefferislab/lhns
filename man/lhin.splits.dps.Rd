@@ -5,7 +5,7 @@
 \alias{lhin.splits.dps}
 \alias{lhin.splits.dps}
 \title{Vector clouds of LH input neurons from split GAL4 lines}
-\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 39.}
+\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 45.}
 \usage{
 lhin.splits.dps
 

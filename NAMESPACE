@@ -2,6 +2,7 @@
 
 export(capitalise_cell_type_name)
 export(plot_pnts)
+export(process_lhn_name)
 export(see_fc)
 import(nat)
 import(nat.flybrains)
