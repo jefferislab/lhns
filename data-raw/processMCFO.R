@@ -10,7 +10,7 @@ if(!exists("most.lhns")){
 }
 
 # # Read MCFO neurons
-# mcfo = read.neurons("/GD/LMBD/Papers/2018lhsplitcode/Data/MCFO.4a.jfrc2013.rds")
+# mcfo = read.neurons("/Users/abates/ImageData/MCFO/skels")
 # mcfo = nlapply(mcfo,nat::resample, stepsize = 1)
 #
 # # Fix skeletons (fix a few issues with Amira skeletons, like loops and star-burst node connectivity)
@@ -122,7 +122,7 @@ if(!exists("most.lhns")){
 # attr(nl,"df") = data.frame(file=names(mcfo))
 # nl = nlapply(nl,nat::resample, stepsize = 1)
 # names(nl) = as.character(nl[,"file"])
-#
+# #
 # # Fit soma - interactive
 # nl = catnat::correctsoma(nl)
 #
@@ -134,7 +134,7 @@ if(!exists("most.lhns")){
 #
 # # Transform to FCWB space
 # mcfo4 = nat::nlapply(nl,nat.templatebrains::xform_brain,sample = nat.flybrains::JFRC2013,reference= nat.flybrains::FCWB,OmitFailures = T) # any lost?
-#
+
 # # # save
 # # save(mcfo,file = "data-raw/dolan_mcfo.rda")
 
@@ -182,24 +182,237 @@ mf$skeleton.type = "MCFO"
 mf$file = rownames(mf) = names(mcfo)
 mf[] = lapply(mf, as.character)
 
-# NBlast
-# mcfo.dps = dotprops(mcfo,resample=1)
-# result1 = nblast(mcfo.dps, lhns::most.lhns.dps)
-# result2 =  nblast(lhns::most.lhns.dps, mcfo.dps)
-# result = (result1 + t(result2))/2
+# # NBlast
+#  mcfo.dps = dotprops(mcfo,resample=1)
+#  result1 = nblast(mcfo.dps, c(lhns::most.lhns.dps,lhns::most.lhins.dps))
+#  result2 =  nblast(c(lhns::most.lhns.dps,lhns::most.lhins.dps), mcfo.dps)
+#  result = (result1 + t(result2))/2
+# most.lh = c(lhns::most.lhns,lhns::most.lhins)
+# for(c in 62:ncol(result)){
+#    clear3d()
+#    plot3d(FCWB)
+#    message(paste0(c,"/",ncol(result)))
+#    message(names(mcfo[c]))
+#    plot3d(mcfo[c],col = "black",lwd=3,soma=T)
+#    n = nlscan(most.lh[names(sort(result[,c],decreasing = TRUE))],col="red",lwd=2,soma=T)
+#  }
 
-# for(c in 3:ncol(result)){
-#   clear3d()
-#   plot3d(FCWB)
-#   message(paste0(c,"/",ncol(result)))
-#   message(names(mcfo[c]))
-#   plot3d(mcfo[c],col = "black",lwd=3,soma=T)
-#   n = nlscan(lhns::most.lhns[names(sort(result[,c],decreasing = TRUE))],col="red",lwd=2,soma=T)
-# }
-
-# ##########################
+############################
 # Assignments to LHN library #
 ############################
+
+
+
+
+# L1668; 70A
+mf[c("JRC_SS03791-20151105_24_E2-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS03791-20151105_24_E2-Aligned63xScale_c2.Smt2.SptGraph.swc",
+  "JRC_SS03791-20151105_24_E3-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS03791-20151105_24_E6-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "70A"
+mf[c("JRC_SS03791-20151105_24_E2-Aligned63xScale_c2.Smt.SptGraph.swc",
+     "JRC_SS03791-20151105_24_E2-Aligned63xScale_c2.Smt2.SptGraph.swc",
+     "JRC_SS03791-20151105_24_E3-Aligned63xScale_c2.Smt.SptGraph.swc",
+     "JRC_SS03791-20151105_24_E6-Aligned63xScale_c1.Smt.SptGraph.swc"),]$match = "WED-PN3"
+
+
+# L1518; 70A
+mf[c("JRC_SS03801-20151125_19_B2-Aligned63xScale_c1a.Smt.SptGraph.swc",
+  "JRC_SS03801-20151125_19_B2-Aligned63xScale_c1b.Smt.SptGraph.swc",
+  "JRC_SS03801-20151125_19_B4-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS03801-20151125_19_B6-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS03801-20151125_19_B6-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "70A"
+mf[c("JRC_SS03801-20151125_19_B2-Aligned63xScale_c1a.Smt.SptGraph.swc",
+     "JRC_SS03801-20151125_19_B2-Aligned63xScale_c1b.Smt.SptGraph.swc",
+     "JRC_SS03801-20151125_19_B4-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS03801-20151125_19_B6-Aligned63xScale_c0.Smt.SptGraph.swc",
+     "JRC_SS03801-20151125_19_B6-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "WED-PN3"
+
+# L1129; 7A
+  mf[c("JRC_SS04950-20170303_21_A1-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04950-20170303_21_A2-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS04950-20170303_21_A2-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04950-20170303_21_A5-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS04950-20170303_21_A6-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "7A"
+  mf["JRC_SS04950-20170303_21_A1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="Gad1-F-600143"
+  mf["JRC_SS04950-20170303_21_A2-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="Gad1-F-600143"
+  mf["JRC_SS04950-20170303_21_A2-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="Cha-F-800078"
+  mf["JRC_SS04950-20170303_21_A5-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="Gad1-F-800082"
+  mf["JRC_SS04950-20170303_21_A6-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-600143"
+
+  # L1129; 70C
+  mf[c("JRC_SS04961-20151217_26_E1-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E1-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E3-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E4-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E5-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E6-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E6-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E8-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04961-20151217_26_E8-Aligned63xScale_c2.Smt2.SptGraph.swc"),]$old.cell.type = "70C"
+  mf["JRC_SS04961-20151217_26_E1-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E3-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E4-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E5-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E6-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E6-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E8-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS04961-20151217_26_E8-Aligned63xScale_c2.Smt2.SptGraph.swc",]$match = "VGlut-F-500810"
+
+  # L1337; 70B
+  mf[c("JRC_SS04962-20151125_23_F2-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS04962-20151125_23_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04962-20151125_23_F3-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04962-20151125_23_F6-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS04962-20151125_23_F6-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04962-20151125_23_F7-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS04962-20151125_23_F8-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS04962-20151125_23_F8-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "70B"
+  mf[c("JRC_SS04962-20151125_23_F2-Aligned63xScale_c1.Smt.SptGraph.swc",
+       "JRC_SS04962-20151125_23_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
+       "JRC_SS04962-20151125_23_F3-Aligned63xScale_c2.Smt.SptGraph.swc",
+       "JRC_SS04962-20151125_23_F6-Aligned63xScale_c1.Smt.SptGraph.swc",
+       "JRC_SS04962-20151125_23_F6-Aligned63xScale_c2.Smt.SptGraph.swc",
+       "JRC_SS04962-20151125_23_F7-Aligned63xScale_c2.Smt.SptGraph.swc",
+       "JRC_SS04962-20151125_23_F8-Aligned63xScale_c1.Smt.SptGraph.swc",
+       "JRC_SS04962-20151125_23_F8-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "WED-PN5"
+
+  # L452; 70A
+  mf[c("JRC_SS15280-20151015_19_G1-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS15280-20151015_19_G4-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS15280-20151015_19_G4-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "70A"
+  mf[c("JRC_SS15280-20151015_19_G1-Aligned63xScale_c2.Smt.SptGraph.swc",
+       "JRC_SS15280-20151015_19_G4-Aligned63xScale_c0.Smt.SptGraph.swc",
+       "JRC_SS15280-20151015_19_G4-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "WED-PN3"
+
+  # L788; 1D
+  mf[c("JRC_SS16038-20151125_23_G1-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS16038-20151125_23_G1-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS16038-20151125_23_G1-Aligned63xScale_c2.Smt2.SptGraph.swc"),]$old.cell.type = "1D"
+  mf["JRC_SS16038-20151125_23_G1-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "fru-F-700136"
+  mf["JRC_SS16038-20151125_23_G1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "fru-F-700136"
+  mf["JRC_SS16038-20151125_23_G1-Aligned63xScale_c2.Smt2.SptGraph.swc",]$match = "fru-F-700136"
+
+  # L112; 7OC
+  mf[c("JRC_SS16337-20151125_20_D4-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS16337-20151125_20_D5-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS16337-20151125_20_D7-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS16337-20151125_20_D8-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "7OC"
+  mf["JRC_SS16337-20151125_20_D4-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS16337-20151125_20_D5-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS16337-20151125_20_D7-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+  mf["JRC_SS16337-20151125_20_D8-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "VGlut-F-500810"
+
+  # L1117; 7A
+  mf[c("JRC_SS16351-20160819_23_C4-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS16351-20160819_23_C4-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS16351-20160819_23_C6-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "7A"
+  mf["JRC_SS16351-20160819_23_C4-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "VGlut-F-500832" # Not in line
+  mf["JRC_SS16351-20160819_23_C4-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-600143"
+  mf["JRC_SS16351-20160819_23_C6-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Cha-F-200185"
+
+  # L271; 7A
+  mf[c("JRC_SS21811-20161007_29_B6-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS21811-20161007_29_B6-Aligned63xScale_c2.Smt2.SptGraph.swc",
+  "JRC_SS21811-20161007_29_B7-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS21811-20161007_29_B8-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "7A"
+  mf["JRC_SS21811-20161007_29_B6-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="Cha-F-200185"
+  mf["JRC_SS21811-20161007_29_B6-Aligned63xScale_c2.Smt2.SptGraph.swc",]$match ="Cha-F-200185"
+  mf["JRC_SS21811-20161007_29_B7-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="Gad1-F-800082"
+  mf["JRC_SS21811-20161007_29_B8-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="Cha-F-200185"
+
+  # L1524; 70D;
+  mf[c("JRC_SS22640-20161007_30_D3-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS22640-20161007_30_D3-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS22640-20161007_30_D5-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS22640-20161007_30_D8-Aligned63xScale_c0.Smt.SptGraph.swc"),]$old.cell.type = "70D"
+  mf["JRC_SS22640-20161007_30_D3-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="Cha-F-000514"
+  mf["JRC_SS22640-20161007_30_D3-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="Cha-F-000514"
+  mf["JRC_SS22640-20161007_30_D5-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="Cha-F-000514"
+  mf["JRC_SS22640-20161007_30_D8-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="Cha-F-000514"
+
+
+  # L770 ; 70C
+  mf[c("JRC_SS22763-20170324_30_A3-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS22763-20170324_30_A3-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "70C"
+  mf["JRC_SS22763-20170324_30_A3-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="VGlut-F-500810"
+  mf["JRC_SS22763-20170324_30_A3-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="VGlut-F-500810"
+
+
+  # L772; 70C
+  mf[c("JRC_SS22764-20170428_25_C3-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS22764-20170428_25_C8-Aligned63xScale_c0.Smt.SptGraph.swc"),]$old.cell.type = "70C"
+  mf["JRC_SS22764-20170428_25_C3-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="VGlut-F-500810"
+  mf["JRC_SS22764-20170428_25_C8-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="VGlut-F-500810"
+
+
+  # L2001; 147
+  mf[c("JRC_SS23097-20160624_20_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F2-Aligned63xScale_c2.Smt2.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F2-Aligned63xScale_c2.Smt3.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F3-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F3-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F3-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F4-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F6-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F8-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS23097-20160624_20_F8-Aligned63xScale_c2.Smt2.SptGraph.swc"),]$old.cell.type = "147"
+  mf["JRC_SS23097-20160624_20_F2-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F2-Aligned63xScale_c2.Smt2.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F2-Aligned63xScale_c2.Smt3.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F3-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F3-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F3-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F4-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F6-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F8-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23097-20160624_20_F8-Aligned63xScale_c2.Smt2.SptGraph.swc",]$match = "Gad1-F-200237"
+
+  # L2002; 147
+  mf[c("JRC_SS23098-20160805_24_B4-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS23098-20160805_24_B6-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "147"
+  mf["JRC_SS23098-20160805_24_B4-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+  mf["JRC_SS23098-20160805_24_B6-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Gad1-F-200237"
+
+  # L2185; 29B
+  mf[c("JRC_SS23170-20160805_23_D3-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS23170-20160805_23_D6-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "29B"
+  mf[c("JRC_SS23170-20160805_23_D3-Aligned63xScale_c1.Smt.SptGraph.swc",
+       "JRC_SS23170-20160805_23_D6-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "PV6a3"
+
+  # 70A: L1949
+  mf[c("JRC_SS23376-20170324_28_D3-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS23376-20170324_28_D5-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS23376-20170324_28_D5-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "70A"
+  mf[c("JRC_SS23376-20170324_28_D3-Aligned63xScale_c2.Smt.SptGraph.swc",
+       "JRC_SS23376-20170324_28_D5-Aligned63xScale_c0.Smt.SptGraph.swc",
+       "JRC_SS23376-20170324_28_D5-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "WED-PN3"
+
+  # L2193; 29B
+  mf[c("JRC_SS24679-20161104_18_B1-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS24679-20161104_18_B5-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "JRC_SS24679-20161104_18_B5-Aligned63xScale_c2.Smt2.SptGraph.swc",
+  "JRC_SS24679-20161104_18_B6-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS24679-20161104_18_B6-Aligned63xScale_c2.Smt2.SptGraph.swc"),]$old.cell.type = "29B"
+  mf[c("JRC_SS24679-20161104_18_B1-Aligned63xScale_c0.Smt.SptGraph.swc",
+       "JRC_SS24679-20161104_18_B5-Aligned63xScale_c0.Smt.SptGraph.swc",
+       "JRC_SS24679-20161104_18_B5-Aligned63xScale_c2.Smt2.SptGraph.swc",
+       "JRC_SS24679-20161104_18_B6-Aligned63xScale_c2.Smt.SptGraph.swc",
+       "JRC_SS24679-20161104_18_B6-Aligned63xScale_c2.Smt2.SptGraph.swc"),]$match = "PV6a3"
+
+  # NP6099; TypeII
+  mf[c("VZJ_K_39601-20180315_20_B1-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "VZJ_K_39601-20180315_20_B1-Aligned63xScale_c0b.Smt.SptGraph.swc",
+  "VZJ_K_39601-20180315_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "VZJ_K_39601-20180315_20_B2-Aligned63xScale_c0.Smt.SptGraph.swc",
+  "VZJ_K_39601-20180315_20_C4-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "VZJ_K_39601-20180316_24_G4-Aligned63xScale_c0.Smt.SptGraph.swc"),]$old.cell.type = "TypeII"
+  mf["VZJ_K_39601-20180315_20_B1-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Gad1-F-600143"
+  mf["VZJ_K_39601-20180315_20_B1-Aligned63xScale_c0b.Smt.SptGraph.swc",]$match = "Gad1-F-600143"
+  mf["VZJ_K_39601-20180315_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Cha-F-800078"
+  mf["VZJ_K_39601-20180315_20_B2-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Cha-F-800078"
+  mf["VZJ_K_39601-20180315_20_C4-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Cha-F-800078"
+  mf["VZJ_K_39601-20180316_24_G4-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Cha-F-800078"
 
 
 # SS01372; 3A;
@@ -508,7 +721,7 @@ mf[c("JRC_SS04958-20160225_19_C1-Aligned63xScale_c0a.Smt.SptGraph.swc",
      "JRC_SS04958-20160225_19_C2-Aligned63xScale_c2b.Smt.SptGraph.swc",
      "JRC_SS04958-20160225_19_C3-Aligned63xScale_c0a.Smt.SptGraph.swc",
      "JRC_SS04958-20160225_19_C3-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS04958-20160225_19_C3-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "1B"
+     "JRC_SS04958-20160225_19_C3-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "1B2"
 mf["JRC_SS04958-20160225_19_C1-Aligned63xScale_c0a.Smt.SptGraph.swc",]$match ="fru-F-500093"
 mf["JRC_SS04958-20160225_19_C1-Aligned63xScale_c0b.Smt.SptGraph.swc",]$match ="131123c1"
 mf["JRC_SS04958-20160225_19_C1-Aligned63xScale_c1a.Smt.SptGraph.swc",]$match ="fru-F-500093"
@@ -802,7 +1015,7 @@ mf[c("JRC_SS16661-20151125_20_F1-Aligned63xScale_c0.Smt.SptGraph.swc",
      "JRC_SS16661-20151125_20_F1-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS16661-20151125_20_F1-Aligned63xScale_c1a.Smt.SptGraph.swc",
      "JRC_SS16661-20151125_20_F1-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c2b.Smt.SptGraph.swc"),]$old.cell.type = "1B"
+     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c2b.Smt.SptGraph.swc"),]$old.cell.type = "1B1"
 mf["JRC_SS16661-20151125_20_F1-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Cha-F-000481"
 mf["JRC_SS16661-20151125_20_F1-Aligned63xScale_c0b.Smt.SptGraph.swc",]$match = "Cha-F-000481"
 mf["JRC_SS16661-20151125_20_F1-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Cha-F-000481"
@@ -818,7 +1031,7 @@ mf[c("JRC_SS16786-20151022_19_B3-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS16786-20151022_19_B6-Aligned63xScale_c1b.Smt.SptGraph.swc",
      "JRC_SS16786-20151022_19_B7-Aligned63xScale_c0a.Smt.SptGraph.swc",
      "JRC_SS16786-20151022_19_B7-Aligned63xScale_c0b.Smt.SptGraph.swc",
-     "JRC_SS16786-20151022_19_B7-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "1B"
+     "JRC_SS16786-20151022_19_B7-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "1B1"
 mf["JRC_SS16786-20151022_19_B3-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-400436" # Av4a5
 mf["JRC_SS16786-20151022_19_B4-Aligned63xScale_c0.Smt.SptGraph.swc",]$match = "Cha-F-000481" # Av4a5
 mf["JRC_SS16786-20151022_19_B4-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-100051" # AV4b5
@@ -842,9 +1055,9 @@ mf[c("JRC_SS22732-20180209_20_B2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B6-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B7-Aligned63xScale_c1a.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B7-Aligned63xScale_c1b.Smt.SptGraph.swc"),]$old.cell.type = "29E"
-# PV6d1
-mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c0a.Smt.SptGraph.swc",]$match = "PV6d1"
-mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "PV6d1"
+# PV6b1
+mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c0a.Smt.SptGraph.swc",]$match = "PV6b1"
+mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "PV6b1"
 # AD1d1
 mf["JRC_SS22732-20180209_20_B1-Aligned63xScale_c2b.Smt.SptGraph.swc",]$match = "Gad1-F-300229"
 # PV4b1/2
@@ -948,7 +1161,7 @@ mf[c("JRC_SS10567-20151008_22_D1-Aligned63xScale_c0.Smt.SptGraph.swc",
      "JRC_SS10567-20160408_21_A2-Aligned63xScale_c1b.Smt.SptGraph.swc",
      "JRC_SS10567-20160408_21_A2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS10567-20160408_21_A4-Aligned63xScale_c0.Smt2.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A4-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "1B"
+     "JRC_SS10567-20160408_21_A4-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "1B1"
 mf["JRC_SS10567-20151008_22_D1-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="Cha-F-300146"
 mf["JRC_SS10567-20151008_22_D1-Aligned63xScale_c0b.Smt.SptGraph.swc",]$match ="Gad1-F-000079"
 mf["JRC_SS10567-20151008_22_D1-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="Gad1-F-000079"
@@ -1010,8 +1223,8 @@ mf["JRC_SS15285-20150828_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match ="5H
 mf["JRC_SS15285-20150828_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "5HT1A-F-100028"
 
 # L62; 12B 4? 29C; PV6a1
-mf[c("JRC_SS15256-20151009_19_E1-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "29C"
-mf["JRC_SS15289-20160226_20_F2-Aligned63xScale_c0.Smt2.SptGraph.swc",]$match = "PV6a1"
+mf[c("JRC_SS15289-20160226_20_F2-Aligned63xScale_c0.Smt2.SptGraph.swc"),]$old.cell.type = "29C"
+mf["JRC_SS15289-20160226_20_F2-Aligned63xScale_c0.Smt2.SptGraph.swc",]$match = "CL29CR_30H02"
 
 # L1293; 12A; PV5c1
 mf[c("JRC_SS16977-20150828_24_D4-Aligned63xScale_c1a.Smt.SptGraph.swc",
@@ -1163,16 +1376,10 @@ mf$type = as.character(sapply(mf$match,function(x) df[x,]$type))
 #################
 
 
-
-mf[grepl("PV6a1",mf$match),]$pnt = "PV6"
-mf[grepl("PV6a1",mf$match),]$anatomy.group = "PV6a"
-mf[grepl("PV6a1",mf$match),]$type = "ON"
-mf[grepl("PV6a1",mf$match),]$cell.type = "PV6a1"
-
-mf[grepl("PV6d1",mf$match),]$pnt = "PV6"
-mf[grepl("PV6d1",mf$match),]$anatomy.group = "PV6d"
-mf[grepl("PV6d1",mf$match),]$type = "ON"
-mf[grepl("PV6d1",mf$match),]$cell.type = "PV6d1"
+mf[grepl("PV6b1",mf$match),]$pnt = "PV6"
+mf[grepl("PV6b1",mf$match),]$anatomy.group = "PV6b"
+mf[grepl("PV6b1",mf$match),]$type = "ON"
+mf[grepl("PV6b1",mf$match),]$cell.type = "PV6b1"
 
 mf[grepl("PD3a3",mf$match),]$pnt = "PD3"
 mf[grepl("PD3a3",mf$match),]$anatomy.group = "PD3a"
@@ -1199,12 +1406,67 @@ mf[grepl("AV6c1",mf$match),]$anatomy.group = "AV6c"
 mf[grepl("AV6c1",mf$match),]$type = "ON"
 mf[grepl("AV6c1",mf$match),]$cell.type = "AV6c1"
 
+mf[grepl("PV6a3",mf$match),]$pnt = "PV6"
+mf[grepl("PV6a3",mf$match),]$anatomy.group = "PV6a"
+mf[grepl("PV6a3",mf$match),]$type = "ON"
+mf[grepl("PV6a3",mf$match),]$cell.type = "PV6a3"
+
 mf[grepl("PV4g1",mf$match),]$pnt = "PV4"
 mf[grepl("PV4g1",mf$match),]$anatomy.group = "PV4g"
 mf[grepl("PV4g1",mf$match),]$type = "ON"
 mf[grepl("PV4g1",mf$match),]$cell.type = "PV4g1"
 
+mf[grepl("WED-PN3",mf$match),]$pnt = "WEDT"
+mf[grepl("WED-PN3",mf$match),]$anatomy.group = "WED-PN"
+mf[grepl("WED-PN3",mf$match),]$type = "IN"
+mf[grepl("WED-PN3",mf$match),]$cell.type = "WED-PN3"
 
+mf[grepl("WED-PN5",mf$match),]$pnt = "WEDT"
+mf[grepl("WED-PN5",mf$match),]$anatomy.group = "WED-PN"
+mf[grepl("WED-PN5",mf$match),]$type = "IN"
+mf[grepl("WED-PN5",mf$match),]$cell.type = "WED-PN5"
+
+
+###################################################
+# Mike Dolan determines what is in exemplar lines #
+###################################################
+
+mf[,"InLine"] = TRUE
+mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS22723-20170324_29_F4-Aligned63xScale_c0b.Smt.SptGraph.swc",
+          "JRC_SS22723-20170324_29_F4-Aligned63xScale_c1.Smt.SptGraph.swc",
+          "JRC_SS22723-20170324_29_F5-Aligned63xScale_c0.Smt.SptGraph.swc",
+          "JRC_SS04967-20151022_20_A5-Aligned63xScale_c1a.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A4-Aligned63xScale_c0.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A2-Aligned63xScale_c1a.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C1-Aligned63xScale_c0.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C1-Aligned63xScale_c1a.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C1-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C2-Aligned63xScale_c0a.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C1-Aligned63xScale_c1b.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C3-Aligned63xScale_c1.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C2-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C7-Aligned63xScale_c0.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C7-Aligned63xScale_c1.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C7-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C7-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A2-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A2-Aligned63xScale_c0.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_B1-Aligned63xScale_c0.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A4-Aligned63xScale_c1.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A4-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C2-Aligned63xScale_c1b.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C3-Aligned63xScale_c0.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A7-Aligned63xScale_c1.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A7-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04720-20170623_23_A8-Aligned63xScale_c1.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C2-Aligned63xScale_c1a.Smt.SptGraph.swc",
+          "JRC_SS04720-20160819_21_C2-Aligned63xScale_c0b.Smt.SptGraph.swc",
+          "JRC_SS16329-20151125_23_A1-Aligned63xScale_c1.Smt.SptGraph.swc",
+          "JRC_SS16329-20151125_23_A1-Aligned63xScale_c2b.Smt.SptGraph.swc",
+          "JRC_SS16329-20151125_23_A6-Aligned63xScale_c1a.Smt.SptGraph.swc",
+          "JRC_SS16329-20151125_23_A6-Aligned63xScale_c2.Smt.SptGraph.swc",
+          "JRC_SS04973-20151125_23_E4-Aligned63xScale_c0.Smt.SptGraph.swc"),"InLine"] = FALSE
 
 # ###########
 # Save data #
@@ -1221,9 +1483,9 @@ mf = mf[,-3]
 attr(lh.mcfo,"df") = mf
 
 
-###############
+################
 # Make Matches #
-###############
+################
 
 
 # Synchronsie with most.lhns
@@ -1231,9 +1493,12 @@ in.most.lhns = names(lh.mcfo)[names(lh.mcfo)%in%names(most.lhns)]
 lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type")] = most.lhns[in.most.lhns,c("pnt","anatomy.group","cell.type","type")]
 
 
-#####################
+
+
+
+#######################
 # Create neuronlistfh #
-#####################
+#######################
 
 
 lh.mcfo = subset(lh.mcfo,!match%in%c("mis-registered","notLHproper"))
@@ -1244,9 +1509,9 @@ lh.mcfo.dps = nat::dotprops(lh.mcfo,OmitFailures=TRUE)
 lh.mcfo.dps = as.neuronlistfh(lh.mcfo.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
-# #################
+####################
 # Update Meta-Data #
-###################
+####################
 
 
 write.neuronlistfh(lh.mcfo, file='inst/extdata/lh.mcfo.rds',overwrite = TRUE)

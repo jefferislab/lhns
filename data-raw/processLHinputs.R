@@ -575,15 +575,48 @@ df[mAL,]$reference ="Kimura et al. 2010"
 
 ###
 
-wedge.pn = c("VGlut-F-600117", "Gad1-F-100133", "VGlut-F-500810",
-             "VGlut-F-100375", "fru-M-300059", "Cha-F-000514", "Cha-F-600036")
-df[wedge.pn,"anatomy.group"] = "WED-PN1"
-df[wedge.pn,]$modality = "Mechanosensation"
-df[wedge.pn,]$reference = "ASB"
-df[wedge.pn,]$dendritic.location = "WED"
-df[wedge.pn,]$cell.body.position = "WED"
-df[wedge.pn,]$tract = "WEDT"
-df[wedge.pn,]$neurotransmitter = "Unknown"
+wedge.pn.1 = c("VGlut-F-600117", "Gad1-F-100133", "VGlut-F-500810",
+             "VGlut-F-100375", "fru-M-300059","L984#7", "L770#1", "L770#2", "L984#9", "L984#8", "L112#4",
+             "L984#1", "L984#2", "L984#3", "L112#1", "L984#5", "L112#2", "L112#3",
+             "L984#4", "L772#2", "L772#1", "L984#6") # 70C
+df[wedge.pn.1,"anatomy.group"] = "WED-PN1"
+df[wedge.pn.1,]$modality = "Mechanosensation"
+df[wedge.pn.1,]$reference = "Dolan et al. 2018"
+df[wedge.pn.1,]$dendritic.location = "WED"
+df[wedge.pn.1,]$cell.body.position = "WED"
+df[wedge.pn.1,]$tract = "WEDT"
+df[wedge.pn.1,]$neurotransmitter = "GABA"
+
+wedge.pn.2 = c("Cha-F-000514", "Cha-F-600036","L1524#2", "L1524#3", "L1524#1", "L1524#4") # 70D
+df[wedge.pn.2,"anatomy.group"] = "WED-PN2"
+df[wedge.pn.2,]$modality = "Mechanosensation"
+df[wedge.pn.2,]$reference = "Dolan et al. 2018"
+df[wedge.pn.2,]$dendritic.location = "WED"
+df[wedge.pn.2,]$cell.body.position = "WED"
+df[wedge.pn.2,]$tract = "WEDT"
+df[wedge.pn.2,]$neurotransmitter = "ChA, GABA"
+
+wedge.pn.3 = c("L452#3", "L1668#4", "L452#1", "L1518#1", "L1518#4", "L1949#1",
+               "L1949#3", "L1668#3", "L1668#2", "L1518#3", "L1518#5", "L1518#2",
+               "L1668#1", "L452#2","L1949#2") # 70A
+df[wedge.pn.3,"anatomy.group"] = "WED-PN3"
+df[wedge.pn.3,]$modality = "Mechanosensation"
+df[wedge.pn.3,]$reference = "Dolan et al. 2018"
+df[wedge.pn.3,]$dendritic.location = "WED"
+df[wedge.pn.3,]$cell.body.position = "WED"
+df[wedge.pn.3,]$tract = "WEDT"
+df[wedge.pn.3,]$neurotransmitter = "GABA"
+
+wedge.pn.5 = c("L1337#4", "L1337#7", "L1337#3", "L1337#5", "L1337#2", "L1337#8",
+                 "L1337#1", "L1337#6") # 70B
+df[wedge.pn.5,"anatomy.group"] = "WED-PN5"
+df[wedge.pn.5,]$modality = "Mechanosensation"
+df[wedge.pn.5,]$reference = "Dolan et al. 2018"
+df[wedge.pn.5,]$dendritic.location = "WED"
+df[wedge.pn.5,]$cell.body.position = "WED"
+df[wedge.pn.5,]$tract = "WEDT"
+df[wedge.pn.5,]$neurotransmitter = "ChA, GABA"
+
 
 ###
 
@@ -618,7 +651,7 @@ df[centrifugal,]$neurotransmitter = "Unknown"
 lp.pns = c("Trh-M-500187", "Trh-M-500155", "Trh-M-500142", "Trh-M-500078",
   "Trh-M-400020", "fru-M-000075", "Trh-M-500144", "Trh-F-500222",
   "Trh-M-500183")
-df[lp.pns,"anatomy.group"] = "LP-PN1"
+df[lp.pns,"anatomy.group"] = "AVLP-PN1"
 df[lp.pns,]$modality = "Unknown"
 df[lp.pns,]$reference = "ASB"
 df[lp.pns,]$dendritic.location = "PV2"

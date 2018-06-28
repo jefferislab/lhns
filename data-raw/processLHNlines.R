@@ -16,6 +16,9 @@ if(!exists("lh.mcfo")){
 # Read Dolan et al. 2018 split line information #
 ################################################
 
+# Clean data of stray cell type
+lh.mcfo.clean = subset(lh.mcfo,InLine==TRUE)
+lh.splits.dps.clean = subset(lh.splits.dps,!old.cell.type%in%lh.mcfo[,"old.cell.type"])
 
 # Get the projected number of neurons for each cell type, in each line
 dcs = read.csv("data-raw/dolan_cells.csv")
@@ -59,7 +62,7 @@ lh_line_info[is.na(lh_line_info$Neurotransmitter),]$Neurotransmitter = errors
 lh_line_info = lh_line_info[!duplicated(lh_line_info),]
 
 # Add in some awol lines
-skipped.line = na.omit(as.character(unique(lh.splits.dps[,"linecode"][!lh.splits.dps[,"linecode"]%in%lh_line_info[,"LineCode"]])))
+skipped.line = na.omit(as.character(unique(lh.splits.dps.clean[,"linecode"][!lh.splits.dps.clean[,"linecode"]%in%lh_line_info[,"LineCode"]])))
 
 # Put in the cell types
 lh_line_info[is.na(lh_line_info)] = ""
@@ -68,20 +71,20 @@ lh_line_info$anatomy.group = ""
 lh_line_info$cell.type = ""
 for(l in 1:nrow(lh_line_info)){
   line = lh_line_info$LineCode[l]
-  if(line%in%lh.mcfo[,"linecode"]){
-    s = subset(lh.mcfo,linecode==line)
+  if(line%in%lh.mcfo.clean[,"linecode"]){
+    s = subset(lh.mcfo.clean,linecode==line)
     for(o in unique(as.character(s[,"old.cell.type"]))){
-      if(o%in%lh.mcfo[,"old.cell.type"]){
+      if(o%in%lh.mcfo.clean[,"old.cell.type"]){
         ss = subset(s,grepl(o,old.cell.type))[,c("pnt","anatomy.group","cell.type")]
         ss = ss[!duplicated(ss),]
         ss = apply(ss,2,function(x) paste(sort(na.omit(unique(x))),collapse="/"))
         lh_line_info[lh_line_info$LineCode==line&lh_line_info$old.cell.type==o,c("pnt","anatomy.group","cell.type")] =  as.vector(ss)
       }
     }
-  }else if(line%in%lh.splits.dps[,"linecode"]){
-    s = subset(lh.splits.dps,linecode==line)
+  }else if(line%in%lh.splits.dps.clean[,"linecode"]){
+    s = subset(lh.splits.dps.clean,linecode==line)
     for(o in unique(as.character(s[,"old.cell.type"]))){
-      if(o%in%lh.splits.dps[,"old.cell.type"]|nrow(subset(lh_line_info,LineCode==line))==1){
+      if(o%in%lh.splits.dps.clean[,"old.cell.type"]|nrow(subset(lh_line_info,LineCode==line))==1){
         ss = subset(s,grepl(o,old.cell.type))[,c("pnt","anatomy.group","cell.type")]
         ss = ss[!duplicated(ss),]
         ss = apply(ss,2,function(x) paste(sort(na.omit(unique(x))),collapse="/"))
@@ -95,8 +98,8 @@ for(l in 1:nrow(lh_line_info)){
 # Fill in some known cell types
 unassigned = sort(unique(na.omit(subset(lh_line_info,is.na(cell.type))$old.cell.type)))
 for(u in unassigned){
-  if(u%in%lh.splits.dps[,"old.cell.type"]){
-    ss = as.data.frame(subset(lh.splits.dps,old.cell.type==u)[,c("pnt","anatomy.group","cell.type")])
+  if(u%in%lh.splits.dps.clean[,"old.cell.type"]){
+    ss = as.data.frame(subset(lh.splits.dps.clean,old.cell.type==u)[,c("pnt","anatomy.group","cell.type")])
     ss = ss[!duplicated(ss),]
     ss = apply(ss,2,function(x) paste(sort(na.omit(unique(x))),collapse="/"))
     lh_line_info[lh_line_info$old.cell.type==u,c("pnt","anatomy.group","cell.type")] =  as.vector(ss)
@@ -124,6 +127,12 @@ old2new[] = lapply(old2new, as.character)
 # Add some manual assignments
 old2new[old2new$old%in%c("151A"),"new"] = "VNC-PN1"
 old2new[old2new$old%in%c("V2"),"new"] = "LO-PN2"
+old2new[old2new$old%in%c("70E"),"new"] = "WED-PN4"
+old2new[old2new$old%in%c("151A","V2","70E","PN","PPL2ab-PN1",
+"VisualPN1","51C","51CB","151B","137","139","51B","70B","70C","70D"),"type"] = "IN"
+old2new[old2new$old%in%c("16A","1C","85","142"),"type"] = "ON"
+old2new[old2new$old%in%c("145","143","70A","70E"),"type"] = "IN/ON"
+old2new = rbind(old2new,data.frame(old="NP6099-TypeII",new=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON"))
 write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv")
 
 # Guess the cell types based on Mike's old.cell.type assignments
