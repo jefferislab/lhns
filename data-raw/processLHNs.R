@@ -1636,11 +1636,11 @@ lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "pv5g1", "pv5g2", "pv5g3", "pv5h1", "pv5i1", "pv5j1", "pv5k1",
                       "pv5l1", "pv7a1", "pv7b1", "pv8b1", "pv8c1", "pv9a1", "pv9b1",
                       "pv9c1", "pv9d1", "pv9d2", "pv10a1", "pv10b1", "pv10c1", "pv10c2",
-                      "pv10d1", "pv10e1", "pv10f1", "pv10g1", "pv10h1", "pv10i1", "pv10j1", "pd7a1", "pd7b1")
+                      "pv10d1", "pv10e1", "pv10f1", "pv10g1", "pv10h1", "pv10i1", "pv10j1", "pd7a1", "pd7b1","pv2a3")
 lh.local.neurons = c("av1b1", "av4a1", "av4a10", "av4a2", "av4a3",
                      "av4a4", "av4a5", "av4a6",  "av5g1",
                      "av5b1", "av5d1", "av6g1", "pd3a1", "pd3a2", "pd3a3","pd4d1", "pv2a1",
-                     "pv2a2", "pv2a3", "pv2a4", "pv2e1",  "pv4a3", "pv4a1",
+                     "pv2a2", "pv2a4", "pv2e1",  "pv4a3", "pv4a1",
                      "pv4a10", "pv4a11", "pv4a12", "pv4a2", "pv4a2", "pv4a3",
                      "pv4a4", "pv4a5", "pv4a6", "pv4a7", "pv4a8", "pv4a9", "pv8a1", "pv4c2")
 df[rownames(df)%in%notLH,]$type="notLH"
