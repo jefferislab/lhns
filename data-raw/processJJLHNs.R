@@ -249,6 +249,7 @@ jfw.lhns.dps = as.neuronlistfh(jfw.lhns.dps,dbdir = 'inst/extdata/data/', WriteO
 write.neuronlistfh(jfw.lhns, file='inst/extdata/jfw.lhns.rds',overwrite = TRUE)
 write.neuronlistfh(jfw.lhns.dps, file='inst/extdata/jfw.lhns.dps.rds',overwrite = TRUE)
 
+
 #################################################################
 # Make concise spreadsheets comparing cell types across datasets #
 #################################################################

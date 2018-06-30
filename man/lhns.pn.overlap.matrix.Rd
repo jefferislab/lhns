@@ -4,7 +4,7 @@
 \name{lhns.pn.overlap.matrix}
 \alias{lhns.pn.overlap.matrix}
 \title{Dendritic overlap of LHN cell types with axon terminals of PN inputs to LH}
-\format{An object of class \code{matrix} with 1494 rows and 262 columns.}
+\format{An object of class \code{matrix} with 1494 rows and 259 columns.}
 \usage{
 lhns.pn.overlap.matrix
 }

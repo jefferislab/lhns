@@ -4,7 +4,7 @@
 \name{lh.mcfo}
 \alias{lh.mcfo}
 \title{Single skeletons of LHNs from MCFO}
-\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 334.}
+\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 377.}
 \usage{
 lh.mcfo
 }
