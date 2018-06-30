@@ -1533,8 +1533,9 @@ attr(lh.mcfo,"df") = mf
 
 
 # Synchronsie with most.lhns
-in.most.lhns = names(lh.mcfo)[names(lh.mcfo)%in%names(most.lhns)]
-lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type")] = most.lhns[in.most.lhns,c("pnt","anatomy.group","cell.type","type")]
+most.lh = c(most.lhns,most.lhins)
+in.most.lhns = names(lh.mcfo)[names(lh.mcfo)%in%names(most.lh)]
+lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type")] = most.lh[in.most.lhns,c("pnt","anatomy.group","cell.type","type")]
 
 
 
@@ -1546,7 +1547,7 @@ lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type")] = most.lhns[in
 
 
 lh.mcfo = subset(lh.mcfo,!match%in%c("mis-registered","notLHproper"))
-lh.mcfo = subset(lh.mcfo,!is.na(cell.type))
+#lh.mcfo = subset(lh.mcfo,!is.na(cell.type))
 lh.mcfo = nlapply(lh.mcfo,nat::resample,stepsize = 1)
 lh.mcfo = as.neuronlistfh(lh.mcfo,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 lh.mcfo.dps = nat::dotprops(lh.mcfo,OmitFailures=TRUE)
