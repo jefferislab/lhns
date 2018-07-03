@@ -79,9 +79,9 @@ df[badly.traced,]$good.trace = FALSE
 
 
 
-notLH = c("5HT1A-F-100016", "5HT1A-F-300001", "5HT1A-F-300035", "5HT1A-M-300003",
+notLH = c("L2316#1","L2392#1","5HT1A-F-100016", "5HT1A-F-300001", "5HT1A-F-300035", "5HT1A-M-300003",
          "5HT1A-M-400013", "5HT1A-M-400022", "5HT1A-M-500012", "5HT1A-M-800011",
-         "Cha-F-000152", "Cha-F-000428", "Cha-F-000432", "Cha-F-000452", "Cha-F-000086",
+         "Cha-F-000152", "Cha-F-000428", "Cha-F-000432", "Cha-F-000452", "Cha-F-000086",# LH input?
          "Cha-F-000491", "Cha-F-000506", "Cha-F-100372", "Cha-F-100373",
          "Cha-F-100387", "Cha-F-100420", "Cha-F-100425", "Cha-F-200232",
          "Cha-F-200439", "Cha-F-300023", "Cha-F-300212", "Cha-F-300347",
@@ -410,18 +410,19 @@ pv5.a.1 = c("Cha-F-400324","Gad1-F-500180", "Cha-F-200402", "Gad1-F-500244","Cha
             "Gad1-F-200199", "Cha-F-100394", "Gad1-F-600214", "Gad1-F-200220")
 pv5.a.2 = c("VGlut-F-400058", "Gad1-F-100099","120216c0",
             "120619c1","120710c0","130118c0")
-pv5.a.3 = c("Gad1-F-700139","Gad1-F-000349","Cha-F-500250","Cha-F-700211")
+pv5.a.3 = c("Gad1-F-700139","Gad1-F-000349","Cha-F-500250","Cha-F-700211","L163#1","L163#2")
 pv5.a.4 = c("Gad1-F-100091","Cha-F-500138")
 pv5.a= c(pv5.a.1,pv5.a.2,pv5.a.3,pv5.a.4)
 pv5.b.1=c("Gad1-F-000155", "E0585-F-400002", "Cha-F-100083", "Gad1-F-100023",
           "E0585-F-300073", "120618c0","120605c0", "131118c3", "160121c1", "Cha-F-200082",
           "Cha-F-300204", "Cha-F-200169", "Cha-F-800045", "Gad1-F-900098",
-          "Gad1-F-300321")
+          "Gad1-F-300321","L1554#1","L1554#2","MB036B#1")
 pv5.b.2 = c("121130c0", "Cha-F-700258", "E0585-F-300063", "130213c0",
             "E0585-F-300066","E0585-F-300064","E0585-F-400029","130214c1",
             "E0585-F-400003","E0585-F-400021","Cha-F-100264","130425c1")
 pv5.b.3 = c("E0585-F-700001", "E0585-F-800004", "E0585-F-400015",
-            "E0585-F-800001", "E0585-F-500010", "Cha-F-200204", "Cha-F-300342")
+            "E0585-F-800001", "E0585-F-500010", "Cha-F-200204", "Cha-F-300342",
+            "E0585-F-400028","E0585-F-700002","L849#1", "L849#2")
 pv5.b.4 = c("Cha-F-600232")
 pv5.b.5 = c("E0585-F-400001")
 pv5.b.6 = c("E0585-F-800003","Gad1-F-900040")
@@ -458,11 +459,11 @@ pv5.g.1 = c("L374#3", "L374#5", "L374#6",  "L374#2", "L374#4",
 pv5.g.2 = c("L374#8", "Gad1-F-300312")
 pv5.g.3 = c("Cha-F-100398","Gad1-F-700165")
 pv5.g=c(pv5.g.1,pv5.g.2,pv5.g.3) #3E
-pv5.h = pv5.h.1 = c("E0585-F-400028","E0585-F-700002")
+pv5.h = pv5.h.1 = "Gad1-F-100211"
 pv5.i = pv5.i.1 = "fru-M-200172" # check other pnts
-pv5.j = pv5.j.1 = "Gad1-F-100211"
-pv5.k = pv5.k.1 = c("Gad1-F-300290")
-pv5.l = pv5.l.1 = "Cha-F-400240"
+pv5.j = pv5.j.1 = "Cha-F-400240"
+pv5.k = pv5.k.1 = c("Gad1-F-300290","L528#1")
+
 
 # Assign cell types
 df[pv5.a.1,]$cell.type = "pv5a1"
@@ -492,8 +493,6 @@ df[pv5.h.1,]$cell.type = "pv5h1"
 df[pv5.i.1,]$cell.type = "pv5i1"
 df[pv5.j.1,]$cell.type = "pv5j1"
 df[pv5.k.1,]$cell.type = "pv5k1"
-df[pv5.l.1,]$cell.type = "pv5l1"
-
 
 
 
@@ -596,9 +595,10 @@ pv4.b.4 = c("VGlut-F-800068")
 pv4.b= c(pv4.b.1,pv4.b.2,pv4.b.3,pv4.b.4)
 pv4.c.1 = c("VGlut-F-500046","VGlut-F-600030","Gad1-F-400027","VGlut-F-700503",
             "VGlut-F-400240","VGlut-F-700280","VGlut-F-800064","VGlut-F-700342",
-            "Gad1-F-000274","VGlut-F-500419")
+            "Gad1-F-000274","VGlut-F-500419", "L2316#2", "L2392#2", "L2392#3",
+            "L2392#4", "L2392#5")
 pv4.c.2=c("fru-M-200253","Gad1-F-100178","Gad1-F-700258","L1842#1","L1842#2") # Some somas wrong
-pv4.c.3= c("VGlut-F-500445","VGlut-F-500442","VGlut-F-900028")
+pv4.c.3= c("VGlut-F-500445","VGlut-F-900028","L1397#1", "L1397#2", "L1397#3")
 pv4.c.4=c("VGlut-F-800074")
 pv4.c.5 = "VGlut-F-600311"
 pv4.c.6 = "Cha-F-600243"
@@ -712,13 +712,14 @@ pv2.a.1 = c("5HT1A-M-200001", "Cha-F-300168", "5HT1A-F-100028","5HT1A-M-100027",
   "L258#15", "L258#18", "L258#11", "L258#10", "L258#12", "L259#1",
   "L259#3", "L258#14", "L258#16", "L258#6", "L258#8",
    "L258#13", "L258#1", "L258#3", "L258#17")
+mb.c1 = "L1900#1"
 pv2.a.2 = c("Cha-F-400222","L568#2", "Gad1-F-400232", "L568#6", "Cha-F-000242", "L1385#18")
 pv2.a.3 = c("L1328#3", "L1328#4","Gad1-F-800194","L1328#5", "L1328#6", "L1328#1", "L1328#2","Gad1-F-400232", "Cha-F-000242")
 pv2.a.4 = "Gad1-F-600088"
 pv2.a=c(pv2.a.1,pv2.a.2,pv2.a.3,pv2.a.4)
 pv2.b.1 = c("Gad1-F-700138","131031c1","Cha-F-000110","L258#7","L258#9","L2013#2")
 pv2.b=c(pv2.b.1)
-pv2.c.1 =  c("Gad1-F-800092")
+pv2.c.1 =  c("Gad1-F-800092","131122c1", "L1955#1")
 pv2.c.2 = "Gad1-F-100074"
 pv2.c.3 ="CL133R_39D07"
 pv2.c=c(pv2.c.1,pv2.c.2,pv2.c.3)
@@ -731,6 +732,7 @@ pv2.i = pv2.i.1 = "CL52R_11E08"
 pv2.j = pv2.j.1 = "CL135R_10A11"
 
 # Assign cell types
+df[mb.c1,]$cell.type = "MB-C1"
 df[pv2.a.1,]$cell.type = "pv2a1"
 df[pv2.a.2,]$cell.type = "pv2a2"
 df[pv2.a.3,]$cell.type = "pv2a3"
@@ -746,11 +748,6 @@ df[pv2.g.1,]$cell.type = "pv2g1"
 df[pv2.h.1,]$cell.type = "pv2h1"
 df[pv2.i.1,]$cell.type = "pv2i1"
 df[pv2.j.1,]$cell.type = "pv2j1"
-
-
-
-
-
 
 
 
@@ -926,7 +923,6 @@ pd3.e = pd3.e.1 = "CL153R_IS24693"
 df[pd3.a.1,]$cell.type = "pd3a1"
 df[pd3.a.2,]$cell.type = "pd3a2"
 df[pd3.a.3,]$cell.type = "pd3a3"
-df[pd3.a.4,]$cell.type = "pd3a4"
 df[pd3.b.1,]$cell.type = "pd3b1"
 df[pd3.c.1,]$cell.type = "pd3c1"
 df[pd3.d.1,]$cell.type = "pd3d1"
@@ -953,7 +949,7 @@ pd2 = c("fru-M-000179","Gad1-F-500129", "Gad1-F-300303", "Gad1-F-200234", "5HT1A
         "131014c3","120806c0","120914c2","120926c0","130620c0","fru-F-600242",
         "Cha-F-200325","fru-F-500330","Cha-F-400224","fru-F-200100","fru-F-600136")
 pd2.a.1 = c("Cha-F-600238", "Gad1-F-200234","5HT1A-F-300019", "5HT1A-F-300013","37G11#2", "L989#3", "L989#4","L991#1", "L989#13", "L989#10", "L989#14","37G11#6", "L991#3", "L991#4", "L989#6", "37G11#1",
-  "L989#9", "L991#2", "37G11#4", "L989#5", "L991#5", "37G11#3", "L989#11", "L989#1", "L989#7")
+  "L989#9", "L991#2", "37G11#4","37G11#5", "L989#5", "L991#5", "37G11#3", "L989#11", "L989#1", "L989#7")
 pd2.a.2 = c("130620c0", "130620c0", "121018c0", "121225c0", "130612c0",
             "131014c3", "121017c0", "121227c3","131007c0")
 pd2.a.3=c("Gad1-F-500129","Gad1-F-500196","120806c0")
@@ -975,6 +971,7 @@ pd2.e.1 = c("fru-F-600136", "L16#6", "L16#8")
 pd2.e.2 = c("L16#7", "L16#1", "L16#2", "L16#5", "L16#6", "L16#8")
 pd2.e = c(pd2.e.1,pd2.e.2)
 #pd2f1 in Mike's splits
+pd1.f= pd1.f.1 = c("MB072C#1")
 pd2.g =  pd2.g.1 ="Cha-F-200325"
 pd2.h = pd2.h.1 = "fru-M-600135"
 pd2.i = pd2.i.1 = "fru-M-000179"
@@ -1121,8 +1118,8 @@ av4.b.1  = c("fru-F-500181", "fru-F-500205", "fru-F-500357", "fru-M-700052",
                    "fru-F-400039")
 av4.b.2 = c("Cha-F-000515", "Gad1-F-700224", "Cha-F-600124","Gad1-F-000006")
 av4.b.3 = c("L568#3", "L568#1", "L568#7","Cha-F-400293")
-av4.b.4 = c("5HT1A-M-300006", "140618c0", "160211c1", "160201c1","Gad1-F-100077", "Gad1-F-600140")
-av4.b.5 = c("L1385#22", "L1385#23","L1385#3", "L1385#9", "L1385#5", "L1385#12", "L1385#14", "L1385#6", "L1385#7","Gad1-F-200366", "L1385#11", "L1385#27")
+av4.b.4 = c("L1385#22", "L1385#23","L1385#3", "L1385#9", "L1385#5", "L1385#12", "L1385#14", "L1385#6", "L1385#7","Gad1-F-200366", "L1385#11", "L1385#27","L787#1","L787#3")
+av4.b.5 = c("5HT1A-M-300006", "140618c0", "160211c1", "160201c1","Gad1-F-100077", "Gad1-F-600140")
 av4.b.6 = c("L1385#24", "L1385#25") # Unsure
 av4.b.7 = c("L1385#1", "L1385#2", "L1385#4") # Unsure of tract
 av4.b.8 = c("131009c0", "131007c1", "131011c0","Gad1-F-100051")
@@ -1135,12 +1132,13 @@ av4.c.1 = c("Cha-F-700114", "fru-M-300124", "fru-F-500093", "L421#7", "L421#9",
 av4.c.2 = c("L421#2", "L421#6", "fru-F-400486", "L568#5", "L421#14")
 av4.c.3 = c("Gad1-F-400432", "fru-M-400293",  "Gad1-F-200137", "Cha-F-200329","fru-F-500355")
 av4.c.4 = c("L1385#8", "Gad1-F-200127","Cha-F-200378")
-av4.c = c(av4.c.1,av4.c.2,av4.c.3,av4c.4)
+av4.c = c(av4.c.1,av4.c.2,av4.c.3,av4.c.4)
 
 av4.d = av4.d.1 = c("fru-M-300432","VGlut-F-200021","VGlut-F-200382")
 av4.e = av4.e.1 = b = c("fru-F-500592","fru-F-300099")
-av4.f= av4.f.1 = "fru-F-500089"
-av4.g = av4.g.1 = "fru-M-500251"
+av4.f= av4.f.1 = "L787#2"
+av4.g = av4.g.1 = "fru-F-500089"
+av4.h = av4.h.1 = "fru-M-500251"
 
 
 # Assign cell types
@@ -1167,6 +1165,7 @@ df[av4.d.1,]$cell.type = "av4d1"
 df[av4.e.1,]$cell.type = "av4e1"
 df[av4.f.1,]$cell.type = "av4f1"
 df[av4.g.1,]$cell.type = "av4g1"
+df[av4.h.1,]$cell.type = "av4h1"
 
 
 
@@ -1283,7 +1282,7 @@ av2.a=c(av2.a.1,av2.a.2,av2.a.3,av2.a.4)
 av2.b.1 =  c("Cha-F-200034", "Cha-F-600183", "Cha-F-100444",
              "fru-F-300169","Cha-F-300136","Gad1-F-300310")
 av2.b.2 = c("5HT1A-F-300031", "Gad1-F-600005")
-av2.b.3 = c("fru-M-300456","Gad1-F-300218")
+av2.b.3 = c("fru-M-300456","Gad1-F-300218","L2087#1", "L2087#2", "L2087#3", "L2087#4", "L2088#1", "L2088#2","L2088#3")
 av2.b.4 = c("Gad1-F-700003")
 av2.b.5 = c("Gad1-F-600189")
 av2.b=c(av2.b.1,av2.b.2,av2.b.3,av2.b.4,av2.b.5 ) # different pnt? compare to neuroblast
@@ -1427,7 +1426,7 @@ df[ad4.a.1,]$cell.type = "ad4a1"
 ### AD3
 ad3 = c("Gad1-F-000108", "Cha-F-000533", "Cha-F-100001","Cha-F-200386","Gad1-F-100124","Gad1-F-700066")
 ad3.a = ad3.a.1 = "Gad1-F-000108"
-ad3.b = ad3.b.1 = c("Cha-F-000533","L1828#1")
+ad3.b = ad3.b.1 = c("Cha-F-000533","L1828#1","L19#1", "L20#1", "L304#1")
 ad3.c = ad3.c.1 = c("Cha-F-100001")
 ad3.d = ad3.d.1 = "Gad1-F-100124"
 ad3.e = ad3.e.1 = "Gad1-F-700066"
@@ -1506,14 +1505,13 @@ ad1.b.2 = c("120704c1", "120730c0", "140616c0","140612c0","120714c4","Gad1-F-900
 # ad1.b.3 in Wilson data
 ad1.b = c(ad1.b.1,ad1.b.2)
 
-ad1.c.1=c("Gad1-F-600330", "Gad1-F-400233", "Gad1-F-300262", "Gad1-F-500014",
-        "120830c2",  "121129c0", "130711c3", "120913c1")
-ad1.c.2=c("Gad1-F-600330")
+ad1.c.1=c("Gad1-F-600330", "Gad1-F-400233", "120830c2",  "121129c0", "130711c3", "120913c1")
+ad1.c.2=c("L494#1", "L494#2","L475#1", "L475#2","Gad1-F-300262","Gad1-F-500014")
 ad1.c=c(ad1.c.1,ad1.c.2)
 
-#AD1d1 in Mike's split lines
+ad1.d = ad1.d.1 = c("SS01371#2", "SS01371#1")
 
-ad1.e.1 = c("Gad1-F-300229","Cha-F-200360","fru-F-300009","Gad1-F-200365")
+ad1.e.1 = c("Gad1-F-300229","Cha-F-200360","fru-F-300009","Gad1-F-200365","L1614#1")
 ad1.e.2 = c("Gad1-F-700032","fru-F-200156")
 ad1.e.3 = "Gad1-F-000249"
 ad1.e.4 = c("Gad1-F-200033","Cha-F-700185")
@@ -1539,18 +1537,17 @@ df[ad1.b.1,]$cell.type = "ad1b1"
 df[ad1.b.2,]$cell.type = "ad1b2"
 df[ad1.c.1,]$cell.type = "ad1c1"
 df[ad1.c.2,]$cell.type = "ad1c2"
+df[ad1.d.1,]$cell.type = "ad1d1"
 df[ad1.e.1,]$cell.type = "ad1e1"
 df[ad1.e.2,]$cell.type = "ad1e2"
 df[ad1.e.3,]$cell.type = "ad1e3"
 df[ad1.e.4,]$cell.type = "ad1e4"
-df[ad1.e.1,]$cell.type = "ad1e1"
 df[ad1.f.1,]$cell.type= "ad1f1"
 df[ad1.g.2,]$cell.type = "ad1g2"
 df[ad1.g.1,]$cell.type = "ad1g1"
 df[ad1.h.1,]$cell.type = "ad1h1"
 df[ad1.i.1,]$cell.type = "ad1i1"
 df[ad1.j.1,]$cell.type = "ad1j1"
-
 
 
 ###### Assign CORE LH ######
@@ -1603,7 +1600,7 @@ df[c(notLH,notLHcore),]$coreLH = FALSE
 
 lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "ad1a7", "ad1a8",  "ad1b1", "ad1b2", "ad1c1", "ad1c2",
-                      "ad1c3", "ad1c4", "ad1e1", "ad1e2", "ad1e3", "ad1e4", "ad1e1",
+                      "ad1c3", "ad1c4", "ad1d1", "ad1e1", "ad1e2", "ad1e3", "ad1e4",
                       "ad1g2", "ad1f1", "ad1g1", "ad1h1", "ad1i1", "ad1j1", "ad2a1", "ad2a2",
                       "ad2b1", "ad2c1", "ad3a1", "ad3b1", "ad3c1", "ad3d1", "ad4a1",
                       "ad5a1", "av1a1", "av1a2", "av1a3", "av1a4", "av1a5", "av1c1",
@@ -1613,7 +1610,7 @@ lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "av2m1", "av3a1", "av3a2", "av3b1", "av3c1", "av3d1", "av4b1",
                       "av4b2", "av4b3", "av4b4", "av4b5", "av4b6",
                       "av4b7", "av4b8", "av4b9", "av4c1", "av4c2", "av4c3","av4c4",
-                      "av4d1", "av4e1", "av4f1", "av4g1", "av5f1", "av5a1",
+                      "av4d1", "av4e1", "av4f1", "av4g1", "av4h1", "av5f1", "av5a1",
                       "av5c1", "av5e1", "av6a1", "av6a2", "av6b1", "av6b2", "av6c1",
                       "av6c2", "av6c3", "av6d1", "av6e1", "av6f1", "av6h1", "av6i1", "av7a1",
                       "av7b1", "av7c1",  "pd1a1", "pd2a1", "pd2a2", "pd2a3",
@@ -1635,7 +1632,7 @@ lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "pv5b2", "pv5b3", "pv5b4", "pv5b5", "pv5b6", "pv5c1", "pv5c2",
                       "pv5c3", "pv5c5", "pv5d1", "pv5d2", "pv5d3", "pv5e1", "pv5f1",
                       "pv5g1", "pv5g2", "pv5g3", "pv5h1", "pv5i1", "pv5j1", "pv5k1",
-                      "pv5l1", "pv7a1", "pv7b1", "pv8b1", "pv8c1", "pv9a1", "pv9b1",
+                      "pv7a1", "pv7b1", "pv8b1", "pv8c1", "pv9a1", "pv9b1",
                       "pv9c1", "pv9d1", "pv9d2", "pv10a1", "pv10b1", "pv10c1", "pv10c2",
                       "pv10d1", "pv10e1", "pv10f1", "pv10g1", "pv10h1", "pv10i1", "pv10j1", "pd7a1", "pd7b1","pv2a3")
 lh.local.neurons = c("av1b1", "av4a1", "av4a10", "av4a2", "av4a3",
@@ -1659,6 +1656,8 @@ df[df$cell.type%in%lh.output.neurons,]$type="ON"
 df[,"cell.type"] = lhns::capitalise_cell_type_name(df[,"cell.type"])
 df[,"pnt"] = process_lhn_name(df[,"cell.type"])$pnt
 df[,"anatomy.group"] = process_lhn_name(df[,"cell.type"])$anatomy.group
+df[mb.c1,"anatomy.group"] = "MB-LH"
+df[mb.c1,"pnt"] = "PV2"
 names_in_common=intersect(names(most.lhns), rownames(df))
 most.lhns = most.lhns[names_in_common]
 most.lhns[,]=df[names_in_common,]

@@ -5,7 +5,16 @@ library(flycircuit)
 # Get data
 load("data-raw/lh.inputs.rda")
 md.mcfo = nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lh.mcfo.rds',package='lhns')))
-lhin.mcfo = lh.mcfo[names(lh.mcfo)%in%c("MB583B#1","MB583B#2","MB583B#3","L2444#1")]
+lhin.mcfo = lh.mcfo[names(lh.mcfo)%in%c("MB583B#1","MB583B#2","MB583B#3","L2444#1","L85#1", "L85#2", "L85#3", "L85#4", "L85#5",
+                                        "L452#3", "L1668#4", "L452#1", "L1518#1", "L1518#4", "L1949#1",
+                                        "L1949#3", "L1668#3", "L1668#2", "L1518#3", "L1518#5", "L1518#2",
+                                        "L1668#1", "L452#2","L1949#2","L984#7", "L770#1", "L770#2", "L984#9", "L984#8", "L112#4",
+                                        "L984#1", "L984#2", "L984#3", "L112#1", "L984#5", "L112#2", "L112#3",
+                                        "L984#4", "L772#2", "L772#1", "L984#6","L1337#4", "L1337#7", "L1337#3", "L1337#5", "L1337#2", "L1337#8",
+                                        "L1337#1", "L1337#6","L1524#2", "L1524#3", "L1524#1", "L1524#4",
+                                        "L984#7", "L770#1", "L770#2", "L984#9", "L984#8", "L112#4",
+                                        "L984#1", "L984#2", "L984#3", "L112#1", "L984#5", "L112#2", "L112#3",
+                                        "L984#4", "L772#2", "L772#1", "L984#6")]
 lh.inputs = c(lh.inputs,lhin.mcfo)
 
 df = lh.inputs[,]
@@ -15,6 +24,7 @@ df$modality = NA
 df$class = "non-glomerular"
 df$glomerulus = NA
 df$tract = NA
+df$type = "IN"
 df$neurotransmitter = NA
 df$reference = NA
 df$dendritic.location = NA
@@ -607,6 +617,7 @@ df[wedge.pn.3,]$dendritic.location = "WED"
 df[wedge.pn.3,]$cell.body.position = "WED"
 df[wedge.pn.3,]$tract = "WEDT"
 df[wedge.pn.3,]$neurotransmitter = "GABA"
+df[wedge.pn.3,]$type = "IN/ON"
 
 wedge.pn.5 = c("L1337#4", "L1337#7", "L1337#3", "L1337#5", "L1337#2", "L1337#8",
                  "L1337#1", "L1337#6") # 70B
@@ -660,7 +671,7 @@ df[lp.pns,]$cell.body.position = "PLP/AVLP/PVLP/WED"
 df[lp.pns,]$tract = "LPT"
 df[lp.pns,]$neurotransmitter = "Unknown"
 
-plp.pns = "Cha-F-000086"
+plp.pns = c("Cha-F-000086","L85#1", "L85#2", "L85#3", "L85#4", "L85#5")
 df[plp.pns,"anatomy.group"] = "PLP-PN2" # PLP-PN1 in Mike's lines
 df[plp.pns,]$modality = "Unknown"
 df[plp.pns,]$reference = "ASB"
@@ -753,7 +764,6 @@ df[notLHPNproper,]$neurotransmitter = "Unknown"
 
 df$anatomy.group = factor(df$anatomy.group,levels = sort(unique(df$anatomy.group)))
 df$cell.type = df$anatomy.group
-df$type = "IN"
 df[mbons,"type"] = "IN/MBON"
 df$skeleton.type = "FlyCircuit"
 df[names(lhin.mcfo),"skeleton.type"] = "MCFO"

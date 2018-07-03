@@ -1,54 +1,50 @@
 library(elmr)
 library(googlesheets)
 
-# INSERT CATMAID_LOGIN
+# INSERT CATMAID_LOGIN HERE
+FAFB.conn = catmaid_login(server = "https://neuropil.janelia.org/tracing/fafb/v14/", authname = "X", authpassword = "X", token = "X")
 
-# Get all of our input info
+# Acess google sheet for cell type and EM matches information
 googlesheets::gs_auth(verbose=TRUE)
 gs = googlesheets::gs_title("EMsearch")
 gs = googlesheets::gs_read(gs, ws = 1, range = NULL, literal = TRUE, verbose = TRUE, col_names = TRUE)
-g = subset(gs, Miketype!=FALSE)
-cts = unique(g$cell.type)
-#names(skids) = cts
+g = subset(gs, Miketype!=FALSE&!is.na(Miketype))
+all.cts = unique(g$cell.type)
 skids = g$em.match.skid
 skids = as.numeric(skids)
 skids = unique(skids[!is.na(skids)])
-# neurons = read.neurons.catmaid(skids,OmitFailures = TRUE)
-# neurons = xform_brain(neurons,reference = FAFB14,sample=FCWB)
-# neurons = neurons[!is.na(neurons)]
-
-matches = neuronlist()
-for (c in cts){
-  skid = subset(g,cell.type==c)$em.match.skid[1]
-  if(skid%in%names(neurons)){
-    print(c)
-    m = paste(subset(g,cell.type==c)$Miketype,collapse="/")
-    neuron = elmr::fetchn_fafb(skid,mirror=FALSE,reference = FCWB)
-    # Get meta info
-    meta = subset(c(most.lhns,most.lhins),cell.type==c)[1]
-    neuron[,"pnt"] = meta[,"pnt"]
-    neuron[,"anatomy.group"] = meta[,"anatomy.group"]
-    neuron[,"cell.type"] = c
-    neuron[,"old.cell.type"] = m
-    neuron[,"type"] = meta[,"type"]
-    neuron[,"skeleton.type"] = "EM"
-    matches = c(matches,neuron)
-  }
+em.neurons = read.neurons.catmaid(skids,OmitFailures = FALSE)
+em.neurons = xform_brain(em.neurons,reference = JFRC2,sample=FAFB14)
+cts = c()
+for(s in em.neurons[,"skid"]){
+  c = subset(gs,em.match.skid==s)$cell.type[1]
+  cts = c(cts,c)
 }
+em.neurons[,"old.cell.type"] = g$Miketype[match(cts,g$cell.type)]
+em.neurons[,"cell.type"] = cts
+em.neurons[,"pnt"] = process_lhn_name(em.neurons[,"cell.type"])$pnt
+em.neurons[,"anatomy.group"] = process_lhn_name(em.neurons[,"cell.type"])$anatomy.group
+em.neurons[grepl("WED",em.neurons[,"cell.type"]),"pnt"] = "WEDT"
+em.neurons[grepl("WED",em.neurons[,"cell.type"]),"anatomy.group"] = "WED-PN"
+em.neurons[grepl("LO-",em.neurons[,"cell.type"]),"pnt"] = "LOT"
+em.neurons[grepl("LO-",em.neurons[,"cell.type"]),"anatomy.group"] = "LO-PN"
+em.neurons[grepl("VNC",em.neurons[,"cell.type"]),"pnt"] = "VNCT"
+em.neurons[grepl("VNC",em.neurons[,"cell.type"]),"anatomy.group"] = "VNC-PN"
+em.neurons[grepl("GNG",em.neurons[,"cell.type"]),"pnt"] = "GNGT"
+em.neurons[grepl("GNG",em.neurons[,"cell.type"]),"anatomy.group"] = "GNG-PN"
+em.neurons[,"type"] = ifelse(em.neurons[,"cell.type"]%in%subset(most.lhns,type=="LN")[,"cell.type"],"LN","ON")
+em.neurons[,"type"] = ifelse(grepl("PN",em.neurons[,"cell.type"]),"PN",em.neurons[,"type"])
+em.neurons[,"skeleton.type"] = "EM"
 
+# Remove connector information
 strip_connectivity <- function(neuron){
   neuron$connectors = NULL
   neuron
 }
-emlhns = nlapply(matches,strip_connectivity)
-
-# Capitalise
-emlhns[,"cell.type"] = capitalise_cell_type_name(emlhns[,"cell.type"])
-emlhns[,"anatomy.group"] = capitalise_cell_type_name(emlhns[,"anatomy.group"])
-emlhns[,"pnt"] = capitalise_cell_type_name(emlhns[,"pnt"])
+emlhns = nlapply(em.neurons,strip_connectivity)
 
 # Save!
-emlhns.dps = dotprops(emlhns,resample = 1)
+emlhns.dps = dotprops(emlhns)
 devtools::use_data(emlhns,overwrite=TRUE,compress=TRUE)
 devtools::use_data(emlhns.dps,overwrite=TRUE,compress=TRUE)
 
