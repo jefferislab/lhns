@@ -257,36 +257,36 @@ write.neuronlistfh(jfw.lhns.dps, file='inst/extdata/jfw.lhns.dps.rds',overwrite 
 
 # Concise spreadsheet
 require(dplyr)
-c = subset(d,!is.na(cell.type))
-c = subset(c,cell.type!="notLHproper")
-c = c[,c("JJtype","cell.type")]
-c = dplyr::distinct(c)
-c = c[order(c$JJtype,decreasing=FALSE),]
-write.csv(c,"data-raw/JJtypes_to_Frechter_celltypes.csv")
+cts = subset(d,!is.na(cell.type))
+cts = subset(cts,cell.type!="notLHproper")
+cts = cts[,c("JJtype","cell.type")]
+cts = dplyr::distinct(cts)
+cts = cts[order(cts$JJtype,decreasing=FALSE),]
+write.csv(cts,"data-raw/JJtypes_to_Frechter_celltypes.csv")
 d = df[,c("cell","cluster","match","JJtype","anatomy.group","cell.type","type")]
 write.csv(d,"data-raw/JJids_to_Frechter_celltypes.csv")
 
 # Do the same for Shahar's dye fills
 dfills = subset(lhns::most.lhns,skeleton.type =="DyeFill"& good.trace==TRUE)[,]
 dfills.cts = unique(dfills$cell.type)
-c$Frechter = FALSE
-c[c$cell.type%in%dfills.cts,]$Frechter = TRUE
-dfills.cts.not.in.jj = data.frame(JJtype = FALSE, cell.type = dfills.cts[!dfills.cts%in%c$cell.type], Frechter = TRUE)
-c = rbind(c,dfills.cts.not.in.jj)
+cts$Frechter = FALSE
+cts[cts$cell.type%in%dfills.cts,]$Frechter = TRUE
+dfills.cts.not.in.jj = data.frame(JJtype = FALSE, cell.type = dfills.cts[!dfills.cts%in%cts$cell.type], Frechter = TRUE)
+cts = rbind(cts,dfills.cts.not.in.jj)
 
 # Add in the split info
-mt = rbind(lhns::lh.splits.dps[,],lhns::lh.mcfo[,])
+mt = merge(lhns::lh.splits.dps[,],subset(lhns::lh.mcfo,InLine==TRUE)[,],all.x=TRUE,all.y=TRUE)
 mt = subset(mt, type%in%c("LN","ON"))
 mt = mt[,c("old.cell.type","cell.type")]
 mt = dplyr::distinct(mt)
-c = merge(c,mt,all.x = TRUE, all.y = TRUE)
-c = as.matrix(c)
-c[is.na(c)] = FALSE
-c = as.data.frame(c)
+cts = merge(cts,mt,all.x = TRUE, all.y = TRUE)
+cts = as.matrix(cts)
+cts[is.na(cts)] = FALSE
+cts = as.data.frame(cts)
 
 # Save info
-colnames(c) = c("cell.type", "JJtype", "Frechter", "Miketype")
-c = c[,c("cell.type", "Frechter", "Miketype", "JJtype")]
-c = c[order(c$cell.type,decreasing = FALSE),]
-c$datasets = unlist(sapply(1:nrow(c),function(x) paste(c("F","M","J")[c[x,][-1]!=FALSE],collapse="") ))
-write.csv(c,"data-raw/ASB_bridging_celltypes.csv")
+colnames(cts) = c("cell.type", "JJtype", "Frechter", "Miketype")
+cts = cts[,c("cell.type", "Frechter", "Miketype", "JJtype")]
+cts = cts[order(cts$cell.type,decreasing = FALSE),]
+cts$datasets = unlist(sapply(1:nrow(cts),function(x) paste(c("F","M","J")[cts[x,][-1]!=FALSE],collapse="") ))
+write.csv(cts,"data-raw/ASB_bridging_celltypes.csv")
