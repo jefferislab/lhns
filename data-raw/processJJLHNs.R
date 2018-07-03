@@ -200,7 +200,7 @@ df["JJ94",]$match = "Cha-F-100420"
 
 # V2
 df[c("JJ79"),]$JJtype = "V2"
-df["JJ79",]$match = "Gad1-F-600005"
+df["JJ79",]$match = "Cha-F-200034"
 
 # V3
 df[c("JJ15","JJ16","JJ17","JJ22","JJ87"),]$JJtype = "V3"
