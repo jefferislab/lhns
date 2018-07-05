@@ -671,12 +671,12 @@ df[lp.pns,]$cell.body.position = "PLP/AVLP/PVLP/WED"
 df[lp.pns,]$tract = "LPT"
 df[lp.pns,]$neurotransmitter = "Unknown"
 
-plp.pns = c("Cha-F-000086","L85#1", "L85#2", "L85#3", "L85#4", "L85#5")
-df[plp.pns,"anatomy.group"] = "PLP-PN2" # PLP-PN1 in Mike's lines
+wed.pn.6 = c("Cha-F-000086","L85#1", "L85#2", "L85#3", "L85#4", "L85#5")
+df[plp.pns,"anatomy.group"] = "WED-PN6"
 df[plp.pns,]$modality = "Unknown"
 df[plp.pns,]$reference = "ASB"
 df[plp.pns,]$dendritic.location = "PV2"
-df[plp.pns,]$cell.body.position = "PLP/PVLP/WED/LH"
+df[plp.pns,]$cell.body.position = "LH"
 df[plp.pns,]$tract = "LPT"
 df[plp.pns,]$neurotransmitter = "Unknown"
 

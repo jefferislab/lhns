@@ -199,9 +199,9 @@ mf = mf[,!colnames(mf)%in%c("linecode.1")]
 #    n = nlscan(most.lh[names(sort(result[,c],decreasing = TRUE))],col="red",lwd=2,soma=T)
 #  }
 
-############################
+##############################
 # Assignments to LHN library #
-############################
+##############################
 
 # MB036B;
 mf[c("GMR_MB036B-20151217_22_C2-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "3C"
