@@ -1727,7 +1727,9 @@ mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS16345-20151022_20_D2-Aligned63xScale_c0a.Smt.SptGraph.swc",
      "JRC_SS24820-20161007_29_F1-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS25950-20161104_19_A4-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS16564-20160311_23_D7-Aligned63xScale_c1.Smt.SptGraph.swc"
+     "JRC_SS16564-20160311_23_D7-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS22730-20160701_22_E1-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS22730-20160701_22_E7-Aligned63xScale_c0.Smt.SptGraph.swc"
 ),"InLine"] = FALSE
 
 
