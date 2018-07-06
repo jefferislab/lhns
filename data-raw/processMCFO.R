@@ -10,7 +10,7 @@ if(!exists("most.lhns")){
 }
 
 # # Read MCFO neurons
-# mcfo = read.neurons("/Users/abates/ImageData/MCFO/skels")
+# mcfo = read.neurons("/Users/abates/ImageData/MCFO/lastish_stacks/skels4")
 # mcfo = nlapply(mcfo,nat::resample, stepsize = 1)
 #
 # # Fix skeletons (fix a few issues with Amira skeletons, like loops and star-burst node connectivity)
@@ -202,6 +202,68 @@ mf = mf[,!colnames(mf)%in%c("linecode.1")]
 ##############################
 # Assignments to LHN library #
 ##############################
+
+
+# L1477; 4A
+mf[c("JRC_SS22624-20160701_21_D6-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS22624-20160701_21_D7-Aligned63xScale_c0.Smt.SptGraph.swc",
+     "JRC_SS22624-20160701_21_D8-Aligned63xScale_c0.Smt.SptGraph.swc"),]$old.cell.type = "4A"
+mf[c("JRC_SS22624-20160701_21_D6-Aligned63xScale_c1.Smt.SptGraph.swc"),]$match = "Cha-F-100412"
+mf[c("JRC_SS22624-20160701_21_D7-Aligned63xScale_c0.Smt.SptGraph.swc"),]$match = "VGlut-F-500253"
+mf[c("JRC_SS22624-20160701_21_D8-Aligned63xScale_c0.Smt.SptGraph.swc"),]$match = "VGlut-F-600752"
+
+# L1721; 16C
+mf[c("JRC_SS22713-20160624_20_C2-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS22713-20160624_20_C6-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS22713-20160624_20_C7-Aligned63xScale_c0.Smt.SptGraph.swc"),]$old.cell.type = "16C"
+mf[c("JRC_SS22713-20160624_20_C2-Aligned63xScale_c2.Smt.SptGraph.swc",
+     "JRC_SS22713-20160624_20_C6-Aligned63xScale_c2.Smt.SptGraph.swc",
+     "JRC_SS22713-20160624_20_C7-Aligned63xScale_c0.Smt.SptGraph.swc"),]$match = "Cha-F-400246"
+
+# L2033; 145
+mf[c("JRC_SS23107-20160701_22_C2-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS23107-20160701_22_C5-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "145"
+mf[c("JRC_SS23107-20160701_22_C2-Aligned63xScale_c2.Smt.SptGraph.swc",
+     "JRC_SS23107-20160701_22_C5-Aligned63xScale_c1.Smt.SptGraph.swc"),]$match = "Gad1-F-600202"
+
+# L2098; 1A
+mf[c("JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt2.SptGraph.swc"),]$old.cell.type = "1A"
+mf[c("JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt2.SptGraph.swc"),]$match = "Gad1-F-200366"
+
+# L2233; 4E
+mf[c("JRC_SS23187-20160805_23_F2-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS23187-20160805_23_F6-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS23187-20160805_23_F7-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS23187-20160805_23_F7-Aligned63xScale_c1.Smt2.SptGraph.swc"),]$old.cell.type = "4E"
+mf[c("JRC_SS23187-20160805_23_F2-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS23187-20160805_23_F6-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS23187-20160805_23_F7-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS23187-20160805_23_F7-Aligned63xScale_c1.Smt2.SptGraph.swc"),]$match = "Cha-F-200398"
+
+# L1959; 29G
+mf[c("JRC_SS23354-20160909_25_H1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "29G"
+mf[c("JRC_SS23354-20160909_25_H1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "VGlut-F-500445"
+
+# L1847; 54C
+mf[c("JRC_SS23805-20160902_22_D1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "54C"
+mf[c("JRC_SS23805-20160902_22_D1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "Gad1-F-800092"
+
+# L1900; 85
+mf[c("JRC_SS23817-20170623_24_B1-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "85"
+mf[c("JRC_SS23817-20170623_24_B1-Aligned63xScale_c1.Smt.SptGraph.swc"),]$match = "MB-C1"
+
+# L452; 27C
+mf[c("JRC_SS22532-20160928_31_C1-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS22532-20160928_31_C1-Aligned63xScale_c2.Smt.SptGraph.swc",
+  "JRC_SS22532-20160928_31_C2-Aligned63xScale_c1.Smt.SptGraph.swc",
+  "JRC_SS22532-20160928_31_C2-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "27C"
+mf[c("JRC_SS22532-20160928_31_C1-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS22532-20160928_31_C1-Aligned63xScale_c2.Smt.SptGraph.swc",
+     "JRC_SS22532-20160928_31_C2-Aligned63xScale_c1.Smt.SptGraph.swc",
+     "JRC_SS22532-20160928_31_C2-Aligned63xScale_c2.Smt.SptGraph.swc"),]$match = "Gad1-F-500140"
+
 
 # MB036B;
 mf[c("GMR_MB036B-20151217_22_C2-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "3C"
@@ -1144,7 +1206,7 @@ mf["JRC_SS16353-20170303_21_C6-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "C
 mf["JRC_SS16353-20170303_21_C6-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "Cha-F-400222"
 
 # L907; 27A; Av2a1; Good
-mf[c("JRC_SS16364-20151217_22_B7-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "27A"
+mf[c("JRC_SS16364-20151217_22_B7-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "27A1"
 mf["JRC_SS16364-20151217_22_B7-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "Gad1-F-000240"
 
 # L247; 1B; AV4a2/5
@@ -1429,7 +1491,7 @@ mf[c("JRC_SS25832-20170324_29_D5-Aligned63xScale_c0a.Smt.SptGraph.swc",
      "JRC_SS25832-20170324_29_D5-Aligned63xScale_c0b.Smt.SptGraph.swc",
      "JRC_SS25832-20170324_29_D5-Aligned63xScale_c1a.Smt.SptGraph.swc",
      "JRC_SS25832-20170324_29_E1-Aligned63xScale_c0.Smt.SptGraph.swc",
-     "JRC_SS25832-20170324_29_E1-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "27A"
+     "JRC_SS25832-20170324_29_E1-Aligned63xScale_c1.Smt.SptGraph.swc"),]$old.cell.type = "27A1"
 mf[c("JRC_SS25832-20170324_29_D5-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS25832-20170324_29_E1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "116A"
 mf["JRC_SS25832-20170324_29_D5-Aligned63xScale_c0a.Smt.SptGraph.swc",]$match = "Cha-F-500105"
@@ -1500,7 +1562,7 @@ mf["JRC_SS16329-20151125_23_A6-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="mi
 ###################
 
 
-# If for MCFO skeleton is not, for soem reason, in most.lhns
+# If for MCFO skeleton is not, for some reason, in most.lhns
 df.a = lhns::most.lhns[,c("pnt","anatomy.group","cell.type","type")]
 df.b = data.frame(pnt = most.lhins[,c("tract")],anatomy.group=most.lhins[,c("anatomy.group")],cell.type=most.lhins[,c("anatomy.group")], type = "IN")
 rownames(df.b) = names(most.lhins)
@@ -1689,7 +1751,7 @@ attr(lh.mcfo,"df") = mf
 ################
 
 
-# Synchronsie with most.lhns
+# Synchronise with most.lhns
 most.lh = c(most.lhns,most.lhins)
 in.most.lhns = names(lh.mcfo)[names(lh.mcfo)%in%names(most.lh)]
 lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type")] = most.lh[in.most.lhns,c("pnt","anatomy.group","cell.type","type")]
