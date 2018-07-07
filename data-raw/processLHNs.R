@@ -594,13 +594,13 @@ pv4.b.1 = c("VGlut-F-500411","VGlut-F-700602","Gad1-F-300148", "VGlut-F-600764",
             "VGlut-F-500399", "VGlut-F-700084","140117c2","L1827#4","L1827#6","L1827#13")
 pv4.b.2 = c("fru-M-200351","Gad1-F-100154","131212c1","E0585-F-300056","VGlut-F-500444","140207c0", "VGlut-F-400084", "Cha-F-100028",
             "Gad1-F-200322","140211c0","140206c2","L1827#5", "L1827#7","L1827#8", "L1827#9","L1827#10","L1827#11","L1827#12", "L1828#2")
-pv4.b.3 = c("Gad1-F-300135","L509#2","L509#2")
-pv4.b.4 = c("VGlut-F-800068")
-pv4.b= c(pv4.b.1,pv4.b.2,pv4.b.3,pv4.b.4)
+pv4.b.3 = c("L509#2","L509#2")
+pv4.b.4 = c("Gad1-F-300135")
+pv4.b.5 = c("VGlut-F-800068")
+pv4.b= c(pv4.b.1,pv4.b.2,pv4.b.3,pv4.b.4,pv4.b.5)
 pv4.c.1 = c("VGlut-F-500046","VGlut-F-600030","Gad1-F-400027","VGlut-F-700503",
             "VGlut-F-400240","VGlut-F-700280","VGlut-F-800064","VGlut-F-700342",
-            "Gad1-F-000274","VGlut-F-500419", "L2316#2", "L2392#2", "L2392#3",
-            "L2392#4", "L2392#5")
+            "Gad1-F-000274","VGlut-F-500419", "L2316#2", "L2392#2", "L2392#3","L2392#4", "L2392#5")
 pv4.c.2=c("fru-M-200253","Gad1-F-100178","Gad1-F-700258","L1842#1","L1842#2") # Some somas wrong
 pv4.c.3= c("VGlut-F-500445","VGlut-F-900028","L1397#1", "L1397#2", "L1397#3","L1959#1")
 pv4.c.4=c("VGlut-F-800074")
@@ -645,6 +645,7 @@ df[pv4.b.1,]$cell.type = "pv4b1"
 df[pv4.b.2,]$cell.type = "pv4b2"
 df[pv4.b.3,]$cell.type = "pv4b3"
 df[pv4.b.4,]$cell.type = "pv4b4"
+df[pv4.b.5,]$cell.type = "pv4b5"
 df[pv4.c.1,]$cell.type = "pv4c1"
 df[pv4.c.2,]$cell.type = "pv4c2"
 df[pv4.c.3,]$cell.type = "pv4c3"
@@ -1630,7 +1631,7 @@ lh.output.neurons = c("ad1a2", "ad1a1",  "ad1a3", "ad1a4", "ad1a5", "ad1a6",
                       "pv1i1", "pv2b1", "pv2c1", "pv2d2", "pv2d3", "pv2d1", "pv2f1",
                       "pv2g1", "pv2h1", "pv2i1", "pv2j1", "pv3a1", "pv3a2",
                       "pv3b1", "pv3c1", "pv3d1", "pv3e1", "pv3f1", "pv4b1", "pv4b2",
-                      "pv4b3", "pv4b4", "pv4c1", "pv4c1", "pv4c3", "pv4c4",
+                      "pv4b3", "pv4b4", "pv4b5", "pv4c1", "pv4c1", "pv4c3", "pv4c4",
                       "pv4c5", "pv4c6", "pv4d1", "pv4d1", "pv4d2", "pv4d3", "pv4d4",
                       "pv4d5", "pv4d6", "pv4e1", "pv4e2", "pv4e3",  "pv4f1",
                       "pv4g1", "pv4h1", "pv4i1", "pv4j1", "pv4k1",
