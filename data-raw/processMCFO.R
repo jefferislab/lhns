@@ -148,14 +148,18 @@ load("data-raw/dolan_mcfo.rda")
 
 # Get the imade code to line mapping
 dcs = read.csv("data-raw/dolan_cells.csv")
+dcs$ImageCode = NULL
+dcs = aggregate(No_Cells ~ LineCode + old.cell.type, dcs, function(x) paste0(round(mean(x)),ifelse(!is.na(sd(x)),paste0("±",round(sd(x))),"")))
+colnames(dcs) = c("LineCode","old.cell.type","no.cells")
 nts = read.csv("data-raw/NT_annotation_from_Mike.csv")
+stainings = merge(dcs,nts,all.x=TRUE,all.y=TRUE)
 images2cluster = read.csv("data-raw/ImagesToCluster.csv")
 codes = read.csv("data-raw/FlycoreCodes.csv")
 s = as.character(codes[,"Genotype"])
 
 # Work out metadata
-d = read.csv("/GD/LMBD/Papers/2018lhsplitcode/Data/SplitGAL4annotate.csv",header = TRUE)
-colnames(d) = c("linecode","imagecode","AD","DBD","old.cell.type","num.clusters","Behaviour","Polarity","MCFO","stablestock","VNC")
+d = read.csv("data-raw/SplitGAL4annotate.csv",header = TRUE)
+colnames(d) = c("linecode","imagecode","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","stablestock","VNC","ImagePath")
 d$imagecode = NULL
 d = d[!duplicated(d$linecode),]
 rownames(d) = d$linecode
@@ -182,7 +186,7 @@ mf$match = NA
 mf$skeleton.type = "MCFO"
 mf$file = rownames(mf) = names(mcfo)
 mf[] = lapply(mf, as.character)
-mf = mf[,!colnames(mf)%in%c("linecode.1")]
+mf = mf[,!colnames(mf)%in%c("linecode.1","ImagePath")]
 
 # # NBlast
 #  mcfo.dps = dotprops(mcfo,resample=1)
@@ -228,7 +232,7 @@ mf[c("JRC_SS23107-20160701_22_C2-Aligned63xScale_c2.Smt.SptGraph.swc",
 
 # L2098; 1A
 mf[c("JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt.SptGraph.swc",
-  "JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt2.SptGraph.swc"),]$old.cell.type = "1A"
+  "JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt2.SptGraph.swc"),]$old.cell.type = "1A2"
 mf[c("JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS23129-20160805_24_C4-Aligned63xScale_c1.Smt2.SptGraph.swc"),]$match = "Gad1-F-200366"
 
@@ -687,15 +691,15 @@ mf[c("JRC_SS24794-20160909_25_B1-Aligned63xScale_c2.Smt.SptGraph.swc",
 mf["JRC_SS24794-20160909_25_B1-Aligned63xScale_c2.Smt.SptGraph.swc",]$match = "AV6c1" # Almost "VGlut-F-100257"
 mf["JRC_SS24794-20160909_25_B2-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "AV6c1" # Almost "VGlut-F-100257"
 
-# SS24172; 154; PV4g - new cell type
+# L2220; 154; PV6c - new cell type
 mf[c("JRC_SS24172-20160824_31_D1-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS24172-20160824_31_D1-Aligned63xScale_c1b.Smt2.SptGraph.swc",
      "JRC_SS24172-20160824_31_D2-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS24172-20160824_31_D2-Aligned63xScale_c1b.Smt.SptGraph.swc"),]$old.cell.type = "154"
-mf["JRC_SS24172-20160824_31_D1-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="PV4g1"
-mf["JRC_SS24172-20160824_31_D1-Aligned63xScale_c1b.Smt2.SptGraph.swc",]$match ="PV4g1"
-mf["JRC_SS24172-20160824_31_D2-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="PV4g1"
-mf["JRC_SS24172-20160824_31_D2-Aligned63xScale_c1b.Smt.SptGraph.swc",]$match ="PV4g1"
+     "JRC_SS24172-20160824_31_D2-Aligned63xScale_c1b.Smt.SptGraph.swc"),]$old.cell.type = "154" # PV6?
+mf["JRC_SS24172-20160824_31_D1-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="PV6c1"
+mf["JRC_SS24172-20160824_31_D1-Aligned63xScale_c1b.Smt2.SptGraph.swc",]$match ="PV6c1"
+mf["JRC_SS24172-20160824_31_D2-Aligned63xScale_c1.Smt.SptGraph.swc",]$match ="PV6c1"
+mf["JRC_SS24172-20160824_31_D2-Aligned63xScale_c1b.Smt.SptGraph.swc",]$match ="PV6c1"
 
 # 37G11; 11A; PD2a1/b1
 mf[c("cell1_GMR_37G11_AE_01-20140618_19_B5-Aligned63xScale_c0.swc",
@@ -1618,10 +1622,10 @@ mf[grepl("AV4f1",mf$match),]$anatomy.group = "AV4f"
 mf[grepl("AV4f1",mf$match),]$type = "ON"
 mf[grepl("AV4f1",mf$match),]$cell.type = "AV4f1"
 
-mf[grepl("PV4g1",mf$match),]$pnt = "PV4"
-mf[grepl("PV4g1",mf$match),]$anatomy.group = "PV4g"
-mf[grepl("PV4g1",mf$match),]$type = "ON"
-mf[grepl("PV4g1",mf$match),]$cell.type = "PV4g1"
+mf[grepl("PV6c1",mf$match),]$pnt = "PV6"
+mf[grepl("PV6c1",mf$match),]$anatomy.group = "PV6c"
+mf[grepl("PV6c1",mf$match),]$type = "ON"
+mf[grepl("PV6c1",mf$match),]$cell.type = "PV6c1"
 
 mf[grepl("WED-PN3",mf$match),]$pnt = "WEDT"
 mf[grepl("WED-PN3",mf$match),]$anatomy.group = "WED-PN"
@@ -1647,6 +1651,7 @@ mf[grepl("MB-C1",mf$match),]$cell.type = "MB-C1"
 ###################################################
 # Mike Dolan determines what is in exemplar lines #
 ###################################################
+
 
 mf[,"InLine"] = TRUE
 mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
@@ -1692,36 +1697,6 @@ mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B1-Aligned63xScale_c0a.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS03773-20180209_21_A7-Aligned63xScale_c0.Smt.SptGraph.swc",
-     "JRC_SS16786-20151022_19_B4-Aligned63xScale_c0.Smt.SptGraph.swc",
-     "JRC_SS16786-20151022_19_B6-Aligned63xScale_c1a.Smt.SptGraph.swc",
-     "JRC_SS16786-20151022_19_B6-Aligned63xScale_c1b.Smt.SptGraph.swc",
-     "JRC_SS16786-20151022_19_B7-Aligned63xScale_c0a.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D1-Aligned63xScale_c0.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D1-Aligned63xScale_c0b.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D1-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D1-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D2-Aligned63xScale_c0.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D2-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D6-Aligned63xScale_c0b.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D6-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS10567-20151008_22_D7-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A1-Aligned63xScale_c0a.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A1-Aligned63xScale_c0b.Smt2.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A1-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A1-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A2-Aligned63xScale_c0a.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A2-Aligned63xScale_c0b.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A2-Aligned63xScale_c1a.Smt2.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A2-Aligned63xScale_c1b.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A2-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A4-Aligned63xScale_c0.Smt2.SptGraph.swc",
-     "JRC_SS10567-20160408_21_A4-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c0.Smt.SptGraph.swc",
-     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c0b.Smt.SptGraph.swc",
-     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c1a.Smt.SptGraph.swc",
-     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS16661-20151125_20_F1-Aligned63xScale_c2b.Smt.SptGraph.swc",
      "JRC_SS16329-20151125_23_A6-Aligned63xScale_c1a.Smt.SptGraph.swc",
      "JRC_SS22737-20160624_20_B5-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS16345-20151022_20_D2-Aligned63xScale_c0a.Smt.SptGraph.swc",
@@ -1738,6 +1713,8 @@ mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
 #############
 
 
+mf$neurotransmitter = as.character(sapply(mf[,"old.cell.type"],function(x) subset(stainings,old.cell.type==x)$NT[1]))
+mf$cell.number = as.character(sapply(mf[,"old.cell.type"],function(x) subset(stainings,old.cell.type==x)$no.cells[1]))
 lh.mcfo = mcfo
 order = order(mf$linecode)
 mf = mf[order,]

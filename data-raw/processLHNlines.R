@@ -23,12 +23,14 @@ lh.splits.dps.clean = subset(lh.splits.dps,!old.cell.type%in%lh.mcfo[,"old.cell.
 # Get the projected number of neurons for each cell type, in each line
 dcs = read.csv("data-raw/dolan_cells.csv")
 dcs$ImageCode = NULL
-dcs = aggregate(No_Cells ~ LineCode + Cell.Type, dcs, function(x) paste0(round(mean(x)),ifelse(!is.na(sd(x)),paste0("±",round(sd(x))),"")))
+dcs = aggregate(No_Cells ~ LineCode + old.cell.type, dcs, function(x) paste0(round(mean(x)),ifelse(!is.na(sd(x)),paste0("±",round(sd(x))),"")))
 colnames(dcs) = c("LineCode","old.cell.type","no.cells")
 
 # Work out metadata
-d = read.csv("data-raw/lh_line_data.csv",header = TRUE) # dont's trust old.cell.type
-colnames(d) = c("LineCode","AD","DBD","genotype","old.cell.type","num.lh.clusters","stablestock","Behaviour","MCFO","VNC")
+#d = read.csv("data-raw/lh_line_data.csv",header = TRUE) # dont's trust old.cell.type
+d = read.csv("data-raw/SplitGAL4annotate.csv",header = TRUE)
+#colnames(d) = c("LineCode","AD","DBD","genotype","old.cell.type","num.lh.clusters","stablestock","Behaviour","MCFO","VNC")
+colnames(d) = c("linecode","genotype","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","stablestock","VNC","ImagePath")
 d[] = lapply(d, as.character)
 dd = 1
 while(dd < nrow(d)){
@@ -65,6 +67,7 @@ lh_line_info = lh_line_info[!duplicated(lh_line_info),]
 skipped.line = na.omit(as.character(unique(lh.splits.dps.clean[,"linecode"][!lh.splits.dps.clean[,"linecode"]%in%lh_line_info[,"LineCode"]])))
 
 # Put in the cell types
+lh_line_info[] = lapply(lh_line_info, as.character)
 lh_line_info[is.na(lh_line_info)] = ""
 lh_line_info$pnt = ""
 lh_line_info$anatomy.group = ""
@@ -131,8 +134,9 @@ old2new[old2new$old%in%c("70E"),"new"] = "WED-PN4"
 old2new[old2new$old%in%c("151A","V2","70E","PN","PPL2ab-PN1",
 "VisualPN1","51C","51CB","151B","137","139","51B","70B","70C","70D"),"type"] = "IN"
 old2new[old2new$old%in%c("16A","1C","85","142"),"type"] = "ON"
-old2new[old2new$old%in%c("145","143","70A","70E"),"type"] = "IN/ON"
+old2new[old2new$old%in%c("145","143","70A","70E","51B"),"type"] = "IN/ON"
 old2new = rbind(old2new,data.frame(old="NP6099-TypeII",new=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON"))
+old2new = rbind(old2new,data.frame(old="17B",new=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON"))
 write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv")
 
 # Guess the cell types based on Mike's old.cell.type assignments
