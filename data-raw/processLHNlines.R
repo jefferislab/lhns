@@ -27,15 +27,13 @@ dcs = aggregate(No_Cells ~ LineCode + old.cell.type, dcs, function(x) paste0(rou
 colnames(dcs) = c("LineCode","old.cell.type","no.cells")
 
 # Work out metadata
-#d = read.csv("data-raw/lh_line_data.csv",header = TRUE) # dont's trust old.cell.type
 d = read.csv("data-raw/SplitGAL4annotate.csv",header = TRUE)
-#colnames(d) = c("LineCode","AD","DBD","genotype","old.cell.type","num.lh.clusters","stablestock","Behaviour","MCFO","VNC")
-colnames(d) = c("linecode","genotype","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","stablestock","VNC","ImagePath")
+colnames(d) = c("LineCode","genotype","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","Stablestock","VNC","ImagePath")
 d[] = lapply(d, as.character)
 dd = 1
 while(dd < nrow(d)){
   ddd = d[dd,]
-  if(is.na(ddd["num.lh.clusters"])&ddd[,"stablestock"]==""){
+  if(is.na(ddd["num.lh.clusters"])&ddd[,"Stablestock"]==""){
     if(!is.na(is.na(ddd["old.cell.type"]))&ddd["old.cell.type"]!=""){
       dddd = d[dd-1,]
       dddd["old.cell.type"] = ddd["old.cell.type"]
@@ -65,6 +63,9 @@ lh_line_info = lh_line_info[!duplicated(lh_line_info),]
 
 # Add in some awol lines
 skipped.line = na.omit(as.character(unique(lh.splits.dps.clean[,"linecode"][!lh.splits.dps.clean[,"linecode"]%in%lh_line_info[,"LineCode"]])))
+
+# Fix a few cell type mis-annotations
+lh_line_info$old.cell.type[grepl("^1B$|\\(1B\\)",lh_line_info$old.cell.type)] = "1BX"
 
 # Put in the cell types
 lh_line_info[] = lapply(lh_line_info, as.character)
@@ -115,6 +116,7 @@ most.lh = c(most.lhns,most.lhins)
 old = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(lh_line_info$old.cell.type)))))
 old = old[!grepl("sleep|NotLH|\v|\\?| ",old)]
 old = sort(old)
+old = old[old!=""]
 new = c()
 types = c()
 for(o in old){
@@ -137,7 +139,7 @@ old2new[old2new$old%in%c("16A","1C","85","142"),"type"] = "ON"
 old2new[old2new$old%in%c("145","143","70A","70E","51B"),"type"] = "IN/ON"
 old2new = rbind(old2new,data.frame(old="NP6099-TypeII",new=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON"))
 old2new = rbind(old2new,data.frame(old="17B",new=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON"))
-write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv")
+write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv",row.names = FALSE,col.names=TRUE)
 
 # Guess the cell types based on Mike's old.cell.type assignments
 for(l in 1:nrow(lh_line_info)){
@@ -146,6 +148,6 @@ for(l in 1:nrow(lh_line_info)){
 
 ########
 # Save #
-#######
+########
 
 devtools::use_data(lh_line_info,overwrite=TRUE)

@@ -159,7 +159,7 @@ s = as.character(codes[,"Genotype"])
 
 # Work out metadata
 d = read.csv("data-raw/SplitGAL4annotate.csv",header = TRUE)
-colnames(d) = c("linecode","imagecode","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","stablestock","VNC","ImagePath")
+colnames(d) = c("linecode","imagecode","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","Stablestock","VNC","ImagePath")
 d$imagecode = NULL
 d = d[!duplicated(d$linecode),]
 rownames(d) = d$linecode

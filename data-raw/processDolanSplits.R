@@ -507,6 +507,27 @@ md[c("JRC_SS23107-20160629_31_E6", "JRC_SS23107-20160629_31_F6",
 #md[md$cell.type=="GNG-PN2","linecode"] = "L2387"
 
 
+################
+# Make Matches #
+################
+
+
+# Synchronise with lh.mcfo
+lh.mcfo.df.clean = subset(lh.mcfo,InLine==TRUE)[,]
+for(o in md$old.cell.type){
+  if(o%in%lh.mcfo[,"old.cell.type"]){
+    cts = sort(lh.mcfo.df.clean[lh.mcfo.df.clean$old.cell.type==o,"cell.type"])
+    cts = unique(unlist(strsplit(cts,"/")))
+    cts = paste(sort(na.omit(unique(cts))),collapse="/")
+    t = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"type"])),collapse="/")
+    md[md$old.cell.type==o,"cell.type"] = cts
+    md[md$old.cell.type==o,"anatomy.group"] = paste(sort(na.omit(unique(process_lhn_name(unique(cts))$anatomy.group))),collapse="/")
+    md[md$old.cell.type==o,"pnt"] = paste(sort(na.omit(unique(process_lhn_name(unique(cts))$pnt))),collapse="/")
+    md[md$old.cell.type==o,"type"] = t
+  }
+}
+
+
 ### Save ###
 
 
