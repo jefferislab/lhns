@@ -139,12 +139,15 @@ if(!exists("most.lhns")){
 # # # save
 # # save(mcfo,file = "data-raw/dolan_mcfo.rda")
 
-# ##############################
+#################################
 # Meta-data for the MCFO object #
-################################
+#################################
 
 # Load data
 load("data-raw/dolan_mcfo.rda")
+for(i in 1:length(mcfo)){
+  mcfo[[i]]$d$Label = 0
+}
 
 # Get the imade code to line mapping
 dcs = read.csv("data-raw/dolan_cells.csv")
@@ -1567,7 +1570,7 @@ mf["JRC_SS16329-20151125_23_A6-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="mi
 
 
 # If for MCFO skeleton is not, for some reason, in most.lhns
-df.a = lhns::most.lhns[,c("pnt","anatomy.group","cell.type","type")]
+df.a = most.lhns[,c("pnt","anatomy.group","cell.type","type")]
 df.b = data.frame(pnt = most.lhins[,c("tract")],anatomy.group=most.lhins[,c("anatomy.group")],cell.type=most.lhins[,c("anatomy.group")], type = "IN")
 rownames(df.b) = names(most.lhins)
 df = rbind(df.b,df.a[!rownames(df.a)%in%rownames(df.b),])
@@ -1704,7 +1707,9 @@ mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS25950-20161104_19_A4-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS16564-20160311_23_D7-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS22730-20160701_22_E1-Aligned63xScale_c1.Smt.SptGraph.swc",
-     "JRC_SS22730-20160701_22_E7-Aligned63xScale_c0.Smt.SptGraph.swc"
+     "JRC_SS22730-20160701_22_E7-Aligned63xScale_c0.Smt.SptGraph.swc",
+     "JRC_SS16329-20151125_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc",
+     "JRC_SS16329-20151125_23_A6-Aligned63xScale_c1b.Smt.SptGraph.swc"
 ),"InLine"] = FALSE
 
 

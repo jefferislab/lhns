@@ -649,7 +649,7 @@ mbons = c(mbonap3,mbonap2ap3)
 
 ###
 
-centrifugal = c("VGlut-F-200116","Gad1-F-700066")
+centrifugal = c("VGlut-F-200116","Gad1-F-700066", "Cha-F-000310")
 df[centrifugal,"anatomy.group"] = "Centrifugal"
 df[centrifugal,]$modality = "Centrifugal"
 df[centrifugal,]$reference = "ASB"
