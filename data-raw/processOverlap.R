@@ -4,6 +4,7 @@ library(scales)
 library(ggplot2)
 library(reshape2)
 library(ggrepel)
+library(ggpubr)
 
 # Get the inputs LH axons
 olf.pns = subset(lhns::most.lhins,grepl("Olf",modality))
@@ -90,6 +91,9 @@ line.ag.full = dplyr::select(line.cluster.clean,LineShortName,Cluster,isLH,pnt,c
 cts.in = unique(subset(df.decision,anatomy.group%in%capitalise_cell_type_name(line.ag.full$value))$cell.type)
 cts.in = as.character(cts.in[!is.na(cts.in)])
 
+# Which are in the MCFO data?
+df.decision$InLines = df.decision$cell.type%in%unique(c(subset(lh.mcfo,InLine==TRUE)[,"cell.type"],lh.splits.dps[,"cell.type"]))
+
 # Generate figure for Frechter et al. 2018
 pdf(file='/GD/LMBD/Papers/2015lhns/fig/Alex/images/core.decision.boundaries-1.pdf',width=10,height=5)
 # Visualise decision boundaries
@@ -97,7 +101,6 @@ dye.fills.ct = unique(subset(most.lhns,skeleton.type=="DyeFill")[,"cell.type"])
 dye.fills.ct = dye.fills.ct[!is.na(dye.fills.ct)]
 dye.fill.points = subset(df.decision,cell.type%in%dye.fills.ct)
 cts.in.points = subset(df.decision,cell.type%in%cts.in)
-mcfo.points = subset(df.decision,cell.type%in%subset(lh.mcfo,InLine==TRUE)[,"cell.type"])
 ppl1ap3 = subset(df.decision,cell.type%in%"PV5e1")
 pd2.data = subset(df.decision,grepl("PD2",cell.type))
 pd2labels = pd2.data$cell.type
@@ -124,25 +127,42 @@ ggplot(df.decision, aes(x= mean.overlap, y=proportion.dendritic.lh, size = skele
   guides(colour=FALSE)
 dev.off()
 
+
 # Generate a figure for Dolan et al. 2018
 pdf(file='/GD/LMBD/Papers/2018lhsplitcode/Fig_Alex/Figure1/splitlines_in_lhn_dendrite_analysis.pdf',width=10,height=5)
+# Marginal density plot of x (top panel) and y (right panel)
+xplot <- ggdensity(df.decision, "mean.overlap", fill = "InLines",color = "InLines",
+                   palette = c("grey","chartreuse3"))+
+          scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),labels = trans_format("log10", math_format(10^.x)))+
+         guides(fill = FALSE, color = FALSE)
+yplot <- ggdensity(df.decision, "proportion.dendritic.lh", fill = "InLines",color = "InLines",
+                   palette = c("grey","chartreuse3"))+
+          rotate()+
+          guides(fill = FALSE, color = FALSE)
+yplot <- yplot + clean_theme()
+xplot <- xplot + clean_theme()
 # Plot dendrite analysis plotting the cell types in split lines
-ggplot(df.decision, aes(x=mean.overlap, y=proportion.dendritic.lh, size = 3)) +
-  geom_point(color = "grey", alpha = 0.3)+
+plot <- ggplot(df.decision, aes(x=mean.overlap, y=proportion.dendritic.lh, size = 3, color=InLines)) +
+  geom_point(alpha = 0.3)+
+  scale_color_manual(values=c("grey","chartreuse3"))+
   #geom_smooth()+
   scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
                 labels = trans_format("log10", math_format(10^.x)))+
   #annotation_logticks(base=10,sides="b") +
   #coord_trans(x="log10") +
-  geom_point(data=mcfo.points, color = "chartreuse2", alpha = 0.3) +
+  #geom_vline(xintercept = c(20000), color = "red")+
+  #geom_hline(yintercept = c(0.5), color = "red")+
   theme_minimal()+
   theme(panel.grid.minor=element_blank())+
   ylab("")+
   xlab("")+
-  guides(colour=FALSE)
+  guides(fill = FALSE, color = FALSE, size = FALSE)
+# Arranging the plot
+ggarrange(xplot, NULL, plot, yplot,
+          ncol = 2, nrow = 2,  align = "hv",
+          widths = c(2, 1), heights = c(1, 2),
+          common.legend = TRUE)
 dev.off()
-
-
 
 
 
