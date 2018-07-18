@@ -4,7 +4,7 @@ library(googlesheets)
 # INSERT CATMAID_LOGIN HERE
 FAFB.conn = catmaid_login(server = "https://neuropil.janelia.org/tracing/fafb/v14/", authname = "X", authpassword = "X", token = "X")
 
-# Acess google sheet for cell type and EM matches information
+# Access google sheet for cell type and EM matches information
 googlesheets::gs_auth(verbose=TRUE)
 gs = googlesheets::gs_title("EMsearch")
 gs = googlesheets::gs_read(gs, ws = 1, range = NULL, literal = TRUE, verbose = TRUE, col_names = TRUE)
