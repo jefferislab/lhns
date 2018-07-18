@@ -143,15 +143,15 @@ yplot <- yplot + clean_theme()
 xplot <- xplot + clean_theme()
 # Plot dendrite analysis plotting the cell types in split lines
 plot <- ggplot(df.decision, aes(x=mean.overlap, y=proportion.dendritic.lh, size = 3, color=InLines)) +
-  geom_point(alpha = 0.3)+
+  geom_point(alpha = 0.5)+
   scale_color_manual(values=c("grey","chartreuse3"))+
   #geom_smooth()+
   scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
                 labels = trans_format("log10", math_format(10^.x)))+
   #annotation_logticks(base=10,sides="b") +
   #coord_trans(x="log10") +
-  #geom_vline(xintercept = c(20000), color = "red")+
-  #geom_hline(yintercept = c(0.5), color = "red")+
+  geom_segment(aes(x = 20000,  xend = 20000, y=0, yend=0.5),lwd=1, color = "red")+
+  geom_segment(aes(x = 0,  xend = 20000, y=0.5, yend=0.5),lwd=1, color = "red")+
   theme_minimal()+
   theme(panel.grid.minor=element_blank())+
   ylab("")+

@@ -119,6 +119,7 @@ old = sort(old)
 old = old[old!=""]
 new = c()
 types = c()
+corelh = c()
 for(o in old){
   cts = sort(na.omit(unique(subset(lh_line_info,old.cell.type==o)$cell.type)))
   cts = unique(unlist(strsplit(cts,"/")))
@@ -126,8 +127,10 @@ for(o in old){
   new = c(new,cts)
   t = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"type"])),collapse="/")
   types = c(types,t)
+  core = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"coreLH"])),collapse="/")
+  corelh = c(corelh,core)
 }
-old2new = data.frame(old=old,new=new, type=types)
+old2new = data.frame(old=old,new=new, type=types, coreLH=corelh)
 old2new[] = lapply(old2new, as.character)
 # Add some manual assignments
 old2new[old2new$old%in%c("151A"),"new"] = "VNC-PN1"
@@ -137,8 +140,8 @@ old2new[old2new$old%in%c("151A","V2","70E","PN","PPL2ab-PN1",
 "VisualPN1","51C","51CB","151B","137","139","51B","70B","70C","70D"),"type"] = "IN"
 old2new[old2new$old%in%c("16A","1C","85","142"),"type"] = "ON"
 old2new[old2new$old%in%c("145","143","70A","70E","51B"),"type"] = "IN/ON"
-old2new = rbind(old2new,data.frame(old="NP6099-TypeII",new=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON"))
-old2new = rbind(old2new,data.frame(old="17B",new=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON"))
+old2new = rbind(old2new,data.frame(old="NP6099-TypeII",new=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON",coreLH=TRUE))
+old2new = rbind(old2new,data.frame(old="17B",new=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON",coreLH=TRUE))
 write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv",row.names = FALSE,col.names=TRUE)
 
 # Guess the cell types based on Mike's old.cell.type assignments

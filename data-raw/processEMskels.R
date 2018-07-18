@@ -41,7 +41,8 @@ strip_connectivity <- function(neuron){
   neuron$connectors = NULL
   neuron
 }
-emlhns = nlapply(em.neurons,strip_connectivity)
+emlhns = nlapply(subset(em.neurons,!cell.type%in%c("PV4a1","PV4a2","AD1b2")),strip_connectivity)
+emlhns = c(emlhns,subset(em.neurons,cell.type%in%c("PV4a1","PV4a2","AD1b2")))
 
 # Save!
 emlhns.dps = dotprops(emlhns)

@@ -1720,6 +1720,7 @@ mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
 
 mf$neurotransmitter = as.character(sapply(mf[,"old.cell.type"],function(x) subset(stainings,old.cell.type==x)$NT[1]))
 mf$cell.number = as.character(sapply(mf[,"old.cell.type"],function(x) subset(stainings,old.cell.type==x)$no.cells[1]))
+mf$coreLH = FALSE
 lh.mcfo = mcfo
 order = order(mf$linecode)
 mf = mf[order,]
@@ -1738,7 +1739,7 @@ attr(lh.mcfo,"df") = mf
 # Synchronise with most.lhns
 most.lh = c(most.lhns,most.lhins)
 in.most.lhns = names(lh.mcfo)[names(lh.mcfo)%in%names(most.lh)]
-lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type")] = most.lh[in.most.lhns,c("pnt","anatomy.group","cell.type","type")]
+lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type","coreLH")] = most.lh[in.most.lhns,c("pnt","anatomy.group","cell.type","type","coreLH")]
 
 
 #######################
