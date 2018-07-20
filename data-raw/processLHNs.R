@@ -725,10 +725,10 @@ pv2.d.2 = "Gad1-F-100074"
 pv2.d.3 ="CL133R_39D07"
 pv2.d=c(pv2.d.1,pv2.d.2,pv2.d.3)
 pv2.e = pv2.e.1 = "Gad1-F-500328"
-pv2.f = pv2.f.1 = "ICL151B_IS24671"
+pv2.f = pv2.f.1 = "Cha-F-600097"
 pv2.g = pv2.g.1 = c("Gad1-F-500266", "Cha-F-200448")
 pv2.h = pv2.h.1 = "Gad1-F-800126"# Could be its own tract
-pv2.i = pv2.i.1 = "Cha-F-600097"
+pv2.i = pv2.i.1 = "ICL151B_IS24671"
 pv2.j = pv2.j.1 = "CL52R_11E08"
 pv2.k = pv2.k.1 = "CL135R_10A11"
 
