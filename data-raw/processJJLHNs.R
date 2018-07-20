@@ -44,7 +44,7 @@ df["JJ27",]$match = "120830c2" # UNCERTAIN
 
 # ML6
 df[c("JJ127"),]$JJtype = "ML6"
-df["JJ127",]$match = "130612c0" # UNCERTAIN. Is this PD2?
+df["JJ127",]$match = "UNKNOWN" # Is this PD2?
 
 # ML7
 df[c("JJ132","JJ20"),]$JJtype = "ML7"
