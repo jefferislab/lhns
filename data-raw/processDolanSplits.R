@@ -43,55 +43,55 @@ if(!exists("most.lhns")){
 
 ###### Load data and transform to appropriate brainspace ######
 
-# Or load directly
-load('data-raw/dolan_splits_1_dotprops.rda')
-load('data-raw/dolan_splits_2_dotprops.rda')
-splits = c(splits1,splits2)
-files = names(splits)
-names(splits) = unlist(sapply(files, function(x) paste(strsplit(as.character(x), "~|-")[[1]][1:2],collapse="-")))
-
-# Add more meta-data on line information
-a = read.csv("/GD/LMBD/Papers/2018lhsplitcode/Data/Case4_Viewer.csv",header = TRUE) # Update directory
-b = read.csv("/GD/LMBD/Papers/2018lhsplitcode/Data/Polarity_Viewer.csv",header = TRUE) # Update directory
-colnames(a) = colnames(b) = c("linecode","imagecode")
-c = merge(a,b,all.x = TRUE, all.y=TRUE)
-d = read.csv("/GD/LMBD/Papers/2018lhsplitcode/Data/SplitGAL4annotate.csv",header = TRUE)
-colnames(d) = c("linecode","imagecode","AD","DBD","clusters","num.clusters","Behaviour","Polarity","MCFO","stablestock","VNC")
-mf = data.frame()
-for(i in c$imagecode){
-  l = as.character(subset(c,imagecode==i)$linecode)
-  f = subset(d,linecode==l)[,c(-1,-2)]
-  if(nrow(f)>=1){
-    m = cbind(subset(c,imagecode==i),f)
-    mf = rbind(mf,m)
-  }
-}
-mf = mf[!duplicated(mf$imagecode),]
-rownames(mf) = mf$imagecode
-split.codes = unlist(sapply(names(splits), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
-mf = mf[split.codes,]
-mf$neurotransmitter = splits[,]$neurotransmitter
-mf$compartment = splits[,]$seg.type
-mf$old.cell.type = splits[,]$Dolan.cell.type
-mf$cell.type = splits[,]$final.cell.type
-attr(splits,"df") = mf
-
-# Organise data
-dolan.splits.j = nat::nlapply(splits,nat.templatebrains::xform_brain,sample = nat.flybrains::JFRC2013,reference= nat.flybrains::FCWB,OmitFailures = T) # 4 lost...
-dolan.splits.axons = dolan.splits.j[names(dolan.splits.j)%in%rownames(subset(splits[,],seg.type=="axon|axonmemb"))]
-dolan.splits.dendrites = dolan.splits.j[names(dolan.splits.j)%in%rownames(subset(splits[,],seg.type=="dendrite|memb"))]
-dolan.splits =  subset(dolan.splits.j,compartment=="whole")
-
-
-
-attr(dolan.splits,"df") = subset(attr(dolan.splits.j,"df"),compartment=="whole")
-names(dolan.splits) = unlist(sapply(names(dolan.splits), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
-# names(dolan.splits.axons) = unlist(sapply(names(dolan.splits.axons), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
-# names(dolan.splits.dendrites) = unlist(sapply(names(dolan.splits.dendrites), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
-dolan.splits.1 = dolan.splits[1:(length(dolan.splits)/2)]
-dolan.splits.2 = dolan.splits[((length(dolan.splits)/2)+1):length(dolan.splits)]
-save(dolan.splits.1,file = paste0(getwd(),"/data-raw/segmented.splits.1.dps.rda"))
-save(dolan.splits.2,file = paste0(getwd(),"/data-raw/segmented.splits.2.dps.rda"))
+# # Or load directly
+# load('data-raw/dolan_splits_1_dotprops.rda')
+# load('data-raw/dolan_splits_2_dotprops.rda')
+# splits = c(splits1,splits2)
+# files = names(splits)
+# names(splits) = unlist(sapply(files, function(x) paste(strsplit(as.character(x), "~|-")[[1]][1:2],collapse="-")))
+#
+# # Add more meta-data on line information
+# a = read.csv("/GD/LMBD/Papers/2018lhsplitcode/Data/Case4_Viewer.csv",header = TRUE) # Update directory
+# b = read.csv("/GD/LMBD/Papers/2018lhsplitcode/Data/Polarity_Viewer.csv",header = TRUE) # Update directory
+# colnames(a) = colnames(b) = c("linecode","imagecode")
+# c = merge(a,b,all.x = TRUE, all.y=TRUE)
+# d = read.csv("/GD/LMBD/Papers/2018lhsplitcode/Data/SplitGAL4annotate.csv",header = TRUE)
+# colnames(d) = c("linecode","imagecode","AD","DBD","clusters","num.clusters","Behaviour","Polarity","MCFO","stablestock","VNC")
+# mf = data.frame()
+# for(i in c$imagecode){
+#   l = as.character(subset(c,imagecode==i)$linecode)
+#   f = subset(d,linecode==l)[,c(-1,-2)]
+#   if(nrow(f)>=1){
+#     m = cbind(subset(c,imagecode==i),f)
+#     mf = rbind(mf,m)
+#   }
+# }
+# mf = mf[!duplicated(mf$imagecode),]
+# rownames(mf) = mf$imagecode
+# split.codes = unlist(sapply(names(splits), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
+# mf = mf[split.codes,]
+# mf$neurotransmitter = splits[,]$neurotransmitter
+# mf$compartment = splits[,]$seg.type
+# mf$old.cell.type = splits[,]$Dolan.cell.type
+# mf$cell.type = splits[,]$final.cell.type
+# attr(splits,"df") = mf
+#
+# # Organise data
+# dolan.splits.j = nat::nlapply(splits,nat.templatebrains::xform_brain,sample = nat.flybrains::JFRC2013,reference= nat.flybrains::FCWB,OmitFailures = T) # 4 lost...
+# dolan.splits.axons = dolan.splits.j[names(dolan.splits.j)%in%rownames(subset(splits[,],seg.type=="axon|axonmemb"))]
+# dolan.splits.dendrites = dolan.splits.j[names(dolan.splits.j)%in%rownames(subset(splits[,],seg.type=="dendrite|memb"))]
+# dolan.splits =  subset(dolan.splits.j,compartment=="whole")
+#
+#
+#
+# attr(dolan.splits,"df") = subset(attr(dolan.splits.j,"df"),compartment=="whole")
+# names(dolan.splits) = unlist(sapply(names(dolan.splits), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
+# # names(dolan.splits.axons) = unlist(sapply(names(dolan.splits.axons), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
+# # names(dolan.splits.dendrites) = unlist(sapply(names(dolan.splits.dendrites), function(x) paste(unlist(strsplit(x,"_"))[-1:-2],collapse="_")))
+# dolan.splits.1 = dolan.splits[1:(length(dolan.splits)/2)]
+# dolan.splits.2 = dolan.splits[((length(dolan.splits)/2)+1):length(dolan.splits)]
+# save(dolan.splits.1,file = paste0(getwd(),"/data-raw/segmented.splits.1.dps.rda"))
+# save(dolan.splits.2,file = paste0(getwd(),"/data-raw/segmented.splits.2.dps.rda"))
 
 ###### Make assignments for the segmented split line data ######
 

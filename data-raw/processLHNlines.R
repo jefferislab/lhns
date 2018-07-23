@@ -1,4 +1,4 @@
-# #################
+###################
 # Process Raw Data #
 ###################
 
@@ -130,19 +130,19 @@ for(o in old){
   core = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"coreLH"])),collapse="/")
   corelh = c(corelh,core)
 }
-old2new = data.frame(old=old,new=new, type=types, coreLH=corelh)
+old2new = data.frame(old.cell.type=old,cell.type=new, type=types, coreLH=corelh)
 old2new[] = lapply(old2new, as.character)
 # Add some manual assignments
-old2new[old2new$old%in%c("151A"),"new"] = "VNC-PN1"
-old2new[old2new$old%in%c("V2"),"new"] = "LO-PN2"
-old2new[old2new$old%in%c("70E"),"new"] = "WED-PN4"
-old2new[old2new$old%in%c("151A","V2","70E","PN","PPL2ab-PN1",
+old2new[old2new$old.cell.type%in%c("151A"),"cell.type"] = "VNC-PN1"
+old2new[old2new$old.cell.type%in%c("V2"),"cell.type"] = "LO-PN2"
+old2new[old2new$old.cell.type%in%c("70E"),"cell.type"] = "WED-PN4"
+old2new[old2new$old.cell.type%in%c("151A","V2","70E","PN","PPL2ab-PN1",
 "VisualPN1","51C","51CB","151B","137","139","51B","70B","70C","70D"),"type"] = "IN"
-old2new[old2new$old%in%c("16A","1C","85","142"),"type"] = "ON"
-old2new[old2new$old%in%c("145","143","70A","70E","51B"),"type"] = "IN/ON"
-old2new = rbind(old2new,data.frame(old="NP6099-TypeII",new=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON",coreLH=TRUE))
-old2new = rbind(old2new,data.frame(old="17B",new=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON",coreLH=TRUE))
-write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv",row.names = FALSE,col.names=TRUE)
+old2new[old2new$old.cell.type%in%c("16A","1C","85","142"),"type"] = "ON"
+old2new[old2new$old.cell.type%in%c("145","143","70A","70E","51B"),"type"] = "IN/ON"
+old2new = rbind(old2new,data.frame(old.cell.type="NP6099-TypeII",cell.type=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON",coreLH=TRUE))
+old2new = rbind(old2new,data.frame(old.cell.type="17B",cell.type=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON",coreLH=TRUE))
+write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv",row.names = FALSE)
 
 # Guess the cell types based on Mike's old.cell.type assignments
 for(l in 1:nrow(lh_line_info)){
@@ -154,3 +154,44 @@ for(l in 1:nrow(lh_line_info)){
 ########
 
 devtools::use_data(lh_line_info,overwrite=TRUE)
+
+#################################################################
+# Make concise spreadsheets comparing cell types across datasets #
+#################################################################
+
+
+# Concise spreadsheet
+require(dplyr)
+cts = subset(jfw.lhns[,],!is.na(cell.type))
+cts = subset(cts,cell.type!="notLHproper")
+cts = cts[,c("JJtype","cell.type")]
+cts = dplyr::distinct(cts)
+cts = cts[order(cts$JJtype,decreasing=FALSE),]
+
+# Do the same for Shahar's dye fills
+dfills = subset(most.lhns,skeleton.type =="DyeFill"& good.trace==TRUE)[,]
+dfills.cts = unique(dfills$cell.type)
+cts$Frechter = FALSE
+cts[cts$cell.type%in%dfills.cts,]$Frechter = TRUE
+dfills.cts.not.in.jj = data.frame(JJtype = FALSE, cell.type = dfills.cts[!dfills.cts%in%cts$cell.type], Frechter = TRUE)
+cts = rbind(cts,dfills.cts.not.in.jj)
+
+# Add in the split info
+in.mcfo = sapply(lh.splits.dps[,"old.cell.type"],function(oct) grepl(oct,unique(lh.mcfo[,"old.cell.type"])))
+mt = merge(lh.splits.dps[in.mcfo,],subset(lh.mcfo,InLine==TRUE)[,],all.x=TRUE,all.y=TRUE)
+mt = subset(mt, type%in%c("LN","ON"))
+mt = mt[,c("old.cell.type","cell.type")]
+mt = dplyr::distinct(mt)
+cts = merge(cts,mt,all.x = TRUE, all.y = TRUE)
+cts = as.matrix(cts)
+cts[is.na(cts)|cts==""] = FALSE
+cts = as.data.frame(cts)
+
+# Save info
+colnames(cts) = c("cell.type", "Jeanne", "Frechter", "Dolan")
+cts = cts[,c("cell.type", "Frechter", "Dolan", "Jeanne")]
+cts = cts[order(cts$cell.type,decreasing = FALSE),]
+cts$datasets = unlist(sapply(1:nrow(cts),function(x) paste(c("F","D","J")[cts[x,][-1]!=FALSE],collapse="") ))
+cts = dplyr::distinct(cts)
+write.csv(cts,"data-raw/ASB_bridging_celltypes.csv")
+

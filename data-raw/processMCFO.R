@@ -1251,7 +1251,7 @@ mf["JRC_SS16786-20151022_19_B7-Aligned63xScale_c1.Smt.SptGraph.swc",]$match = "G
 # L1827; 29E & others; PV4b1/2
 mf[c("JRC_SS22732-20180209_20_B1-Aligned63xScale_c0a.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B1-Aligned63xScale_c2.Smt.SptGraph.swc"),]$old.cell.type = "29E" # Sure??
-mf[c("JRC_SS22732-20180209_20_B1-Aligned63xScale_c2b.Smt.SptGraph.swc"),]$old.cell.type = ""
+mf[c("JRC_SS22732-20180209_20_B1-Aligned63xScale_c2b.Smt.SptGraph.swc"),]$old.cell.type = "16F"
 mf[c("JRC_SS22732-20180209_20_B2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B4-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS22732-20180209_20_B4-Aligned63xScale_c2.Smt.SptGraph.swc",
@@ -1709,7 +1709,11 @@ mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS22730-20160701_22_E1-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS22730-20160701_22_E7-Aligned63xScale_c0.Smt.SptGraph.swc",
      "JRC_SS16329-20151125_23_A1-Aligned63xScale_c2.Smt.SptGraph.swc",
-     "JRC_SS16329-20151125_23_A6-Aligned63xScale_c1b.Smt.SptGraph.swc"
+     "JRC_SS16329-20151125_23_A6-Aligned63xScale_c1b.Smt.SptGraph.swc",
+     "JRC_SS22647-20161007_29_E2-Aligned63xScale_c0b.Smt.SptGraph.swc",
+     "JRC_SS16345-20151022_20_D2-Aligned63xScale_c0b.Smt.SptGraph.swc",
+     "JRC_SS16345-20151022_20_D2-Aligned63xScale_c0a.Smt.SptGraph.swc",
+     "JRC_SS22737-20160624_20_B5-Aligned63xScale_c2.Smt.SptGraph.swc"
 ),"InLine"] = FALSE
 
 
