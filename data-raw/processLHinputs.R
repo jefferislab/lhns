@@ -637,13 +637,13 @@ mbonap2ap3 = c("Gad1-F-400259","E0585-F-200015","E0585-F-300042")
 mbonap= c(mbonap3,mbonap2ap3)
 df[mbonap2ap3,"anatomy.group"] = "MBON-a'2-a'3"
 df[mbonap3,"anatomy.group"] = "MBON-a'2-a'3"
-df[mbonap,"anatomy.group"] = "Centrifugal"
-df[mbonap,]$modality = "Centrifugal"
+df[mbonap,"anatomy.group"] = "MBON"
+df[mbonap,]$modality = "Memory"
 df[mbonap,]$reference = "ASB"
 df[mbonap3,]$reference = "Aso et al. 2014"
 df[mbonap,]$dendritic.location = "MB"
 df[mbonap,]$cell.body.position = "SP"
-df[mbonap,]$tract = "Centrifugal"
+df[mbonap,]$tract = "From_MB"
 df[mbonap,]$neurotransmitter = "ACh"
 mbons = c(mbonap3,mbonap2ap3)
 
@@ -672,13 +672,13 @@ df[lp.pns,]$tract = "LPT"
 df[lp.pns,]$neurotransmitter = "Unknown"
 
 wed.pn.6 = c("Cha-F-000086","L85#1", "L85#2", "L85#3", "L85#4", "L85#5")
-df[plp.pns,"anatomy.group"] = "WED-PN6"
-df[plp.pns,]$modality = "Unknown"
-df[plp.pns,]$reference = "ASB"
-df[plp.pns,]$dendritic.location = "PV2"
-df[plp.pns,]$cell.body.position = "LH"
-df[plp.pns,]$tract = "LPT"
-df[plp.pns,]$neurotransmitter = "Unknown"
+df[wed.pn.6,"anatomy.group"] = "WED-PN6"
+df[wed.pn.6,]$modality = "Unknown"
+df[wed.pn.6,]$reference = "ASB"
+df[wed.pn.6,]$dendritic.location = "PV2"
+df[wed.pn.6,]$cell.body.position = "LH"
+df[wed.pn.6,]$tract = "LPT"
+df[wed.pn.6,]$neurotransmitter = "Unknown"
 
 ###
 

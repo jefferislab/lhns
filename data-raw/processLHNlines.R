@@ -120,19 +120,26 @@ old = old[old!=""]
 new = c()
 types = c()
 corelh = c()
+meta = most.lh[,c("cell.type","type","coreLH")]
+meta[meta$cell.type=="notLHproper",c("type")] = "notLHproper"
+meta[meta$cell.type=="notLHproper",c("coreLH")] = FALSE
+meta = dplyr::distinct(meta)
+rownames(meta) = meta$cell.type
 for(o in old){
   cts = sort(na.omit(unique(subset(lh_line_info,old.cell.type==o)$cell.type)))
-  cts = unique(unlist(strsplit(cts,"/")))
-  cts = paste(sort(na.omit(unique(cts))),collapse="/")
+  cts.sep = unique(unlist(strsplit(cts,"/")))
+  cts = paste(sort(na.omit(unique(cts.sep))),collapse="/")
   new = c(new,cts)
-  t = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"type"])),collapse="/")
+  t = paste(meta[cts.sep,"type"],collapse="/")
   types = c(types,t)
-  core = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"coreLH"])),collapse="/")
+  core = paste(meta[cts.sep,"coreLH"],collapse="/")
   corelh = c(corelh,core)
 }
 old2new = data.frame(old.cell.type=old,cell.type=new, type=types, coreLH=corelh)
 old2new[] = lapply(old2new, as.character)
 # Add some manual assignments
+old2new[old2new$cell.type%in%c("PD2e2","AV6c1"),"coreLH"] = FALSE
+old2new[old2new$cell.type%in%c("AD1d1"),"coreLH"] = TRUE
 old2new[old2new$old.cell.type%in%c("151A"),"cell.type"] = "VNC-PN1"
 old2new[old2new$old.cell.type%in%c("V2"),"cell.type"] = "LO-PN2"
 old2new[old2new$old.cell.type%in%c("70E"),"cell.type"] = "WED-PN4"
