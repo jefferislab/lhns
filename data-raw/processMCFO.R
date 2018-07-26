@@ -156,7 +156,6 @@ dcs = aggregate(No_Cells ~ LineCode + old.cell.type, dcs, function(x) paste0(rou
 colnames(dcs) = c("LineCode","old.cell.type","no.cells")
 nts = read.csv("data-raw/NT_annotation_from_Mike.csv")
 stainings = merge(dcs,nts,all.x=TRUE,all.y=TRUE)
-images2cluster = read.csv("data-raw/ImagesToCluster.csv")
 codes = read.csv("data-raw/FlycoreCodes.csv")
 s = as.character(codes[,"Genotype"])
 

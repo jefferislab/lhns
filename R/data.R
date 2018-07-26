@@ -125,11 +125,17 @@
 #' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
 "pn.axons.light.dps"
 
-#' Gal4 line codes for LHNs
+#' Split-Gal4 line codes for LHNs
 #'
-#' Collated in Frechter et al. 2018.
+#' Collated by Dolan et al. 2018.
 #'
 "lh_line_info"
+
+#' Summary of cell types with clean split-GAL4 lines from Dolan et al. 2018
+#'
+#' Collated by Dolan et al. 2018.
+#'
+"cell_type_summary"
 
 #' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors
 #'

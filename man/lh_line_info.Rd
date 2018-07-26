@@ -3,12 +3,12 @@
 \docType{data}
 \name{lh_line_info}
 \alias{lh_line_info}
-\title{Gal4 line codes for LHNs}
-\format{An object of class \code{data.frame} with 510 rows and 16 columns.}
+\title{Split-Gal4 line codes for LHNs}
+\format{An object of class \code{data.frame} with 404 rows and 19 columns.}
 \usage{
 lh_line_info
 }
 \description{
-Collated in Frechter et al. 2018.
+Collated by Dolan et al. 2018.
 }
 \keyword{datasets}

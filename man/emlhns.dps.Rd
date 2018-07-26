@@ -4,7 +4,7 @@
 \name{emlhns.dps}
 \alias{emlhns.dps}
 \title{Vector clouds of EM skeletons for LHNs}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 50.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 78.}
 \usage{
 emlhns.dps
 }

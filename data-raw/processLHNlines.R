@@ -2,7 +2,6 @@
 # Process Raw Data #
 ###################
 
-
 # Prepare data on Mike's splits
 require(reshape2)
 if(!exists("lh.mcfo")){
@@ -10,7 +9,6 @@ if(!exists("lh.mcfo")){
 }else if(!exists("lh.splits.dps")){
   stop("Please run processDolanSplits.R!")
 }
-
 
 ################################################
 # Read Dolan et al. 2018 split line information #
@@ -24,45 +22,45 @@ lh.splits.dps.clean = subset(lh.splits.dps,!old.cell.type%in%lh.mcfo[,"old.cell.
 dcs = read.csv("data-raw/dolan_cells.csv")
 dcs$ImageCode = NULL
 dcs = aggregate(No_Cells ~ LineCode + old.cell.type, dcs, function(x) paste0(round(mean(x)),ifelse(!is.na(sd(x)),paste0("±",round(sd(x))),"")))
-colnames(dcs) = c("LineCode","old.cell.type","no.cells")
+colnames(dcs) = c("linecode","old.cell.type","no.cells")
+nts = read.csv("data-raw/NT_annotation_from_Mike.csv")
+stainings = merge(dcs,nts,all.x=TRUE,all.y=TRUE)
+stainings[] = lapply(stainings, as.character)
 
 # Work out metadata
 d = read.csv("data-raw/SplitGAL4annotate.csv",header = TRUE)
-colnames(d) = c("LineCode","genotype","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","Stablestock","VNC","ImagePath")
+colnames(d) = c("linecode","genotype","AD","DBD","old.cell.type","num.lh.clusters","ideal","behaviour","MCFO","polarity","stablestock","VNC","ImagePath")
 d[] = lapply(d, as.character)
-dd = 1
-while(dd < nrow(d)){
-  ddd = d[dd,]
-  if(is.na(ddd["num.lh.clusters"])&ddd[,"Stablestock"]==""){
-    if(!is.na(is.na(ddd["old.cell.type"]))&ddd["old.cell.type"]!=""){
-      dddd = d[dd-1,]
-      dddd["old.cell.type"] = ddd["old.cell.type"]
-      d[dd,] = as.vector(dddd)
-    }else{
-      d = d[-dd,]
-      dd = dd - 1
-    }
-  }
-  dd = dd + 1
+d$linecode[d$linecode==""] = d$linecode[sapply(which(d$linecode==""), function(x) max(which(d$linecode!="")[which(d$linecode!="")<=x]))]
+p <- function(v) {
+  Reduce(f=function(...) paste(...,sep="/"), v)
 }
-d$genotype = gsub(".*GMR_|JRC_|B1_T1_","",gsub("*-.*|_AV_01*|_XD_01*|_42_R1_L19*","",d$genotype))
-d = d[!duplicated(d),]
-lh_line_info = merge(d,dcs,all.x=TRUE,all.y=TRUE)
+d %>%
+  left_join(x=d,y=stainings, by=NULL) %>%
+  filter(old.cell.type!="") %>%
+  mutate(old.cell.type=replace(old.cell.type, old.cell.type=="NotPaper", "Unclassified")) %>%
+  mutate(AD=replace(AD, is.na(AD), "GAL4")) %>%
+  mutate(DBD=replace(DBD, is.na(DBD), "GAL4")) %>%
+  group_by(linecode) %>%
+  summarise(genotype = first(gsub(".*GMR_|JRC_|B1_T1_","",gsub("*-.*|_AV_01*|_XD_01*|_42_R1_L19*","",genotype[genotype!=""]))),
+            AD = first(AD[AD!=""]),
+            DBD = first(DBD[DBD!=""]),
+            old.cell.type = p(old.cell.type),
+            num.lh.clusters = mean(as.numeric(num.lh.clusters),na.rm=TRUE),
+            no.cells = ifelse(sum(!is.na(no.cells))==0,"",p(no.cells[!is.na(no.cells)])),
+            neurotransmitter = ifelse(sum(!is.na(NT))==0,"",p(NT[!is.na(NT)])),
+            ideal = first(ideal[ideal!=""]),
+            behaviour = first(behaviour[behaviour!=""]),
+            MCFO = first(MCFO[MCFO!=""]),
+            polarity = first(polarity[polarity!=""]),
+            stablestock = first(stablestock[stablestock!=""]),
+            VNC = first(VNC[VNC!=""])
+            ) -> lh_line_info
+lh_line_info = as.data.frame(lh_line_info)
+rownames(lh_line_info) = lh_line_info$linecode
 
-# Get the neurotransmitter information from Mike
-nts = read.csv("data-raw/NT_annotation_from_Mike.csv")
-images2cluster = read.csv("data-raw/ImagesToCluster.csv")
-images2cluster = images2cluster[,c("LineCode","Polarity","Neurotransmitter")]
-lh_line_info = merge(lh_line_info,images2cluster,all.x=TRUE,all.y=TRUE)
-no.nt.cell.type = gsub("\\(|\\)|/|\\.*","",subset(lh_line_info,is.na(Neurotransmitter))$old.cell.type)
-errors = as.character(nts[match(as.character(no.nt.cell.type),nts$LHClusters),"NT"])
-errors[is.na(errors)] = "Unknown"
-lh_line_info$Neurotransmitter = as.character(lh_line_info$Neurotransmitter)
-lh_line_info[is.na(lh_line_info$Neurotransmitter),]$Neurotransmitter = errors
-lh_line_info = lh_line_info[!duplicated(lh_line_info),]
-
-# Add in some awol lines
-skipped.line = na.omit(as.character(unique(lh.splits.dps.clean[,"linecode"][!lh.splits.dps.clean[,"linecode"]%in%lh_line_info[,"LineCode"]])))
+# Hmm, some AWOL lines
+skipped.line = na.omit(as.character(unique(lh.splits.dps.clean[,"linecode"][!lh.splits.dps.clean[,"linecode"]%in%lh_line_info[,"linecode"]])))
 
 # Fix a few cell type mis-annotations
 lh_line_info$old.cell.type[grepl("^1B$|\\(1B\\)",lh_line_info$old.cell.type)] = "1BX"
@@ -74,7 +72,7 @@ lh_line_info$pnt = ""
 lh_line_info$anatomy.group = ""
 lh_line_info$cell.type = ""
 for(l in 1:nrow(lh_line_info)){
-  line = lh_line_info$LineCode[l]
+  line = lh_line_info$linecode[l]
   if(line%in%lh.mcfo.clean[,"linecode"]){
     s = subset(lh.mcfo.clean,linecode==line)
     for(o in unique(as.character(s[,"old.cell.type"]))){
@@ -82,38 +80,25 @@ for(l in 1:nrow(lh_line_info)){
         ss = subset(s,grepl(o,old.cell.type))[,c("pnt","anatomy.group","cell.type")]
         ss = ss[!duplicated(ss),]
         ss = apply(ss,2,function(x) paste(sort(na.omit(unique(x))),collapse="/"))
-        lh_line_info[lh_line_info$LineCode==line&lh_line_info$old.cell.type==o,c("pnt","anatomy.group","cell.type")] =  as.vector(ss)
+        lh_line_info[lh_line_info$linecode==line&lh_line_info$old.cell.type==o,c("pnt","anatomy.group","cell.type")] =  as.vector(ss)
       }
     }
   }else if(line%in%lh.splits.dps.clean[,"linecode"]){
     s = subset(lh.splits.dps.clean,linecode==line)
     for(o in unique(as.character(s[,"old.cell.type"]))){
-      if(o%in%lh.splits.dps.clean[,"old.cell.type"]|nrow(subset(lh_line_info,LineCode==line))==1){
+      if(o%in%lh.splits.dps.clean[,"old.cell.type"]|nrow(subset(lh_line_info,linecode==line))==1){
         ss = subset(s,grepl(o,old.cell.type))[,c("pnt","anatomy.group","cell.type")]
         ss = ss[!duplicated(ss),]
         ss = apply(ss,2,function(x) paste(sort(na.omit(unique(x))),collapse="/"))
-        lh_line_info[lh_line_info$LineCode==line&(lh_line_info$old.cell.type==o|nrow(subset(lh_line_info,LineCode==line))==1),c("pnt","anatomy.group","cell.type")] =  as.vector(ss)
+        lh_line_info[lh_line_info$linecode==line&(lh_line_info$old.cell.type==o|nrow(subset(lh_line_info,linecode==line))==1),c("pnt","anatomy.group","cell.type")] =  as.vector(ss)
       }
     }
   }
 }
 
-
-# Fill in some known cell types
-unassigned = sort(unique(na.omit(subset(lh_line_info,is.na(cell.type))$old.cell.type)))
-for(u in unassigned){
-  if(u%in%lh.splits.dps.clean[,"old.cell.type"]){
-    ss = as.data.frame(subset(lh.splits.dps.clean,old.cell.type==u)[,c("pnt","anatomy.group","cell.type")])
-    ss = ss[!duplicated(ss),]
-    ss = apply(ss,2,function(x) paste(sort(na.omit(unique(x))),collapse="/"))
-    lh_line_info[lh_line_info$old.cell.type==u,c("pnt","anatomy.group","cell.type")] =  as.vector(ss)
-  }
-}
-
-
 # Create and old to new cell.type mapping
 most.lh = c(most.lhns,most.lhins)
-old = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(lh_line_info$old.cell.type)))))
+old = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(unlist(strsplit(lh_line_info$old.cell.type,"/")))))))
 old = old[!grepl("sleep|NotLH|\v|\\?| ",old)]
 old = sort(old)
 old = old[old!=""]
@@ -149,11 +134,26 @@ old2new[old2new$old.cell.type%in%c("16A","1C","85","142"),"type"] = "ON"
 old2new[old2new$old.cell.type%in%c("145","143","70A","70E","51B"),"type"] = "IN/ON"
 old2new = rbind(old2new,data.frame(old.cell.type="NP6099-TypeII",cell.type=unique(subset(lh.mcfo.clean,linecode=="NP6099")[,"cell.type"]),type="ON",coreLH=TRUE))
 old2new = rbind(old2new,data.frame(old.cell.type="17B",cell.type=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON",coreLH=TRUE))
+old2new = merge(old2new,stainings,all.x=TRUE,all.y=FALSE)
+old2new[is.na(old2new)] = ""
 write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv",row.names = FALSE)
+cell_type_summary = old2new
+cell_type_summary = cell_type_summary[cell_type_summary$cell.type!="",]
+cell_type_summary = cell_type_summary[order(cell_type_summary$cell.type),]
 
 # Guess the cell types based on Mike's old.cell.type assignments
+lh_line_info$type = ""
 for(l in 1:nrow(lh_line_info)){
-  lh_line_info[l,"old.cell.type"]
+  o = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(unlist(strsplit(lh_line_info[l,"old.cell.type"],"/")))))))
+  lh_line_info[l,"type"] = paste0(subset(old2new,old.cell.type%in%o)$type,collapse="/")
+  lh_line_info[l,"coreLH"] = paste0(subset(old2new,old.cell.type%in%o)$coreLH,collapse="/")
+  if(lh_line_info[l,"cell.type"]==""){
+      ct = subset(old2new,old.cell.type%in%o)$cell.type
+      ct[ct==""] = "Unclassified"
+      ct = paste0(ct,collapse="/")
+      lh_line_info[l,"cell.type"] = ct
+      lh_line_info[l,"neurotransmitter"] = paste0(subset(old2new,old.cell.type%in%o)$NT,collapse="/")
+  }
 }
 
 ########
@@ -161,6 +161,7 @@ for(l in 1:nrow(lh_line_info)){
 ########
 
 devtools::use_data(lh_line_info,overwrite=TRUE)
+devtools::use_data(cell_type_summary,overwrite=TRUE)
 
 #################################################################
 # Make concise spreadsheets comparing cell types across datasets #

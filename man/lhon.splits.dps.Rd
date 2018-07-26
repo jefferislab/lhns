@@ -4,7 +4,7 @@
 \name{lhon.splits.dps}
 \alias{lhon.splits.dps}
 \title{Vector clouds of LH output neurons from split GAL4 lines}
-\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 136.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 133.}
 \usage{
 lhon.splits.dps
 }
