@@ -143,6 +143,12 @@
 #'
 "lh_nblast"
 
+#' Odour responses for different LHN cell types
+#'
+#' LHNs can be found in most.lhns. From Frechter et al. 2018
+#'
+"lhn_odour_responses"
+
 #' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors
 #'
 #' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors from DoOR.

@@ -243,7 +243,7 @@ jfw.lhns.dps = nat::dotprops(jfw.lhns,OmitFailures=TRUE)
 jfw.lhns.dps = as.neuronlistfh(jfw.lhns.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
-# #################
+###################
 # Update Meta-Data #
 ###################
 
