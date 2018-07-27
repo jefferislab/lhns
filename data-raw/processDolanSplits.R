@@ -102,7 +102,7 @@ load("data-raw/segmented.splits.2.dps.rda")
 dolan.splits = c(dolan.splits.1,dolan.splits.2)
 
 # Initial data processing
-nts = read.csv("data-raw/NT_annotation_from_Mike.csv")
+nts = read.csv("data-raw/csv/NT_annotation_from_Mike.csv")
 # Get ready to collect info
 md = dolan.splits[,]
 md$match = NA

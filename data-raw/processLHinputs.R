@@ -771,9 +771,9 @@ most.lhins = lh.inputs
 attr(most.lhins,"df") = df
 
 
-# #################
+####################
 # Update Meta-Data #
-###################
+####################
 
 
 most.lhins = as.neuronlistfh(most.lhins,dbdir = 'inst/extdata/data/', WriteObjects="missing")
@@ -781,9 +781,9 @@ most.lhins.dps = nat::dotprops(most.lhins,resample=1)
 most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
-#####################
+######################
 # Write neuronlistfh #
-#####################
+######################
 
 
 write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE)

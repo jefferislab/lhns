@@ -19,16 +19,16 @@ lh.mcfo.clean = subset(lh.mcfo,InLine==TRUE)
 lh.splits.dps.clean = subset(lh.splits.dps,!old.cell.type%in%lh.mcfo[,"old.cell.type"])
 
 # Get the projected number of neurons for each cell type, in each line
-dcs = read.csv("data-raw/dolan_cells.csv")
+dcs = read.csv("data-raw/csv/dolan_cells.csv")
 dcs$ImageCode = NULL
 dcs = aggregate(No_Cells ~ LineCode + old.cell.type, dcs, function(x) paste0(round(mean(x)),ifelse(!is.na(sd(x)),paste0("±",round(sd(x))),"")))
 colnames(dcs) = c("linecode","old.cell.type","no.cells")
-nts = read.csv("data-raw/NT_annotation_from_Mike.csv")
+nts = read.csv("data-raw/csv/NT_annotation_from_Mike.csv")
 stainings = merge(dcs,nts,all.x=TRUE,all.y=TRUE)
 stainings[] = lapply(stainings, as.character)
 
 # Work out metadata
-d = read.csv("data-raw/SplitGAL4annotate.csv",header = TRUE)
+d = read.csv("data-raw/csv/SplitGAL4annotate.csv",header = TRUE)
 colnames(d) = c("linecode","genotype","AD","DBD","old.cell.type","num.lh.clusters","ideal","behaviour","MCFO","polarity","stablestock","VNC","ImagePath")
 d[] = lapply(d, as.character)
 d$linecode[d$linecode==""] = d$linecode[sapply(which(d$linecode==""), function(x) max(which(d$linecode!="")[which(d$linecode!="")<=x]))]
@@ -136,7 +136,7 @@ old2new = rbind(old2new,data.frame(old.cell.type="NP6099-TypeII",cell.type=uniqu
 old2new = rbind(old2new,data.frame(old.cell.type="17B",cell.type=unique(subset(lh.splits.dps,old.cell.type=="17B")[,"cell.type"]),type="ON",coreLH=TRUE))
 old2new = merge(old2new,stainings,all.x=TRUE,all.y=FALSE)
 old2new[is.na(old2new)] = ""
-write.csv(old2new,file="data-raw/oldCTs_to_newCTs.csv",row.names = FALSE)
+write.csv(old2new,file="data-raw/csv/oldCTs_to_newCTs.csv",row.names = FALSE)
 cell_type_summary = old2new
 cell_type_summary = cell_type_summary[cell_type_summary$cell.type!="",]
 cell_type_summary = cell_type_summary[order(cell_type_summary$cell.type),]
@@ -155,6 +155,7 @@ for(l in 1:nrow(lh_line_info)){
       lh_line_info[l,"neurotransmitter"] = paste0(subset(old2new,old.cell.type%in%o)$NT,collapse="/")
   }
 }
+lh_line_info = lh_line_info[order(lh_line_info$cell.type),]
 
 ########
 # Save #
@@ -201,5 +202,5 @@ cts = cts[,c("cell.type", "Frechter", "Dolan", "Jeanne")]
 cts = cts[order(cts$cell.type,decreasing = FALSE),]
 cts$datasets = unlist(sapply(1:nrow(cts),function(x) paste(c("F","D","J")[cts[x,][-1]!=FALSE],collapse="") ))
 cts = dplyr::distinct(cts)
-write.csv(cts,"data-raw/ASB_bridging_celltypes.csv")
+write.csv(cts,"data-raw/csv/ASB_bridging_celltypes.csv")
 

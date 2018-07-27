@@ -150,17 +150,17 @@ for(i in 1:length(mcfo)){
 }
 
 # Get the imade code to line mapping
-dcs = read.csv("data-raw/dolan_cells.csv")
+dcs = read.csv("data-raw/csv/dolan_cells.csv")
 dcs$ImageCode = NULL
 dcs = aggregate(No_Cells ~ LineCode + old.cell.type, dcs, function(x) paste0(round(mean(x)),ifelse(!is.na(sd(x)),paste0("±",round(sd(x))),"")))
 colnames(dcs) = c("LineCode","old.cell.type","no.cells")
-nts = read.csv("data-raw/NT_annotation_from_Mike.csv")
+nts = read.csv("data-raw/csv/NT_annotation_from_Mike.csv")
 stainings = merge(dcs,nts,all.x=TRUE,all.y=TRUE)
-codes = read.csv("data-raw/FlycoreCodes.csv")
+codes = read.csv("data-raw/csv/FlycoreCodes.csv")
 s = as.character(codes[,"Genotype"])
 
 # Work out metadata
-d = read.csv("data-raw/SplitGAL4annotate.csv",header = TRUE)
+d = read.csv("data-raw/csv/SplitGAL4annotate.csv",header = TRUE)
 colnames(d) = c("linecode","imagecode","AD","DBD","old.cell.type","num.lh.clusters","Ideal","Behaviour","MCFO","Polarity","Stablestock","VNC","ImagePath")
 d$imagecode = NULL
 d = d[!duplicated(d$linecode),]

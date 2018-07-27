@@ -137,6 +137,12 @@
 #'
 "cell_type_summary"
 
+#' Pre-calculated NBLAST scores between all neurons in this package
+#'
+#' Saves time re-claculating an NBLAST beetween all LH associated neuron morphologies
+#'
+"lh_nblast"
+
 #' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors
 #'
 #' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors from DoOR.
