@@ -21,7 +21,7 @@ if(!exists("lh.mcfo")){
 # Calculate #
 #############
 
-all.neurons.dps = c(most.lhns.dps,most.lhins.dps,lh.splits.dps,mbons.light.dps,emlhns.dps,pn.axons.light.dps)
+all.neurons.dps = c(most.lhns.dps,most.lhins.dps,lh.splits.dps,mbons.light.dps,emlhns.dps,pn.axons.light.dps,jfw.lhns.dps)
 all.neurons.dps = dotprops(all.neurons.dps,OmitFailures = TRUE)
 lh_nblast = nblast_allbyall(all.neurons.dps, normalisation = "normalised", UseAlpha = TRUE)
 

@@ -219,12 +219,13 @@ df[c("JJ95"),]$JJtype = "LV1"
 df["JJ95",]$match = "Gad1-F-200137"
 
 # Get the cell type and anatomy group info from most.lhns
-ml = lhns::most.lhns[,c("anatomy.group","cell.type","type")]
+ml = lhns::most.lhns[,c("anatomy.group","cell.type","type","coreLH")]
 df$anatomy.group = as.character(sapply(df$match,function(x) ml[x,]$pnt))
 df$anatomy.group = as.character(sapply(df$match,function(x) ml[x,]$anatomy.group))
 df$cell.type = as.character(sapply(df$match,function(x) ml[x,]$cell.type))
 df$type = as.character(sapply(df$match,function(x) ml[x,]$type))
-df$skeleton.type = "DyeFill"
+df$coreLH = as.character(sapply(df$match,function(x) ml[x,]$coreLH))
+df$skeleton.type = "JeanneDyeFill"
 
 # Re-attach data frame
 jfw.lhns = jj.m.fcwb
@@ -238,7 +239,7 @@ attr(jfw.lhns,"df")  =  df
 
 jfw.lhns = nlapply(jfw.lhns,nat::resample,stepsize = 1)
 jfw.lhns = as.neuronlistfh(jfw.lhns,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-jfw.lhns.dps = nat::dotprops(lh.mcfo,OmitFailures=TRUE)
+jfw.lhns.dps = nat::dotprops(jfw.lhns,OmitFailures=TRUE)
 jfw.lhns.dps = as.neuronlistfh(jfw.lhns.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
 
 
