@@ -51,3 +51,97 @@ process_lhn_name <- function(x) {
   res=stringr::str_match(x, "([AP][DV][1-9][0-9]{0,1})([a-z])([1-9][0-9]{0,2})")
   data.frame(pnt=res[,2], anatomy.group=paste0(res[,2], res[,3]), cell.type=res[,1],stringsAsFactors = F)
 }
+
+#' Download neuronal skeletons and associated meta-data
+#'
+#' @description Download neuronal morphologies as SWC files, compressed into a .zip file along with a CSV for their meta-data
+#' @param nl the neuronlist to download
+#' @param format unique abbreviation of one of the registered file formats for neurons including 'swc', 'hxlineset', 'hxskel'
+#' @param subdir string naming field in neuron that specifies a subdirectory OR expression to evaluate in the context of neuronlist's df attribute
+#' @param INDICES character vector or expression specifying output filenames. See examples and nat::write.neuron for details
+#' @param files character vector or expression specifying output filenames. See examples and nat::write.neuron for details
+#' @param Force whether to overwrite an existing file
+#' @param ... additional arguments passed to nat::write.neuron
+#' @export
+downloadskeletons <- function (nl, dir, format = "swc", subdir = NULL, INDICES = names(nl), files = NULL, Force = FALSE, ...){
+  if (grepl("\\.zip", dir)) {
+    zip_file = dir
+    if (file.exists(zip_file)) {
+      if (!Force)
+        stop("Zip file: ", zip_file, "already exists")
+      unlink(zip_file)
+    }
+    zip_dir = tools::file_path_as_absolute(dirname(zip_file))
+    zip_file = file.path(zip_dir, basename(zip_file))
+    dir <- file.path(tempfile("user_neurons"))
+  } else {
+    zip_file = NULL
+  }
+  if (!file.exists(dir)){
+    dir.create(dir)
+  }
+  df = attr(nl, "df")
+  ee = substitute(subdir)
+  subdirs = NULL
+  if (!is.null(ee) && !is.character(ee)) {
+    if (!is.null(df))
+      df = df[INDICES, ]
+    subdirs = file.path(dir, eval(ee, df, parent.frame()))
+    names(subdirs) = INDICES
+  }
+  ff = substitute(files)
+  if (!is.null(ff)) {
+    if (!is.character(ff))
+      files = eval(ff, df, parent.frame())
+    if (is.null(names(files)))
+      names(files) = INDICES
+  }
+  written = structure(rep("", length(INDICES)+1), .Names = c(INDICES,"metadata"))
+  for (nn in INDICES) {
+    n = nl[[nn]]
+    thisdir = dir
+    if (is.null(subdirs)) {
+      if (!is.null(subdir)) {
+        propval = n[[subdir]]
+        if (!is.null(propval))
+          thisdir = file.path(dir, propval)
+      }
+    }
+    else {
+      thisdir = subdirs[nn]
+    }
+    if (!file.exists(thisdir))
+      dir.create(thisdir, recursive = TRUE)
+    written[nn] = write.neuron(n, dir = thisdir, file = files[nn],
+                               format = format, Force = Force)
+  }
+  # Save metadata
+  write.csv(df,file = paste0(dir,"/neurons_metadata.csv"),row.names = FALSE)
+  written["metadata"] = paste0(dir,"_metadata.csv")
+  if (!is.null(zip_file)) {
+    owd = setwd(dir)
+    on.exit(setwd(owd))
+    zip(zip_file, files = dir(dir, recursive = TRUE))
+    unlink(dir, recursive = TRUE)
+    written <- zip_file
+  }
+  invisible(written)
+}
+
+#' Download all the LH neuronal skeletons in this package
+#'
+#' @description Download all the neurons in the LH library as SWC files, compressed into a .zip
+#' @param dir path to directory into which to download the LH library
+#' @param ... additional arguments passed to nat::write.neuron
+#' @export
+download_mophologies <- function(dir = getwd(),...){
+  file = paste0(dir,"LH_library.zip")
+  neurons = c(most.lhns,subset(emlhns,type!="PN"))
+  attr(neurons,"df") = neurons[,c("cell.type", "anatomy.group", "pnt", "type", "skeleton.type", "coreLH", "id")]
+  neurons[,"skeleton.type_pnt"] = paste0(neurons[,"skeleton.type"],"_",neurons[,"pnt"])
+  downloadskeletons(neurons,dir = file,subdir = skeleton.type_pnt,format="swc",files = paste0(cell.type,"_",id),Force = TRUE, ...)
+}
+
+
+
+

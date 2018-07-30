@@ -4,7 +4,7 @@
 \name{most.lhns}
 \alias{most.lhns}
 \title{A comprehensive lateral horn neuron dataset}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1619.}
+\format{An object of class \code{neuronlistfh} (inherits from \code{neuronlist}, \code{logical}) of length 1619.}
 \source{
 \url{http://www.flycircuit.tw/}
 }

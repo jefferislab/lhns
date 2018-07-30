@@ -37,7 +37,7 @@
 "154","PV6c1","ON","TRUE","","",""
 "155","","","","","",""
 "16A","AD1d1","ON","TRUE","L475","8±1","ChA"
-"16B","AD1b1/AD1b2","ON/ON","FALSE/TRUE","L1395","8±2","ChA"
+"16B","AD1b2","ON","TRUE","L1395","8±2","ChA"
 "16C","AD1a2","ON","TRUE","L1721","5±0","ChA"
 "16D","AD1a1/AD1f1/notLHproper","ON/ON/notLHproper","TRUE/TRUE/FALSE","L1740","6±1","ChA"
 "16F","AD1e1","ON","TRUE","L1614","5±0","ChA"
