@@ -23,7 +23,7 @@ odours.long = c("Mineral Oil", "trans-2-Hexenal", "Geranyl acetate", "Propyl ace
                 "11-cis Vaccenyl Acetate", "Methyl salicylate", "Hexyl acetate", "Phenethyl alcohol", "Acetoin acetate", "Ethyl hexanoate", "2-Phenethyl acetate",
                 "5 odor mix", "Benzaldehyde", "β-Citronellol", "1-Hexanol", "Farnesol", "Water Blank", "Cadaverine",
                 "Spermine", "Acetoin", "Methyl acetate", "Acetic acid", "Propionic acid", "Butyric acid", "Ammonia",
-                "Pyridine", "Phenylacetaldehyde", "HCl", "Phenylacetic acid", "Vinegar", "Geosmin", "Vineger and Geosmin mix",
+                "Pyridine", "Phenylacetaldehyde", "HCl", "Phenylacetic acid", "Vinegar", "Geosmin", "Vinegar and Geosmin mix",
                 "Phenethylamine", "Blank1", "Blank2", "FlyFM", "Ethylamine", "MtAmn", "Putrescine",
                 "Linalool", "2,3-Butanedione", "Spermidine", "CO2")
 names(odours.long) = odours
