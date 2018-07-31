@@ -30,7 +30,7 @@ ephys.lhns.m = ephys.lhns.m[,!colnames(ephys.lhns.m)%in%c("ClrBL","ClrB2","FlyFM
 colnames(ephys.lhns.m) = c( "Mineral Oil", "trans-2-Hexenal", "Geranyl acetate", "Propyl acetate", "Isoamyl acetate", "Ethyl 3-hydroxybutyrate", "Nonanal",
                             "11-cis vaccenyl acetate- CVA", "Methyl salicylate", "Hexyl acetate", "Phenethyl alcohol", "Acetoin acetate", "Ethyl hexanoate", "2-Phenethyl acetate", "5 odour mix", "Benzaldehyde", "b-citronellol", "1-Hexanol", "Farnesol", "Water blank", "Cadaverine",
                             "Spermine", "Acetoin", "Methyl acetate", "Acetic acid", "Propionic Acid", "Butyric acid", "Ammonia",
-                            "Pyridine", "Phenylacetaldehyde", "Hydrochloric acid", "Phenylacetic acid", "Vinegar mimic", "Geosmin",  "Vineger and Geosmin mix",
+                            "Pyridine", "Phenylacetaldehyde", "Hydrochloric acid", "Phenylacetic acid", "Vinegar", "Geosmin",  "Vineger and Geosmin mix",
                             "Phenylethylamine")
 
 
