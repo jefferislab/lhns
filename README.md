@@ -5,25 +5,19 @@ R Package containing neuron skeleton data relevant to the lateral horn of the vi
 
 ## Installation
 
-This github repository uses Github Large File Storage. The Github API does not currently support downloading files tracked with LFS, so you will need to clone this repo and then install directly. 
-
-First install git lfs (if you don't have it). You can get a binary installer for most platforms at https://git-lfs.github.com/. 
-You can also use a package manager like homebrew on macosx. For further details see https://help.github.com/articles/installing-git-large-file-storage/
-
-In the shell:
-```sh
-# install git-lfs if requrired
-brew install git-lfs
-git clone https://github.com/jefferislab/lhns.git /path/to/some/folder/
-```
-
-Now start R
+In R
 ```r
 # install
 if (!require("devtools")) install.packages("devtools")
-devtools::install("/path/to/some/folder/lhns")
+devtools::install("jefferislab/lhns")
 ```
 
+The package is being updated regularly. Running:
+
+```r
+devtools::update_packages('jefferislab/lhns')
+```
+will update from github *if necessary*.
 
 ## What's in the package currently?
 ```r
@@ -37,29 +31,45 @@ plot_pnts()
 
 ## Remaking data
 
-To remake the data from scratch, I recommend opening the rstudio project and then:
+To remake the data from scratch, you will need to clone the github repository. You can do this in the terminal like so:
+
+```
+# choose an appropriate location
+cd /path/to/some/folder/
+git clone https://github.com/jefferislab/lhns.git
+```
+
+I then recommend opening the rstudio project and doing:
 
 ```r
 source("data-raw/make.R")
 ```
 
-To use this, you will then need to reinstall the `lhns` package - you can easily
-do this like so:
+To use this, you will then need to reinstall the `lhns` package from your local checkout 
 
 ```r
-devtools::update_packages('jefferislab/lhns')
+# adjust to path of your git checkout
+devtools::install("/path/to/some/folder/lhns")
 ```
 ### LHN cell types
 If you need to alter an LHN cell type classification, you need to edit
 [processLHNs.R](data-raw/processLHNs.R) and then follow the steps above i.e. 
 `source("data-raw/make.R")`. 
+### Commiting changes
 
-Note: Windows users need [Rtools](http://www.murdoch-sutherland.com/Rtools/) and
-[devtools](http://CRAN.R-project.org/package=devtools) to install this way.
+You can commit any changes in git using the integrated support for git in Rstudio. You will have to ask for write access to push to the github repo.
 
 ## Acknowledgements
 * Images from [FlyCircuit](http://flycircuit.tw) were obtained from the NCHC (National Center for High-performance Computing) and NTHU (National Tsing Hua University), Hsinchu, Taiwan.
-* Dye-fills of LH neurons were obtained by Shahar Frechter. 
+* Dye-fills of LH neurons were obtained by Shahar Frechter.
+* **Add acknowledgements for additional data**
 
-Data compiled and annotated for analysis in Frechter et al. (2017) by Alexander Bates
-and Shahar Frechter. 
+Data initially compiled and annotated for analysis in:
+
+
+> *Functional and Anatomical Specificity in a Higher Olfactory Centre*.
+> Shahar Frechter, Alexander S. Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Jamasb, Johannes Kohl, Davi Bock, Gregory S.X.E. Jefferis.
+> 5 June 2018; bioRxiv 336982; doi: https://doi.org/10.1101/336982
+
+
+by Alexander Bates and Shahar Frechter. 
