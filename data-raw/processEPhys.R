@@ -19,11 +19,11 @@ ephys.lhns = physplit.analysis::create_raw_summary_array(x = physplitdata::smSpi
 
 # Get odours
 odours = colnames(ephys.lhns)
-odours.long = c("Mineral Oil", "trans-2-Hexenal", "trans-2-Hexenal", "Propyl acetate", "Isoamyl acetate", "Ethyl 3-hydroxybutyrate", "Nonanal",
+odours.long = c("Mineral Oil", "trans-2-Hexenal", "Geranyl acetate", "Propyl acetate", "Isoamyl acetate", "Ethyl 3-hydroxybutyrate", "Nonanal",
                 "11-cis Vaccenyl Acetate", "Methyl salicylate", "Hexyl acetate", "Phenethyl alcohol", "Acetoin acetate", "Ethyl hexanoate", "2-Phenethyl acetate",
                 "5 odor mix", "Benzaldehyde", "β-Citronellol", "1-Hexanol", "Farnesol", "Water Blank", "Cadaverine",
-                "Spermine", "Acetoin", "Methyl acetate", "Methyl acetate", "Propionic acid", "Butyric acid", "Ammonia",
-                "Pyridine", "Pyridine", "HCl", "Phenylacetic acid", "Vinegar", "Geosmin", "Vineger and Geosmin mix",
+                "Spermine", "Acetoin", "Methyl acetate", "Acetic acid", "Propionic acid", "Butyric acid", "Ammonia",
+                "Pyridine", "Phenylacetaldehyde", "HCl", "Phenylacetic acid", "Vinegar", "Geosmin", "Vineger and Geosmin mix",
                 "Phenethylamine", "Blank1", "Blank2", "FlyFM", "Ethylamine", "MtAmn", "Putrescine",
                 "Linalool", "2,3-Butanedione", "Spermidine", "CO2")
 names(odours.long) = odours
