@@ -29,7 +29,7 @@ odours.long = c("Mineral Oil", "trans-2-Hexenal", "Geranyl acetate", "Propyl ace
 names(odours.long) = odours
 
 # Get matrix
-ephys.lhns.m = physplit.analysis::createSummarySpikesMat(ephys.lhns,NALimit=100,numSamplePoints=7)
+ephys.lhns.m = physplit.analysis::createSummarySpikesMat(ephys.lhns,NALimit=3,numSamplePoints=7)
 choose.just.max1.cols = as.logical(rep(c(0,0,1,0,0,0,0),ncol(ephys.lhns.m)/7))
 ephys.lhns.m = ephys.lhns.m[,choose.just.max1.cols]
 colnames(ephys.lhns.m) = odours[1:ncol(ephys.lhns.m)]
