@@ -2,7 +2,7 @@ library(elmr)
 library(googlesheets)
 
 # INSERT CATMAID_LOGIN HERE
-FAFB.conn = catmaid_login(server = "https://neuropil.janelia.org/tracing/fafb/v14/", authname = "X", authpassword = "X", token = "X")
+# FAFB.conn = catmaid_login(server = "https://neuropil.janelia.org/tracing/fafb/v14/", authname = "X", authpassword = "X", token = "X")
 
 # Access google sheet for cell type and EM matches information
 googlesheets::gs_auth(verbose=TRUE)
@@ -14,7 +14,7 @@ skids = g$em.match.skid
 skids = as.numeric(skids)
 skids = unique(skids[!is.na(skids)])
 em.neurons = read.neurons.catmaid(skids,OmitFailures = FALSE)
-em.neurons = xform_brain(em.neurons,reference = JFRC2,sample=FAFB14)
+em.neurons = xform_brain(em.neurons,reference = FCWB,sample=FAFB14)
 cts = c()
 for(s in em.neurons[,"skid"]){
   c = subset(gs,em.match.skid==s)$cell.type[1]
