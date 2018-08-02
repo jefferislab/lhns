@@ -33,7 +33,7 @@ odours.long = c("Mineral Oil", "trans-2-Hexenal", "Geranyl acetate", "Propyl ace
                 "Pyridine", "Phenylacetaldehyde", "HCl", "Phenylacetic acid", "Vinegar", "Geosmin", "Vinegar and Geosmin mix",
                 "Phenethylamine", "Blank1", "Blank2", "FlyFM", "Ethylamine", "MtAmn", "Putrescine",
                 "Linalool", "2,3-Butanedione", "Spermidine", "CO2", "Mineral Oil","Valencene", "Methyl laurate",
-                "Methyl palmitate", "Methyl myristate", "4-Ethylguaiacol","Nonnal","Hexyl acetate","Blank3","Ethyl acetate 10^8",
+                "Methyl palmitate", "Methyl myristate", "4-Ethylguaiacol","Nonanal2","Hexyl acetate","Blank3","Ethyl acetate 10^8",
                 "Trans-2-hexenal 10^7", "2-butanone 10^6", "Methyl salicylate 10^6")
 names(odours.long) = odours
 
