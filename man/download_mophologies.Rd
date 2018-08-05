@@ -4,7 +4,7 @@
 \alias{download_mophologies}
 \title{Download all the LH neuronal skeletons in this package}
 \usage{
-download_mophologies(dir = getwd(), ...)
+download_mophologies(dir = paste0(getwd(), "/"), ...)
 }
 \arguments{
 \item{dir}{path to directory into which to download the LH library}

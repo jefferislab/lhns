@@ -4,7 +4,7 @@
 \name{lh_nblast}
 \alias{lh_nblast}
 \title{Pre-calculated NBLAST scores between all neurons in this package}
-\format{An object of class \code{matrix} with 2142 rows and 2142 columns.}
+\format{An object of class \code{matrix} with 3494 rows and 3494 columns.}
 \usage{
 lh_nblast
 }
