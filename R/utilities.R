@@ -134,7 +134,7 @@ downloadskeletons <- function (nl, dir, format = "swc", subdir = NULL, INDICES =
 #' @param dir path to directory into which to download the LH library
 #' @param ... additional arguments passed to nat::write.neuron
 #' @export
-download_mophologies <- function(dir = getwd(),...){
+download_mophologies <- function(dir = paste0(getwd(),"/"),...){
   file = paste0(dir,"LH_library.zip")
   neurons = c(most.lhns,subset(emlhns,type!="PN"))
   attr(neurons,"df") = neurons[,c("cell.type", "anatomy.group", "pnt", "type", "skeleton.type", "coreLH", "id")]
