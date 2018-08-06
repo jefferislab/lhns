@@ -116,7 +116,7 @@ downloadskeletons <- function (nl, dir, format = "swc", subdir = NULL, INDICES =
                                format = format, Force = Force)
   }
   # Save metadata
-  write.csv(df,file = paste0(dir,"/neurons_metadata.csv"),row.names = FALSE)
+  utils::write.csv(df,file = paste0(dir,"/neurons_metadata.csv"),row.names = FALSE)
   written["metadata"] = paste0(dir,"_metadata.csv")
   if (!is.null(zip_file)) {
     owd = setwd(dir)
@@ -136,8 +136,10 @@ downloadskeletons <- function (nl, dir, format = "swc", subdir = NULL, INDICES =
 #' @export
 download_mophologies <- function(dir = paste0(getwd(),"/"),...){
   file = paste0(dir,"LH_library.zip")
-  neurons = c(most.lhns,subset(emlhns,type!="PN"))
-  attr(neurons,"df") = neurons[,c("cell.type", "anatomy.group", "pnt", "type", "skeleton.type", "coreLH", "id")]
+  most.lhins.pnt  = most.lhins
+  most.lhins.pnt[,"pnt"] = most.lhins[,"tract"]
+  neurons = c(most.lhns,emlhns,most.lhins.pnt)
+  attr(neurons,"df") = neurons[,c("cell.type", "anatomy.group", "pnt", "tract","type", "skeleton.type", "coreLH", "id")]
   neurons[,"skeleton.type_pnt"] = paste0(neurons[,"skeleton.type"],"_",neurons[,"pnt"])
   downloadskeletons(neurons,dir = file,subdir = skeleton.type_pnt,format="swc",files = paste0(cell.type,"_",id),Force = TRUE, ...)
 }

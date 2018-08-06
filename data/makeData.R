@@ -1,6 +1,6 @@
-# ##############################
+#################################
 # Make the neuronlistfh objects #
-###############################
+#################################
 
 base::delayedAssign('mbons.light.dps', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('mbons.light.dps.rds',package='lhns'))))
 base::delayedAssign('pn.axons.light', nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('pn.axons.light.rds',package='lhns'))))

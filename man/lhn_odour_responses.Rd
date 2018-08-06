@@ -4,7 +4,7 @@
 \name{lhn_odour_responses}
 \alias{lhn_odour_responses}
 \title{Odour responses for different LHN cell types}
-\format{An object of class \code{matrix} with 143 rows and 36 columns.}
+\format{An object of class \code{matrix} with 229 rows and 55 columns.}
 \usage{
 lhn_odour_responses
 }
