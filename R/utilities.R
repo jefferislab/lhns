@@ -56,6 +56,7 @@ process_lhn_name <- function(x) {
 #'
 #' @description Download neuronal morphologies as SWC files, compressed into a .zip file along with a CSV for their meta-data
 #' @param nl the neuronlist to download
+#' @param dir directory to which to download data
 #' @param format unique abbreviation of one of the registered file formats for neurons including 'swc', 'hxlineset', 'hxskel'
 #' @param subdir string naming field in neuron that specifies a subdirectory OR expression to evaluate in the context of neuronlist's df attribute
 #' @param INDICES character vector or expression specifying output filenames. See examples and nat::write.neuron for details
