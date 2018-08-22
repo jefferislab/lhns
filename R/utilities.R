@@ -1,7 +1,7 @@
 #' See a FlyCircuit neuron on the FlyCircuit website
 #'
-#' @description See chosen FLyCircuit neuron on the FlyCircuit website, where maximal projection .lsm images are available.
-#' @param fc_id A flycirucit neuron ID, either the neuron ID or the gene name ID
+#' @description See chosen FlyCircuit neuron on the FlyCircuit website, where maximal projection .lsm images are available.
+#' @param fc_id A FlyCircuit neuron ID, either the neuron ID or the gene name ID
 #' @param max Maximum number of webpages to open
 #' @source \url{http://www.flycircuit.tw/}
 #' @export

@@ -9,7 +9,7 @@
 lh.mcfo
 }
 \description{
-Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out dat. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 }
 \details{
 Dolan et al. 2018, upcoming.

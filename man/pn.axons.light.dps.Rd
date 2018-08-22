@@ -3,7 +3,7 @@
 \docType{data}
 \name{pn.axons.light.dps}
 \alias{pn.axons.light.dps}
-\title{Vector cloud fopr light level tracing of PN axons}
+\title{Vector cloud for light level tracing of PN axons}
 \format{An object of class \code{neuronlist} (inherits from \code{list}) of length 220.}
 \usage{
 pn.axons.light.dps
