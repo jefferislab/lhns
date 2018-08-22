@@ -14,10 +14,12 @@ Description: Skeleton data from FlyCircuit (http://flycircuit.tw) and Frechter e
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 6.0.1
-Suggests: testthat
+Suggests:
+    spelling, testthat
 Imports: rgl, reshape2, flycircuit, nat.templatebrains, nat.utils, stringr
 Depends:  R (>= 2.10), nat, nat.flybrains
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
 Remotes: jefferislab/nat.flybrains, jefferis/flycircuit, jefferis/nat.utils
 Encoding: UTF-8
+Language: en-GB
