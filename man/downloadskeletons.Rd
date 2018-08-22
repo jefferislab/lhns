@@ -10,6 +10,8 @@ downloadskeletons(nl, dir, format = "swc", subdir = NULL,
 \arguments{
 \item{nl}{the neuronlist to download}
 
+\item{dir}{directory to which to download data}
+
 \item{format}{unique abbreviation of one of the registered file formats for neurons including 'swc', 'hxlineset', 'hxskel'}
 
 \item{subdir}{string naming field in neuron that specifies a subdirectory OR expression to evaluate in the context of neuronlist's df attribute}
