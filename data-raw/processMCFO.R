@@ -149,6 +149,8 @@ for(i in 1:length(mcfo)){
   mcfo[[i]]$d$Label = 0
 }
 
+# Detect and remove duplicated skeletons
+
 # Get the imade code to line mapping
 dcs = read.csv("data-raw/csv/dolan_cells.csv")
 dcs$ImageCode = NULL
