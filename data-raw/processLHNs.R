@@ -1679,4 +1679,3 @@ write.neuronlistfh(most.lhns.dps, file='inst/extdata/most.lhns.dps.rds',overwrit
 # dkcs=colour_clusters(clust, h=0.75)
 # g = 0;clear3d()
 # g=g+1;message(g);clear3d();plot3d(FCWB);s=subset(clust,h=0.75, group=g);plot3d(set[s], soma=T,lwd=3);dput(s)
-
