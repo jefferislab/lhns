@@ -69,7 +69,11 @@ non.overlapping.bins = non.overlapping.bins[-length(non.overlapping.bins)]
 for(i in 1:length(sps)){
   sp = sps[[i]]
   for(o in odours){
-    M[i,o] = sum(sp[[o]]$counts[sp[[1]]$mids%in%non.overlapping.bins])
+    if(is.null(sp[[o]])){
+      M[i,o] = NA
+    }else{
+      M[i,o] = sum(sp[[o]]$counts[sp[[1]]$mids%in%non.overlapping.bins],na.rm = TRUE)
+    }
   }
 }
 colnames(M) = odours.long[colnames(M)]
