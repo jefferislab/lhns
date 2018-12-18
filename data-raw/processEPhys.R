@@ -60,10 +60,16 @@ names(odours.long) = odours
 sps = physplitdata::smSpikes[names(physplitdata::smSpikes)%in%cells]
 row.cells = names(sps)
 M = matrix(ncol = length(odours), nrow = length(row.cells), NA,dimnames = list(row.cells,odours))
+non.overlapping.bins = x = c(0.7+0.25)
+while(x<2.2){
+  x = non.overlapping.bins[length(non.overlapping.bins)] + sps[[1]][[1]]$breaks[[1]]
+  non.overlapping.bins = c(non.overlapping.bins,x)
+}
+non.overlapping.bins = non.overlapping.bins[-length(non.overlapping.bins)]
 for(i in 1:length(sps)){
   sp = sps[[i]]
   for(o in odours){
-    M[i,o] = sum(sp[[o]]$counts[sp[[o]]$mids>=0.7&sp[[o]]$mids<=2.2])
+    M[i,o] = sum(sp[[o]]$counts[sp[[1]]$mids%in%non.overlapping.bins])
   }
 }
 colnames(M) = odours.long[colnames(M)]
