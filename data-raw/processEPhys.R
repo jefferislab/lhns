@@ -9,7 +9,7 @@ library(physplitdata)
 ### Let's make a lighter, simplified version of the E-Phys data to use in the LHlibrary Shiny App ###
 
 # get dye filled skeletons that will have E-Phys data
-dye.fills = lhns::most.lhns[grepl("^1",names(lhns::most.lhns))]
+dye.fills = lhns::most.lhns[subset(most.lhns,skeleton.type=="DyeFill")]
 cells = paste0("nm20",names(dye.fills))
 cells = cells[cells%in%names(physplitdata::smSpikes)]
 dye.fills = dye.fills[cells%in%names(physplitdata::smSpikes)] # Final list of neurons for which there is e-phy data
