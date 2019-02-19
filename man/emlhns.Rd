@@ -4,7 +4,7 @@
 \name{emlhns}
 \alias{emlhns}
 \title{EM skeletons for LHNs}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 83.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 143.}
 \usage{
 emlhns
 }
@@ -12,6 +12,6 @@ emlhns
 EM skeletons for LHNs identified in the Dolan split lines. Tracing in progress.
 }
 \details{
-Dolan et al. 2018, upcoming.
+Dolan et al. 2019 and Huoviala et al. 2019, upcoming.
 }
 \keyword{datasets}

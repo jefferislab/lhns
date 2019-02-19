@@ -583,10 +583,10 @@ pv4.a.8 = c("Gad1-F-400124","Cha-F-800134","Gad1-F-500038","Cha-F-100456","Gad1-
 pv4.a.9 = c("Cha-F-100221", "Gad1-F-500178", "5HT1A-F-300030", "5HT1A-F-300034")
 pv4.a.10 = c("Gad1-F-700108","130627c0","Cha-F-600207")
 pv4.a.11 = c("VGlut-F-300393","Cha-F-500303","Cha-F-600226")
-pv4.a.12 = c("VGlut-F-400195","L1842#3","L1842#4","L1842#5","L1842#6","L1842#7")
+pv4.a.12 = c("VGlut-F-400195","L1842#4","L1842#5","L1842#6","L1842#7")
 pv4.a= c(pv4.a.1,pv4.a.2,pv4.a.3,pv4.a.4,pv4.a.5,pv4.a.6,pv4.a.7,pv4.a.8,pv4.a.9,pv4.a.10,pv4.a.11,pv4.a.12)
 pv4.b.1 = c("VGlut-F-500411","VGlut-F-700602","Gad1-F-300148", "VGlut-F-600764","VGlut-F-300574", "VGlut-F-500243",
-            "VGlut-F-500399", "VGlut-F-700084","140117c2","L1827#4","L1827#6","L1827#13")
+            "VGlut-F-500399", "VGlut-F-700084","Gad1-F-700258","140117c2","L1827#4","L1827#6","L1827#13")
 pv4.b.2 = c("fru-M-200351","Gad1-F-100154","131212c1","E0585-F-300056","VGlut-F-500444","140207c0", "VGlut-F-400084", "Cha-F-100028",
             "Gad1-F-200322","140211c0","140206c2","L1827#5", "L1827#7","L1827#8", "L1827#9","L1827#10","L1827#11","L1827#12", "L1828#2")
 pv4.b.3 = c("L509#1","L509#2")
@@ -596,11 +596,12 @@ pv4.b= c(pv4.b.1,pv4.b.2,pv4.b.3,pv4.b.4,pv4.b.5)
 pv4.c.1 = c("VGlut-F-500046","VGlut-F-600030","Gad1-F-400027","VGlut-F-700503",
             "VGlut-F-400240","VGlut-F-700280","VGlut-F-800064","VGlut-F-700342",
             "Gad1-F-000274","VGlut-F-500419", "L2316#2", "L2392#2", "L2392#3","L2392#4", "L2392#5")
-pv4.c.2=c("fru-M-200253","Gad1-F-100178","Gad1-F-700258","L1842#1","L1842#2") # Some somas wrong
+pv4.c.2=c("fru-M-200253","Gad1-F-100178","L1842#1","L1842#2","L1842#3") # Some somas wrong
 pv4.c.3= c("VGlut-F-500442","VGlut-F-500445","VGlut-F-900028","L1397#1", "L1397#2", "L1397#3","L1959#1")
 pv4.c.4=c("VGlut-F-800074")
 pv4.c.5 = "VGlut-F-600311"
 pv4.c.6 = "Cha-F-600243"
+# PV4c7 in Paavo's EM
 pv4.c=c(pv4.c.1,pv4.c.2,pv4.c.3,pv4.c.4,pv4.c.5,pv4.c.6)
 pv4.d.1 =c("Cha-F-600269", "Cha-F-000485", "Gad1-F-500338", "Cha-F-200398","130923c0","Cha-F-000507","140212c0",
            "L2233#1", "L2233#2", "L2233#3", "L2233#4")
@@ -677,9 +678,8 @@ pv6.a = c(pv6.a.1,pv6.a.2,pv6.a.3)
 # pv6a3 is Dr. Caligari in Paavo's paper
 pv6.b = pv6.b.1 = c("L1827#1","L1827#2")
 pv6.c = pv6.c.1 = c("L2220#1","L2220#2", "L2220#3","L2220#4")
-pv6.d.1 = "Cha-F-000395"
-pv6.d.2 = "CL29FR_IS24835"
-pv6.d=c(pv6.d.1,pv6.d.2)
+pv6.d.1 = "CL29FR_IS24835"
+pv6.d=c(pv6.d.1)
 pv6.e = pv6.e.1 = "Gad1-F-900064"
 
 
@@ -782,6 +782,7 @@ pv1.f = pv1.f.1 = "fru-F-000126" # Could be its own tract?
 pv1.g = pv1.g.1 = "fru-M-800060" # Could be its own tract?
 pv1.h = pv1.h.1 = "fru-F-000125" # Could be its own tract?
 pv1.i = pv1.i.1 = "CL143R_MB583B"
+# PV1J1 nad PV1K1 in Paavo's EM data
 
 # Assign cell types
 df[pv1.a.1,]$cell.type = "pv1a1"
@@ -918,6 +919,7 @@ pd3.b = pd3.b.1 = "L1749#6"
 pd3.c = pd3.c.1 = "Cha-F-100103" # correct attribution?
 pd3.d = pd3.d.1 = "Gad1-F-400320" # correct attribution?
 pd3.e = pd3.e.1 = "CL153R_IS24693"
+# PD3f1 in Paavo's EM
 
 # Assign cell types
 df[pd3.a.1,]$cell.type = "pd3a1"
@@ -1030,7 +1032,9 @@ av3.a.2=c("Cha-F-200387","Gad1-F-000132")
 av3.a=c(av3.a.1,av3.a.2)
 av3.b=av3.b.1=c("VGlut-F-600223","VGlut-F-800057")
 av3.c=av3.c.1=c("Cha-F-000470")
-av3.d=av3.d.1 =("VGlut-F-200441")
+av3.d.1 = "Cha-F-000395"
+av3.d.2 = ("VGlut-F-200441")
+av3.d = c(av3.d.1,av3.d.2)
 # AV3.e.1 is Ouroborus
 
 # Assign cell types
@@ -1140,7 +1144,7 @@ av4.e = av4.e.1 = b = c("fru-F-500592","fru-F-300099")
 av4.f= av4.f.1 = "L787#2"
 av4.g = av4.g.1 = "fru-F-500089"
 av4.h = av4.h.1 = "fru-M-500251"
-
+# AV4i and AV4j in Paavo's data
 
 # Assign cell types
 df[av4.a.1,]$cell.type = "av4a1"
@@ -1456,6 +1460,7 @@ ad2.a = c(ad2.a.1,ad2.a.2)
 ad2.b = ad2.b.1 = c("fru-F-500184","fru-F-500117","fru-F-400067","fru-F-700078")
 ad2.c = ad2.c.1 = c("fru-F-400325","fru-F-400420")
 ad2.d = ad2.d.1 = "Cha-F-200386"
+# Ad2e1 in Paavo's EM data
 
 # Assign cell types
 df[ad2.a.1,]$cell.type = "ad2a1"
