@@ -67,6 +67,7 @@ process_lhn_name <- function(x) {
 #' @param Force whether to overwrite an existing file
 #' @param ... additional arguments passed to nat::write.neuron
 #' @export
+#' @importFrom utils zip
 downloadskeletons <- function (nl, dir, format = "swc", subdir = NULL, INDICES = names(nl), files = NULL, Force = FALSE, ...){
   if (grepl("\\.zip", dir)) {
     zip_file = dir
