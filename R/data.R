@@ -220,13 +220,13 @@
 #' EM skeletons for LHNs
 #'
 #' EM skeletons for LHNs identified in the Dolan split lines. Tracing in progress.
-#' @details Dolan et al. 2018, upcoming.
+#' @details Dolan et al. 2019 and Huoviala et al. 2019, upcoming.
 "emlhns"
 
 #' Vector clouds of EM skeletons for LHNs
 #'
 #' Vector clouds for EM LHNs identified in the Dolan split lines. Tracing in progress.
-#' @details Dolan et al. 2018, upcoming.
+#' @details Dolan et al. 2019 and Huoviala et al. 2019, upcoming.
 "emlhns.dps"
 
 

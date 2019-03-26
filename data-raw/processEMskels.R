@@ -35,14 +35,47 @@ em.neurons[grepl("GNG",em.neurons[,"cell.type"]),"anatomy.group"] = "GNG-PN"
 em.neurons[,"type"] = ifelse(em.neurons[,"cell.type"]%in%subset(most.lhns,type=="LN")[,"cell.type"],"LN","ON")
 em.neurons[,"type"] = ifelse(grepl("PN",em.neurons[,"cell.type"]),"PN",em.neurons[,"type"])
 em.neurons[,"skeleton.type"] = "EM"
+em.neurons[,"citation"] = "Dolan et al. 2019"
+em.neurons[grepl("PD2a|PD2b",em.neurons[,"cell.type"]),"citation"] = "Dolan & Belliart-Guérin et al. 2018"
+
+# Add neurons from Paavo's and the PN Paper
+lhns.done.pn.paper = read.neurons.catmaid("annotation:WTPN2017_LHNs")
+da2.project.neurons = read.neurons.catmaid("annotation:Huoviala et al. 2018 cell type ASB")
+lhns.done = c(lhns.done.pn.paper, setdiff(da2.project.neurons,lhns.done.pn.paper))
+da2.project.only.neurons = setdiff(da2.project.neurons,lhns.done.pn.paper)
+process_lhn_name <- function(x) {
+  res=stringr::str_match(x, "([AP][DV][1-9][0-9]{0,1})([a-z])([1-9][0-9]{0,2})")
+  data.frame(pnt=res[,2], anatomy.group=paste0(res[,2], res[,3]), cell.type=res[,1],
+             stringsAsFactors = F)
+}
+matches = read.csv("/GD/LMBD/Papers/2017pns/fig/Alex/data/neurons/mostlhns_matches.csv")
+df = merge(lhns.done[,],matches)
+cts = lhns::most.lhns[as.character(df$match),"cell.type"]
+new.indices = grep("new:",as.character(df$match))
+new.cts = gsub("new:","",as.character(df$match)[new.indices])
+cts[new.indices] = new.cts
+df = cbind(df,process_lhn_name(cts))
+df$good.trace = TRUE
+df$skeleton.type = "EM"
+df[df$match=="Incomplete",c("cell.type","anatomy.group","pnt")] = "Incomplete"
+df[df$match=="Incomplete",c("good.trace")] = FALSE
+rownames(df) = df$skid
+df[df$skid%in%names(lhns.done.pn.paper),"citation"] = "Schlegel & Bates et al. in prep"
+df[df$skid%in%names(da2.project.neurons),"citation"] = "Huoviala et al. 2019"
+df  = df[match(names(lhns.done),df$skid),]
+lhns.done[,] = df
+
+# Make a cohesive set of neurons
+em.neurons = c(em.neurons,lhns.done[setdiff(names(lhns.done),names(em.neurons))])
+em.neurons[,] = em.neurons[,c("skid", "pnt", "anatomy.group", "cell.type", "skeleton.type", "citation")]
 
 # Remove connector information
 strip_connectivity <- function(neuron){
   neuron$connectors = NULL
   neuron
 }
-emlhns = nlapply(subset(em.neurons,!cell.type%in%c("PV4a1","PV4a2","AD1b2")),strip_connectivity)
-emlhns = c(emlhns,subset(em.neurons,cell.type%in%c("PV4a1","PV4a2","AD1b2")))
+emlhns = nlapply(subset(em.neurons,!cell.type%in%c("PD2a1","PD2b1","PV4a1","PV4a2","AD1b2")),strip_connectivity)
+emlhns = c(emlhns,subset(em.neurons,cell.type%in%c("PD2a1","PD2b1","PV4a1","PV4a2","AD1b2")))
 
 # Save!
 emlhns.dps = dotprops(emlhns)

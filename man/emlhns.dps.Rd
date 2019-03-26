@@ -4,7 +4,7 @@
 \name{emlhns.dps}
 \alias{emlhns.dps}
 \title{Vector clouds of EM skeletons for LHNs}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 83.}
+\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 143.}
 \usage{
 emlhns.dps
 }
@@ -12,6 +12,6 @@ emlhns.dps
 Vector clouds for EM LHNs identified in the Dolan split lines. Tracing in progress.
 }
 \details{
-Dolan et al. 2018, upcoming.
+Dolan et al. 2019 and Huoviala et al. 2019, upcoming.
 }
 \keyword{datasets}

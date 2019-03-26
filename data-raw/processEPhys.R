@@ -9,7 +9,7 @@ library(physplitdata)
 ### Let's make a lighter, simplified version of the E-Phys data to use in the LHlibrary Shiny App ###
 
 # get dye filled skeletons that will have E-Phys data
-dye.fills = lhns::most.lhns[grepl("^1",names(lhns::most.lhns))]
+dye.fills = lhns::most.lhns[subset(most.lhns,skeleton.type=="DyeFill")]
 cells = paste0("nm20",names(dye.fills))
 cells = cells[cells%in%names(physplitdata::smSpikes)]
 dye.fills = dye.fills[cells%in%names(physplitdata::smSpikes)] # Final list of neurons for which there is e-phy data
@@ -21,7 +21,7 @@ gloms = paste0(subset(physdb, Group%in%c("PN"))[,"Anatomy.type"]," PN")
 names(gloms) = pns
 cells = c(cells,pns)
 
-# Get ephys data
+# # Get ephys data
 ephys.lh = physplit.analysis::create_raw_summary_array(x = physplitdata::smSpikes, cells = cells)
 
 # Get odours
@@ -37,29 +37,54 @@ odours.long = c("Mineral Oil", "trans-2-Hexenal", "Geranyl acetate", "Propyl ace
                 "Trans-2-hexenal 10^7", "2-butanone 10^6", "Methyl salicylate 10^6")
 names(odours.long) = odours
 
-# Get matrix
-# ephys.lh.a = physplit.analysis::createSummarySpikesArray(summary_array = ephys.lh,NALimit=3,numSamplePoints=7)
-ephys.lh.a = ephys.lh
-odours = rownames(ephys.lh.a[1,,])
-ephys.lh.m =  t(base::apply(ephys.lh.a, 1, base::t)) # Sampled at 7 time points
-choose.just.max1.cols = as.logical(rep(c(0,0,1,0,0,0,0),ncol(ephys.lh.m)/7))
-ephys.lh.m = ephys.lh.m[,choose.just.max1.cols]
-colnames(ephys.lh.m) = odours
-row.cells = rownames(ephys.lh.m)
-row.cells[row.cells%in%pns] = gloms[row.cells[row.cells%in%pns]]
-row.cells[gsub("nm20","",rownames(ephys.lh.m))%in%names(dye.fills)] = dye.fills[gsub("nm20","",rownames(ephys.lh.m)[gsub("nm20","",rownames(ephys.lh.m))%in%names(dye.fills)])][,"cell.type"]
-rownames(ephys.lh.m) = row.cells
-ephys.lh.m = ephys.lh.m[order(rownames(ephys.lh.m)),order(colnames(ephys.lh.m))]
+# # Get matrix
+# # ephys.lh.a = physplit.analysis::createSummarySpikesArray(summary_array = ephys.lh,NALimit=3,numSamplePoints=7)
+# ephys.lh.a = ephys.lh
+# odours = rownames(ephys.lh.a[1,,])
+# ephys.lh.m =  t(base::apply(ephys.lh.a, 1, base::t)) # Sampled at 7 time points
+# choose.just.max1.cols = as.logical(rep(c(0,0,1,0,0,0,0),ncol(ephys.lh.m)/7))
+# ephys.lh.m = ephys.lh.m[,choose.just.max1.cols]
+# colnames(ephys.lh.m) = odours
+# row.cells = rownames(ephys.lh.m)
+# row.cells[row.cells%in%pns] = gloms[row.cells[row.cells%in%pns]]
+# row.cells[gsub("nm20","",rownames(ephys.lh.m))%in%names(dye.fills)] = dye.fills[gsub("nm20","",rownames(ephys.lh.m)[gsub("nm20","",rownames(ephys.lh.m))%in%names(dye.fills)])][,"cell.type"]
+# rownames(ephys.lh.m) = row.cells
+# ephys.lh.m = ephys.lh.m[order(rownames(ephys.lh.m)),order(colnames(ephys.lh.m))]
+#
+# # Select certain odours to show
+# ephys.lh.m = ephys.lh.m[!rownames(ephys.lh.m)%in%c("105 PN","103 PN"),]
+# ephys.lh.m = ephys.lh.m[,!colnames(ephys.lh.m)%in%c("ClrBL","ClrB2","FlyFM","ClrB1")]
+# colnames(ephys.lh.m) = odours.long[colnames(ephys.lh.m)]
 
-# Select certain odours to show
-ephys.lh.m = ephys.lh.m[!rownames(ephys.lh.m)%in%c("105 PN","103 PN"),]
-ephys.lh.m = ephys.lh.m[,!colnames(ephys.lh.m)%in%c("ClrBL","ClrB2","FlyFM","ClrB1")]
-colnames(ephys.lh.m) = odours.long[colnames(ephys.lh.m)]
+# make odour response matrix, summing smoothed spikes in the window 0.7-2.2 seconds
+sps = physplitdata::smSpikes[names(physplitdata::smSpikes)%in%cells]
+row.cells = names(sps)
+M = matrix(ncol = length(odours), nrow = length(row.cells), NA,dimnames = list(row.cells,odours))
+non.overlapping.bins = x = c(0.7+0.25)
+while(x<2.2){
+  x = non.overlapping.bins[length(non.overlapping.bins)] + sps[[1]][[1]]$breaks[[1]]
+  non.overlapping.bins = c(non.overlapping.bins,x)
+}
+non.overlapping.bins = non.overlapping.bins[-length(non.overlapping.bins)]
+for(i in 1:length(sps)){
+  sp = sps[[i]]
+  for(o in odours){
+    if(is.null(sp[[o]])){
+      M[i,o] = NA
+    }else{
+      M[i,o] = sum(sp[[o]]$counts[sp[[1]]$mids%in%non.overlapping.bins],na.rm = TRUE)
+    }
+  }
+}
+colnames(M) = odours.long[colnames(M)]
+row.cells[row.cells%in%pns] = gloms[row.cells[row.cells%in%pns]]
+row.cells[gsub("nm20","",row.cells)%in%names(dye.fills)] = dye.fills[gsub("nm20","",row.cells[gsub("nm20","",row.cells)%in%names(dye.fills)])][,"cell.type"]
+M = M[!rownames(M)%in%c("105 PN","103 PN"),]
 
 ########
 # Save #
 ########
 
-lhn_odour_responses = ephys.lh.m
+lhn_odour_responses = M
 devtools::use_data(lhn_odour_responses,overwrite=TRUE)
 
