@@ -3,13 +3,13 @@
 \docType{data}
 \name{olf.info}
 \alias{olf.info}
-\title{Information on glomeruli and their cognate olfactory sensaroy neurons and receptors}
+\title{Information on glomeruli and their cognate olfactory sensory neurons and receptors}
 \format{An object of class \code{data.frame} with 70 rows and 3 columns.}
 \usage{
 olf.info
 }
 \description{
-Information on glomeruli and their cognate olfactory sensaroy neurons and receptors from DoOR.
+Information on glomeruli and their cognate olfactory sensory neurons and receptors from DoOR.
 }
 \details{
 Information collated in: \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}

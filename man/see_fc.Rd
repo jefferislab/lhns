@@ -10,10 +10,10 @@
 see_fc(fc_id, max = 10)
 }
 \arguments{
-\item{fc_id}{A flycirucit neuron ID, either the neuron ID or the gene name ID}
+\item{fc_id}{A FlyCircuit neuron ID, either the neuron ID or the gene name ID}
 
 \item{max}{Maximum number of webpages to open}
 }
 \description{
-See chosen FLyCircuit neuron on the FlyCircuit website, where maximal projection .lsm images are available.
+See chosen FlyCircuit neuron on the FlyCircuit website, where maximal projection .lsm images are available.
 }

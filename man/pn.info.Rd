@@ -9,7 +9,7 @@
 pn.info
 }
 \description{
-Information on projection neurons, their glomeruli and their cognate olfactory sensaroy neurons and receptors.
+Information on projection neurons, their glomeruli and their cognate olfactory sensory neurons and receptors.
 }
 \details{
 Data largely from Grabe et al. 2016 \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}

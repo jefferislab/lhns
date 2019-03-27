@@ -1,7 +1,7 @@
 #' See a FlyCircuit neuron on the FlyCircuit website
 #'
-#' @description See chosen FLyCircuit neuron on the FlyCircuit website, where maximal projection .lsm images are available.
-#' @param fc_id A flycirucit neuron ID, either the neuron ID or the gene name ID
+#' @description See chosen FlyCircuit neuron on the FlyCircuit website, where maximal projection .lsm images are available.
+#' @param fc_id A FlyCircuit neuron ID, either the neuron ID or the gene name ID
 #' @param max Maximum number of webpages to open
 #' @source \url{http://www.flycircuit.tw/}
 #' @export
@@ -67,6 +67,7 @@ process_lhn_name <- function(x) {
 #' @param Force whether to overwrite an existing file
 #' @param ... additional arguments passed to nat::write.neuron
 #' @export
+#' @importFrom utils zip
 downloadskeletons <- function (nl, dir, format = "swc", subdir = NULL, INDICES = names(nl), files = NULL, Force = FALSE, ...){
   if (grepl("\\.zip", dir)) {
     zip_file = dir

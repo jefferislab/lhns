@@ -9,6 +9,6 @@
 lh_nblast
 }
 \description{
-Saves time re-claculating an NBLAST beetween all LH associated neuron morphologies
+Saves time re-calculating an NBLAST between all LH associated neuron morphologies
 }
 \keyword{datasets}

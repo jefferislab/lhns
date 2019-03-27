@@ -19,7 +19,8 @@ This was based on work by Arian Jamasb, Ruari Roberts, Alex Bates,
   and then used random sampling and tracing to the first branchpoint to
   estimate the number of LHNs in each tract.
 
-  From LHN_Tract_Table_Tex.R @ b49e87462c938222313e4f6835572bbdb2fb5727
+  From LHN_Tract_Table_Tex.R @
+  \code{b49e87462c938222313e4f6835572bbdb2fb5727}
 }
 \seealso{
 \code{\link{primary.neurite.tracts}}

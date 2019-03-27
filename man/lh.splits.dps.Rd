@@ -9,7 +9,7 @@
 lh.splits.dps
 }
 \description{
-Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 }
 \details{
 Dolan et al. 2018, upcoming.

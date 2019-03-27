@@ -9,7 +9,7 @@ In R
 ```r
 # install
 if (!require("devtools")) install.packages("devtools")
-devtools::install("jefferislab/lhns")
+devtools::install_github("jefferislab/lhns")
 ```
 
 The package is being updated regularly. Running:

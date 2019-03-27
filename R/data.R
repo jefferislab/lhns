@@ -63,7 +63,8 @@
 #'   and then used random sampling and tracing to the first branchpoint to
 #'   estimate the number of LHNs in each tract.
 #'
-#'   From LHN_Tract_Table_Tex.R @ b49e87462c938222313e4f6835572bbdb2fb5727
+#'   From LHN_Tract_Table_Tex.R @
+#'   \code{b49e87462c938222313e4f6835572bbdb2fb5727}
 #' @seealso \code{\link{primary.neurite.tracts}}
 "lh_tract_data"
 
@@ -120,7 +121,7 @@
 #' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
 "pn.axons.light"
 
-#' Vector cloud fopr light level tracing of PN axons
+#' Vector cloud for light level tracing of PN axons
 #'
 #' Light level tracings of PN axons in FCWB space from Jefferis and Potter et al. 2007, Wong and Wang et al. 2002 and Yu et al. 2010.
 "pn.axons.light.dps"
@@ -139,7 +140,7 @@
 
 #' Pre-calculated NBLAST scores between all neurons in this package
 #'
-#' Saves time re-claculating an NBLAST beetween all LH associated neuron morphologies
+#' Saves time re-calculating an NBLAST between all LH associated neuron morphologies
 #'
 "lh_nblast"
 
@@ -149,63 +150,63 @@
 #'
 "lhn_odour_responses"
 
-#' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors
+#' Information on glomeruli and their cognate olfactory sensory neurons and receptors
 #'
-#' Information on glomeruli and their cognate olfactory sensaroy neurons and receptors from DoOR.
+#' Information on glomeruli and their cognate olfactory sensory neurons and receptors from DoOR.
 #' @details Information collated in: \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
 "olf.info"
 
 #' Information on projection neurons
 #'
-#' Information on projection neurons, their glomeruli and their cognate olfactory sensaroy neurons and receptors.
+#' Information on projection neurons, their glomeruli and their cognate olfactory sensory neurons and receptors.
 #' @details Data largely from Grabe et al. 2016 \url{https://www.ncbi.nlm.nih.gov/pubmed/27653699}
 "pn.info"
 
 #' Vector clouds of LH output neurons from split GAL4 lines
 #'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
 "lh.splits.dps"
 
 
 #' Single skeletons of LHNs from MCFO
 #'
-#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out dat. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
 "lh.mcfo"
 
 
 #' Vector clouds for single LHNs from MCFO
 #'
-#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out dat. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
 "lh.mcfo.dps"
 
 
 #' Vector clouds of LH output neurons from split GAL4 lines
 #'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
 "lhon.splits.dps"
 
 
 #' Vector clouds of LH local neurons from split GAL4 lines
 #'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
 "lhln.splits.dps"
 
 
 #' Vector clouds of LH input neurons from split GAL4 lines
 #'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
 "lhin.splits.dps"
 
 
 #' Vector clouds of peri-LH  neurons from split GAL4 lines
 #'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurostransmitter expression. Data from Mike Dolan.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 #' @details Dolan et al. 2018, upcoming.
 "lhin.splits.dps"
 
