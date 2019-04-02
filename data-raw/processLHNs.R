@@ -678,7 +678,7 @@ pv6.a = c(pv6.a.1,pv6.a.2,pv6.a.3)
 # pv6a3 is Dr. Caligari in Paavo's paper
 pv6.b = pv6.b.1 = c("L1827#1","L1827#2")
 pv6.c = pv6.c.1 = c("L2220#1","L2220#2", "L2220#3","L2220#4")
-pv6.d.1 = "CL29FR_IS24835"
+pv6.d.1 = "CL29FR_IS24835" # in Paavo's paper, Albatross
 pv6.d=c(pv6.d.1)
 pv6.e = pv6.e.1 = "Gad1-F-900064"
 
