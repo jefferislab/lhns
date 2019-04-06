@@ -1,7 +1,7 @@
 Package: lhns
 Type: Package
 Title: Skeleton data for neurons associated with the lateral horn of Drosophila melanogaster
-Version: 0.1
+Version: 0.2
 Authors@R: c(
     person("Alex", "Bates", email = "abates@mrc-lmb.cam.ac.uk", role = c("aut", "cre"), 
       comment = c(ORCID = "0000-0002-1195-0445")),
