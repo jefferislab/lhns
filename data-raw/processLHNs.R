@@ -3,6 +3,7 @@
 ####################
 library(elmr)
 library(catnat)
+library(nat.flybrains)
 
 # Get Data
 message("Reading in raw neuron skeleton data!")
@@ -13,7 +14,6 @@ SF_clusters=read.neurons("data-raw/swc/Clusters_SF")
 JFRCSH.DS_clusters=read.neurons("data-raw/swc/Clusters_JFRC2013DS")
 
 # Get data together in FCWB brainspace
-library(nat.flybrains)
 JFRCSH_clusters.FCWB= nat.templatebrains::xform_brain(JFRCSH_clusters, sample=JFRC2, ref=FCWB)
 JFRCSH.DS_clusters.FCWB= nat.templatebrains::xform_brain(JFRCSH.DS_clusters, sample=JFRC2013DS, ref=FCWB)
 SF_clusters.FCWB= nat.templatebrains::xform_brain(SF_clusters, IS2, FCWB)
@@ -678,10 +678,10 @@ pv6.a = c(pv6.a.1,pv6.a.2,pv6.a.3)
 # pv6a3 is Dr. Caligari in Paavo's paper
 pv6.b = pv6.b.1 = c("L1827#1","L1827#2")
 pv6.c = pv6.c.1 = c("L2220#1","L2220#2", "L2220#3","L2220#4")
-pv6.d.1 = "CL29FR_IS24835" # in Paavo's paper, Albatross
+pv6.d.1 = "CL29FR_IS24835"
 pv6.d=c(pv6.d.1)
 pv6.e = pv6.e.1 = "Gad1-F-900064"
-
+# PV6.f # in Paavo's paper, Albatross
 
 # Assign cell types
 df[pv6.a.1,]$cell.type = "pv6a1"
