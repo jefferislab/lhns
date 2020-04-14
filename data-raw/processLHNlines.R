@@ -4,6 +4,7 @@
 
 # Prepare data on Mike's splits
 require(reshape2)
+require(dplyr)
 if(!exists("lh.mcfo")){
   stop("Please run processMCFO.R!")
 }else if(!exists("lh.splits.dps")){
@@ -96,7 +97,7 @@ for(l in 1:nrow(lh_line_info)){
   }
 }
 
-# Create and old to new cell.type mapping
+# Create an old to new cell.type mapping
 most.lh = c(most.lhns,most.lhins)
 old = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(unlist(strsplit(lh_line_info$old.cell.type,"/")))))))
 old = old[!grepl("sleep|NotLH|\v|\\?| ",old)]
@@ -109,6 +110,7 @@ meta = most.lh[,c("cell.type","type","coreLH")]
 meta[meta$cell.type=="notLHproper",c("type")] = "notLHproper"
 meta[meta$cell.type=="notLHproper",c("coreLH")] = FALSE
 meta = dplyr::distinct(meta)
+meta = meta[!duplicated(meta$cell.type),]
 rownames(meta) = meta$cell.type
 for(o in old){
   cts = sort(na.omit(unique(subset(lh_line_info,old.cell.type==o)$cell.type)))
