@@ -82,7 +82,7 @@ notLH = c("L1740#6","L1740#1", "L1740#5", "L1740#9", "L1740#10", "L16#10","L16#9
          "Cha-F-000491", "Cha-F-000506", "Cha-F-100372", "Cha-F-100373",
          "Cha-F-100387", "Cha-F-100420", "Cha-F-100425", "Cha-F-200232",
          "Cha-F-200439", "Cha-F-300023", "Cha-F-300212", "Cha-F-300347",
-         "Cha-F-300350", "Cha-F-300384", "Cha-F-400277", "Cha-F-400287",
+         "Cha-F-300350",  "Cha-F-400277", "Cha-F-400287",
          "Cha-F-400296", "Cha-F-400301", "Cha-F-400328", "Cha-F-500087",
          "Cha-F-500272", "Cha-F-500310", "Cha-F-600245", "Cha-F-600251",
          "Cha-F-700082", "Cha-F-700265", "Cha-F-700277", "Cha-F-800107",
@@ -159,7 +159,6 @@ notLH = c("L1740#6","L1740#1", "L1740#5", "L1740#9", "L1740#10", "L16#10","L16#9
          "VGlut-F-200296", "VGlut-F-300515", "VGlut-F-500139", "VGlut-F-500325",
          "VGlut-F-600075", "VGlut-F-600076", "VGlut-F-600218", "VGlut-F-600694",
          "VGlut-F-700413", "VGlut-F-900053", "Cha-F-100357","Cha-F-000310","VGlut-F-500148")
-
 
 
 ###### PNT PV7 ######
@@ -491,6 +490,8 @@ df[pv5.i.1,]$cell.type = "pv5i1"
 df[pv5.j.1,]$cell.type = "pv5j1"
 df[pv5.k.1,]$cell.type = "pv5k1"
 
+# From Marin et al. 2020
+## PV5l1
 
 
 ###### PNT pv3 ######
@@ -664,13 +665,14 @@ df[pv4.i.1,]$cell.type = "pv4i1"
 df[pv4.j.1,]$cell.type = "pv4j1"
 df[pv4.k.1,]$cell.type = "pv4k1"
 
-
+# From Marin et al 2020
+## PV4b6
 
 ###### PNT PV6 ######
 
 
 
-pv6 = c("Cha-F-200186","CL29CR_30H02","CL29CR_14B11","Cha-F-000395", "CL29FR_IS24835","Gad1-F-900064")
+pv6 = c("Cha-F-200186","CL29CR_30H02","CL29CR_14B11", "CL29FR_IS24835","Gad1-F-900064")
 pv6.a.1 = c("L62#1","CL29CR_30H02","CL29CR_14B11") # in Mike's lines L62
 pv6.a.2 = c("Cha-F-200186")
 pv6.a.3 = c("L2193#2", "L2193#3","L2185#2", "L2193#4", "L2193#1", "L2185#1", "L2193#5")
@@ -681,8 +683,8 @@ pv6.c = pv6.c.1 = c("L2220#1","L2220#2", "L2220#3","L2220#4")
 pv6.d.1 = "CL29FR_IS24835"
 pv6.d=c(pv6.d.1)
 pv6.e = pv6.e.1 = "Gad1-F-900064"
-# PV6.f # in Paavo's paper, Albatross
-
+# PV6f1 # in Paavo's paper, Albatross
+# PV6g1 in Marin et al. 2020
 # Assign cell types
 df[pv6.a.1,]$cell.type = "pv6a1"
 df[pv6.a.2,]$cell.type = "pv6a2"
@@ -845,6 +847,7 @@ df[pd6.e.1,]$cell.type = "pd6e1"
 ### pd5
 pd5 = c("Gad1-F-100015")
 pd5.a = pd5.a.1 = c("Gad1-F-100015") # New tract?
+# PD5b1 in Marin et al. 2020
 # Assign cell types
 df[pd5.a.1,]$cell.type = "pd5a1"
 
@@ -930,7 +933,8 @@ df[pd3.c.1,]$cell.type = "pd3c1"
 df[pd3.d.1,]$cell.type = "pd3d1"
 df[pd3.e.1,]$cell.type = "pd3e1"
 
-
+# From Marin et al.
+## PD3f1, PD3f2
 
 
 ###### PNT pd2 ######
@@ -997,6 +1001,8 @@ df[pd2.g.1,]$cell.type = "pd2g1"
 df[pd2.h.1,]$cell.type = "pd2h1"
 df[pd2.i,]$cell.type = "pd2i1"
 
+# From Marin et al. 2020
+## PD2j1
 
 
 ###### PNT pd1 ######
@@ -1044,6 +1050,9 @@ df[av3.b.1,]$cell.type = "av3b1"
 df[av3.c.1,]$cell.type = "av3c1"
 df[av3.d.1,]$cell.type = "av3d1"
 
+# From Marin et al. 2020
+## AV3e1 = Ouroborus
+## AV3f1 = not LH neurons, but almost
 
 
 ###### PNT AV7 ######
@@ -1060,7 +1069,7 @@ av7.a = av7.a.1 = c("Cha-F-700110", "L2001#4", "L2001#5","L2001#10", "L2001#6", 
   "L2001#2", "Gad1-F-200237", "Gad1-F-100225")
 av7.b = av7.b.1 = c("Cha-F-000432","Cha-F-500243")
 av7.c = av7.c.1 = c("fru-M-200393")
-
+# AV7d1 in Marin et al. 2020
 
 # Assign cell types
 df[av7.a.1,]$cell.type = "av7a1"
@@ -1507,7 +1516,7 @@ ad1.a.8 = "VGlut-F-800061"
 ad1.a = c(ad1.a.1,ad1.a.2,ad1.a.3,ad1.a.4,ad1.a.5,ad1.a.6,ad1.a.7,ad1.a.8)
 ad1.b.1 = c("130726c1", "130731c1", "130802c0", "130801c1","130729c0","120816c1",
             "120813c1", "120911c0", "120726c3", "130910c0", "140514c1", "121101c0")
-ad1.b.2 = c("120704c1", "120730c0", "140616c0","140612c0","120714c4","Gad1-F-900037", "Gad1-F-200039","L1539#5", "L1539#7", "Gad1-F-200039",
+ad1.b.2 = c("120704c1", "120730c0", "140616c0","140612c0","120714c4","Gad1-F-900037", "L1539#5", "L1539#7", "Gad1-F-200039",
             "L1539#3", "L1539#10", "L1539#8", "L1539#9","L1539#6","L2278#5", "L2278#6", "L1539#1", "L2278#1", "L2278#2", "L2278#3","L2278#4","L1539#4")
 # ad1.b.3 in Wilson data
 ad1.b = c(ad1.b.1,ad1.b.2)
