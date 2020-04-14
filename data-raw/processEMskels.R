@@ -2,7 +2,7 @@ library(elmr)
 library(googlesheets)
 
 # INSERT CATMAID_LOGIN HERE
-# FAFB.conn = catmaid_login(server = "https://neuropil.janelia.org/tracing/fafb/v14/", authname = "X", authpassword = "X", token = "X")
+FAFB.conn = catmaid_login(server = "https://neuropil.janelia.org/tracing/fafb/v14/", authname = "X", authpassword = "X", token = "X")
 
 # Access google sheet for cell type and EM matches information
 googlesheets::gs_auth(verbose=TRUE)
@@ -13,8 +13,9 @@ all.cts = unique(g$cell.type)
 skids = g$em.match.skid
 skids = as.numeric(skids)
 skids = unique(skids[!is.na(skids)])
-em.neurons = read.neurons.catmaid(skids,OmitFailures = FALSE)
-em.neurons = xform_brain(em.neurons,reference = FCWB,sample=FAFB14)
+em.neurons.1 = read.neurons.catmaid(skids,OmitFailures = FALSE)
+em.neurons.2 = read.neurons.catmaid("annotation:Dolan and Belliart-Guérin et al. 2019",OmitFailures = FALSE)
+em.neurons = xform_brain(c(em.neurons.1,em.neurons.2[setdiff(names(em.neurons.2),names(em.neurons.1))]),reference = FCWB,sample=FAFB14)
 cts = c()
 for(s in em.neurons[,"skid"]){
   c = subset(gs,em.match.skid==s)$cell.type[1]
@@ -22,6 +23,10 @@ for(s in em.neurons[,"skid"]){
 }
 em.neurons[,"old.cell.type"] = g$Miketype[match(cts,g$cell.type)]
 em.neurons[,"cell.type"] = cts
+pd2a1 = c("11547665","1454234","2205218","1299700","1415893")
+pd2b1 = c("1606113","3345012")
+em.neurons[pd2a1,"cell.type"] = "PD2a1"
+em.neurons[pd2b1,"cell.type"] = "PD2b1"
 em.neurons[,"pnt"] = process_lhn_name(em.neurons[,"cell.type"])$pnt
 em.neurons[,"anatomy.group"] = process_lhn_name(em.neurons[,"cell.type"])$anatomy.group
 em.neurons[grepl("WED",em.neurons[,"cell.type"]),"pnt"] = "WEDT"
@@ -36,7 +41,18 @@ em.neurons[,"type"] = ifelse(em.neurons[,"cell.type"]%in%subset(most.lhns,type==
 em.neurons[,"type"] = ifelse(grepl("PN",em.neurons[,"cell.type"]),"PN",em.neurons[,"type"])
 em.neurons[,"skeleton.type"] = "EM"
 em.neurons[,"citation"] = "Dolan et al. 2019"
-em.neurons[grepl("PD2a|PD2b",em.neurons[,"cell.type"]),"citation"] = "Dolan & Belliart-Guérin et al. 2018"
+
+# Re-name based on cell type
+
+# Add in the Dolan and Belliart-Guérin et al. 2019 neurons
+MBONa2sc = c("346114", "1420974")
+MBONap2 = c("1540941")
+MBONs = c(MBONa2sc, MBONap2)
+em.neurons[MBONa2sc,"cell.type"] = "MBONa2sc"
+em.neurons[MBONap2,"cell.type"] = "MBONap2"
+em.neurons[MBONs,"pnt"] = NA
+em.neurons[MBONs,"anatomy.group"] = "MBON"
+em.neurons[grepl("PD2a|PD2b|MBONa",em.neurons[,"cell.type"]),"citation"] = "Dolan and Belliart-Guérin et al. 2019"
 
 # Add neurons from Paavo's and the PN Paper
 lhns.done.pn.paper = read.neurons.catmaid("annotation:WTPN2017_LHNs")
@@ -60,14 +76,41 @@ df$skeleton.type = "EM"
 df[df$match=="Incomplete",c("cell.type","anatomy.group","pnt")] = "Incomplete"
 df[df$match=="Incomplete",c("good.trace")] = FALSE
 rownames(df) = df$skid
-df[df$skid%in%names(lhns.done.pn.paper),"citation"] = "Schlegel & Bates et al. in prep"
-df[df$skid%in%names(da2.project.neurons),"citation"] = "Huoviala et al. 2019"
+df[df$skid%in%names(lhns.done.pn.paper) & !df$skid%in%c(names(em.neurons.1),names(em.neurons.2)),"citation"] = "Schlegel & Bates et al. in prep"
+df[df$skid%in%names(da2.project.neurons) & !df$skid%in%c(names(em.neurons.1),names(em.neurons.2)),"citation"] = "Huoviala et al. 2019"
+df[df$cell.type%in%c("AD1b2", "AD1b1", "PV4a1", "PV4a2", "PV4a3"),"citation"] = "Dolan et al. 2019"
 df  = df[match(names(lhns.done),df$skid),]
+df = df[!is.na(df$cell.type),]
+lhns.done = lhns.done[rownames(df)]
 lhns.done[,] = df
 
 # Make a cohesive set of neurons
 em.neurons = c(em.neurons,lhns.done[setdiff(names(lhns.done),names(em.neurons))])
 em.neurons[,] = em.neurons[,c("skid", "pnt", "anatomy.group", "cell.type", "skeleton.type", "citation")]
+
+# Name cells
+em.neurons[,"name"] = paste0(em.neurons[,"cell.type"],"#",ave(em.neurons[,"cell.type"],em.neurons[,"cell.type"],FUN= seq.int))
+em.neurons = em.neurons[order(em.neurons[,"name"])]
+write.csv2(em.neurons[,], file = "/GD/LMBD/Papers/2017pns/fig/Alex/data/neurons/neuronsbypaper.csv")
+
+# Annotate cells
+catmaid_set_annotations_for_skeletons(names(subset(em.neurons, citation == "Dolan et al. 2019")), annotations = "Paper: Dolan et al. 2019")
+catmaid_set_annotations_for_skeletons(names(subset(em.neurons, citation == "Dolan and Belliart-Guérin et al. 2019")),annotations = "Paper: Dolan and Belliart-Guérin et al. 2019")
+catmaid_set_annotations_for_skeletons(names(subset(em.neurons, citation == "Huoviala et al. 2019")),annotations = "Paper: Huoviala et al. 2019")
+#catmaid_set_annotations_for_skeletons(names(subset(em.neurons, citation == "Schlegel and Bates et al. in prep")),annotations = "Paper: Bates and Schlegel et al. in prep")
+
+# Give a cell type annotation to each of these cells
+anns = c()
+for(skid in names(em.neurons)){
+  nam = em.neurons[as.character(skid),"name"]
+  ann = annotations = paste0("name: ",nam)
+  catmaid_set_annotations_for_skeletons(skid, annotations = ann)
+  anns = c(anns, ann)
+}
+# Meta-Annotate these annotations
+al = catmaid_get_annotationlist()
+ann.ids = al$annotations[al$annotations$name%in%anns,"id"]
+catmaid_set_meta_annotations(meta_annotations = "neuron name", annotations = as.character(ann.ids))
 
 # Remove connector information
 strip_connectivity <- function(neuron){
