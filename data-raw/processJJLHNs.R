@@ -88,7 +88,7 @@ df["JJ119",]$match = "UNKNOWN"
 df["JJ131",]$match = "UNKNOWN"
 
 # L5
-df[c("JJ41"),]$JJtype = "L5"
+df[c("JJ47"),]$JJtype = "L5"
 df["JJ47",]$match = "UNKNOWN" # Is this even one neuron?
 
 # L6 !
@@ -130,7 +130,7 @@ df["JJ108",]$match = "Cha-F-200185"
 df["JJ110",]$match = "Cha-F-200185"
 df["JJ111",]$match = "Cha-F-200185"
 df["JJ112",]$match = "Cha-F-200185"
-df["JJ115",]$match = "Cha-F-20018"
+df["JJ115",]$match = "Cha-F-200185"
 df["JJ56",]$match = "Cha-F-200185"
 df["JJ57",]$match = "Cha-F-200185"
 
