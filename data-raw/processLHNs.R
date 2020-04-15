@@ -684,7 +684,7 @@ pv6.d.1 = "CL29FR_IS24835"
 pv6.d=c(pv6.d.1)
 pv6.e = pv6.e.1 = "Gad1-F-900064"
 # PV6f1 # in Paavo's paper, Albatross
-# PV6g1 in Marin et al. 2020
+# PV6g1 and PV6h1 in Marin et al. 2020
 # Assign cell types
 df[pv6.a.1,]$cell.type = "pv6a1"
 df[pv6.a.2,]$cell.type = "pv6a2"
