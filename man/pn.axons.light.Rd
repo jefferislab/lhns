@@ -4,7 +4,9 @@
 \name{pn.axons.light}
 \alias{pn.axons.light}
 \title{Light level tracing of PN axons}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 222.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 222.
+}
 \usage{
 pn.axons.light
 }

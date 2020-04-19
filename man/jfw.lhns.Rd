@@ -4,7 +4,9 @@
 \name{jfw.lhns}
 \alias{jfw.lhns}
 \title{Lateral horn neuron morphologies from Jeanne and Fisek et al. 2018}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 89.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 89.
+}
 \source{
 \url{https://doi.org/10.1016/j.neuron.2018.05.011}
 }
@@ -14,6 +16,11 @@ jfw.lhns
 \description{
 Skeletonized 3-D Morphologies of all Digitized LHNs related to Figure 4 in Jeanne and Fisek et al. 2018.
 Meta-data contains the LHN's voltage responses to GH146 glomerular photostimulation. Transformed into FCWB space.
+}
+\references{
+Jeanne, James M., Mehmet Fişek, and Rachel I. Wilson. 2018.
+“The Organization of Projections from Olfactory Glomeruli onto Higher-Order Neurons.”
+Neuron 98 (6): 1198–1213.e6. \href{https://doi.org/10.1016/j.neuron.2018.05.011}{doi:10.1016/j.neuron.2018.05.011}
 }
 \seealso{
 \code{\link{jfw.lhns.dps}}

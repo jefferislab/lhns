@@ -172,6 +172,7 @@ pv7 = c("Cha-F-800039", "Gad1-F-200219")
 pv7.a = "Cha-F-800039"
 pv7.a.1 = "Cha-F-800039"
 pv7.b  = pv7.b.1 = "Gad1-F-200219"
+# PV7c1 in Marin et al. 2002
 
 # Assign cell types
 df[pv7.a.1,]$cell.type = "pv7a1"

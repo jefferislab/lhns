@@ -3,7 +3,6 @@
 \docType{package}
 \name{lhns}
 \alias{lhns}
-\alias{lhns-package}
 \title{Skeleton data for Drosophila melanogaster lateral horn (associated) neurons}
 \description{
 The key data objects provided by this package is the \code{\link{most.lhns}}

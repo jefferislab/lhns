@@ -4,7 +4,9 @@
 \name{pn.axons.light.dps}
 \alias{pn.axons.light.dps}
 \title{Vector cloud for light level tracing of PN axons}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 220.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 220.
+}
 \usage{
 pn.axons.light.dps
 }

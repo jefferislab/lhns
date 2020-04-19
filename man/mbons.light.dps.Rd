@@ -4,14 +4,21 @@
 \name{mbons.light.dps}
 \alias{mbons.light.dps}
 \title{Mushroom body output neuron Vector clouds representing}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 17.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 17.
+}
+\source{
+\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}
+}
 \usage{
 mbons.light.dps
 }
 \description{
 Vector cloud objects from segmented image data. In FCWB space. Data from Yoshi Aso.
 }
-\details{
-Aso et al. 2014 \url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4273437/}
+\references{
+Aso, Yoshinori, Daisuke Hattori, Yang Yu, Rebecca M. Johnston, Nirmala A. Iyer, Teri-T B. Ngo, Heather Dionne, et al. 2014.
+“The Neuronal Architecture of the Mushroom Body Provides a Logic for Associative Learning.” eLife 3 (December): e04577.
+\href{https://doi.org/10.7554/eLife.04577}{doi:10.7554/eLife.04577}
 }
 \keyword{datasets}

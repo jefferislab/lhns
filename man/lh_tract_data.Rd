@@ -4,7 +4,9 @@
 \name{lh_tract_data}
 \alias{lh_tract_data}
 \title{Information about number/type of LHNs for each tract}
-\format{An object of class \code{data.frame} with 21 rows and 5 columns.}
+\format{
+An object of class \code{data.frame} with 21 rows and 5 columns.
+}
 \usage{
 lh_tract_data
 }

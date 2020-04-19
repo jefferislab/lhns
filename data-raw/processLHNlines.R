@@ -157,7 +157,8 @@ for(l in 1:nrow(lh_line_info)){
       lh_line_info[l,"neurotransmitter"] = paste0(subset(old2new,old.cell.type%in%o)$NT,collapse="/")
   }
 }
-lh_line_info = lh_line_info[order(lh_line_info$cell.type),]
+lh_line_info = lh_line_info.orig = lh_line_info[order(lh_line_info$cell.type),]
+lh_line_info = change_nonascii(lh_line_info)
 
 ########
 # Save #

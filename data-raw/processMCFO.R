@@ -1747,6 +1747,9 @@ most.lh = c(most.lhns,most.lhins)
 in.most.lhns = names(lh.mcfo)[names(lh.mcfo)%in%names(most.lh)]
 lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type","coreLH")] = most.lh[in.most.lhns,c("pnt","anatomy.group","cell.type","type","coreLH")]
 
+# remove non=ASCII chracter
+lh.mcfo[,] = change_nonascii(lh.mcfo[,])
+lh.mcfo.dps[,] = change_nonascii(lh.mcfo.dps[,])
 
 #######################
 # Create neuronlistfh #

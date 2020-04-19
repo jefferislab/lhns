@@ -4,7 +4,9 @@
 \name{olf.info}
 \alias{olf.info}
 \title{Information on glomeruli and their cognate olfactory sensory neurons and receptors}
-\format{An object of class \code{data.frame} with 70 rows and 3 columns.}
+\format{
+An object of class \code{data.frame} with 70 rows and 3 columns.
+}
 \usage{
 olf.info
 }

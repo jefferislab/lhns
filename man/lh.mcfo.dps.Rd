@@ -4,14 +4,21 @@
 \name{lh.mcfo.dps}
 \alias{lh.mcfo.dps}
 \title{Vector clouds for single LHNs from MCFO}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 538.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 538.
+}
+\source{
+\url{https://doi.org/10.7554/eLife.43079}
+}
 \usage{
 lh.mcfo.dps
 }
 \description{
 Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 }
-\details{
-Dolan et al. 2018, upcoming.
+\references{
+Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
+“Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
 }
 \keyword{datasets}
