@@ -164,8 +164,8 @@ lh_line_info = change_nonascii(lh_line_info)
 # Save #
 ########
 
-devtools::use_data(lh_line_info,overwrite=TRUE)
-devtools::use_data(cell_type_summary,overwrite=TRUE)
+usethis::use_data(lh_line_info,overwrite=TRUE)
+usethis::use_data(cell_type_summary,overwrite=TRUE)
 
 #################################################################
 # Make concise spreadsheets comparing cell types across datasets #
