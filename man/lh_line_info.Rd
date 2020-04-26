@@ -5,7 +5,7 @@
 \alias{lh_line_info}
 \title{Split-Gal4 line codes for LHNs}
 \format{
-An object of class \code{data.frame} with 404 rows and 19 columns.
+An object of class \code{data.frame} with 661 rows and 18 columns.
 }
 \source{
 \url{https://doi.org/10.7554/eLife.43079}
