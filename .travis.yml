@@ -4,6 +4,10 @@ language: R
 sudo: false
 cache: packages
 warnings_are_errors: false
+addons:
+  apt:
+    packages:
+    - libglu1-mesa-dev
 env:
   global:
     - RGL_USE_NULL=TRUE
