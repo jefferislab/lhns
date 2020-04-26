@@ -4,7 +4,12 @@
 \name{primary.neurite.tracts}
 \alias{primary.neurite.tracts}
 \title{Lateral horn primary neurite tracts as a dotprops object}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 31.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 31.
+}
+\source{
+\url{http://www.flycircuit.tw/}
+}
 \usage{
 primary.neurite.tracts
 }
@@ -25,6 +30,12 @@ npop3d()
 av6.spines=nlapply(subset(most.lhns, pnt=='av6'), spine, UseStartPoint=T)
 plot3d(av6.spines, col='black')
 }
+
+}
+\references{
+Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
+“Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
 }
 \seealso{
 \code{\link{plot_pnts}}, \code{\link{lh_tract_data}}

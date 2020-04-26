@@ -4,11 +4,18 @@
 \name{lhn_odour_responses}
 \alias{lhn_odour_responses}
 \title{Odour responses for different LHN cell types}
-\format{An object of class \code{matrix} with 249 rows and 59 columns.}
+\format{
+An object of class \code{matrix} with 249 rows and 59 columns.
+}
 \usage{
 lhn_odour_responses
 }
 \description{
-LHNs can be found in most.lhns. From Frechter et al. 2018
+LHNs can be found in most.lhns. From Frechter et al. 2019.
+}
+\references{
+Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
+“Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
 }
 \keyword{datasets}

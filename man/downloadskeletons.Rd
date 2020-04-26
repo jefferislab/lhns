@@ -4,8 +4,16 @@
 \alias{downloadskeletons}
 \title{Download neuronal skeletons and associated meta-data}
 \usage{
-downloadskeletons(nl, dir, format = "swc", subdir = NULL,
-  INDICES = names(nl), files = NULL, Force = FALSE, ...)
+downloadskeletons(
+  nl,
+  dir,
+  format = "swc",
+  subdir = NULL,
+  INDICES = names(nl),
+  files = NULL,
+  Force = FALSE,
+  ...
+)
 }
 \arguments{
 \item{nl}{the neuronlist to download}

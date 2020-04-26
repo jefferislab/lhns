@@ -4,7 +4,9 @@
 \name{badel.PN.responses}
 \alias{badel.PN.responses}
 \title{Projection neuron response data}
-\format{An object of class \code{matrix} with 84 rows and 37 columns.}
+\format{
+An object of class \code{matrix} with 84 rows and 37 columns.
+}
 \source{
 \url{http://dx.doi.org/10.1016/j.neuron.2016.05.022}
 }
@@ -14,5 +16,9 @@ badel.PN.responses
 \description{
 Ca2+ responses in the dendrites of Drosophila, uniglomerular GH146 positive
 projection neurons from Badel et al. 2017.
+}
+\references{
+Badel, Laurent, Kazumi Ohta, Yoshiko Tsuchimoto, and Hokto Kazama. 2016. “Decoding of Context-Dependent Olfactory Behavior in Drosophila.” Neuron 91 (1): 155–67.
+\href{https://doi.org/10.1016/j.neuron.2016.05.022}{doi:10.1016/j.neuron.2016.05.022}
 }
 \keyword{datasets}

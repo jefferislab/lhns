@@ -4,8 +4,12 @@
 \name{most.lhins}
 \alias{most.lhins}
 \title{A categorised database of neurons providing input to the lateral horn}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1258.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 1258.
+}
 \source{
+\url{http://www.flycircuit.tw/}
+
 \url{http://www.flycircuit.tw/}
 }
 \usage{
@@ -26,6 +30,12 @@ head(most.lhins)
 with(most.lhins, table(modality, tract))
 table(most.lhns[,'pnt'])
 }
+
+}
+\references{
+Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
+“Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
 }
 \seealso{
 \code{\link{most.lhns}}

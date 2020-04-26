@@ -4,7 +4,9 @@
 \name{pn.info}
 \alias{pn.info}
 \title{Information on projection neurons}
-\format{An object of class \code{data.frame} with 77 rows and 14 columns.}
+\format{
+An object of class \code{data.frame} with 77 rows and 14 columns.
+}
 \usage{
 pn.info
 }

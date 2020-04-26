@@ -4,11 +4,21 @@
 \name{cell_type_summary}
 \alias{cell_type_summary}
 \title{Summary of cell types with clean split-GAL4 lines from Dolan et al. 2018}
-\format{An object of class \code{data.frame} with 79 rows and 7 columns.}
+\format{
+An object of class \code{data.frame} with 66 rows and 7 columns.
+}
+\source{
+\url{https://doi.org/10.7554/eLife.43079}
+}
 \usage{
 cell_type_summary
 }
 \description{
-Collated by Dolan et al. 2018.
+Collated by Dolan et al. 2019.
+}
+\references{
+Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
+“Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
 }
 \keyword{datasets}

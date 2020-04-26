@@ -9,7 +9,7 @@ download_mophologies(dir = paste0(getwd(), "/"), ...)
 \arguments{
 \item{dir}{path to directory into which to download the LH library}
 
-\item{...}{additional arguments passed to nat::write.neuron}
+\item{...}{additional arguments passed to \code{nat::write.neuron}}
 }
 \description{
 Download all the neurons in the LH library as SWC files, compressed into a .zip

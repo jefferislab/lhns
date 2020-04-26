@@ -4,7 +4,9 @@
 \name{most.lhns.dps}
 \alias{most.lhns.dps}
 \title{A comprehensive lateral horn neuron dotprops dataset}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 1619.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 1619.
+}
 \source{
 \url{http://www.flycircuit.tw/}
 }
@@ -15,6 +17,11 @@ most.lhns.dps
 A \code{\link[nat]{dotprops}} dataset containing all of the FlyCircuit
 lateral horn neurons that seem to have dendrite in the LH, as well as traced
 dye-fills from Frechter et al. 2018
+}
+\references{
+Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
+“Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
 }
 \seealso{
 \code{\link{most.lhns}}

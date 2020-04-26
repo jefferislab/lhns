@@ -1,23 +1,3 @@
-#' See a FlyCircuit neuron on the FlyCircuit website
-#'
-#' @description See chosen FlyCircuit neuron on the FlyCircuit website, where maximal projection .lsm images are available.
-#' @param fc_id A FlyCircuit neuron ID, either the neuron ID or the gene name ID
-#' @param max Maximum number of webpages to open
-#' @source \url{http://www.flycircuit.tw/}
-#' @export
-#' @importFrom utils browseURL
-#' @importFrom flycircuit fc_neuron
-see_fc <- function (fc_id, max = 10){
-  if(length(fc_id)>10){
-    stop("Too many FlyCircuit IDs!!!")
-  }
-  for(f in 1:length(fc_id)){
-    f= flycircuit::fc_neuron(fc_id)
-    url = paste0("http://flycircuit.tw/modules.php?name=clearpage&op=detail_table&neuron=",f)
-    utils::browseURL(url)
-  }
-}
-
 #' Capitalise cell type names
 #'
 #' @description Capitalise the first two letters of the cell type names
@@ -137,18 +117,26 @@ downloadskeletons <- function (nl, dir, format = "swc", subdir = NULL, INDICES =
 #'
 #' @description Download all the neurons in the LH library as SWC files, compressed into a .zip
 #' @param dir path to directory into which to download the LH library
-#' @param ... additional arguments passed to nat::write.neuron
+#' @param ... additional arguments passed to \code{nat::write.neuron}
 #' @export
 download_mophologies <- function(dir = paste0(getwd(),"/"),...){
   file = paste0(dir,"LH_library.zip")
-  most.lhins.pnt  = most.lhins
-  most.lhins.pnt[,"pnt"] = most.lhins[,"tract"]
-  neurons = c(most.lhns,emlhns,most.lhins.pnt)
+  most.lhins.pnt  = lhns::most.lhins
+  most.lhins.pnt[,"pnt"] = lhns::most.lhins[,"tract"]
+  neurons = c(lhns::most.lhns,lhns::lh.fafb,most.lhins.pnt)
   attr(neurons,"df") = neurons[,c("cell.type", "anatomy.group", "pnt", "tract","type", "skeleton.type", "coreLH", "id")]
   neurons[,"skeleton.type_pnt"] = paste0(neurons[,"skeleton.type"],"_",neurons[,"pnt"])
-  downloadskeletons(neurons,dir = file,subdir = skeleton.type_pnt,format="swc",files = paste0(cell.type,"_",id),Force = TRUE, ...)
+  downloadskeletons(neurons,dir = file,subdir = neurons[,]$skeleton.type_pnt,format="swc",files = paste0(neurons[,]$cell.type,"_",neurons[,]$id),Force = TRUE, ...)
 }
 
-
+# hidden
+change_nonascii <- function(df){
+  df.orig = df
+  df =  t(apply(df.orig,1, function(r) stringi::stri_trans_general(r,"latin-ascii")))
+  df = as.data.frame(df)
+  colnames(df) = colnames(df.orig)
+  rownames(df) = rownames(df.orig)
+  df
+}
 
 

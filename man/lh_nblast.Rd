@@ -4,11 +4,18 @@
 \name{lh_nblast}
 \alias{lh_nblast}
 \title{Pre-calculated NBLAST scores between all neurons in this package}
-\format{An object of class \code{matrix} with 3494 rows and 3494 columns.}
+\format{
+An object of class \code{matrix} with 3494 rows and 3494 columns.
+}
 \usage{
 lh_nblast
 }
 \description{
 Saves time re-calculating an NBLAST between all LH associated neuron morphologies
+}
+\references{
+Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
+“Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
 }
 \keyword{datasets}

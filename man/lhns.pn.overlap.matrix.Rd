@@ -4,13 +4,20 @@
 \name{lhns.pn.overlap.matrix}
 \alias{lhns.pn.overlap.matrix}
 \title{Dendritic overlap of LHN cell types with axon terminals of PN inputs to LH}
-\format{An object of class \code{matrix} with 1162 rows and 264 columns.}
+\format{
+An object of class \code{matrix} with 1162 rows and 264 columns.
+}
 \usage{
 lhns.pn.overlap.matrix
 }
 \description{
 This matrix is organised by the identifier of the PN inputs (rows) and the
 LHN cell type (columns).
+}
+\references{
+Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
+“Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
 }
 \seealso{
 \code{\link{most.lhns}}, \code{\link{most.lhins}}

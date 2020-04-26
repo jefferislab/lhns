@@ -4,11 +4,21 @@
 \name{lh_line_info}
 \alias{lh_line_info}
 \title{Split-Gal4 line codes for LHNs}
-\format{An object of class \code{data.frame} with 404 rows and 19 columns.}
+\format{
+An object of class \code{data.frame} with 661 rows and 18 columns.
+}
+\source{
+\url{https://doi.org/10.7554/eLife.43079}
+}
 \usage{
 lh_line_info
 }
 \description{
-Collated by Dolan et al. 2018.
+Collated by Dolan et al. 2019.
+}
+\references{
+Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
+“Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
 }
 \keyword{datasets}

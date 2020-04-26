@@ -4,7 +4,16 @@
 \name{lhin.splits.dps}
 \alias{lhin.splits.dps}
 \title{Vector clouds of LH input neurons from split GAL4 lines}
-\format{An object of class \code{neuronlist} (inherits from \code{list}) of length 42.}
+\format{
+An object of class \code{neuronlist} (inherits from \code{list}) of length 42.
+
+An object of class \code{neuronlist} (inherits from \code{list}) of length 42.
+}
+\source{
+\url{https://doi.org/10.7554/eLife.43079}
+
+\url{https://doi.org/10.7554/eLife.43079}
+}
 \usage{
 lhin.splits.dps
 
@@ -15,9 +24,13 @@ Vector cloud objects from segmented image data. Meta-data contains experimentall
 
 Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
 }
-\details{
-Dolan et al. 2018, upcoming.
+\references{
+Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
+“Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
 
-Dolan et al. 2018, upcoming.
+Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
+“Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
+\href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
 }
 \keyword{datasets}
