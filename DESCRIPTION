@@ -12,7 +12,8 @@ Authors@R: c(
     person("Michael-John", "Dolan", email = "dolanmjg@gmail.com", role = c("aut"),
       comment = c(ORCID = "0000-0001-9666-3682"))
     )
-Description: Skeleton data from lightl-level and electron microscop studies for neurons associated with the lateral horn of Drosophila melanogaster.
+Description: Skeleton data from light-level and electron microscopy studies of 
+    neurons associated with the lateral horn of Drosophila melanogaster.
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 7.1.0

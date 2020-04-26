@@ -361,7 +361,7 @@
 
 #' Body IDs for lateral horn neurons in the hemibrain volume.
 #'
-#' Body Ids for lateral horn neurons, pulled from neuPrint from the hemibrai volume. Only neurons marked by the project as 'Traced' have been considered.
+#' Body Ids for lateral horn neurons, pulled from neuPrint from the hemibrain volume. Only neurons marked by the project as 'Traced' have been considered.
 #' Lateral horn neurons defined as third-order olfactory neurons with >= 1% of their postsynapses or >= 10 postsynapses supplied by canonical
 #' olfactory uniglomerular PNs.
 #'
