@@ -15,6 +15,7 @@ rm("fafb.fib.twigs5.crossnblast")
 
 # Scan through matches
 lhn_matching <- function(lh.meta,
+                         nb.complete,
                          selected_file = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
                          db = NULL){
   # Motivate!
@@ -36,7 +37,7 @@ lhn_matching <- function(lh.meta,
     # Get bodyid
     n = as.character(n)
     # Remove neurons with matches
-    done = subset(gs, !is.na(FAFB.match) & user != initials)
+    done = subset(gs, !is.na(FAFB.match) | User != initials)
     if(n%in%done$bodyid){
       next
     }
@@ -54,7 +55,7 @@ lhn_matching <- function(lh.meta,
     }
     # Transform hemibrain neuron to FAFB space
     lhn = hemibrainr:::scale_neurons.neuronlist(lhn, scaling = (8/1000))
-    lhn = nat.templatebrains::xform_brain(lhn, reference = "FAFB14", sample = "JRCFIB2018F")
+    lhn = suppressWarnings(nat.templatebrains::xform_brain(lhn, reference = "FAFB14", sample = "JRCFIB2018F"))
     message(lhn[n,"type"])
     message(lhn[n,"bodyid"])
     # Read top 10 FAFB matches
@@ -120,6 +121,6 @@ lhn_matching <- function(lh.meta,
 }
 
 # Run function
-lhn_matching(lh.meta = lh.meta, db = db)
+lhn_matching(lh.meta = lh.meta, db = db, nb.complete = nb.complete)
 
 
