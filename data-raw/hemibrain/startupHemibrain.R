@@ -75,5 +75,9 @@ write_lhns <- function(gs,
   }
 }
 
+# hidden
+correct_id <-function(v){
+  gsub(" ","",v)
+}
 
 
