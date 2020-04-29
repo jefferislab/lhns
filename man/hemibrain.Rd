@@ -4,20 +4,25 @@
 \name{hemibrain}
 \alias{hemibrain}
 \alias{hemibrain.lhn.bodyids}
-\title{Body IDs for lateral horn neurons in the hemibrain volume.}
+\alias{hemibrain_lhns}
+\title{Body IDs and FAFB matches for lateral horn neurons in the hemibrain volume.}
 \format{
 An object of class \code{character} of length 2240.
+
+An object of class \code{data.frame} with 2212 rows and 20 columns.
 }
 \source{
 \url{https://doi.org/10.1101/2020.01.21.911859}
 }
 \usage{
 hemibrain.lhn.bodyids
+
+hemibrain_lhns
 }
 \description{
-Body Ids for lateral horn neurons, pulled from neuPrint from the hemibrai volume. Only neurons marked by the project as 'Traced' have been considered.
+Body Ids for lateral horn neurons, pulled from neuPrint from the hemibrain volume. Only neurons marked by the project as 'Traced' have been considered.
 Lateral horn neurons defined as third-order olfactory neurons with >= 1% of their postsynapses or >= 10 postsynapses supplied by canonical
-olfactory uniglomerular PNs.
+olfactory uniglomerular PNs. FAFB matches have been semi-manually found for some of these neurons.
 }
 \references{
 Shan Xu, C., Michal Januszewski, Zhiyuan Lu, Shin-Ya Takemura, Kenneth J. Hayworth, Gary Huang, Kazunori Shinomiya, et al. 2020.

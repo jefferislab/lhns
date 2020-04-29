@@ -39,24 +39,37 @@ usethis::use_data(hemibrain.lhn.bodyids, overwrite = TRUE)
 #####################################################################
 # GooglesSheet Database for recording information on hemibrain LHNs #
 #####################################################################
-lh.meta = neuprint_get_meta(hemibrain.lhn.bodyids)
-lh.meta = lh.meta[order(lh.meta$type),]
-lh.meta = subset(lh.meta, bodyid%in%hemibrain.lhn.bodyids)
-lh.meta$class = NA
-lh.meta$pnt = NA
-lh.meta$cell.type = NA
-lh.meta$ItoLee_Hemilineage = NA
-lh.meta$Hartenstein_Hemilineage = NA
-lh.meta$FAFB.match = NA
-lh.meta$FAFB.match.quality = NA
-googlesheets4::write_sheet(lh.meta[0,],
-                           ss = selected_file,
-                           sheet = "lhns")
-batches = split(1:nrow(lh.meta), ceiling(seq_along(1:nrow(lh.meta))/500))
-for(i in batches){
-  hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
-                      data = lh.meta[min(i):max(i),],
-                      ss = selected_file,
-                      sheet = "lhns")
-}
+# lh.meta = neuprint_get_meta(hemibrain.lhn.bodyids)
+# lh.meta = lh.meta[order(lh.meta$type),]
+# lh.meta = subset(lh.meta, bodyid%in%hemibrain.lhn.bodyids)
+# lh.meta$class = NA
+# lh.meta$pnt = NA
+# lh.meta$cell.type = NA
+# lh.meta$ItoLee_Hemilineage = NA
+# lh.meta$Hartenstein_Hemilineage = NA
+# lh.meta$FAFB.match = NA
+# lh.meta$FAFB.match.quality = NA
+# googlesheets4::write_sheet(lh.meta[0,],
+#                            ss = selected_file,
+#                            sheet = "lhns")
+# batches = split(1:nrow(lh.meta), ceiling(seq_along(1:nrow(lh.meta))/500))
+# for(i in batches){
+#   hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
+#                       data = lh.meta[min(i):max(i),],
+#                       ss = selected_file,
+#                       sheet = "lhns")
+# }
 
+
+##########################################################################
+# Save GooglesSheet Database for recording information on hemibrain LHNs #
+##########################################################################
+# Read the Google Sheet
+hemibrain_lhns = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+                                      ss = selected_file,
+                                      sheet = "lhns",
+                                      return = TRUE)
+hemibrain_lhns$bodyid = correct_id(hemibrain_lhns$bodyid)
+rownames(hemibrain_lhns) = hemibrain_lhns$bodyid
+hemibrain_lhns$User = NULL
+usethis::use_data(hemibrain_lhns, overwrite = TRUE)

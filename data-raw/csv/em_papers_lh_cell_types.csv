@@ -176,12 +176,12 @@ skid,catmaid_name,ItoLee_Lineage,ItoLee_Hemilineage,Hartenstein_Lineage,Hartenst
 1621078,PV5 [LH.R->] 1621079 Canary ASB,DL2,DL2_dorsal,CP3,CP3_dorsal,ON,PV5,PV5g,PV5g1,PV5g1#1,702010197,old,L374#2,cell.type,preliminary,acetylcholine,none,Dolan et al. 2019,Dolan et al. 2019
 5807217,PV5g2#1 5807218 ARJ ASB,DL2,DL2_dorsal,CP3,CP3_dorsal,ON,PV5,PV5g,PV5g2,PV5g2#2,5901208687,old,L374#8,cell.type,preliminary,acetylcholine,none,Dolan et al. 2019,Dolan et al. 2019
 1546454,EB canal neuron 1546455 AES,DL1,DL1_dorsal,CP2,CP2_dorsal,ON,PV5,PV5k,PV5k1,PV5k1#1,732034061,old,L528#1,cell.type,preliminary,unknown,none,Dolan et al. 2019,Dolan et al. 2019
-11128057,LAC LHp2#6 11128058 LB Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV5l1#1,5813022453,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
-8808525,LAC LHp2#5 8808526 ECM Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV5l1#2,5813022453,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
-5824712,LAC LHp2#4 5824713 LB Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV5l1#3,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
-4214681,LAC LHp2#1 4214682 ECM Ygritte clan,LHp2,LHp2_medial,DPLp2,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV5l1#4,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
-4182361,LAC LHp2#2 4182362 MT Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV5l1#5,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
-4182148,LAC LHp2#3 4182149 ECM Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV5l1#6,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
+11128057,LAC LHp2#6 11128058 LB Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV6l1#1,5813022453,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
+8808525,LAC LHp2#5 8808526 ECM Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV6l1#2,5813022453,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
+5824712,LAC LHp2#4 5824713 LB Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV6l1#3,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
+4214681,LAC LHp2#1 4214682 ECM Ygritte clan,LHp2,LHp2_medial,DPLp2,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV6l1#4,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
+4182361,LAC LHp2#2 4182362 MT Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV6l1#5,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
+4182148,LAC LHp2#3 4182149 ECM Ygritte clan,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV5,PV5l,PV5l1,PV6l1#6,694471913,new,L374#5,pnt,rough,unknown,none,Marin et al. 2020,Marin et al. 2020
 8739442,PV6 8739443 Unexpected Victory CMM ASB,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV6,PV6a,PV6a1,PV6a1#1,511626068,old,L62#1,cell.type,preliminary,acetylcholine,none,Dolan et al. 2019,Dolan et al. 2019
 1101751,PV6a3#1 1101752 FML RJVR Caligari,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV6,PV6a,PV6a3,PV6a3#1,574372960,old,L2185#1,cell.type,complete,acetylcholine,none,Huoviala et al. 2020,Bates & Schlegel et al. 2020; Frechter et al. 2019; Dolan et al. 2019
 2130631,PV6a3#2 2130632 Wilson FML ASB ,LHp2,LHp2_medial,DPLp1,DPLp1_medial,ON,PV6,PV6a,PV6a3,PV6a3#2,388863775,old,L2185#1,cell.type,preliminary,acetylcholine,none,Dolan et al. 2019,Dolan et al. 2019

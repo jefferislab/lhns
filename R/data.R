@@ -359,11 +359,11 @@
 #' @seealso \code{\link{jfw.lhns}}
 "jfw.lhns.dps"
 
-#' Body IDs for lateral horn neurons in the hemibrain volume.
+#' Body IDs and FAFB matches for lateral horn neurons in the hemibrain volume.
 #'
-#' Body Ids for lateral horn neurons, pulled from neuPrint from the hemibrai volume. Only neurons marked by the project as 'Traced' have been considered.
+#' Body Ids for lateral horn neurons, pulled from neuPrint from the hemibrain volume. Only neurons marked by the project as 'Traced' have been considered.
 #' Lateral horn neurons defined as third-order olfactory neurons with >= 1% of their postsynapses or >= 10 postsynapses supplied by canonical
-#' olfactory uniglomerular PNs.
+#' olfactory uniglomerular PNs. FAFB matches have been semi-manually found for some of these neurons.
 #'
 #' @references Shan Xu, C., Michal Januszewski, Zhiyuan Lu, Shin-Ya Takemura, Kenneth J. Hayworth, Gary Huang, Kazunori Shinomiya, et al. 2020.
 #' “A Connectome of the Adult Drosophila Central Brain.”
@@ -373,4 +373,6 @@
 #' @name hemibrain
 #' @rdname hemibrain
 "hemibrain.lhn.bodyids"
-
+#' @name hemibrain
+#' @rdname hemibrain
+"hemibrain_lhns"

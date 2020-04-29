@@ -491,8 +491,6 @@ df[pv5.i.1,]$cell.type = "pv5i1"
 df[pv5.j.1,]$cell.type = "pv5j1"
 df[pv5.k.1,]$cell.type = "pv5k1"
 
-# From Marin et al. 2020
-## PV5l1
 
 
 ###### PNT pv3 ######
@@ -696,6 +694,8 @@ df[pv6.d.1,]$cell.type = "pv6d1"
 df[pv6.d.2,]$cell.type = "pv6d2"
 df[pv6.e.1,]$cell.type = "pv6e1"
 
+# From Marin et al. 2020
+## PVgf1
 
 
 ###### PNT pv2 ######
