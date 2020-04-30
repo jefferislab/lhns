@@ -18,9 +18,10 @@ pv5x = c("728974338", "5812980156", "577546843", "727838223", "451355706",
          "451646125", "485387561", "605063393", "702010197", "700982749",
          "639958133", "729228602", "264783939", "481268762", "573333575",
          "5813010200", "602999843", "608240515", "329220439", "633684017",
-         "265120324", "696082279", "5813009281", "573670049",
+         "265120324", "696082279", "5813009281", "573670049", "357146296",
          "579576294", "454706029",  "511267279", "5901213816",
-         "265120223", "356823065"
+         "265120223", "356823065", "486501502", "5813129400", "5901208687",
+
 )
 # Group Y
 pv5y = c("360587642", "513050445", "705722260", "611274992", "699203489",
@@ -36,8 +37,9 @@ pv5y = c("360587642", "513050445", "705722260", "611274992", "699203489",
          "5901196176", "487467388", "641631806", "484355342", "701577869",
          "697853509", "731917767", "730325440", "575750788", "5813047222")
 # Group z
-pv5z = c("294787849", "579575594", "328611004", "517514142","299082033", "5813077562", "357224041")
-pv5 = unique(c(pv5x,pv5y,pv5z))
+pv5z = c("294787849", "579575594", "328611004", "517514142","299082033","642504699")
+pv5.primary = c("5813077562", "357224041")
+pv5 = unique(c(pv5x,pv5y,pv5z,pv5.primary))
 
 ## The PV5 assembly contains 3 cell body fibre bundles and 3 hemlineages
 
@@ -72,7 +74,7 @@ df[wrong1,"cbf.change"] = "PDL23"
 ### Hemilineages:
 #### ItoLee: Dl2_lateral, DL1_dorsal, DL2_medial
 #### Hartenstein: CP3_lateral, CP2_dorsal, CP3_medial
-df[pv5x,"ItoLee_Hemilineage"] = "Dl2_lateral"
+df[pv5x,"ItoLee_Hemilineage"] = "DL2_lateral"
 df[pv5x,"Hartenstein_Hemilineage"] = "CP3_lateral"
 df[pv5y,"ItoLee_Hemilineage"] = "DL1_dorsal"
 df[pv5y,"Hartenstein_Hemilineage"] = "CP2_dorsal"
@@ -81,15 +83,17 @@ df[pv5z,"Hartenstein_Hemilineage"] = "CP3_medial"
 df[pv5.primary,"ItoLee_Hemilineage"] = "primary"
 df[pv5.primary,"Hartenstein_Hemilineage"] = "primary"
 
-
 ##############################
 # Make and review cell types #
 ##############################
+# hemibrain_type_plot(bodyids = a, meta = lh.meta, someneuronlist = db);plot3d(most.lhns.hemibrain[light],col="black")
+### Plot your candidate type alongside the equivalent Ito groupings
+# hemibrain_milti3d(a1, a2)
+### Easily plot several of your candidate types at once
 
 ############
 ### PV5x ###
 ############
-# hemibrain_type_plot(bodyids = a, meta = lh.meta, someneuronlist = db);plot3d(most.lhns.hemibrain[light],col="black")
 
 #####
 # a #
@@ -122,7 +126,7 @@ df[a5,"cell.type"] = "PV5a5"
 #####
 
 d1 = c("633684017")
-df[d2,"cell.type"] = "PV5d1"
+df[d1,"cell.type"] = "PV5d1"
 
 d2 = c("5813010200", "602999843", "573333575", "329220439", "5813012375") # light = c("Gad1-F-900098", "Gad1-F-300321","L1554#2","MB036B#1", "Gad1-F-100023", "L1554#1", "Cha-F-800045","160121c1", "Cha-F-200082")
 df[d2,"cell.type"] = "PV5d2"
@@ -139,13 +143,13 @@ df[d4,"cell.type"] = "PV5d4"
 #####
 
 g1 = c("700982749", "728974338") # light = c("L374#3","L374#10","L374#2", "L374#4","Gad1-F-200177", "L374#9", "L374#5","L374#6",)
-df[n,"cell.type"] = "PV5g1"
+df[g1,"cell.type"] = "PV5g1"
 
 g2 = c("486501502", "608240515", "5813129400", "5901208687")  # light = c("Gad1-F-300312", "L374#8")
-df[m,"cell.type"] = "PV5g2"
+df[g2,"cell.type"] = "PV5g2"
 
 g3 = c("639958133", "702010197")
-df[m,"cell.type"] = "PV5g3"
+df[g3,"cell.type"] = "PV5g3"
 
 g4 = c("973047668")
 df[g4,"cell.type"] = "PV5g4"
@@ -245,7 +249,7 @@ df[mbons,"cell.type"] = "OTHER"
 #####
 
 k1 = c("5813078563", "732034061") # light = c("Gad1-F-300290","L528#1")
-df[a,"cell.type"] = "PV5k1"
+df[k1,"cell.type"] = "PV5k1"
 
 #####
 # c #
@@ -312,13 +316,23 @@ df[l1,"cell.type"] = "PV5l1"
 ########
 
 # Organise cell types
-df = process_types(df)
+df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
+
+# Summarise results
+state_results(df)
+
+# Write .csv
+write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV5_celltyping.csv", row.names = FALSE)
+
+# Make 2D Images
+take_pictures(df, pnt="PV5")
 
 # Update googlesheet
-write_lhns(df = df, bodyids = pv5x, column = c())
-write_lhns(df, pv5y)
-write_lhns(df, pv5z)
+write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
-c("bodyid", "type", "cbf", "m.type", "c.type", "cell.type", "ItoLee_Hemilineage",
-  "Hartenstein_Hemilineage", "FAFB.match", "LM.match", "cbf.change",
-  "type.change")
+
+##########
+# Issues #
+##########
+
+# "5813077562" "357224041"

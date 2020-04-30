@@ -9,7 +9,7 @@
 \format{
 An object of class \code{character} of length 2240.
 
-An object of class \code{data.frame} with 2212 rows and 20 columns.
+An object of class \code{data.frame} with 2231 rows and 22 columns.
 }
 \source{
 \url{https://doi.org/10.1101/2020.01.21.911859}

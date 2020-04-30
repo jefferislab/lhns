@@ -13,9 +13,14 @@ library(stringi)
 # gs = googlesheets::gs_title("EMsearch")
 ##############################################
 
-# Read in our favourite LHNs from the FAFB project
+# Get FAFB meta data
 em.lh.meta.orig = read.csv("data-raw/csv/em_papers_lh_cell_types.csv")
-em.lh.meta = change_nonascii(em.lh.meta)
+em.lh.meta = change_nonascii(em.lh.meta.orig)
+fafb_lhns = em.lh.meta
+rownames(fafb_lhns) = fafb_lhns$skid
+usethis::use_data(fafb_lhns, overwrite = TRUE)
+
+# Read in our favourite LHNs from the FAFB project
 lh.fafb = catmaid::read.neurons.catmaid(em.lh.meta$skid)
 lh.fafb[,] = em.lh.meta
 lh.fafb[,"skeleton.type"] = "EM"

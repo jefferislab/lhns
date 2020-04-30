@@ -330,8 +330,15 @@
 #' @name lh.em
 #' @rdname lh.em
 "lh.hemibrain"
+#' @name lh.em
 #' @rdname lh.em
 "pn.fafb"
+#' @name lh.em
+#' @rdname lh.em
+"fafb_lhns"
+#' @name lh.em
+#' @rdname lh.em
+"lm_em_matches"
 
 #' Lateral horn neuron morphologies from Jeanne and Fisek et al. 2018
 #'

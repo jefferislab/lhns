@@ -92,3 +92,12 @@ hemibrain_lhns$bodyid = correct_id(hemibrain_lhns$bodyid)
 rownames(hemibrain_lhns) = hemibrain_lhns$bodyid
 hemibrain_lhns$User = NULL
 usethis::use_data(hemibrain_lhns, overwrite = TRUE)
+# Read the Google Sheet
+lm_em_matches = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+                                      ss = selected_file,
+                                      sheet = "lm",
+                                      guess_max = 3000,
+                                      return = TRUE)
+lm_em_matches$id = correct_id(lm_em_matches$id)
+rownames(lm_em_matches) = lm_em_matches$id
+usethis::use_data(lm_em_matches, overwrite = TRUE)

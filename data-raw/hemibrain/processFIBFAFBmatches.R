@@ -15,12 +15,16 @@ gs$bodyid = correct_id(gs$bodyid)
 rownames(gs) = gs$bodyid
 
 # Add matches already made to Google Sheet
-matches = lh.fafb[,]
+matches = fafb_lhns
 matches$FAFB.match = matches$skid
 matches$FAFB.match.quality = "e"
 matches$bodyid = matches$hemibrain_match
 matches$User = "ASB"
 matches$pnt = matches$primary_neurite
+matches$LM.match = matches$closest_light_match
+matches$LM.match[matches$LM_match_quality!="cell.type"] = NA
+matches$LM.match[grepl("new",matches$LM.match)] = NA
+matches$LM.match.quality = "e"
 for(row in 1:nrow(matches)){
   columns = c("pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage", "FAFB.match", "FAFB.match.quality", "User")
   r = match(matches[row,"bodyid"],gs$bodyid)+1
