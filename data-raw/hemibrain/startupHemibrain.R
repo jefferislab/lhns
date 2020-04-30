@@ -58,20 +58,28 @@ rownames(gs) = gs$bodyid
 hemibrain.lhr = hemibrain_roi_meshes("LH(R)")
 
 ## Load a save function
-write_lhns <- function(gs,
+write_lhns <- function(df,
                        bodyids = NULL,
                        selected_file = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
                        column = colnames(gs)){
+  # Read the Google Sheet
+  gs = gsheet_manipulation(FUN = googlesheets4::read_sheet,
+                           ss = selected_file,
+                           sheet = "lm",
+                           guess_max = 3000,
+                           return = TRUE)
+  gs$id = correct_id(gs$id)
+  rownames(gs) = gs$id
+  # Check column
   if((!identical(colnames(gs),column) & length(column) > 1)|(sum(column%in%colnames(gs))<1)){
     stop("Column must be one column of the google sheet, or all the columns")
   }
-  rows = (1:nrow(gs))+1
-  rownames(gs) = rows
+  # Check df
   if(!is.null(bodyids)){
-    gs = subset(gs, gs$bodyid %in% bodyids)
-    message("Updating ", nrow(gs), " entries")
-    rows = rownames(gs)
+    df = subset(df, df$bodyid %in% bodyids)
+    message("Updating ", nrow(df), " entries")
   }
+  rows = match(df$bodyid,gs$bodyid)+1
   for(r in rows){
     if(length(column)==1){
       letter = LETTERS[match(column,colnames(gs))]
@@ -82,7 +90,7 @@ write_lhns <- function(gs,
     hemibrainr:::gsheet_manipulation(FUN = googlesheets4::range_write,
                         ss = selected_file,
                         range = range,
-                        data = as.data.frame(gs[as.character(r),column]),
+                        data = as.data.frame(df[as.character(r),column]),
                         sheet = "lhns",
                         col_names = FALSE)
   }
@@ -108,11 +116,35 @@ hemibrain_multi3d <- function(..., someneuronlist = hemibrain_neurons()){
   }
 }
 
-
 # hidden
-process_types <- function(df){
-
-
-
-
+process_types <- function(df, hemibrain_lhns){
+  # Make matches
+  df$FAFB.match = hemibrain_lhns$FAFB.match[match(df$bodyid,hemibrain_lhns$bodyid)]
+  df$FAFB.match.quality = hemibrain_lhns$FAFB.match.quality[match(df$bodyid,hemibrain_lhns$bodyid)]
+  df$LM.match = hemibrain_lhns$LM.match[match(df$bodyid,hemibrain_lhns$bodyid)]
+  df$LM.match.quality = hemibrain_lhns$LM.match.quality[match(df$bodyid,hemibrain_lhns$bodyid)]
+  ## Correct cell types
+  for(ct in unique(df$cell.type)){
+    d = subset(df, df$cell.type==ct)
+    ito.types = d$type
+    if(length(ito.types)>1){
+      f = factor(d$type, levels = sort(unique(d$type)))
+      cell.types = paste0(d$cell.type,letters[f])
+      df$cell.type[match(d$bodyid,df$bodyid)] = cell.types
+    }
+  }
+  ## Has there been a type change?
+  for(ct in unique(df$cell.type)){
+    d = subset(df, df$cell.type==ct)
+    ito.types = unique(d$type)
+    if(length(ito.types)>1){
+      df$type.change[match(d$bodyid,df$bodyid)] = TRUE
+    }else{
+      e = subset(df, df$type==ito.types)
+      if(nrow(e)!=nrow(d)){
+        df$type.change[match(d$bodyid,df$bodyid)] = TRUE
+      }
+    }
+  }
+  df
 }

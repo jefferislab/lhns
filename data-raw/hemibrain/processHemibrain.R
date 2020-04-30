@@ -59,7 +59,26 @@ usethis::use_data(hemibrain.lhn.bodyids, overwrite = TRUE)
 #                       ss = selected_file,
 #                       sheet = "lhns")
 # }
-
+# ## And for light level data ###
+# most.lh = union(lhns::most.lhins, lhns::most.lhns)
+# lm.meta = most.lh[,c("cell.type","type")]
+# lm.meta = lm.meta[order(lm.meta$cell.type),]
+# lm.meta$id = rownames(lm.meta)
+# lm.meta$hemibrain.match = NA
+# lm.meta$hemibrain.match.quality = NA
+# lm.meta$FAFB.match = NA
+# lm.meta$FAFB.match.quality = NA
+# lm.meta$User = "ASB"
+# googlesheets4::write_sheet(lm.meta[0,],
+#                            ss = selected_file,
+#                            sheet = "lm")
+# batches = split(1:nrow(lm.meta), ceiling(seq_along(1:nrow(lm.meta))/500))
+# for(i in batches){
+#   hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
+#                       data = lm.meta[min(i):max(i),],
+#                       ss = selected_file,
+#                       sheet = "lm")
+# }
 
 ##########################################################################
 # Save GooglesSheet Database for recording information on hemibrain LHNs #

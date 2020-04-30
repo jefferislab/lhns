@@ -53,10 +53,6 @@ PDL19 = neuprint_read_neurons("PDL19")
 PDL19 = PDL19[names(PDL19)%in%lhn.ids]
 pv5.hemi = c(PDL05,PDL23,PDL22,PDL19)
 
-### Wrong CBF
-# PDL08 -> PDL23
-wrong1 = c("356144721", "419216386", "451646125", "485387561")
-
 ### Re-define some of these CBFs
 sd = setdiff(pv5, names(pv5.hemi))
 ds = setdiff(names(pv5.hemi),pv5)
@@ -64,9 +60,14 @@ pv5 = unique(pv5, names(pv5.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv5)
+df$cbf.change = FALSE
 df$cell.type = NA
 rownames(df) = df$bodyid
-df[wrong1,"cbf"] = "PDL23"
+
+### Wrong CBF
+# PDL08 -> PDL23
+wrong1 = c("356144721", "419216386", "451646125", "485387561")
+df[wrong1,"cbf.change"] = "PDL23"
 
 ### Hemilineages:
 #### ItoLee: Dl2_lateral, DL1_dorsal, DL2_medial
@@ -120,11 +121,18 @@ df[a5,"cell.type"] = "PV5a5"
 # d #
 #####
 
-d1 = c("5813010200", "602999843", "573333575", "329220439", "5813012375","633684017","454706029") # light = c("Gad1-F-900098", "Gad1-F-300321","L1554#2","MB036B#1", "Gad1-F-100023", "L1554#1", "Cha-F-800045","160121c1", "Cha-F-200082")
-df[d1,"cell.type"] = "PV5d1"
+d1 = c("633684017")
+df[d2,"cell.type"] = "PV5d1"
 
-d2 = c("295805243", "911012735", "573056433", "5813094592", "480931947","5813010180", "296153261") # light = c("Gad1-F-900040")
+d2 = c("5813010200", "602999843", "573333575", "329220439", "5813012375") # light = c("Gad1-F-900098", "Gad1-F-300321","L1554#2","MB036B#1", "Gad1-F-100023", "L1554#1", "Cha-F-800045","160121c1", "Cha-F-200082")
 df[d2,"cell.type"] = "PV5d2"
+
+d3 = c("295805243", "911012735", "573056433", "5813094592", "480931947","5813010180", "296153261") # light = c("Gad1-F-900040")
+df[d3,"cell.type"] = "PV5d3"
+
+d4 = c("454706029")
+df[d4,"cell.type"] = "PV5d4"
+
 
 #####
 # g #
@@ -302,8 +310,15 @@ df[l1,"cell.type"] = "PV5l1"
 ########
 # save #
 ########
-write_lhns(df, pv5x)
+
+# Organise cell types
+df = process_types(df)
+
+# Update googlesheet
+write_lhns(df = df, bodyids = pv5x, column = c())
 write_lhns(df, pv5y)
 write_lhns(df, pv5z)
 
-
+c("bodyid", "type", "cbf", "m.type", "c.type", "cell.type", "ItoLee_Hemilineage",
+  "Hartenstein_Hemilineage", "FAFB.match", "LM.match", "cbf.change",
+  "type.change")
