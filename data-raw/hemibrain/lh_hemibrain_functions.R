@@ -243,3 +243,17 @@ extract_ids <- function(x){
   x = x[x!="none"]
   unique(as.character(x))
 }
+
+# hidden
+is.lhn <- function(x){
+  x%in%hemibrain.lhn.bodyids
+}
+
+
+
+
+
+
+
+
+

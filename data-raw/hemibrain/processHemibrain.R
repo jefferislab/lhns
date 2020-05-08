@@ -8,24 +8,29 @@ library(hemibrainr)
 # LHNs are neurons with 1% of their synaptic input / 10 synapses coming from uPNs #
 ###################################################################################
 # LHNs must be downstream of uPNs ...
-upns = neuprint_read_neurons(hemibrainr::upn.ids)
+upns = neuprint_read_neurons(hemibrainr::upn.ids,hemibrainr::mpn.ids)
 upn.syns = hemibrainr::hemibrain_extract_connections(upns)
 # And they must be 'neuron' objects in the LH(R) ROI ...
 lh.info = neuprintr::neuprint_find_neurons(
   input_ROIs = "LH(R)",
   output_ROIs =  'LH(R)',
   all_segments = FALSE )
-lh.ids = intersect(lh.info$bodyid,upns.down.ids)
+lh.ids = intersect(lh.info$bodyid,upn.syns$partner)
+lh.ids = setdiff(lh.info$bodyid,c(hemibrainr::upn.ids,hemibrainr::mpn.ids,hemibrainr::dan.ids,hemibrainr::mbon.ids))
+lh.roi.info = as.data.frame(neuprint_get_roiInfo(lh.ids))
+lh.roi.info = subset(lh.roi.info, `LH(R).pre` >=10|`LH(R).post`>=10|`LH(R).downstream`>=10|`LH(R).upstream`>=10)
+lh.ids = lh.roi.info$bodyid
 # And they must get at least 1% of their inputs from uPNs, and not themselves be a PN ...
 upn.syns %>%
-  dplyr::filter(partner %in% lh.info$bodyid
-                & ! partner %in% c(hemibrainr::upn.ids, hemibrainr::mpn.ids, hemibrainr::mbon.ids)
-                & prepost == 1) %>%
+  dplyr::filter(partner %in% lh.ids & prepost == 1) %>%
   dplyr::mutate(npost = lh.info[,"npost"][match(partner,lh.info$bodyid)]) %>%
+  dplyr::mutate(norm = weight/as.numeric(npost)) %>%
+  dplyr::mutate(include = (weight>=10&norm>=0.01)) %>%
   dplyr::group_by(partner) %>%
+  dplyr::mutate(include = sum(include)>=1) %>%
   dplyr::mutate(pn.weight = sum(as.numeric(weight))) %>%
-  dplyr::mutate(norm = pn.weight/as.numeric(npost)) %>%
-  dplyr::filter(norm > 0.01 | pn.weight > 10) %>%
+  dplyr::mutate(pn.norm = pn.weight/as.numeric(npost)) %>%
+  dplyr::filter(pn.norm >= 0.1 | pn.weight >= 100 | include) %>%
   dplyr::ungroup() %>%
   dplyr::filter(!duplicated(partner)) %>%
   as.data.frame() ->
