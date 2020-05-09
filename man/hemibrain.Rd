@@ -7,7 +7,7 @@
 \alias{hemibrain_lhns}
 \title{Body IDs and FAFB matches for lateral horn neurons in the hemibrain volume.}
 \format{
-An object of class \code{character} of length 2240.
+An object of class \code{numeric} of length 2305.
 
 An object of class \code{data.frame} with 2231 rows and 22 columns.
 }

@@ -7,6 +7,7 @@
 \alias{lh.hemibrain}
 \alias{pn.fafb}
 \alias{fafb_lhns}
+\alias{lm_em_matches}
 \title{EM neuron skeletons for published lateral horn related reconstructions and all olfactory projection neurons.}
 \format{
 An object of class \code{neuronlist} (inherits from \code{list}) of length 218.
@@ -16,6 +17,8 @@ An object of class \code{neuronlist} (inherits from \code{list}) of length 153.
 An object of class \code{neuronlist} (inherits from \code{list}) of length 346.
 
 An object of class \code{data.frame} with 218 rows and 20 columns.
+
+An object of class \code{data.frame} with 2877 rows and 8 columns.
 }
 \source{
 \url{https://doi.org/10.1101/2020.01.19.911453}
@@ -28,6 +31,8 @@ lh.hemibrain
 pn.fafb
 
 fafb_lhns
+
+lm_em_matches
 }
 \description{
 EM skeletons complete with synapses, a \code{neuronlist} objects for LH-associated neurons including projection neurons that input the lateral horn. These neurons have been reconstructed in both the FAFB ssTEM brain space
