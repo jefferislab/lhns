@@ -58,7 +58,8 @@ devtools::install("/path/to/some/folder/lhns")
 If you need to alter an LHN cell type classification, you need to edit
 [processLHNs.R](data-raw/processLHNs.R) and then follow the steps above i.e. 
 `source("data-raw/make.R")`. 
-### Commiting changes
+
+### Committing changes
 
 You can commit any changes in git using the integrated support for git in Rstudio. You will have to ask for write access to push to the github repo.
 

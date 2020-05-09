@@ -8,15 +8,19 @@ Authors@R: c(
     person("Shahar", "Frechter", role = c("aut"),
       comment = c(ORCID = "0000-0002-0431-5849")),
     person("Gregory", "Jefferis", email = "jefferis@gmail.com", role = c("aut"),
-      comment = c(ORCID = "0000-0002-0587-9355"))
+      comment = c(ORCID = "0000-0002-0587-9355")),
+    person("Michael-John", "Dolan", email = "dolanmjg@gmail.com", role = c("aut"),
+      comment = c(ORCID = "0000-0001-9666-3682"))
     )
-Description: Skeleton data from lightl-level and electron microscop studies for neurons associated with the lateral horn of Drosophila melanogaster.
+Description: Skeleton data from light-level and electron microscopy studies of 
+    neurons associated with the lateral horn of Drosophila melanogaster.
 License: GPL-3
 LazyData: TRUE
 RoxygenNote: 7.1.0
 Suggests:
     spelling, testthat
-Imports: rgl, reshape2, flycircuit, nat.templatebrains, nat.utils, stringr, stringi
+Imports: rgl, reshape2, flycircuit, nat.templatebrains, nat.utils (>= 0.5.1.9000),
+    stringr, stringi
 Depends: R (>= 3.5.0), nat, nat.flybrains
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
