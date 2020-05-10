@@ -1,8 +1,10 @@
 #######
 # PV5 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
@@ -46,13 +48,13 @@ pv5 = unique(c(pv5x,pv5y,pv5z,pv5.primary))
 ### CBFs:
 ### x: PDL05^SFS1 PDL08^pLH2 PDL19^SFS3 PDL23^pLH10 PDL14^pLH6
 PDL05 = neuprint_read_neurons("PDL05")
-PDL05 = PDL05[names(PDL05)%in%lhn.ids]
+PDL05 = PDL05[names(PDL05)%in%hemibrain.lhn.bodyids]
 PDL23 = neuprint_read_neurons("PDL23")
-PDL23 = PDL23[names(PDL23)%in%lhn.ids]
+PDL23 = PDL23[names(PDL23)%in%hemibrain.lhn.bodyids]
 PDL22 = neuprint_read_neurons("PDL22")
-PDL22 = PDL22[names(PDL22)%in%lhn.ids]
+PDL22 = PDL22[names(PDL22)%in%hemibrain.lhn.bodyids]
 PDL19 = neuprint_read_neurons("PDL19")
-PDL19 = PDL19[names(PDL19)%in%lhn.ids]
+PDL19 = PDL19[names(PDL19)%in%hemibrain.lhn.bodyids]
 pv5.hemi = c(PDL05,PDL23,PDL22,PDL19)
 
 ### Re-define some of these CBFs
@@ -63,6 +65,7 @@ pv5 = unique(pv5, names(pv5.hemi))
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv5)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -324,12 +327,14 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV5_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="PV5")
+# Process
+if(process){
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
-
+  # Make 2D Images
+  take_pictures(df)
+}
 
 ##########
 # Issues #

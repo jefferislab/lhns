@@ -1,8 +1,10 @@
 #######
 # PV1 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
@@ -30,9 +32,9 @@ table(my$cellBodyFiber)
 ### CBFs:
 ### PVL17^PVF2 PVL14^PLPF6 PVL02^PVF1
 PVL17 = neuprint_read_neurons("PVL17")
-PVL17 = PVL17[names(PVL17)%in%lhn.ids]
+PVL17 = PVL17[names(PVL17)%in%hemibrain.lhn.bodyids]
 PVL14 = neuprint_read_neurons("PVL14")
-PVL14 = PVL14[names(PVL14)%in%lhn.ids]
+PVL14 = PVL14[names(PVL14)%in%hemibrain.lhn.bodyids]
 pv1.hemi = c(PVL17,PVL14)
 
 ### Re-define some of these CBFs
@@ -43,6 +45,7 @@ pv1 = unique(pv1, names(pv1.hemi))
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv1)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -103,8 +106,11 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV1_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="PV1")
+# Process
+if(process){
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+  # Make 2D Images
+  take_pictures(df)
+}

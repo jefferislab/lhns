@@ -156,9 +156,9 @@ write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV1_celltyping.csv", row.names
 
 # Process
 if(process){
-   # Make 2D Images
-   take_pictures(df)
-
    # Update googlesheet
    write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+
+   # Make 2D Images
+   take_pictures(df)
 }

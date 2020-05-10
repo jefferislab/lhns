@@ -1,8 +1,10 @@
 #######
 # PV6 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
@@ -68,6 +70,7 @@ pv6 = unique(pv6, names(pv6.hemi))
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv6)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -265,8 +268,11 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV6_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="PV6")
+# Process
+if(process){
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+  # Make 2D Images
+  take_pictures(df)
+}
