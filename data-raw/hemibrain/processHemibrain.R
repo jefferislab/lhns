@@ -94,6 +94,8 @@ hemibrain_lhns = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_shee
                                       sheet = "lhns",
                                       return = TRUE)
 hemibrain_lhns$bodyid = correct_id(hemibrain_lhns$bodyid)
+hemibrain_lhns = hemibrain_lhns[!duplicated(hemibrain_lhns$bodyid),]
+hemibrain_lhns = hemibrain_lhns[hemibrain_lhns$bodyid!="",]
 rownames(hemibrain_lhns) = hemibrain_lhns$bodyid
 hemibrain_lhns$User = NULL
 usethis::use_data(hemibrain_lhns, overwrite = TRUE)

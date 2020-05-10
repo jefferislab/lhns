@@ -1,14 +1,16 @@
 #######
 # PV5 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+   source("data-raw/hemibrain/startupHemibrain.R")
+   process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
-x = c("360237650", "391954889", "516098538", "672287506", "573346324",
-      "574710121", "604735525", "671933799", "608491067", "578151363",
+x = c( "573346324",
+      "574710121", "604735525",  "578151363",
       "484377189", "578841489", "517117602", "452331917", "483038957",
       "513357277", "423684795", "485736803", "674009814", "422644053",
       "483354202", "422666053", "517458316")
@@ -27,8 +29,8 @@ y = c("699212545", "733005935", "5813012462", "606492411", "5813069285",
       "574352231", "606431658", "542665187", "761239957", "543770627",
       "607130326", "574128034", "850636610", "450933288", "450951445",
       "450933392", "481989534", "574378565", "5813011770", "419880359",
-      "511970945", "603007915", "546123239", "638196102", "452336396",
-      "668552668", "452676790", "452681716")
+      "511970945", "603007915", "546123239", "638196102",
+      "668552668")
 z = c("455033548", "5812980824", "5813047212", "5813048297", "5813087655",
       "422971316", "975750913", "454693209", "456082779", "881620582",
       "947795335", "518476551", "580547055", "5813015004", "882003599",
@@ -66,11 +68,11 @@ table(mz$cellBodyFiber)
 ### CBFs:
 ### ADL22^LBDL3  ADL04^LBDL7 AVL07^LEA1
 ADL22 = neuprint_read_neurons("ADL22")
-ADL22 = ADL22[names(ADL22)%in%lhn.ids]
+ADL22 = ADL22[names(ADL22)%in%hemibrain.lhn.bodyids]
 ADL04 = neuprint_read_neurons("ADL04")
-ADL04 = ADL04[names(ADL04)%in%lhn.ids]
+ADL04 = ADL04[names(ADL04)%in%hemibrain.lhn.bodyids]
 AVL07 = neuprint_read_neurons("AVL07")
-AVL07 = AVL07[names(AVL07)%in%lhn.ids]
+AVL07 = AVL07[names(AVL07)%in%hemibrain.lhn.bodyids]
 av2.hemi = c(ADL22,ADL04,AVL07)
 
 ### Re-define some of these CBFs
@@ -81,6 +83,7 @@ av2 = unique(av2, names(av2.hemi))
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% av2)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -117,9 +120,6 @@ df[y,"Hartenstein_Hemilineage"] = "BLVa1_ventral"
 a2 = c("422666053", "483038957","452331917", "423684795", "517458316", "485736803", "517117602", "422644053", "483354202") #light = c("L876#6", "L876#3", "JJ83")
 df[a2,"cell.type"] = "AV2a2"
 
-a5 = c("516098538", "360237650", "391954889")
-df[a5,"cell.type"] = "AV2a5"
-
 a6 = c("604735525", "573346324", "574710121") # light = c("L876#2", "L876#1","L876#5")
 df[a6,"cell.type"] = "AV2a6"
 
@@ -135,10 +135,6 @@ df[a8,"cell.type"] = "AV2a8"
 
 a = "674009814"
 df[a,"cell.type"] = "AV2g"
-
-b = c("671933799", "608491067", "672287506")
-df[b,"cell.type"] = "AV2h"
-
 
 ############
 ### AV2y ###
@@ -263,52 +259,49 @@ df[ze,"cell.type"] = "AV2ze"
 # u #
 #####
 
-zf = c("668552668") # light = c("Cha-F-000256")
-df[c(zf,z.f),"cell.type"] = "AV2zf"
-
 zh = c("733005935") # light = c("fru-M-400293")
 df[c(zh,z.h),"cell.type"] = "AV2zh"
-
-#####
-# u #
-#####
-
-h1 = c("482685041", "452336396", "452676790", "452681716", "514073634") # light = c("Gad1-F-000153")
-df[h1,"cell.type"] = "AV2h1"
 
 ############
 ### AV2w ##
 ############
+
+#####
+# c #
+#####
 
 c1 = c("454693209", "5813015004", "5812980824", "455033548", "422971316",
        "881620582", "456082779", "5813048297", "5813087655", "518476551",
        "947795335", "5813047212", "580547055") # light = c("Gad1-F-400156", "Cha-F-400280")
 df[c1,"cell.type"] = "AV2c1"
 
-b.1 = "975750913"
-df[c(b.1),"cell.type"] = "AV2b2"
+c2 = "975750913"
+df[c2,"cell.type"] = "AV2c2"
 
 #####
-# u #
+# g #
 #####
-
-d = c("574378463", "667827599", "668497214")
-df[d,"cell.type"] = "AV2d"
-
-c = "1199181443"
-df[c,"cell.type"] = "AV2c"
-
-e = c("5813041458", "944423023")
-
-f = c("1259218128", "978177557", "5813041458", "881995193", "944423023")
 
 g1 = c("574382779", "759585675") # light = c("Cha-F-500135")
 df[g1,"cell.type"] = "AV2g1"
 
-g = c("944720631")
-df[g,"cell.type"] = "AV2g"
+g2 = c("1259218128", "978177557", "5813041458", "881995193", "944423023")
+df[g2,"cell.type"] = "AV2g2"
 
-gg = "945058110"
+g3 = c("574378463", "667827599", "668497214")
+df[g3,"cell.type"] = "AV2g3"
+
+g4 = "1199181443"
+df[g4,"cell.type"] = "AV2g4"
+
+g5 = c("5813041458", "944423023")
+df[g4,"cell.type"] = "AV2g5"
+
+g6 = c("944720631")
+df[g6,"cell.type"] = "AV2g6"
+
+g7 = "945058110"
+df[g7,"cell.type"] = "AV2g7"
 
 
 #####
@@ -326,39 +319,38 @@ b1 = c("881999404", "912667199") # light = c("Gad1-F-600189")
 df[b5,"cell.type"] = "AV2b5"
 
 #####
-# u #
+# b #
 #####
-
-k = c("944047683", "850260732", "882003599")
-df[k,"cell.type"] = "AV2k"
-
-h = c("819943010", "919526332", "919845196", "825359499", "850972999",
-      "5813093028", "1013296065")
-df[h,"cell.type"] = "AV2h"
 
 b1 = c("5813056386", "1260582361", "977123707") # slight = c("Gad1-F-300310","Cha-F-100444")
 df[b1,"cell.type"] = "AV2b1"
 
-b4 = c("1538181953", "1101984860", "886820993", "1039923193", "947168406") # light = c("Gad1-F-700003", "Gad1-F-700003")
-df[b4,"cell.type"] = "AV2b4"
-
-n = c("944724233", "5813048319", "1006142645", "1414046770") # light = c("Cha-F-300136", "Cha-F-200034")
-df[c(n,n.n),"cell.type"] = "AV2n"
-
-nn  = "1130947782"
-
-o = c("944729222")
-df[o,"cell.type"] = "AV2o"
+b2 = c("821612285", "1037510115", "5813016204", "851961337", "852302504")
+# light = c("Gad1-F-300218","Gad1-F-200223", "L2087#2", "L2088#3", "L2088#1",
+#         "L2088#2", "Cha-F-600183", "fru-F-300169", "fru-F-600103", "fru-M-300456",
+#         "L2087#1", "L2087#3", "L2087#4", "JJ79")
+df[b2,"cell.type"] = "AV2b2"
 
 b3 = c("819895218", "730562993", "852302293") # light = c("5HT1A-F-300031","Gad1-F-600005")
 df[b3,"cell.type"] = "AV2b3"
 
-q = c("821612285", "1037510115", "5813016204", "851961337", "852302504")
-# light = c("Gad1-F-300218","Gad1-F-200223", "L2087#2", "L2088#3", "L2088#1",
-#         "L2088#2", "Cha-F-600183", "fru-F-300169", "fru-F-600103", "fru-M-300456",
-#         "L2087#1", "L2087#3", "L2087#4", "JJ79")
-df[c(q,q.q),"cell.type"] = "AV2q"
+b4 = c("1538181953", "1101984860", "886820993", "1039923193", "947168406") # light = c("Gad1-F-700003", "Gad1-F-700003")
+df[b4,"cell.type"] = "AV2b4"
 
+b5 = c("944724233", "5813048319", "1006142645", "1414046770") # light = c("Cha-F-300136", "Cha-F-200034")
+df[b5,"cell.type"] = "AV2b5"
+
+b6 = c("819943010", "919526332", "919845196", "825359499", "850972999","5813093028", "1013296065")
+df[b6,"cell.type"] = "AV2b6"
+
+b7 = c("944047683", "850260732", "882003599")
+df[b7,"cell.type"] = "AV2b7"
+
+b8 = c("944729222")
+df[b8,"cell.type"] = "AV2b8"
+
+b9  = "1130947782"
+df[b9,"cell.type"] = "AV2b9"
 
 ########
 # save #
@@ -371,16 +363,13 @@ df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
 state_results(df)
 
 # Write .csv
-write.csv(df, file = "data-raw/hemibrain/pnts/csv/av2_celltyping.csv", row.names = FALSE)
+write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV2_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="av2")
+# Process
+if(process){
+   # Make 2D Images
+   take_pictures(df)
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
-
-
-##########
-# Issues #
-##########
-
+   # Update googlesheet
+   write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+}

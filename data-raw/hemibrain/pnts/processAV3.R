@@ -1,8 +1,10 @@
 #######
 # AV3 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
@@ -54,14 +56,12 @@ table(my$cellBodyFiber)
 ### CBFs:
 ### AVL18^LEA2 AVL12^LEA5 ADL04^LBDL7 ADL10^LBDL6
 AVL18 = neuprint_read_neurons("AVL18")
-AVL18 = AVL18[names(AVL18)%in%lhn.ids]
+AVL18 = AVL18[names(AVL18)%in%hemibrain.lhn.bodyids]
 AVL12 = neuprint_read_neurons("AVL12")
-AVL12 = AVL12[names(AVL12)%in%lhn.ids]
-ADL04 = neuprint_read_neurons("ADL04")
-ADL04 = ADL04[names(ADL04)%in%lhn.ids]
+AVL12 = AVL12[names(AVL12)%in%hemibrain.lhn.bodyids]
 ADL10 = neuprint_read_neurons("ADL10")
-ADL10 = ADL10[names(ADL10)%in%lhn.ids]
-av3.hemi = c(ADL22,ADL04,AVL07,ADL10)
+ADL10 = ADL10[names(ADL10)%in%hemibrain.lhn.bodyids]
+av3.hemi = c(ADL22,AVL07,ADL10)
 
 ### Re-define some of these CBFs
 sd = setdiff(av3, names(av3.hemi))
@@ -71,6 +71,7 @@ av3 = unique(av3, names(av3.hemi))
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% av3)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -220,11 +221,11 @@ df[a6,"cell.type"] = "AV3a6"
 # c #
 #####
 
-c3 = "419575044" #light = "Cha-F-000470"
-df[c3,"cell.type"] = "AV3c"
+o1 = "419575044" #light = "Cha-F-000470"
+df[o1,"cell.type"] = "AV3o1"
 
 #####
-# u #
+# e #
 #####
 
 e1 = "574377845"
@@ -234,24 +235,24 @@ e2 = c("633097828")
 df[e2,"cell.type"] = "AVe2"
 
 #####
-# u #
+# g #
 #####
 
 g1 = c("544699051", "5813009276")
-df[z,"cell.type"] = "AV3g1"
+df[g1,"cell.type"] = "AV3g1"
 
 g2 = c("698180927", "698185483")
-df[zd,"cell.type"] = "AV3g2"
+df[g2,"cell.type"] = "AV3g2"
 
 #####
-# u #
+# k #
 #####
 
 k1 = "5901196932"
 df[k1,"cell.type"] = "AV3k1"
 
 #####
-# u #
+# b #
 #####
 
 b1 = c("391604407", "390931864", "5813098306") # light = "Cha-F-200387"
@@ -291,17 +292,17 @@ b12 = "359555689"
 df[b12,"cell.type"] = "AV3b12"
 
 b13 = c("5813047178", "5813068507")
-df[zm,"cell.type"] = "AV3b13"
+df[b13,"cell.type"] = "AV3b13"
 
 #####
-# u #
+# l #
 #####
 
 l1 = "297851977"
 df[l1,"cell.type"] = "AV3l1"
 
 #####
-# u #
+# m #
 #####
 
 m1 = "424716408"
@@ -354,12 +355,14 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV3_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="AV3")
+# Process
+if(process){
+  # Make 2D Images
+  take_pictures(df)
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
-
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+}
 
 ##########
 # Issues #
