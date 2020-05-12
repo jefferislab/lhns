@@ -1,8 +1,10 @@
 #######
 # AV7 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+   source("data-raw/hemibrain/startupHemibrain.R")
+   process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
@@ -12,62 +14,38 @@ x = c("609233083", "453031248", "515096130", "452673242", "541970375",
       "791307174", "732686529", "853376855", "761636549", "456432557",
       "821625208", "580231908", "604722017", "329216050", "602990602"
 )
-y = c("609233083", "453031248", "515096130", "452673242", "541970375",
-      "5813010471", "5813079244", "542652400", "608188506", "608534083",
-      "791307174", "732686529", "853376855", "761636549", "456432557",
-      "821625208", "580231908", "604722017", "329216050", "602990602"
-)
-z = c("609233083", "453031248", "515096130", "452673242", "541970375",
-      "5813010471", "5813079244", "542652400", "608188506", "608534083",
-      "791307174", "732686529", "853376855", "761636549", "456432557",
-      "821625208", "580231908", "604722017", "329216050", "602990602"
-)
-av7 = c(x,y,z)
+av7 = c(x)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-y.match = unique(hemibrain_lhns[y,"FAFB.match"])
-y.match = y.match[!is.na(y.match)]
-y.match = read.neurons.catmaid.meta(y.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-my = neuprint_get_meta(y)
-mz = neuprint_get_meta(z)
-table(mx$cellBodyFiber)
-table(my$cellBodyFiber)
-table(mz$cellBodyFiber)
-
-### CBFs:
-### ADL19^lgL
-ADL19 = neuprint_read_neurons("ADL19")
-ADL19 = ADL19[names(ADL19)%in%lhn.ids]
-av7.hemi = c(ADL19)
-
-### Re-define some of these CBFs
-sd = setdiff(av7, names(av7.hemi))
-ds = setdiff(names(av7.hemi),av7)
-av7 = unique(av7, names(av7.hemi))
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# table(mx$cellBodyFiber)
+#
+# ### CBFs:
+# ### ADL19^lgL
+# ADL19 = neuprint_read_neurons("ADL19")
+# ADL19 = ADL19[names(ADL19)%in%hemibrain.lhn.bodyids]
+# av7.hemi = c(ADL19)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(av7, names(av7.hemi))
+# ds = setdiff(names(av7.hemi),av7)
+# av7 = unique(av7, names(av7.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% av7)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
-### Wrong CBF
-wrong1 = c("")
-df[wrong1,"cbf.change"] = ""
-
 ### Hemilineages:
-df[x,"ItoLee_Hemilineage"] = "VPNl&d1_dorsal"
-df[x,"Hartenstein_Hemilineage"] = "BLAvm2_dorsal"
-df[z,"ItoLee_Hemilineage"] = "SLPa&l1_anterior"
-df[z,"Hartenstein_Hemilineage"] = "BLAvm1_anterior"
-df[y,"ItoLee_Hemilineage"] = "AOTUv2"
-df[y,"Hartenstein_Hemilineage"] = "DALl1"
+df[x,"ItoLee_Hemilineage"] = "AOTUv2"
+df[x,"Hartenstein_Hemilineage"] = "DALl1"
 
 ##############################
 # Make and review cell types #
@@ -151,8 +129,11 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV7_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="AV7")
+# Process
+if(process){
+   # Make 2D Images
+   take_pictures(df)
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+   # Update googlesheet
+   write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+}

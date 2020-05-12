@@ -1,82 +1,80 @@
 #######
 # AV3 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
 x = c("575389396", "390603428", "607441336", "822004733", "5813011773",
-      "790288721", "5813021535", "454386099", "456847100", "329225149",
-      "329897255", "574041014", "667832004", "390560212", "822692353",
-      "5813078194", "666122442", "1288522544", "5813009781", "605058898",
-      "1260949362", "389205204")
+      "790288721", "574041014", "390560212", "822692353", "5813078194",
+      "666122442", "5813009781", "605058898")
 y = c("326154371", "480257882", "325814669", "480257743", "480257914",
-          "419929377", "295798962", "5813035078", "295461871", "480257896",
-          "480258191", "480599285", "388513242", "450609707", "358874595",
-          "358878546", "295807429", "389536816", "327857238", "356832459",
-          "295780154", "295461707", "295785459", "357496172", "295470623",
-          "327152465", "420235167", "328519904", "390586752", "295799057",
-          "359210479", "327220514", "294437328", "295439322", "421292214",
-          "541961677", "449223347", "510943286", "390935343", "450267976",
-          "419234116", "541961750", "5813057662", "359555628", "480257919",
-          "390254536", "5813057660", "542643555", "390919685", "329566467",
-          "419578845", "449577409", "451296290", "480262368", "360928792",
-          "480262270", "449223379", "605090489", "480253500", "5813010546",
-          "391604407", "479917126", "511271379", "449227486", "541624179",
-          "390931864", "5813098306", "449223263", "325834652", "356832508",
-          "5813047004", "418861761", "448899493", "511262952", "480586157",
-          "511621576", "326817510", "419575044", "5813097073", "5813068507",
-          "359555689", "5813047178", "5901196932", "5813039880", "296489073",
-          "357832762", "295456869", "295797312", "328543014", "297851977",
-          "665454282", "1439962910", "5813056083", "696143413", "417550216",
-          "544699051", "574377845", "5813009276", "633793553", "357855613",
-          "327844600", "294778999", "388898076", "356494648", "424716408",
-          "5813010511", "698180927", "359581549", "698185483", "453018720",
-          "482680447", "5813078261", "296120593", "419880359", "633097828")
+      "419929377", "295798962", "5813035078", "295461871", "480257896",
+      "480258191", "480599285", "450609707", "295807429", "421292214",
+      "541961677", "449223347", "510943286", "390935343", "450267976",
+      "419234116", "541961750", "5813057662", "359555628", "480257919",
+      "390254536", "5813057660", "542643555", "329566467", "419578845",
+      "449577409", "451296290", "480262368", "360928792", "480262270",
+      "449223379", "605090489", "5813010546", "391604407", "449227486",
+      "541624179", "390931864", "5813098306", "5813097073", "5813068507",
+      "359555689", "5813047178", "5901196932", "328543014", "665454282",
+      "696143413", "544699051", "574377845", "5813009276", "357855613",
+      "388898076", "424716408", "5813010511", "698180927", "359581549",
+      "698185483", "482680447", "296120593", "419880359", "633097828"
+)
 av3 = c(x,y)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-y.match = unique(hemibrain_lhns[y,"FAFB.match"])
-y.match = y.match[!is.na(y.match)]
-y.match = read.neurons.catmaid.meta(y.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-my = neuprint_get_meta(y)
-table(mx$cellBodyFiber)
-table(my$cellBodyFiber)
-
-### CBFs:
-### AVL18^LEA2 AVL12^LEA5 ADL04^LBDL7 ADL10^LBDL6
-AVL18 = neuprint_read_neurons("AVL18")
-AVL18 = AVL18[names(AVL18)%in%lhn.ids]
-AVL12 = neuprint_read_neurons("AVL12")
-AVL12 = AVL12[names(AVL12)%in%lhn.ids]
-ADL04 = neuprint_read_neurons("ADL04")
-ADL04 = ADL04[names(ADL04)%in%lhn.ids]
-ADL10 = neuprint_read_neurons("ADL10")
-ADL10 = ADL10[names(ADL10)%in%lhn.ids]
-av3.hemi = c(ADL22,ADL04,AVL07,ADL10)
-
-### Re-define some of these CBFs
-sd = setdiff(av3, names(av3.hemi))
-ds = setdiff(names(av3.hemi),av3)
-av3 = unique(av3, names(av3.hemi))
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+# y.match = unique(hemibrain_lhns[y,"FAFB.match"])
+# y.match = y.match[!is.na(y.match)]
+# y.match = read.neurons.catmaid.meta(y.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# my = neuprint_get_meta(y)
+# table(mx$cellBodyFiber)
+# table(my$cellBodyFiber)
+#
+# ### CBFs:
+# ### AVL18^LEA2 AVL12^LEA5 ADL04^LBDL7 ADL10^LBDL6
+# AVL18 = neuprint_read_neurons("AVL18")
+# AVL18 = AVL18[names(AVL18)%in%hemibrain.lhn.bodyids]
+# AVL12 = neuprint_read_neurons("AVL12")
+# AVL12 = AVL12[names(AVL12)%in%hemibrain.lhn.bodyids]
+# ADL24 = neuprint_read_neurons("ADL24")
+# ADL24 = ADL24[names(ADL24)%in%hemibrain.lhn.bodyids]
+# PDL17 = neuprint_read_neurons("PDL17")
+# PDL17 = PDL17[names(PDL17)%in%hemibrain.lhn.bodyids]
+# av3.hemi = c(AVL18,AVL12,ADL24,PDL17)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(av3, names(av3.hemi))
+# ds = setdiff(names(av3.hemi),av3)
+# av3 = unique(av3, names(av3.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% av3)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
 ### Wrong CBF
-wrong1 = c("")
-df[wrong1,"cbf.change"] = ""
+wrong1 = c("389205204")
+df[wrong1,"cbf.change"] = "AVL18^LEA2"
+wrong2 = c("358874595", "327857238", "356832459", "295470623", "327152465",
+           "420235167", "294437328", "390254536", "5813057660", "451296290",
+           "390931864", "5901196932", "295456869", "453018720", "419880359",
+           "633097828")
+df[wrong2,"cbf.change"] = "ADL10^LBDL6"
+df = subset(df, !is.na(class))
 
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "SLPav1_lateral"
@@ -201,7 +199,7 @@ df[d1,"cell.type"] = "AV3d1"
 a1 = c("5813035078", "480257896", "295798962", "419929377", "480258191", "295461871", "480599285")
 df[a1,"cell.type"] = "AV3a1"
 
-a2 = c("480257882", "480257914", "480257743", "326154371", "325814669") # light  = c("Cha-F-200357")
+a2 = c("480257882", "480257914", "480257743", "326154371", "325814669","295807429") # light  = c("Cha-F-200357")
 df[a2,"cell.type"] = "AV3a2"
 
 a3 = c("294778999", "357855613", "388898076")
@@ -220,38 +218,38 @@ df[a6,"cell.type"] = "AV3a6"
 # c #
 #####
 
-c3 = "419575044" #light = "Cha-F-000470"
-df[c3,"cell.type"] = "AV3c"
+o1 = "419575044" #light = "Cha-F-000470"
+df[o1,"cell.type"] = "AV3o1"
 
 #####
-# u #
+# e #
 #####
 
 e1 = "574377845"
 df[e1,"cell.type"] = "AV3e1"
 
 e2 = c("633097828")
-df[e2,"cell.type"] = "AVe2"
+df[e2,"cell.type"] = "AV3e2"
 
 #####
-# u #
+# g #
 #####
 
 g1 = c("544699051", "5813009276")
-df[z,"cell.type"] = "AV3g1"
+df[g1,"cell.type"] = "AV3g1"
 
 g2 = c("698180927", "698185483")
-df[zd,"cell.type"] = "AV3g2"
+df[g2,"cell.type"] = "AV3g2"
 
 #####
-# u #
+# k #
 #####
 
 k1 = "5901196932"
 df[k1,"cell.type"] = "AV3k1"
 
 #####
-# u #
+# b #
 #####
 
 b1 = c("391604407", "390931864", "5813098306") # light = "Cha-F-200387"
@@ -291,17 +289,17 @@ b12 = "359555689"
 df[b12,"cell.type"] = "AV3b12"
 
 b13 = c("5813047178", "5813068507")
-df[zm,"cell.type"] = "AV3b13"
+df[b13,"cell.type"] = "AV3b13"
 
 #####
-# u #
+# l #
 #####
 
 l1 = "297851977"
 df[l1,"cell.type"] = "AV3l1"
 
 #####
-# u #
+# m #
 #####
 
 m1 = "424716408"
@@ -354,12 +352,14 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV3_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="AV3")
+# Process
+if(process){
+  # Make 2D Images
+  take_pictures(df)
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
-
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+}
 
 ##########
 # Issues #

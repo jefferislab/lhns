@@ -1,13 +1,15 @@
 #######
 # PV5 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
-
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Group X
-pv5x = c("728974338", "5812980156", "577546843", "727838223", "451355706",
+x = c("728974338", "5812980156", "577546843", "727838223", "451355706",
          "573333903", "5813012375", "264779403", "546511447", "573683455",
          "573333284", "572651463", "609941228", "604368022",
          "696432315", "5813010159", "5813083717", "911012735", "541663112",
@@ -20,11 +22,10 @@ pv5x = c("728974338", "5812980156", "577546843", "727838223", "451355706",
          "5813010200", "602999843", "608240515", "329220439", "633684017",
          "265120324", "696082279", "5813009281", "573670049", "357146296",
          "579576294", "454706029",  "511267279", "5901213816",
-         "265120223", "356823065", "486501502", "5813129400", "5901208687",
-
+         "265120223", "356823065", "486501502", "5813129400", "5901208687"
 )
 # Group Y
-pv5y = c("360587642", "513050445", "705722260", "611274992", "699203489",
+y = c("360587642", "513050445", "705722260", "611274992", "699203489",
          "636798093", "361269751", "732354059", "455751103", "360254994",
          "391273276", "573328182", "485728655", "422640861", "424025668",
          "611620813", "768132738", "763034485", "423343583", "728836965",
@@ -37,32 +38,33 @@ pv5y = c("360587642", "513050445", "705722260", "611274992", "699203489",
          "5901196176", "487467388", "641631806", "484355342", "701577869",
          "697853509", "731917767", "730325440", "575750788", "5813047222")
 # Group z
-pv5z = c("294787849", "579575594", "328611004", "517514142","299082033","642504699")
-pv5.primary = c("5813077562", "357224041")
-pv5 = unique(c(pv5x,pv5y,pv5z,pv5.primary))
+z = c("294787849", "579575594", "328611004", "517514142","642504699")
+w = c("5813077562", "357224041")
+pv5 = unique(c(x,y,z,w))
 
 ## The PV5 assembly contains 3 cell body fibre bundles and 3 hemlineages
 
 ### CBFs:
 ### x: PDL05^SFS1 PDL08^pLH2 PDL19^SFS3 PDL23^pLH10 PDL14^pLH6
-PDL05 = neuprint_read_neurons("PDL05")
-PDL05 = PDL05[names(PDL05)%in%lhn.ids]
-PDL23 = neuprint_read_neurons("PDL23")
-PDL23 = PDL23[names(PDL23)%in%lhn.ids]
-PDL22 = neuprint_read_neurons("PDL22")
-PDL22 = PDL22[names(PDL22)%in%lhn.ids]
-PDL19 = neuprint_read_neurons("PDL19")
-PDL19 = PDL19[names(PDL19)%in%lhn.ids]
-pv5.hemi = c(PDL05,PDL23,PDL22,PDL19)
-
-### Re-define some of these CBFs
-sd = setdiff(pv5, names(pv5.hemi))
-ds = setdiff(names(pv5.hemi),pv5)
-pv5 = unique(pv5, names(pv5.hemi))
+# PDL05 = neuprint_read_neurons("PDL05")
+# PDL05 = PDL05[names(PDL05)%in%hemibrain.lhn.bodyids]
+# PDL23 = neuprint_read_neurons("PDL23")
+# PDL23 = PDL23[names(PDL23)%in%hemibrain.lhn.bodyids]
+# PDL22 = neuprint_read_neurons("PDL22")
+# PDL22 = PDL22[names(PDL22)%in%hemibrain.lhn.bodyids]
+# PDL19 = neuprint_read_neurons("PDL19")
+# PDL19 = PDL19[names(PDL19)%in%hemibrain.lhn.bodyids]
+# pv5.hemi = c(PDL05,PDL23,PDL22,PDL19)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(pv5, names(pv5.hemi))
+# ds = setdiff(names(pv5.hemi),pv5)
+# pv5 = unique(pv5, names(pv5.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv5)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -74,14 +76,14 @@ df[wrong1,"cbf.change"] = "PDL23"
 ### Hemilineages:
 #### ItoLee: Dl2_lateral, DL1_dorsal, DL2_medial
 #### Hartenstein: CP3_lateral, CP2_dorsal, CP3_medial
-df[pv5x,"ItoLee_Hemilineage"] = "DL2_lateral"
-df[pv5x,"Hartenstein_Hemilineage"] = "CP3_lateral"
-df[pv5y,"ItoLee_Hemilineage"] = "DL1_dorsal"
-df[pv5y,"Hartenstein_Hemilineage"] = "CP2_dorsal"
-df[pv5z,"ItoLee_Hemilineage"] = "DL2_medial"
-df[pv5z,"Hartenstein_Hemilineage"] = "CP3_medial"
-df[pv5.primary,"ItoLee_Hemilineage"] = "primary"
-df[pv5.primary,"Hartenstein_Hemilineage"] = "primary"
+df[x,"ItoLee_Hemilineage"] = "DL2_lateral"
+df[x,"Hartenstein_Hemilineage"] = "CP3_lateral"
+df[y,"ItoLee_Hemilineage"] = "DL1_dorsal"
+df[y,"Hartenstein_Hemilineage"] = "CP2_dorsal"
+df[z,"ItoLee_Hemilineage"] = "DL2_medial"
+df[z,"Hartenstein_Hemilineage"] = "CP3_medial"
+df[w,"ItoLee_Hemilineage"] = "primary"
+df[w,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -128,7 +130,7 @@ df[a5,"cell.type"] = "PV5a5"
 d1 = c("633684017")
 df[d1,"cell.type"] = "PV5d1"
 
-d2 = c("5813010200", "602999843", "573333575", "329220439", "5813012375") # light = c("Gad1-F-900098", "Gad1-F-300321","L1554#2","MB036B#1", "Gad1-F-100023", "L1554#1", "Cha-F-800045","160121c1", "Cha-F-200082")
+d2 = c("5813010200", "602999843", "573333575", "329220439", "5813012375", "696082279") # light = c("Gad1-F-900098", "Gad1-F-300321","L1554#2","MB036B#1", "Gad1-F-100023", "L1554#1", "Cha-F-800045","160121c1", "Cha-F-200082")
 df[d2,"cell.type"] = "PV5d2"
 
 d3 = c("295805243", "911012735", "573056433", "5813094592", "480931947","5813010180", "296153261") # light = c("Gad1-F-900040")
@@ -310,13 +312,13 @@ df[j1,"cell.type"] = "PV5j1"
 l1 = "5813077562"
 df[l1,"cell.type"] = "PV5l1"
 
-
 ########
 # save #
 ########
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
+df$pnt = names(sort(table(df$pnt),decreasing = TRUE)[1])
 
 # Summarise results
 state_results(df)
@@ -324,12 +326,14 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV5_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="PV5")
+# Process
+if(process){
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
-
+  # Make 2D Images
+  take_pictures(df)
+}
 
 ##########
 # Issues #

@@ -1,7 +1,10 @@
 #######
 # PV5 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
@@ -19,17 +22,18 @@ x = c("511271574",
          "5813020988")
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-table(mx$cellBodyFiber)
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# table(mx$cellBodyFiber)
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% x)
 df$cbf.change = FALSE
+df$class = "CENT"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -83,6 +87,8 @@ df[lhmb1,] = "LHMB1"
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
+df$pnt = ""
+df$published = TRUE
 
 # Summarise results
 state_results(df)
@@ -90,10 +96,13 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/CENT_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="CENT")
+# Process
+if(process){
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+  # Make 2D Images
+  take_pictures(df)
+}
 
 

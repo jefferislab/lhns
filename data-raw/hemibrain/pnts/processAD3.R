@@ -1,49 +1,51 @@
 #######
 # AD3 #
 #######
-source("data-raw/hemibrain/startupHemibrain.R")
+if(!exists("process")){
+  source("data-raw/hemibrain/startupHemibrain.R")
+  process = TRUE
+}
 
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
 x = c("541615964", "421620469", "547457113", "329215976", "604700963",
-            "457516218", "5813040092", "5813010284", "485093313", "634038998",
-            "518847630", "422635203", "487812620", "5813011756", "641291034",
-            "360238069", "361269864", "392299403", "329561615",
-            "360236750", "610938082", "541615964","5813040092",
-            "604705430", "487454622", "549895967", "391958379", "5813035115",
-            "604364004", "5812980272", "456427965", "457516092", "5901208044",
-            "580585427", "360246734", "421310144", "580585323", "360583021",
-            "580244242", "580926422", "329906396", "580585459", "359913782",
-            "456427944", "488550675", "360914617", "361955275", "455746581",
-            "545082184", "604009598", "5813062781",
-            "329210713",  "5813010201", "512635818" , "580926331")
+      "457516218", "5813040092", "5813010284", "485093313", "634038998",
+      "5813011756", "641291034", "360238069", "361269864", "392299403",
+      "329561615", "360236750", "610938082", "541615964", "5813040092",
+      "604705430", "487454622", "549895967", "5813035115", "604364004",
+      "5812980272", "457516092", "5901208044", "580585427", "360246734",
+      "421310144", "580585323", "360583021", "580244242", "580926422",
+      "329906396", "580585459", "359913782", "456427944", "360914617",
+      "361955275", "604009598", "5813062781", "329210713", "5813010201",
+      "512635818", "580926331","488550675", "391958379", "456427965", "360578907")
 ad3 = c(x)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-table(mx$cellBodyFiber)
-
-### CBFs:
-### ADL17^aSIP1
-ADL17 = neuprint_read_neurons("ADL17")
-ADL17 = ADL17[names(ADL17)%in%lhn.ids]
-ad3.hemi = c(ADL17)
-
-### Re-define some of these CBFs
-sd = setdiff(ad3, names(ad3.hemi))
-ds = setdiff(names(ad3.hemi),ad3)
-ad3 = unique(ad3, names(ad3.hemi))
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# table(mx$cellBodyFiber)
+#
+# ### CBFs:
+# ### ADL17^aSIP1
+# ADL17 = neuprint_read_neurons("ADL17")
+# ADL17 = ADL17[names(ADL17)%in%hemibrain.lhn.bodyids]
+# ad3.hemi = c(ADL17)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(ad3, names(ad3.hemi))
+# ds = setdiff(names(ad3.hemi),ad3)
+# ad3 = unique(ad3, names(ad3.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% ad3)
 df$cbf.change = FALSE
+df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -118,30 +120,23 @@ c1 = "512635818"
 df[c1,"cell.type"] = "AD3c1"
 
 #####
-# d #
-#####
-
-d1 = c("455746581", "545082184") # light = "Gad1-F-100124"
-df[d1,"cell.type"] = "AD3d1"
-
-#####
 # e #
 #####
 
-e1 = c("641291034")
-df[e1,"cell.type"] = "AD3e1"
+d1 = c("641291034")
+df[d1,"cell.type"] = "AD3d1"
 
-e2 = "485093313"
-df[e2,"cell.type"] = "AD3e2"
+d2 = "485093313"
+df[d2,"cell.type"] = "AD3d2"
 
-e3 = "5813010284"
-df[e3,"cell.type"] = "AD3e3"
+d3 = "5813010284"
+df[d3,"cell.type"] = "AD3d3"
 
-e4 = "541615964"
-df[e4,"cell.type"] = "AD3e4"
+d4 = "541615964"
+df[d4,"cell.type"] = "AD3d4"
 
-e5 = "5813040092"
-df[e5,"cell.type"] = "AD3e5"
+d5 = "5813040092"
+df[d5,"cell.type"] = "AD3d5"
 
 #####
 # f #
@@ -149,19 +144,6 @@ df[e5,"cell.type"] = "AD3e5"
 
 f1 = c("360238069", "547457113","329210713", "329215976", "421620469", "604700963")
 df[f1,"cell.type"] = "AD3f1"
-
-#####
-# g #
-#####
-
-g1 = c("487812620")
-df[g1,"cell.type"] = "AD3g1"
-
-g2 = c("518847630")
-df[g2,"cell.type"] = "AD3g2"
-
-g3 = "422635203"
-df[g3,"cell.type"] = "AD3g3"
 
 ########
 # save #
@@ -176,14 +158,12 @@ state_results(df)
 # Write .csv
 write.csv(df, file = "data-raw/hemibrain/pnts/csv/AD3_celltyping.csv", row.names = FALSE)
 
-# Make 2D Images
-take_pictures(df, pnt="AD3")
+# Process
+if(process){
+  # Make 2D Images
+  take_pictures(df)
 
-# Update googlesheet
-write_lhns(df = df, column = c("cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+  # Update googlesheet
+  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+}
 
-##########
-# Issues #
-##########
-
-# "483336652"

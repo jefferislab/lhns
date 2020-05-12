@@ -3,8 +3,50 @@
 ########
 source("data-raw/hemibrain/startupHemibrain.R")
 
-# PV1?
-"480258208"
+# Groups
+contra.axons = c("357862532", "456833888", "513102394", "391613951",
+                 "795749639", "549506753", "5813055903","699557275",
+                 "731690040", "915105102", "1319206553", "1320230145",
+                 "549555922", "426152854", "549895478", "548545143", "418888248",
+                 "1256110026", "1318188592", "1193072388", "5813061403",
+                 "1290581653","457179265","457209648","457196444","457179265",
+                 "457520178","519581562","550944712","550944744","5813078595",
+                 "855138330",
+                 "581975262","732289834","732626324","793728582","823390508","824371460")
+ascending.axons = c("1011941063", "1100261649", "1756816808", "1787510154", "763686208",
+                    "512048416","512377806","519236349","519240432",
+                    "583042026","608166388","614059839","637487760","698508565",
+                    "703317507","732319555","854430148","917471250")
+mals = c("607131089", "703033179", "887165687", "610571450", "5812980330",
+         "671600919", "671604934", "637850749", "666818214", "668876945",
+         "732984478", "825061437", "611323175", "609867847", "486073415",
+         "764399773")
+
+
+
+# Just get neuron assigned objects around the LH
+lh.info = neuprintr::neuprint_find_neurons(
+  input_ROIs = "LH(R)",
+  output_ROIs =  'LH(R)',
+  all_segments = FALSE)
+lh.info.neurons = subset(lh.info, neuronStatus!="Traced")$bodyid
+
+# Not in main files
+csvs = list.files("data-raw/hemibrain/pnts/csv/", full.names = TRUE)
+hemibrain.master = data.frame()
+for(csv in csvs){
+  df = read.csv(file = csv)
+  hemibrain.master = rbind(hemibrain.master,df)
+}
+
+# Find missing neurons
+missing = setdiff(hemibrain.lhn.bodyids,hemibrain.master$bodyid)
+missing = setdiff(missing, lh.info.neurons)
+
+# examine these neurons
+missing = neuprint_read_neurons(missing)
+
+
 
 # pV6?
 c5 = c("451646125", "485387561","511267279")
@@ -14,13 +56,7 @@ c5 = c("451646125", "485387561","511267279")
 ### PV4z ###
 ############
 
-j = "480258208" # light = c("Cha-F-500094")
-df[c(j,j.j),"cell.type"] = "CP2_ventral_j"
 
-
-
-# PV1
-"392645639"
 
 # PV2?
 y = c("667857582", "451308547", "359560762", "392645639", "511685955",
