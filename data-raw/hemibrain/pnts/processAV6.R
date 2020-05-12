@@ -18,12 +18,13 @@ x = c("420956527", "5813040095", "5813010494", "486116439", "573329873",
       "574011220", "668144344", "392640591", "579562628", "514396940",
       "5813077898", "5813129316", "297921527", "329211098", "360578457",
       "454697392", "514375643", "5813087438", "391631218", "360578625",
-      "572988605", "514713432", "764408961", "5813040093",
+      "572988605", "514713432", "764408961", "5813040093", "5813047255",
       "483021600", "702674134", "696795331", "698180486", "572988717",
       "425803370", "516425902", "451987038", "543446584", "512416525",
       "605153844", "605801224", "672960748", "453009665")
 y = "390275105"
-av6 = c(x,y)
+z = c("421646999", "823395525")
+av6 = c(x,y, z)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -66,6 +67,8 @@ df[x,"ItoLee_Hemilineage"] = "LHa1_medial"
 df[x,"Hartenstein_Hemilineage"] = "BLAd1_medial"
 df[y,"ItoLee_Hemilineage"] = "SLPal3_dorsal"
 df[y,"Hartenstein_Hemilineage"] = "BLAd3_dorsal"
+df[y,"ItoLee_Hemilineage"] = "primary"
+df[y,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -78,6 +81,12 @@ df[y,"Hartenstein_Hemilineage"] = "BLAd3_dorsal"
 ############
 ### AV6w ###
 ############
+
+h1 = "421646999"
+df[h1,"cell.type"] = "AV6h1"
+
+i1 = "823395525"
+df[i1,"cell.type"] = "AV6i1"
 
 #####
 # d #
@@ -125,6 +134,9 @@ df[a8,"cell.type"] = "AV6a8"
 
 a9 = "453009665"
 df[a9,"cell.type"] = "AV6a9"
+
+a10 = "5813047255"
+df[a10,"cell.type"] = "AV6a10"
 
 #####
 # b #

@@ -25,5 +25,18 @@ source("data-raw/hemibrain/pnts/processPV4.R")
 source("data-raw/hemibrain/pnts/processPV5.R")
 source("data-raw/hemibrain/pnts/processPV6.R")
 source("data-raw/hemibrain/pnts/processPV7.R")
+source("data-raw/hemibrain/pnts/processCENT.R")
+source("data-raw/hemibrain/pnts/processWEDPNs.R")
 
 # Build master
+csvs = list.files("data-raw/hemibrain/pnts/csv/", full.names = TRUE)
+hemibrain.master = data.frame()
+for(csv in csvs){
+  df = read.csv(file = csv)
+  hemibrain.master = rbind(hemibrain.master,df)
+}
+
+
+
+
+

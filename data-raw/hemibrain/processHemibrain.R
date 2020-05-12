@@ -14,9 +14,9 @@ upn.syns = hemibrainr::hemibrain_extract_connections(upns)
 lh.info = neuprintr::neuprint_find_neurons(
   input_ROIs = "LH(R)",
   output_ROIs =  'LH(R)',
-  all_segments = FALSE )
+  all_segments = FALSE)
 lh.ids = intersect(lh.info$bodyid,upn.syns$partner)
-lh.ids = setdiff(lh.info$bodyid,c(hemibrainr::upn.ids,hemibrainr::mpn.ids,hemibrainr::dan.ids,hemibrainr::mbon.ids))
+lh.ids = setdiff(lh.info$bodyid,c(hemibrainr::upn.ids,hemibrainr::mpn.ids,hemibrainr::dan.ids,hemibrainr::mbon.ids,hemibrainr::pn.ids))
 lh.roi.info = as.data.frame(neuprint_get_roiInfo(lh.ids))
 lh.roi.info = subset(lh.roi.info, `LH(R).pre` >=10|`LH(R).post`>=10|`LH(R).downstream`>=10|`LH(R).upstream`>=10)
 lh.ids = lh.roi.info$bodyid

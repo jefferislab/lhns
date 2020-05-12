@@ -17,41 +17,42 @@ pd3 = x = c("418892691", "510623836", "5813011024", "356468264", "418888552",
             "356131764", "480918798", "511267220", "386825636", "386825792",
             "417186656", "356467849", "479917037", "480581806", "386825553",
             "418865948", "390223560", "294432626", "358865451", "356486199",
-            "326137566", "5812980270", "295443724", "355816896")
+            "326137566", "5812980270", "295443724", "355816896", "5812980250",
+            "356136008", "417190793")
 pd4 = y = c("5813012782", "607152422", "573354832", "604429310", "542656552",
             "574028395", "542297875", "572650888", "573346248", "574351760",
             "5813057881", "359891881", "5813046968", "547129228", "359214479",
-            "510317265", "421641859")
+            "510317265", "421641859", "543053986")
 pd3_pd4 = c(x,y)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-y.match = unique(hemibrain_lhns[y,"FAFB.match"])
-y.match = y.match[!is.na(y.match)]
-y.match = read.neurons.catmaid.meta(y.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-my = neuprint_get_meta(y)
-table(mx$cellBodyFiber)
-table(my$cellBodyFiber)
-
-### CBFs:
-### PDL13^pSLP2 PDL07^dLH PDL11^pSLP1 PDM30^SIPT3
-PDL13 = neuprint_read_neurons("PDL13")
-PDL13 = PDL13[names(PDL13)%in%hemibrain.lhn.bodyids]
-PDL11 = neuprint_read_neurons("PDL11")
-PDL11 = PDL11[names(PDL11)%in%hemibrain.lhn.bodyids]
-PDM30 = neuprint_read_neurons("PDM30")
-PDM30 = PDM30[names(PDM30)%in%hemibrain.lhn.bodyids]
-pd3_pd4.hemi = union(PDL13,PDL11,PDM30)
-
-### Re-define some of these CBFs
-sd = setdiff(pd3_pd4, names(pd3_pd4.hemi))
-ds = setdiff(names(pd3_pd4.hemi),pd3_pd4)
-pd3_pd4 = unique(pd3_pd4, names(pd3_pd4.hemi))
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+# y.match = unique(hemibrain_lhns[y,"FAFB.match"])
+# y.match = y.match[!is.na(y.match)]
+# y.match = read.neurons.catmaid.meta(y.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# my = neuprint_get_meta(y)
+# table(mx$cellBodyFiber)
+# table(my$cellBodyFiber)
+#
+# ### CBFs:
+# ### PDL13^pSLP2 PDL07^dLH PDL11^pSLP1 PDM30^SIPT3
+# PDL13 = neuprint_read_neurons("PDL13")
+# PDL13 = PDL13[names(PDL13)%in%hemibrain.lhn.bodyids]
+# PDL11 = neuprint_read_neurons("PDL11")
+# PDL11 = PDL11[names(PDL11)%in%hemibrain.lhn.bodyids]
+# PDM30 = neuprint_read_neurons("PDM30")
+# PDM30 = PDM30[names(PDM30)%in%hemibrain.lhn.bodyids]
+# pd3_pd4.hemi = union(PDL13,PDL11,PDM30)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(pd3_pd4, names(pd3_pd4.hemi))
+# ds = setdiff(names(pd3_pd4.hemi),pd3_pd4)
+# pd3_pd4 = unique(pd3_pd4, names(pd3_pd4.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pd3_pd4)
@@ -59,10 +60,6 @@ df$cbf.change = FALSE
 df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
-
-### Wrong CBF
-wrong1 = c("")
-df[wrong1,"cbf.change"] = ""
 
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "LHd2_dorsal"
@@ -83,18 +80,26 @@ df[y,"Hartenstein_Hemilineage"] = "DPLm1"
 ############
 
 #####
-# g #
+# e #
 #####
 
-b = c("356468264", "418888552", "418892691", "510623836")
-df[b,"cell.type"] = "PD3b"
+e1 = c("355816896", "5812980250", "356136008", "417190793")
+df[e1,"cell.type"] = "PD3e1"
+
+
+#####
+# d #
+#####
+
+d1 = c("356468264", "418888552", "418892691", "510623836")
+df[d1,"cell.type"] = "PD3d1"
 
 #####
 # c #
 #####
 
 c1= c("5813011024") # light = c("Cha-F-100103")
-df[c1,"cell.type"] = "PD3d1"
+df[c1,"cell.type"] = "PD3c1"
 
 #####
 # b #
@@ -129,6 +134,8 @@ df[a4,"cell.type"] = "PD3a4"
 a5 = c("758178605", "417186612", "510934715") # light = c("L194#1", "L1749#10", "Cha-F-500011")
 df[a5,"cell.type"] = "PD3a5"
 
+
+
 ############
 ### PD4 ####
 ############
@@ -137,7 +144,7 @@ df[a5,"cell.type"] = "PD3a5"
 # a #
 #####
 
-b1 = c("5813012782", "607152422")
+b1 = c("5813012782", "607152422", "543053986", "604429310")
 df[b1,"cell.type"] = "PD4b1"
 
 b1 = "604429310"

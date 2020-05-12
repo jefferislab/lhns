@@ -15,26 +15,26 @@ x = c("1036503560", "913681721", "792313813", "793677224", "5813056930",
 pv3 = c(x)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-table(mx$cellBodyFiber)
-
-### CBFs:
-### PVL10^PLBDL2 AVL04^lVLPT1
-PVL10 = neuprint_read_neurons("PVL10")
-PVL10 = PVL10[names(PVL10)%in%hemibrain.lhn.bodyids]
-AVL04 = neuprint_read_neurons("AVL04")
-AVL04 = AVL04[names(AVL04)%in%hemibrain.lhn.bodyids]
-pv3.hemi = c(PVL10,AVL04)
-
-### Re-define some of these CBFs
-sd = setdiff(pv3, names(pv3.hemi))
-ds = setdiff(names(pv3.hemi),pv3)
-pv3 = unique(pv3, names(pv3.hemi))
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# table(mx$cellBodyFiber)
+#
+# ### CBFs:
+# ### PVL10^PLBDL2 AVL04^lVLPT1
+# PVL10 = neuprint_read_neurons("PVL10")
+# PVL10 = PVL10[names(PVL10)%in%hemibrain.lhn.bodyids]
+# AVL04 = neuprint_read_neurons("AVL04")
+# AVL04 = AVL04[names(AVL04)%in%hemibrain.lhn.bodyids]
+# pv3.hemi = c(PVL10,AVL04)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(pv3, names(pv3.hemi))
+# ds = setdiff(names(pv3.hemi),pv3)
+# pv3 = unique(pv3, names(pv3.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv3)
@@ -42,10 +42,6 @@ df$cbf.change = FALSE
 df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
-
-### Wrong CBF
-wrong1 = c("")
-df[wrong1,"cbf.change"] = ""
 
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "VPNp1_posterior"

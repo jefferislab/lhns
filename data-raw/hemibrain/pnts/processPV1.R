@@ -9,38 +9,30 @@ if(!exists("process")){
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
-x = c("542315097", "5812981753", "5813049105", "5813071348",
-      "1006146837", "294436967",  "5813047655", "5813078065")
-y = c("1163384537", "1225761499", "1904117032", "1225114259",
-      "2343038967")
-pv1 = c(x,y)
+x = c("542315097", "5812981753", "5813049105", "5813071348", "1006146837")
+pv1 = c(x)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-y.match = unique(hemibrain_lhns[y,"FAFB.match"])
-y.match = y.match[!is.na(y.match)]
-y.match = read.neurons.catmaid.meta(y.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-my = neuprint_get_meta(y)
-table(mx$cellBodyFiber)
-table(my$cellBodyFiber)
-
-### CBFs:
-### PVL17^PVF2 PVL14^PLPF6 PVL02^PVF1
-PVL17 = neuprint_read_neurons("PVL17")
-PVL17 = PVL17[names(PVL17)%in%hemibrain.lhn.bodyids]
-PVL14 = neuprint_read_neurons("PVL14")
-PVL14 = PVL14[names(PVL14)%in%hemibrain.lhn.bodyids]
-pv1.hemi = c(PVL17,PVL14)
-
-### Re-define some of these CBFs
-sd = setdiff(pv1, names(pv1.hemi))
-ds = setdiff(names(pv1.hemi),pv1)
-pv1 = unique(pv1, names(pv1.hemi))
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# table(mx$cellBodyFiber)
+#
+# ### CBFs:
+# ### PVL17^PVF2 PVL14^PLPF6 PVL02^PVF1
+# PVL17 = neuprint_read_neurons("PVL17")
+# PVL17 = PVL17[names(PVL17)%in%hemibrain.lhn.bodyids]
+# PVL14 = neuprint_read_neurons("PVL14")
+# PVL14 = PVL14[names(PVL14)%in%hemibrain.lhn.bodyids]
+# pv1.hemi = c(PVL17,PVL14)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(pv1, names(pv1.hemi))
+# ds = setdiff(names(pv1.hemi),pv1)
+# pv1 = unique(pv1, names(pv1.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv1)
@@ -49,15 +41,9 @@ df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
-### Wrong CBF
-wrong1 = c("")
-df[wrong1,"cbf.change"] = ""
-
 ### Hemilineages:
-df[x,"ItoLee_Hemilineage"] = ""
-df[x,"Hartenstein_Hemilineage"] = ""
-df[y,"ItoLee_Hemilineage"] = ""
-df[y,"Hartenstein_Hemilineage"] = ""
+df[x,"ItoLee_Hemilineage"] = "unknown"
+df[x,"Hartenstein_Hemilineage"] = "unknown"
 
 ##############################
 # Make and review cell types #
@@ -99,6 +85,7 @@ df[d1,"cell.type"] = "PV1d1"
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
+df$pnt = names(sort(table(df$pnt),decreasing = TRUE)[1])
 
 # Summarise results
 state_results(df)

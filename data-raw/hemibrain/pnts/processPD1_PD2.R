@@ -18,37 +18,42 @@ pd2 = y = c("704798196", "263674097", "675800901", "676138357", "486850582",
             "329254539", "356429209", "5813089504", "509928512", "548872750",
             "5813129453", "571666400", "640963556", "573337611", "571666434",
             "542634516", "573329304", "760268555", "448869118", "5813014640",
-            "699178922", "675800901", "676138357", "704798196", "695500178")
-pd1_pd2 = c(x,y)
+            "699178922", "675800901", "676138357", "704798196", "695500178",
+            "5813040707", "5813019487", "5813009445")
+z = "5813049920"
+pd1_pd2 = c(x,y,z)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-y.match = unique(hemibrain_lhns[y,"FAFB.match"])
-y.match = y.match[!is.na(y.match)]
-y.match = read.neurons.catmaid.meta(y.match)
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+# y.match = unique(hemibrain_lhns[y,"FAFB.match"])
+# y.match = y.match[!is.na(y.match)]
+# y.match = read.neurons.catmaid.meta(y.match)
 
 ### Meta info
-mx = neuprint_get_meta(x)
-my = neuprint_get_meta(y)
-table(mx$cellBodyFiber)
-table(my$cellBodyFiber)
-
-### CBFs:
-### PDL06^aSLPF1 PDL07^dLH PDL15^aSLPF3
-PDL06 = neuprint_read_neurons("PDL06")
-PDL06 = PDL06[names(PDL06)%in%hemibrain.lhn.bodyids]
-PDL07 = neuprint_read_neurons("PDL07")
-PDL07 = PDL07[names(PDL07)%in%hemibrain.lhn.bodyids]
-PDL15 = neuprint_read_neurons("PDL15")
-PDL15 = PDL15[names(PDL15)%in%hemibrain.lhn.bodyids]
-pd2.hemi = union(PDL06,PDL07,PDL15)
+# mx = neuprint_get_meta(x)
+# my = neuprint_get_meta(y)
+# table(mx$cellBodyFiber)
+# table(my$cellBodyFiber)
+#
+# ### CBFs:
+# ### PDL06^aSLPF1 PDL07^dLH PDL15^aSLPF3
+# AVL18 = neuprint_read_neurons("AVL18")
+# AVL18 = AVL18[names(AVL18)%in%hemibrain.lhn.bodyids]
+# AVL18 = neuprint_read_neurons("AVL18")
+# PDL06 = neuprint_read_neurons("PDL06")
+# PDL06 = PDL06[names(PDL06)%in%hemibrain.lhn.bodyids]
+# PDL07 = neuprint_read_neurons("PDL07")
+# PDL07 = PDL07[names(PDL07)%in%hemibrain.lhn.bodyids]
+# PDL15 = neuprint_read_neurons("PDL15")
+# PDL15 = PDL15[names(PDL15)%in%hemibrain.lhn.bodyids]
+# pd2.hemi = union(PDL06,PDL07,PDL15,AVL18)
 
 ### Re-define some of these CBFs
-sd = setdiff(pd1_pd2, names(pd2.hemi))
-ds = setdiff(names(pd2.hemi),pd1_pd2)
-pd1_pd2 = unique(pd1_pd2, names(pd2.hemi))
+# sd = setdiff(pd1_pd2, names(pd2.hemi))
+# ds = setdiff(names(pd2.hemi),pd1_pd2)
+# pd1_pd2 = unique(pd1_pd2, names(pd2.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pd1_pd2)
@@ -57,15 +62,13 @@ df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
-### Wrong CBF
-wrong1 = c("")
-df[wrong1,"cbf.change"] = ""
-
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "VLPd&p1_posterior "
 df[x,"Hartenstein_Hemilineage"] = "DPLl2_posterior"
 df[y,"ItoLee_Hemilineage"] = "SLPad1_posterior"
 df[y,"Hartenstein_Hemilineage"] = "DPLl3_posterior"
+df[z,"ItoLee_Hemilineage"] = "primary"
+df[z,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -87,10 +90,16 @@ a2 = "389951232"
 df[a2,"cell.type"] = "PD1a2"
 
 b1 = c("5813035117", "325460206", "325458991", "5813009749")
-df[f,"cell.type"] = "PD1b1"
+df[b1,"cell.type"] = "PD1b1"
 
 c1 = "5813047774"
 df[c1,"cell.type"] = "PD1c1"
+
+d1 = c("359568460", "5813043073", "420977956")
+df[d1,"cell.type"] = "PD1d1"
+
+e1 = "5813049920"
+df[e1,"cell.type"] = "PD1e1"
 
 ############
 ### PD2y ###
@@ -133,8 +142,6 @@ df[a8,"cell.type"] = "PD2a8"
 a9 = c("760268555")
 df[a9,"cell.type"] = "PD2a9"
 
-
-
 #####
 # b #
 #####
@@ -143,6 +150,9 @@ b1 = c("548872750", "509928512", "5813089504", "571666400")
 # light = c("120926c0","37G11#5","Cha-F-000421","Cha-F-800096","121015c0","121016c0",
 #         "120914c2","131009c4","L989#12", "L989#8","L989#2", "JJ11", "JJ14", "JJ88")
 df[b1,"cell.type"] = "PD2b1"
+
+c1 = "356429209"
+df[c1,"cell.type"] = "PD2b1"
 
 ########
 # save #

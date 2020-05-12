@@ -27,45 +27,45 @@ x = c("5813010495", "356818664", "449564352", "511626286", "480590606",
       "5813049920", "696829800", "294782488", "418875451")
 y = c("787227302", "725498630", "694471913", "695167675", "695508439",
       "294760837", "5813010541", "356499529", "326164634", "881696475",
-      "635424442", "5813011395", "386838513", "5813022453", "481946285"
-)
+      "635424442", "5813011395", "386838513", "5813022453", "481946285")
 z = c("5813064406", "5813016450", "758239379", "5813012048", "634090169",
-  "604070461", "695798021")
-pv6 = c(x,y,z)
+      "604070461", "695798021")
+w = "515385637"
+pv6 = c(x,y,z,w)
 
 ### Get FAFB assigned hemilineage information
-x.match = unique(hemibrain_lhns[x,"FAFB.match"])
-x.match = x.match[!is.na(x.match)]
-x.match = read.neurons.catmaid.meta(x.match)
-y.match = unique(hemibrain_lhns[y,"FAFB.match"])
-y.match = y.match[!is.na(y.match)]
-y.match = read.neurons.catmaid.meta(y.match)
-z.match = unique(hemibrain_lhns[z,"FAFB.match"])
-z.match = z.match[!is.na(z.match)]
-z.match = read.neurons.catmaid.meta(z.match)
-
-### Meta info
-mx = neuprint_get_meta(x)
-my = neuprint_get_meta(y)
-mz = neuprint_get_meta(z)
-table(mx$cellBodyFiber)
-table(my$cellBodyFiber)
-table(mz$cellBodyFiber)
-
-### CBFs:
-### PDL07^dLH PDL10^pLH3 PDL14^pLH6 PDL20^pLH7
-PDL10 = neuprint_read_neurons("PDL10")
-PDL10 = PDL10[names(PDL10)%in%hemibrain.lhn.bodyids]
-PDL14 = neuprint_read_neurons("PDL14")
-PDL14 = PDL14[names(PDL14)%in%hemibrain.lhn.bodyids]
-PDL20 = neuprint_read_neurons("PDL20")
-PDL20 = PDL20[names(PDL20)%in%hemibrain.lhn.bodyids]
-pv6.hemi = union(PDL10,PDL20,PDL20)
-
-### Re-define some of these CBFs
-sd = setdiff(pv6, names(pv6.hemi))
-ds = setdiff(names(pv6.hemi),pv6)
-pv6 = unique(pv6, names(pv6.hemi))
+# x.match = unique(hemibrain_lhns[x,"FAFB.match"])
+# x.match = x.match[!is.na(x.match)]
+# x.match = read.neurons.catmaid.meta(x.match)
+# y.match = unique(hemibrain_lhns[y,"FAFB.match"])
+# y.match = y.match[!is.na(y.match)]
+# y.match = read.neurons.catmaid.meta(y.match)
+# z.match = unique(hemibrain_lhns[z,"FAFB.match"])
+# z.match = z.match[!is.na(z.match)]
+# z.match = read.neurons.catmaid.meta(z.match)
+#
+# ### Meta info
+# mx = neuprint_get_meta(x)
+# my = neuprint_get_meta(y)
+# mz = neuprint_get_meta(z)
+# table(mx$cellBodyFiber)
+# table(my$cellBodyFiber)
+# table(mz$cellBodyFiber)
+#
+# ### CBFs:
+# ### PDL07^dLH PDL10^pLH3 PDL14^pLH6 PDL20^pLH7
+# PDL10 = neuprint_read_neurons("PDL10")
+# PDL10 = PDL10[names(PDL10)%in%hemibrain.lhn.bodyids]
+# PDL14 = neuprint_read_neurons("PDL14")
+# PDL14 = PDL14[names(PDL14)%in%hemibrain.lhn.bodyids]
+# PDL20 = neuprint_read_neurons("PDL20")
+# PDL20 = PDL20[names(PDL20)%in%hemibrain.lhn.bodyids]
+# pv6.hemi = union(PDL10,PDL20,PDL20)
+#
+# ### Re-define some of these CBFs
+# sd = setdiff(pv6, names(pv6.hemi))
+# ds = setdiff(names(pv6.hemi),pv6)
+# pv6 = unique(pv6, names(pv6.hemi))
 
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% pv6)
@@ -74,10 +74,6 @@ df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
-### Wrong CBF
-wrong1 = c("")
-df[wrong1,"cbf.change"] = ""
-
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "LHp2_medial"
 df[x,"Hartenstein_Hemilineage"] = "DPLp1_medial"
@@ -85,7 +81,8 @@ df[z,"ItoLee_Hemilineage"] = "unknown"
 df[z,"Hartenstein_Hemilineage"] = "BLP3_ventral"
 df[y,"ItoLee_Hemilineage"] = "LHp2_medial"
 df[y,"Hartenstein_Hemilineage"] = "DPLp1_medial"
-
+df[w,"ItoLee_Hemilineage"] = "primary"
+df[w,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -125,7 +122,7 @@ df[j1,"cell.type"] = "PV6j1"
 #####
 
 h1= c("418224293", "696829800", "696830498", "449910481", "387180498","5813010690")
-df[j,"cell.type"] = "PV6h1"
+df[h1,"cell.type"] = "PV6h1"
 
 h2 = c("449568848", "418552044", "5813010948")
 df[h2,"cell.type"] = "PV6h2"
@@ -254,6 +251,13 @@ df[l1,"cell.type"] = "PV6l1"
 
 l2 = "634090169"
 df[l2,"cell.type"] = "PV6l2"
+
+#####
+# m #
+#####
+
+m1 = "515385637"
+df[m1,"cell.type"] = "PV6m1"
 
 ########
 # save #

@@ -1,60 +1,57 @@
-"bodyid","type","cbf","m.type","c.type","cbf.change","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change"
-"5812980658","LH066a","PDL06","PDL06n","PDL06ln_pct","FALSE","PD2a5a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"675800901","LH066b","PDL06","PDL06n","PDL06m_pct","FALSE","PD2a8a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"676138357","LH066b","PDL06","PDL06n","PDL06m_pct","FALSE","PD2a8a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"704798196","LH066b","PDL06","PDL06n","PDL06m_pct","FALSE","PD2a8a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"704078253","LH066c","PDL06","PDL06n","PDL06n_a_pct","FALSE","PD2a9a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"822358833","LH066c","PDL06","PDL06n","PDL06n_a_pct","FALSE","PD2a9a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"947859021","LH066c","PDL06","PDL06n","PDL06n_a_pct","FALSE","PD2a9a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"947862945","LH066c","PDL06","PDL06n","PDL06n_a_pct","FALSE","PD2a9a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"486850582","LH066e","PDL06","PDL06n","PDL06on_pct","FALSE","PD2a3a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"735772860","LH066e","PDL06","PDL06n","PDL06on_pct","FALSE","PD2a3a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"5813099667","LH066e","PDL06","PDL06n","PDL06on_pct","FALSE","PD2a3a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"263674097","LH066f","PDL06","PDL06n","PDL06oq_pct","FALSE","PD2a5b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"264014957","LH066f","PDL06","PDL06n","PDL06oq_pct","FALSE","PD2a5b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"542634516","LH085a","PDL15","PDL15d","PDL15j_pct","FALSE","PD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"571666434","LH085a","PDL15","PDL15d","PDL15j_pct","FALSE","PD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"573329304","LH085a","PDL15","PDL15d","PDL15j_pct","FALSE","PD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"573337611","LH085a","PDL15","PDL15d","PDL15j_pct","FALSE","PD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"640963556","LH085a","PDL15","PDL15d","PDL15j_pct","FALSE","PD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"571666400","LH085b","PDL15","PDL15d","PDL15oi_pct","FALSE","PD2b1a","SLPad1_posterior","DPLl3_posterior","11547665","good","L989#9","good",TRUE,FALSE
-"448869118","LH086a","PDL15","PDL15e","PDL15k_pct","FALSE",NA,"SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"699178922","LH086a","PDL15","PDL15e","PDL15k_pct","FALSE",NA,"SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"5813014640","LH086a","PDL15","PDL15e","PDL15k_pct","FALSE",NA,"SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"5813129453","LH086a","PDL15","PDL15e","PDL15k_pct","FALSE",NA,"SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"760268555","LH086b","PDL15","PDL15e","PDL15x_pct","FALSE","PD2a7","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"329254539","SIP021a","PDL06","PDL06e","PDL06os_pct","FALSE","PD2a6a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"391328156","SIP021a","PDL06","PDL06e","PDL06os_pct","FALSE","PD2a6a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"5813039932","SIP021a","PDL06","PDL06e","PDL06os_pct","FALSE","PD2a6a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"509928512","SIP032a","PDL15","PDL15c","PDL15i_pct","FALSE","PD2b1b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"548872750","SIP032a","PDL15","PDL15c","PDL15i_pct","FALSE","PD2b1b","SLPad1_posterior","DPLl3_posterior","3345012","good","37G11#5","good",TRUE,FALSE
-"5813089504","SIP032a","PDL15","PDL15c","PDL15i_pct","FALSE","PD2b1b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE
-"356429209","SMP156b","PDL15","PDL15j","PDL15oc_pct","FALSE",NA,"SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE
-"604398262","PDL08om_pct","PDL08",NA,NA,"PDL16^pLH11",NA,NA,NA,"6203604","good","none","none",FALSE,FALSE
-"5813035117","PDL07n_pct","PDL07",NA,NA,"FALSE",NA,"VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"325458991","PDL07n_pct","PDL07",NA,NA,"FALSE",NA,"VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"5813043073","PDL07f_pct","PDL07",NA,NA,"FALSE",NA,"VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"359568460","PDL07f_pct","PDL07",NA,NA,"FALSE",NA,"VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"5813009749","PDL07n_pct","PDL07",NA,NA,"FALSE",NA,"VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"330259272","PDL07j_pct","PDL07",NA,NA,"FALSE","PD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE
-"297520036","PDL07j_pct","PDL07",NA,NA,"FALSE","PD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE
-"420977956","PDL07f_pct","PDL07",NA,NA,"FALSE",NA,"VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"5813009497","PDL07j_pct","PDL07",NA,NA,"FALSE","PD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE
-"267223027","PDL07j_pct","PDL07",NA,NA,"FALSE","PD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE
-"297524212","PDL07j_pct","PDL07",NA,NA,"FALSE","PD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE
-"325460206","PDL07n_pct","PDL07",NA,NA,"FALSE",NA,"VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"5813047774","PDL06ob_pct","PDL06",NA,NA,"FALSE","PD1c1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE
-"389951232","PDL07ola_pct","PDL07",NA,NA,"FALSE","PD2a2",NA,NA,"none","none","none","none",TRUE,FALSE
-"387809633","PDL15p_pct","PDL15",NA,NA,"FALSE","PD1b1c",NA,NA,"none","none","none","none",FALSE,FALSE
-"390641835","PDL15p_pct","PDL15",NA,NA,"FALSE","PD1b1c",NA,NA,"none","none","none","none",FALSE,FALSE
-"449209892","PDL15p_pct","PDL15",NA,NA,"FALSE","PD1b1c",NA,NA,"none","none","none","none",FALSE,FALSE
-"5813009670","PDL06oj_pct","PDL06",NA,NA,"FALSE","PD1b1a",NA,NA,"none","none","none","none",FALSE,FALSE
-"418511983","PDL15m_pct","PDL15",NA,NA,"FALSE","PD1b1b",NA,NA,"none","none","none","none",FALSE,FALSE
-"579911580","PDL15m_pct","PDL15",NA,NA,"FALSE","PD1b1b",NA,NA,"none","none","none","none",FALSE,FALSE
-"695500178","PDL06m_pct","PDL06",NA,NA,"FALSE","PD2a8b",NA,NA,"none","none","none","none",FALSE,FALSE
-"5813021728","PDL15t_pct","PDL15",NA,NA,"FALSE","PD2a4a",NA,NA,"none","none","none","none",TRUE,FALSE
-"640963092","PDL15t_pct","PDL15",NA,NA,"FALSE","PD2a4a",NA,NA,"none","none","none","none",TRUE,FALSE
-"449205588","PDL15u_a_pct","PDL15",NA,NA,"FALSE","PD2a4b",NA,NA,"none","none","none","none",TRUE,FALSE
-"768192947","PDL15u_a_pct","PDL15",NA,NA,"FALSE","PD2a4b",NA,NA,"none","none","none","none",TRUE,FALSE
-"417834021","PDL15u_b_pct","PDL15",NA,NA,"FALSE","PD2a4c",NA,NA,"none","none","none","none",TRUE,FALSE
-"449205611","PDL15u_b_pct","PDL15",NA,NA,"FALSE","PD2a4c",NA,NA,"none","none","none","none",TRUE,FALSE
+"bodyid","type","cbf","m.type","c.type","cbf.change","class","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change","pnt"
+"5813047774","CL077a","PDL06","PDL06z","PDL06ob_pct",FALSE,"LHN","LHPD1c1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"5812980658","LH066a","PDL06","PDL06n","PDL06ln_pct",FALSE,"LHN","LHPD2a5a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"675800901","LH066b","PDL06","PDL06n","PDL06m_pct",FALSE,"LHN","LHPD2a7","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"676138357","LH066b","PDL06","PDL06n","PDL06m_pct",FALSE,"LHN","LHPD2a7","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"695500178","LH066b","PDL06","PDL06n","PDL06m_pct",FALSE,"LHN","LHPD2a7","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"704798196","LH066b","PDL06","PDL06n","PDL06m_pct",FALSE,"LHN","LHPD2a7","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"704078253","LH066c","PDL06","PDL06n","PDL06n_a_pct",FALSE,"LHN","LHPD2a6","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"822358833","LH066c","PDL06","PDL06n","PDL06n_a_pct",FALSE,"LHN","LHPD2a6","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"947859021","LH066c","PDL06","PDL06n","PDL06n_a_pct",FALSE,"LHN","LHPD2a6","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"947862945","LH066c","PDL06","PDL06n","PDL06n_a_pct",FALSE,"LHN","LHPD2a6","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"486850582","LH066e","PDL06","PDL06n","PDL06on_pct",FALSE,"LHN","LHPD2a3","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"735772860","LH066e","PDL06","PDL06n","PDL06on_pct",FALSE,"LHN","LHPD2a3","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813099667","LH066e","PDL06","PDL06n","PDL06on_pct",FALSE,"LHN","LHPD2a3","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"263674097","LH066f","PDL06","PDL06n","PDL06oq_pct",FALSE,"LHN","LHPD2a5b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"264014957","LH066f","PDL06","PDL06n","PDL06oq_pct",FALSE,"LHN","LHPD2a5b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813049920","LH067a","PDL07","PDL07n","PDL07d_pct",FALSE,"LHN","LHPD1e1","primary","primary","1868440","good","Gad1-F-500258","good",FALSE,FALSE,"LHPD1"
+"542634516","LH085a","PDL15","PDL15d","PDL15j_pct",FALSE,"LHN","LHPD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"571666434","LH085a","PDL15","PDL15d","PDL15j_pct",FALSE,"LHN","LHPD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"573329304","LH085a","PDL15","PDL15d","PDL15j_pct",FALSE,"LHN","LHPD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"573337611","LH085a","PDL15","PDL15d","PDL15j_pct",FALSE,"LHN","LHPD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"640963556","LH085a","PDL15","PDL15d","PDL15j_pct",FALSE,"LHN","LHPD2a1a","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"571666400","LH085b","PDL15","PDL15d","PDL15oi_pct",FALSE,"LHN","LHPD2b1a","SLPad1_posterior","DPLl3_posterior","11547665","good","L989#9","good",TRUE,FALSE,"LHPD2"
+"448869118","LH086a","PDL15","PDL15e","PDL15k_pct",FALSE,"LHN","LHPD2a2","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"699178922","LH086a","PDL15","PDL15e","PDL15k_pct",FALSE,"LHN","LHPD2a2","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813014640","LH086a","PDL15","PDL15e","PDL15k_pct",FALSE,"LHN","LHPD2a2","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813129453","LH086a","PDL15","PDL15e","PDL15k_pct",FALSE,"LHN","LHPD2a2","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"760268555","LH086b","PDL15","PDL15e","PDL15x_pct",FALSE,"LHN","LHPD2a9","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"329254539","SIP021a","PDL06","PDL06e","PDL06os_pct",FALSE,"LHN","LHPD2a8","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"391328156","SIP021a","PDL06","PDL06e","PDL06os_pct",FALSE,"LHN","LHPD2a8","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"5813039932","SIP021a","PDL06","PDL06e","PDL06os_pct",FALSE,"LHN","LHPD2a8","SLPad1_posterior","DPLl3_posterior","none","none","none","none",FALSE,FALSE,"LHPD2"
+"509928512","SIP032a","PDL15","PDL15c","PDL15i_pct",FALSE,"LHN","LHPD2b1b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"548872750","SIP032a","PDL15","PDL15c","PDL15i_pct",FALSE,"LHN","LHPD2b1b","SLPad1_posterior","DPLl3_posterior","3345012","good","37G11#5","good",TRUE,FALSE,"LHPD2"
+"5813089504","SIP032a","PDL15","PDL15c","PDL15i_pct",FALSE,"LHN","LHPD2b1b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"325458991","SLP162a","PDL07","PDL07g","PDL07n_pct",FALSE,"LHN","LHPD1b1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"325460206","SLP162a","PDL07","PDL07g","PDL07n_pct",FALSE,"LHN","LHPD1b1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"5813009749","SLP162a","PDL07","PDL07g","PDL07n_pct",FALSE,"LHN","LHPD1b1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"5813035117","SLP162a","PDL07","PDL07g","PDL07n_pct",FALSE,"LHN","LHPD1b1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"359568460","SLP163a","PDL07","PDL07e","PDL07f_pct",FALSE,"LHN","LHPD1d1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"420977956","SLP163a","PDL07","PDL07e","PDL07f_pct",FALSE,"LHN","LHPD1d1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"5813043073","SLP163a","PDL07","PDL07e","PDL07f_pct",FALSE,"LHN","LHPD1d1","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",FALSE,FALSE,"LHPD1"
+"267223027","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"297520036","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"297524212","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"330259272","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813009445","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813009497","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","VLPd&p1_posterior ","DPLl2_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813019487","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"5813040707","SLP164a","PDL07","PDL07f","PDL07j_pct",FALSE,"LHN","LHPD2a1b","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"356429209","SMP156b","PDL15","PDL15j","PDL15oc_pct",FALSE,"LHN","LHPD2b1c","SLPad1_posterior","DPLl3_posterior","none","none","none","none",TRUE,FALSE,"LHPD2"
+"389951232","PDL07ola_pct","PDL07",NA,NA,FALSE,NA,"LHPD1a2",NA,NA,"none","none","none","none",FALSE,FALSE,"LHPD1"
+"5813021728","PDL15t_pct","PDL15",NA,NA,FALSE,NA,"LHPD2a4a",NA,NA,"none","none","none","none",TRUE,FALSE,"LHPD2"
+"640963092","PDL15t_pct","PDL15",NA,NA,FALSE,NA,"LHPD2a4a",NA,NA,"none","none","none","none",TRUE,FALSE,"LHPD2"
+"449205588","PDL15u_a_pct","PDL15",NA,NA,FALSE,NA,"LHPD2a4b",NA,NA,"none","none","none","none",TRUE,FALSE,"LHPD2"
+"768192947","PDL15u_a_pct","PDL15",NA,NA,FALSE,NA,"LHPD2a4b",NA,NA,"none","none","none","none",TRUE,FALSE,"LHPD2"
+"417834021","PDL15u_b_pct","PDL15",NA,NA,FALSE,NA,"LHPD2a4c",NA,NA,"none","none","none","none",TRUE,FALSE,"LHPD2"
+"449205611","PDL15u_b_pct","PDL15",NA,NA,FALSE,NA,"LHPD2a4c",NA,NA,"none","none","none","none",TRUE,FALSE,"LHPD2"
