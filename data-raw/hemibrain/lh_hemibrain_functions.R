@@ -153,7 +153,8 @@ process_types <- function(df, hemibrain_lhns){
     }
   }
   # Add cell type prefix
-  df$cell.type = paste0("LH",df$cell.type)
+  prefix =!df$cell.type %in% c("MB-C1","LHMB1","PPL2ab-PN1")
+  df$cell.type[prefix] = paste0("LH",df$cell.type[prefix])
   # Add primary neurite system
   df$pnt = sub("^\\D*\\d+\\K.*", "", df$cell.type, perl=TRUE)
   # Other issues

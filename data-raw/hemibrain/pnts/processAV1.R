@@ -16,7 +16,8 @@ x = c("5813013207", "824380581", "698888718",
       "946081491", "789588935", "820563959", "915724147", "919185724")
 y = c("5813047150", "424366776", "361259770", "5813047192", "361959852",
       "424706955", "668489498")
-av1 = c(x,y)
+z = "390271033"
+av1 = c(x,y,z)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -57,6 +58,8 @@ df[x,"ItoLee_Hemilineage"] = "VLPl&p1_anterior"
 df[x,"Hartenstein_Hemilineage"] = "BLVp2_anterior"
 df[y,"ItoLee_Hemilineage"] = "VLPl&d1_lateral"
 df[y,"Hartenstein_Hemilineage"] = "BLAv1_lateral"
+df[z,"ItoLee_Hemilineage"] = "primary"
+df[z,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -140,6 +143,14 @@ df[d2,"cell.type"] = "AV1d2"
 
 c1 = "919185724"
 df[c1,"cell.type"] = "AV1c1"
+
+#####
+# e #
+#####
+
+e1 = "390271033"
+df[e1,"cell.type"] = "AV1e1"
+
 
 ########
 # save #

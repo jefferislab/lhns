@@ -14,7 +14,9 @@ x = c("609233083", "453031248", "515096130", "452673242", "541970375",
       "791307174", "732686529", "853376855", "761636549", "456432557",
       "821625208", "580231908", "604722017", "329216050", "602990602"
 )
+av8 = y = "636789034"
 av7 = c(x)
+av7_av8 = c(av7,av7)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -37,7 +39,7 @@ av7 = c(x)
 # av7 = unique(av7, names(av7.hemi))
 
 ### Set-up data.frame
-df = subset(namelist, bodyid %in% av7)
+df = subset(namelist, bodyid %in% av7_av8)
 df$cbf.change = FALSE
 df$class = "LHN"
 df$cell.type = NA
@@ -46,6 +48,8 @@ rownames(df) = df$bodyid
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "AOTUv2"
 df[x,"Hartenstein_Hemilineage"] = "DALl1"
+df[x,"ItoLee_Hemilineage"] = "primary"
+df[x,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -116,6 +120,14 @@ df[c1,"cell.type"] = "AV7c1"
 c2 = c("760993807")
 df[c2,"cell.type"] = "AV7c2"
 
+
+#######
+# AV8 #
+#######
+
+a1 = "636789034"
+df[a1,"cell.type"] = "AV8a1"
+
 ########
 # save #
 ########
@@ -127,7 +139,7 @@ df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
 state_results(df)
 
 # Write .csv
-write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV7_celltyping.csv", row.names = FALSE)
+write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV_other_celltyping.csv", row.names = FALSE)
 
 # Process
 if(process){

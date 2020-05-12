@@ -36,6 +36,12 @@ for(csv in csvs){
   hemibrain.master = rbind(hemibrain.master,df)
 }
 
+# Assigns
+## Make 2D Images
+take_pictures(hemibrain.master)
+
+## Update googlesheet
+write_lhns(df = hemibrain.master, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
 
 

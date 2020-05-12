@@ -9,11 +9,23 @@ if(!exists("process")){
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
-pv7 = x = c("392645639", "451308547", "635109166", "511685955")
-y = c("604709727", "387952104", "451049385")
+x = c("392645639", "451308547", "635109166", "511685955")
 z = "359560762"
 pv7 = c(x,z)
-pv7_pv8 = c(pv7,pv8)
+
+y = c("604709727", "387952104", "451049385")
+u = "544361987"
+pv10 = c(y,u)
+
+pv8 = w = c("480258208")
+
+pv9 = c("483337285", "543718301")
+
+pv11 = c("602476655","542751938")
+
+pv12 = c("480590566", "574688051")
+
+pv_other = c(pv7,pv8,pv9,pv10,pv11,pv12)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -40,12 +52,12 @@ pv7_pv8 = c(pv7,pv8)
 # pv7_8.hemi = union(PDM09,PVL04,PVL11)
 #
 # ### Re-define some of these CBFs
-# sd = setdiff(pv7_pv8, names(pv7_8.hemi))
-# ds = setdiff(names(pv7_8.hemi),pv7_pv8)
-# pv7_pv8 = unique(pv7_8, names(pv7_8.hemi))
+# sd = setdiff(pv_other, names(pv7_8.hemi))
+# ds = setdiff(names(pv7_8.hemi),pv_other)
+# pv_other = unique(pv7_8, names(pv7_8.hemi))
 
 ### Set-up data.frame
-df = subset(namelist, bodyid %in% pv7_pv8)
+df = subset(namelist, bodyid %in% pv_other)
 df$cbf.change = FALSE
 df$class = "LHN"
 df$cell.type = NA
@@ -56,6 +68,8 @@ df[x,"ItoLee_Hemilineage"] = "VLPl&p1_posterior"
 df[x,"Hartenstein_Hemilineage"] = "BLVp2_posterior"
 df[y,"ItoLee_Hemilineage"] = "SIPp1"
 df[y,"Hartenstein_Hemilineage"] = "DPMpl2"
+df[w,"ItoLee_Hemilineage"] = "primary"
+df[w,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -82,13 +96,47 @@ df[b1,"cell.type"] = "PV7b1"
 ### PV8 ####
 ############
 
+a1 = "480258208"
+df[a1,"cell.type"] = "PV8a1"
+
+############
+### PV9 ####
+############
+
+a1 = c("483337285", "543718301")
+df[a1,"cell.type"] = "PV9a1"
+
+#############
+### PV10 ####
+#############
+
 a1 = c("387952104", "451049385")
 # light = c("Gad1-F-400411","Cha-F-100449", "Gad1-F-100290",
 #         "Cha-F-300297", "Gad1-F-200414", "Cha-F-000303","Gad1-F-200151")
-df[a1,"cell.type"] = "PV8a1"
+df[a1,"cell.type"] = "PV10a1"
 
 b1 = "604709727" # Centrifugal-like
-df[b1,"cell.type"] = "PV8b1"
+df[b1,"cell.type"] = "PV10b1"
+
+c1 = "544361987"
+df[c1,"cell.type"] = "PV10c1"
+
+#############
+### PV11 ####
+#############
+
+a1 = "602476655"
+df[a1,"cell.type"] = "PV11a1"
+
+b1 = "542751938"
+df[b1,"cell.type"] = "PV11b1"
+
+#############
+### PV12 ####
+#############
+
+a1 = c("480590566", "574688051")
+df[a1,"cell.type"] = "PV12a1"
 
 ########
 # save #
@@ -101,7 +149,7 @@ df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
 state_results(df)
 
 # Write .csv
-write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV7_PV8_celltyping.csv", row.names = FALSE)
+write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV_other_celltyping.csv", row.names = FALSE)
 
 # Process
 if(process){

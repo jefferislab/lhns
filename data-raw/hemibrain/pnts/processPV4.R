@@ -39,7 +39,6 @@ y = c("821272765", "913341138", "636465174", "912022802", "636434899",
       "5812980700", "573695941", "912022866", "513323340", "665439889",
       "543679473", "449289591", "943048975", "417204354", "944379777",
       "5813022150", "787908929", "694472338")
-z = c("451646125", "485387561")
 pv4 = c(x,y)
 
 ### Get FAFB assigned hemilineage information
@@ -81,7 +80,7 @@ rownames(df) = df$bodyid
 ### Wrong CBF
 wrong1 = c("604398262")
 df[wrong1,"cbf.change"] = "PDL16^pLH11"
-wrong2 = c(c("451646125", "485387561"))
+wrong2 = c("451646125", "485387561")
 df[wrong2,"cbf.change"] = "new_cbf_2"
 
 ### Hemilineages:
@@ -91,8 +90,6 @@ df[z,"ItoLee_Hemilineage"] = ""
 df[z,"Hartenstein_Hemilineage"] = ""
 df[y,"ItoLee_Hemilineage"] = "SLPp&v1_posterior"
 df[y,"Hartenstein_Hemilineage"] = "DPLp2_posterior"
-df[z,"ItoLee_Hemilineage"] = "unknown"
-df[z,"Hartenstein_Hemilineage"] = "unknown"
 
 ##############################
 # Make and review cell types #
@@ -365,11 +362,8 @@ df[e2,"cell.type"] = "PV4e2"
 # l #
 #####
 
-l1 = c("451646125", "485387561")
+l1 = "357146296"
 df[l1,"cell.type"] = "PV4l1"
-
-m1 = "357146296"
-df[m1,"cell.type"] = "PV4m1"
 
 ########
 # save #

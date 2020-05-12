@@ -16,6 +16,7 @@ x = c("1573741727", "5813015982", "2214846055", "1069223047", "1440645010",
 y = c("1193378968", "1040609241",  "1573741727", "5813056323")
 z = c("1131310385", "1005490210", "856131667","912390224")
 w = c("1539309050", "2061028219", "5813055629", "1565802648", "2096914287", "1040609541","947858407", "2096909904")
+u = "1630048134"
 wedpns = c(x,y,z)
 
 ### Get FAFB assigned hemilineage information
@@ -67,6 +68,8 @@ df[x,"ItoLee_Hemilineage"] = "WEDa2"
 df[x,"Hartenstein_Hemilineage"] = "BAlp3"
 df[y,"ItoLee_Hemilineage"] = "primary"
 df[y,"Hartenstein_Hemilineage"] = "primary"
+df[u,"ItoLee_Hemilineage"] = "ALlv1"
+df[u,"Hartenstein_Hemilineage"] = "BAlp4"
 
 ##############################
 # Make and review cell types #
@@ -85,7 +88,7 @@ df[y,"Hartenstein_Hemilineage"] = "primary"
 #####
 
 wp1 = c("1440645010", "2214846055", "2214504597", "1069223047", "2030342003") # light = c("Gad1-F-100133", "VGlut-F-500810", "VGlut-F-100375", "VGlut-F-600117","L112#1","L112#2","L112#3","L112#4","L770#1","L770#2","L772#1","L772#2","L984#1","L984#2","L984#3","L984#4","L984#5","L984#6","L984#7","L984#8","L984#9")
-df[wp1,"cell.type"] = "WED-PN1"
+df[wp1,"cell.type"] = "WEDPN1"
 
 wp5 = "5813015982" # light= c("L1337#1","L1337#2","L1337#4","L1337#7","L1337#8")
 df[wp5,"cell.type"] = "WEDPN5"
@@ -113,8 +116,8 @@ df[wp7,"cell.type"] = "WEDPN7"
 wp6 = c("1131310385", "1005490210", "856131667")
 df[wp6,"cell.type"] = "WEDPN6"
 
-wp10 = "912390224"
-df[wp10,"cell.type"] = "WEDPN10"
+wp9 = "912390224"
+df[wp9,"cell.type"] = "WEDPN19"
 
 #####
 # w #
@@ -123,13 +126,21 @@ df[wp10,"cell.type"] = "WEDPN10"
 wp8 = c("1539309050", "2061028219", "5813055629", "1565802648", "2096914287", "1040609541","947858407", "2096909904")
 df[wp8,"cell.type"] = "WEDPN8"
 
+#####
+# u #
+#####
+
+wp10 = "1630048134"
+df[wp10,"cell.type"] = "WEDPN10"
+
+
 ########
 # save #
 ########
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
-df$pnt =""
+df$pnt ="LHWEDT"
 
 # Summarise results
 state_results(df)

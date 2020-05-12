@@ -196,7 +196,7 @@ df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
 state_results(df)
 
 # Write .csv
-write.csv(df, file = "data-raw/hemibrain/pnts/csv/av6_celltyping.csv", row.names = FALSE)
+write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV6_celltyping.csv", row.names = FALSE)
 
 # Process
 if(process){
