@@ -80,14 +80,10 @@ rownames(df) = df$bodyid
 ### Wrong CBF
 wrong1 = c("604398262")
 df[wrong1,"cbf.change"] = "PDL16^pLH11"
-wrong2 = c("451646125", "485387561")
-df[wrong2,"cbf.change"] = "new_cbf_2"
 
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "LHp1"
 df[x,"Hartenstein_Hemilineage"] = "BLP4"
-df[z,"ItoLee_Hemilineage"] = ""
-df[z,"Hartenstein_Hemilineage"] = ""
 df[y,"ItoLee_Hemilineage"] = "SLPp&v1_posterior"
 df[y,"Hartenstein_Hemilineage"] = "DPLp2_posterior"
 

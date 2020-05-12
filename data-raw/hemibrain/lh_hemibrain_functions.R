@@ -111,6 +111,23 @@ process_types <- function(df, hemibrain_lhns){
   meta$cbf = gsub("\\^.*","",meta$cellBodyFiber)
   df$cbf[match(meta$bodyid,df$bodyid)] = meta$cbf
   df$type[match(meta$bodyid,df$bodyid)] = meta$type
+  # Add in any missing hemilineage information
+  missing.hl = subset(df, is.na(df$ItoLee_Hemilineage))$bodyid
+  with.hl = subset(df, !is.na(df$ItoLee_Hemilineage))
+  for(bi in missing.hl){
+    ct = subset(df, bodyid == bi)$cell.type
+    if(ct %in% with.hl$cell.type){
+      same = subset(with.hl,cell.type==ct)[1,]
+      df[match(bi,df$bodyid),c("ItoLee_Hemilineage","Hartenstein_Hemilineage")] = same[,c("ItoLee_Hemilineage","Hartenstein_Hemilineage")]
+    }else{
+      ag = gsub("([a-z]).*","\\1",ct)
+      ags = gsub("([a-z]).*","\\1",with.hl$cell.type)
+      if(ag %in% ags){
+        same = subset(with.hl,grepl(ag,cell.type))[1,]
+        df[match(bi,df$bodyid),c("ItoLee_Hemilineage","Hartenstein_Hemilineage")] = same[,c("ItoLee_Hemilineage","Hartenstein_Hemilineage")]
+      }
+    }
+  }
   # Make matches
   df$FAFB.match = hemibrain_lhns$FAFB.match[match(df$bodyid,hemibrain_lhns$bodyid)]
   df$FAFB.match[is.na(df$FAFB.match)] = "none"
@@ -189,9 +206,10 @@ take_pictures <- function(df){
   if(!is.null(df$pnt)){
     pnts = unique(df$pnt)
   }
-  for(pnt in pnts){
-    message(pnt)
-    dfp = subset(df,df$pnt == pnt)
+  for(p in pnts){
+    message(p)
+    pnt = p
+    dfp = subset(df,df$pnt == p)
     # Get hemibrain neurons
     bodyids = extract_ids(as.character(unique(dfp$bodyid)))
     db = tryCatch(hemibrain_neurons()[bodyids], error = function(e) NULL)
@@ -311,7 +329,20 @@ is.lhn <- function(x){
 }
 
 
-
+# hidden
+hemibrain_ct3d <- function(df, someneuronlist = hemibrain_neurons()){
+  m = unique(df[,"cell.type"])
+  m = sort(m)
+  count = length(m)
+  cols = rainbow(count)
+  for(i in 1:count){
+    n = as.character(subset(df, df$cell.type == m[i])$bodyid)
+    n = n[n%in%names(someneuronlist)]
+    col = grDevices::colorRampPalette(colors = c(cols[i],"grey10"))
+    col = col(length(n)+2)[1:length(n)]
+    rgl::plot3d(someneuronlist[n], lwd = 2, col = col, soma = TRUE)
+  }
+}
 
 
 

@@ -36,13 +36,14 @@ for(csv in csvs){
   hemibrain.master = rbind(hemibrain.master,df)
 }
 
-# Assigns
+# Is this neuron an LHN?
+hemibrain.master$is.lhn = is.lhn(hemibrain.master$bodyid)
+
+# Assign
 ## Make 2D Images
 take_pictures(hemibrain.master)
 
 ## Update googlesheet
 write_lhns(df = hemibrain.master, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
-
-
 
 

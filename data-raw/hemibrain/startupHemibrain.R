@@ -41,6 +41,10 @@ db = hemibrainr::hemibrain_neurons()
 most.lhns.hemibrain = hemibrain_lm_lhns()
 xyzmatrix(most.lhns.hemibrain) = xyzmatrix(most.lhns.hemibrain)*(1000/8)
 
+# Get most.lhins
+most.lhins.hemibrain = hemibrain_lm_lhns(cable = 'lhin')
+xyzmatrix(most.lhins.hemibrain) = xyzmatrix(most.lhins.hemibrain)*(1000/8)
+
 # Get all-by-all hemibrain NBLAST
 # hemibrain_all_nblast = hemibrain_nblast(nblast="all")
 # hemibrain_arbour_nblast = hemibrain_nblast(nblast="arbour")
@@ -48,12 +52,12 @@ xyzmatrix(most.lhns.hemibrain) = xyzmatrix(most.lhns.hemibrain)*(1000/8)
 # hemibrain_spine_nblast = hemibrain_nblast(nblast="spines")
 
 # Read the Google Sheet
-gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
-                         ss = selected_file,
-                         sheet = "lhns",
-                         return = TRUE)
-gs$bodyid = hemibrainr:::correct_id(gs$bodyid)
-rownames(gs) = gs$bodyid
+# gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+#                          ss = selected_file,
+#                          sheet = "lhns",
+#                          return = TRUE)
+# gs$bodyid = hemibrainr:::correct_id(gs$bodyid)
+# rownames(gs) = gs$bodyid
 
 ## Get LH volume
-hemibrain.lhr = hemibrain_roi_meshes("LH(R)")
+# hemibrain.lhr = hemibrain_roi_meshes("LH(R)")

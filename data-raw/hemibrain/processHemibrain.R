@@ -3,20 +3,22 @@
 ##################
 library(natverse)
 library(hemibrainr)
+source("data-raw/hemibrain/pnts/misc.R")
 
 ###################################################################################
 # LHNs are neurons with 1% of their synaptic input / 10 synapses coming from uPNs #
 ###################################################################################
 # LHNs must be downstream of uPNs ...
-upns = neuprint_read_neurons(hemibrainr::upn.ids,hemibrainr::mpn.ids)
+upns = neuprint_read_neurons(hemibrainr::pn.ids)
 upn.syns = hemibrainr::hemibrain_extract_connections(upns)
 # And they must be 'neuron' objects in the LH(R) ROI ...
 lh.info = neuprintr::neuprint_find_neurons(
   input_ROIs = "LH(R)",
   output_ROIs =  'LH(R)',
   all_segments = FALSE)
+lh.info = subset(lh.info, neuronStatus=="Traced")
 lh.ids = intersect(lh.info$bodyid,upn.syns$partner)
-lh.ids = setdiff(lh.info$bodyid,c(hemibrainr::upn.ids,hemibrainr::mpn.ids,hemibrainr::dan.ids,hemibrainr::mbon.ids,hemibrainr::pn.ids))
+lh.ids = setdiff(lh.info$bodyid,c(hemibrainr::upn.ids,hemibrainr::mpn.ids,hemibrainr::dan.ids,hemibrainr::mbon.ids,hemibrainr::pn.ids,do.not.name))
 lh.roi.info = as.data.frame(neuprint_get_roiInfo(lh.ids))
 lh.roi.info = subset(lh.roi.info, `LH(R).pre` >=10|`LH(R).post`>=10|`LH(R).downstream`>=10|`LH(R).upstream`>=10)
 lh.ids = lh.roi.info$bodyid
