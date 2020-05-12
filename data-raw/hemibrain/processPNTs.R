@@ -39,6 +39,17 @@ for(csv in csvs){
 # Is this neuron an LHN?
 hemibrain.master$is.lhn = is.lhn(hemibrain.master$bodyid)
 
+# Create PNT to CBF mapping
+pnt_cbf = aggregate(list(count = hemibrain.master$bodyid),
+                    list(pnt = hemibrain.master$pnt,
+                         cbf = hemibrain.master$cbf),
+                    length)
+pnt_cbf = pnt_cbf[order(pnt_cbf$count,decreasing = TRUE),]
+hemibrain_pnt_cbf = pnt_cbf[!duplicated(pnt_cbf$cbf),]
+rownames(hemibrain_pnt_cbf) = hemibrain_pnt_cbf$cbf
+# Save!
+usethis::use_data(hemibrain_pnt_cbf, overwrite = TRUE)
+
 # Assign
 ## Make 2D Images
 take_pictures(hemibrain.master)

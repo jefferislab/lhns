@@ -28,7 +28,7 @@ missing = as.character(setdiff(missing, do.not.name))
 
 # examine these neurons
 if(length(missing)){
-  missingn = neuprint_read_neurons(missing)
+  missingn = neuprint_read_skeletons(missing)
 }else{
   missingn =  NULL
 }

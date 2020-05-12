@@ -383,3 +383,6 @@
 #' @name hemibrain
 #' @rdname hemibrain
 "hemibrain_lhns"
+#' @name hemibrain
+#' @rdname hemibrain
+"hemibrain_pnt_cbf"
