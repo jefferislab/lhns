@@ -63,7 +63,7 @@ df$cell.type = NA
 rownames(df) = df$bodyid
 
 ### Hemilineages:
-df[x,"ItoLee_Hemilineage"] = "VLPd&p1_posterior "
+df[x,"ItoLee_Hemilineage"] = "VLPd&p1_dorsal"
 df[x,"Hartenstein_Hemilineage"] = "DPLl2_posterior"
 df[y,"ItoLee_Hemilineage"] = "SLPad1_posterior"
 df[y,"Hartenstein_Hemilineage"] = "DPLl3_posterior"

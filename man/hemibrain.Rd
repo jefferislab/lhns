@@ -5,11 +5,14 @@
 \alias{hemibrain}
 \alias{hemibrain.lhn.bodyids}
 \alias{hemibrain_lhns}
+\alias{hemibrain_pnt_cbf}
 \title{Body IDs and FAFB matches for lateral horn neurons in the hemibrain volume.}
 \format{
-An object of class \code{numeric} of length 2305.
+An object of class \code{numeric} of length 1635.
 
-An object of class \code{data.frame} with 2231 rows and 22 columns.
+An object of class \code{data.frame} with 2332 rows and 22 columns.
+
+An object of class \code{data.frame} with 69 rows and 3 columns.
 }
 \source{
 \url{https://doi.org/10.1101/2020.01.21.911859}
@@ -18,6 +21,8 @@ An object of class \code{data.frame} with 2231 rows and 22 columns.
 hemibrain.lhn.bodyids
 
 hemibrain_lhns
+
+hemibrain_pnt_cbf
 }
 \description{
 Body Ids for lateral horn neurons, pulled from neuPrint from the hemibrain volume. Only neurons marked by the project as 'Traced' have been considered.

@@ -100,7 +100,22 @@ hemibrain_lhns = hemibrain_lhns[!duplicated(hemibrain_lhns$bodyid),]
 hemibrain_lhns = hemibrain_lhns[hemibrain_lhns$bodyid!="",]
 rownames(hemibrain_lhns) = hemibrain_lhns$bodyid
 hemibrain_lhns$User = NULL
+
+# Add putative transmitter assignment based on hemilineage
+hls = read.csv("data-raw/csv/hemilineages_by_transmitter.csv")
+hemibrain_lhns$classic.transmitter = "unknown"
+hemibrain_lhns$other.transmitter = "unknown"
+for(hl in hls$itolee.hemilineage){
+  classic.trans = hls[match(hl,hls$itolee.hemilineage),"classic.transmitter"]
+  other.trans = hls[match(hl,hls$itolee.hemilineage),"classic.transmitter"]
+  hemibrain_lhns$classic.transmitter[hemibrain_lhns$ItoLee_Hemilineage==hl] = classic.trans
+  hemibrain_lhns$other.transmitter[hemibrain_lhns$ItoLee_Hemilineage==hl] = other.trans
+}
+hemibrain_lhns$classic.transmitter[hemibrain_lhns$cell.type=="LHPV5k1"] = "GABA"
+
+# Save
 usethis::use_data(hemibrain_lhns, overwrite = TRUE)
+
 # Read the Google Sheet
 lm_em_matches = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
                                       ss = selected_file,

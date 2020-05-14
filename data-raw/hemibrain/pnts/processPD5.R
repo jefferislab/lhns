@@ -54,7 +54,7 @@ rownames(df) = df$bodyid
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "SLPpm3"
 df[x,"Hartenstein_Hemilineage"] = "DPLc3"
-df[y,"ItoLee_Hemilineage"] = "VLPd&p1"
+df[y,"ItoLee_Hemilineage"] = "VLPd&p1_anterior"
 df[y,"Hartenstein_Hemilineage"] = "DPLl2"
 df[z,"ItoLee_Hemilineage"] = "SLPad1"
 df[z,"Hartenstein_Hemilineage"] = "DPLl3"
