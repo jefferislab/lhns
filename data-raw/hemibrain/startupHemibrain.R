@@ -2,7 +2,6 @@
 # Hemibrain LHNs #
 ##################
 devtools::load_all(".")
-library(natverse)
 library(neuprintr)
 library(hemibrainr)
 library(nat.jrcbrains)

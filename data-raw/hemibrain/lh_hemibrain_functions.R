@@ -226,8 +226,9 @@ take_pictures <- function(df){
     # Get FAFB neurons
     skids = extract_ids(unique(dfp$FAFB.match))
     if(length(skids)){
-      fafb = read.neurons.catmaid(skids)
-      fafb = suppressWarnings(nat.templatebrains::xform_brain(fafb, sample = "FAFB14", reference = "JRCFIB2018F"))
+      fafb = catmaid::read.neurons.catmaid(skids)
+      fafb = tryCatch( suppressWarnings(nat.templatebrains::xform_brain(fafb, sample = "FAFB14", reference = "JRCFIB2018F")),
+                       error = function(e) NULL)
     }else{
       fafb = NULL
     }
@@ -260,11 +261,20 @@ take_pictures <- function(df){
       rgl::plot3d(hemibrain_microns.surf, col="grey10", alpha = 0.1)
       # Plot hemibrain neurons
       neurons = db[names(db)%in%bis]
+      if(!length(neurons)){
+        neurons = tryCatch(neuprint_read_neurons(bis), error = function(e) NULL)
+      }
+      if(!length(neurons)){
+        next
+      }
       col1 = reds(length(neurons)+2)[1:length(neurons)]
       rgl::plot3d(neurons,lwd=2,col=col1, soma = 5)
       # Plot LM
       if(length(is)){
         neurons2 = lms[names(lms)%in%is]
+        if(!length(neurons2)){
+          next
+        }
         col2 = greens(length(neurons2)+2)[1:length(neurons2)]
         rgl::plot3d(neurons2,lwd=2,col=col2, soma = 5)
         rgl.snapshot(file=paste0(lm.match.folder,"LM_matches_",ct,".png"))
@@ -273,6 +283,9 @@ take_pictures <- function(df){
       # Plot FAFB
       if(length(sks)){
         neurons3 = fafb[names(fafb)%in%sks]
+        if(!length(neurons3)){
+          next
+        }
         col3 = blues(length(neurons3)+2)[1:length(neurons3)]
         rgl::plot3d(neurons3,lwd=2,col=col3, soma = 5)
         rgl.snapshot(file=paste0(fafb.match.folder,"FAFB_matches_",ct,".png"))
@@ -281,7 +294,7 @@ take_pictures <- function(df){
       # Plot split
       rgl::clear3d()
       rgl::plot3d(hemibrain_microns.surf, col="grey10", alpha = 0.1)
-      hemibrainr::plot3d_split(db[names(db)%in%bis], radius = 1, soma = 5)
+      hemibrainr::plot3d_split(neurons, radius = 1, soma = 5)
       rgl.snapshot(file=paste0(split.match.folder,"split_",ct,".png"))
       rgl::clear3d()
     }
@@ -294,6 +307,9 @@ take_pictures <- function(df){
       n = extract_ids(dfp$bodyid[dfp$ItoLee_Hemilineage == hls[i]])
       col = grDevices::colorRampPalette(colors = c(cols[i],"grey10"))
       neurons = db[names(db)%in%n]
+      if(!length(neurons)){
+        next
+      }
       col = col(length(neurons)+2)[1:length(neurons)]
       rgl::plot3d(neurons, lwd = 2, col = col, soma = TRUE)
     }
@@ -308,6 +324,9 @@ take_pictures <- function(df){
         n = extract_ids(hldf$bodyid[hldf$cbf == cbfs[j]])
         col = grDevices::colorRampPalette(colors = c(rcols[j],"grey10"))
         neurons = db[names(db)%in%n]
+        if(!length(neurons)){
+          next
+        }
         col = col(length(neurons)+2)[1:length(neurons)]
         rgl::plot3d(neurons, lwd = 2, col = col, soma = TRUE)
       }
