@@ -1,5 +1,5 @@
 ##########
-# WEDPNs #
+# WEDLHPNs #
 ##########
 if(!exists("process")){
   source("data-raw/hemibrain/startupHemibrain.R")
@@ -9,15 +9,21 @@ if(!exists("process")){
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
-x = c("1573741727", "5813015982", "2214846055", "1069223047", "1440645010",
+x = c("5813015982", "2214846055", "1069223047", "1440645010",
          "2030342003", "2214504597", "5813013913",
          "1006854683", "5813020138", "916828438", "853726809", "915451074",
-          "973765182", "5813032740", "885788485")
+          "973765182", "5813032740", "885788485", "1607155570", "5812991267", "5812991215")
 y = c("1193378968", "1040609241",  "1573741727", "5813056323")
-z = c("1131310385", "1005490210", "856131667","912390224")
+z = c("1131310385", "1005490210", "856131667","912390224", "1286134810", "1318870786", "5813033483", "1501371238",
+      "880668750", "974460512", "942725696", "1318184105", "1595477160",
+      "701328333", "732357920", "912044495")
 w = c("1539309050", "2061028219", "5813055629", "1565802648", "2096914287", "1040609541","947858407", "2096909904")
-u = "1630048134"
-wedpns = c(x,y,z)
+u = c("1630048134","1508615283")
+v = c("698970725", "886134689")
+i = c("5813041468", "1098928012")
+WEDLHPNs = c(x,y,z,w,u,v,i)
+
+
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -49,17 +55,17 @@ wedpns = c(x,y,z)
 # AVL01 = AVL01[names(AVL01)%in%lhn.ids]
 # AVL09 = neuprint_read_neurons("AVL09")
 # AVL09 = AVL09[names(AVL09)%in%lhn.ids]
-# wedpns.hemi = c(AVL01,AVL09)
+# WEDLHPNs.hemi = c(AVL01,AVL09)
 #
 # ### Re-define some of these CBFs
-# sd = setdiff(wedpns, names(wedpns.hemi))
-# ds = setdiff(names(wedpns.hemi),wedpns)
-# wedpns = unique(wedpns, names(wedpns.hemi))
+# sd = setdiff(WEDLHPNs, names(WEDLHPNs.hemi))
+# ds = setdiff(names(WEDLHPNs.hemi),WEDLHPNs)
+# WEDLHPNs = unique(WEDLHPNs, names(WEDLHPNs.hemi))
 
 ### Set-up data.frame
-df = subset(namelist, bodyid %in% wedpns)
+df = subset(namelist, bodyid %in% WEDLHPNs)
 df$cbf.change = FALSE
-df$class = "PN"
+df$class = "WEDPN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
@@ -70,6 +76,12 @@ df[y,"ItoLee_Hemilineage"] = "primary"
 df[y,"Hartenstein_Hemilineage"] = "primary"
 df[u,"ItoLee_Hemilineage"] = "ALlv1"
 df[u,"Hartenstein_Hemilineage"] = "BAlp4"
+df[v,"ItoLee_Hemilineage"] = "LHp2_lateral"
+df[v,"Hartenstein_Hemilineage"] = "DPLp1_lateral"
+df[w,"ItoLee_Hemilineage"] = "WEDd1"
+df[w,"Hartenstein_Hemilineage"] = "DALd"
+df[i,"ItoLee_Hemilineage"] = "primary"
+df[i,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -80,7 +92,7 @@ df[u,"Hartenstein_Hemilineage"] = "BAlp4"
 ### Easily plot several of your candidate types at once
 
 #############
-### WEDPN ###
+### WEDLHPN ###
 #############
 
 #####
@@ -88,51 +100,80 @@ df[u,"Hartenstein_Hemilineage"] = "BAlp4"
 #####
 
 wp1 = c("1440645010", "2214846055", "2214504597", "1069223047", "2030342003") # light = c("Gad1-F-100133", "VGlut-F-500810", "VGlut-F-100375", "VGlut-F-600117","L112#1","L112#2","L112#3","L112#4","L770#1","L770#2","L772#1","L772#2","L984#1","L984#2","L984#3","L984#4","L984#5","L984#6","L984#7","L984#8","L984#9")
-df[wp1,"cell.type"] = "WEDPN1"
+df[wp1,"cell.type"] = "WEDLHPN1"
 
 wp5 = "5813015982" # light= c("L1337#1","L1337#2","L1337#4","L1337#7","L1337#8")
-df[wp5,"cell.type"] = "WEDPN5"
+df[wp5,"cell.type"] = "WEDLHPN5"
 
 wp2 = c("973765182", "885788485", "915451074") # light = c("Cha-F-000514","L1524#3","L1524#4","L452#1")
-df[wp2,"cell.type"] = "WEDPN2"
+df[wp2,"cell.type"] = "WEDLHPN2"
 
 wp4 = "5813032740"
-df[wp4,"cell.type"] = "WEDPN4"
+df[wp4,"cell.type"] = "WEDLHPN4"
 
 wp3 = c("853726809", "5813013913", "5813020138", "1006854683", "916828438") # light = c("Cha-F-600036","fru-M-300059","L1524#1","L1524#2","L1518#1","L1518#2","L1518#3","L1518#4","L1518#5", "L1949#3","L1668#1", "L1668#2", "L1668#3", "L1668#4","L1949#1", "L1949#2","L452#2")
-df[wp3,"cell.type"] = "WEDPN3"
+df[wp3,"cell.type"] = "WEDLHPN3"
+
+wp9 = c("1607155570", "5812991267", "5812991215")
+df[wp9,"cell.type"] = "WEDLHPN9"
 
 #####
 # y #
 #####
 
 wp7 = c("1040609241", "1193378968", "1573741727", "5813056323") #light = c("L1337#3","L1337#5","L1337#6")
-df[wp7,"cell.type"] = "WEDPN7"
+df[wp7,"cell.type"] = "WEDLHPN7"
 
 #####
 # z #
 #####
 
 wp6 = c("1131310385", "1005490210", "856131667")
-df[wp6,"cell.type"] = "WEDPN6"
+df[wp6,"cell.type"] = "WEDLHPN6"
 
-wp9 = "912390224"
-df[wp9,"cell.type"] = "WEDPN19"
+wp14 = "912390224"
+df[wp14,"cell.type"] = "WEDLHPN14"
+
+wp10 = c("1286134810", "1318870786", "5813033483", "1501371238")
+df[wp10,"cell.type"] = "WEDLHPN10"
+
+wp11 = c("880668750", "974460512", "942725696")
+df[wp11,"cell.type"] = "WEDLHPN11"
+
+wp12 = c("1318184105", "1595477160")
+df[wp12,"cell.type"] = "WEDLHPN12"
+
+wp13 = c("701328333", "732357920", "912044495")
+df[wp13,"cell.type"] = "WEDLHPN13"
 
 #####
 # w #
 #####
 
 wp8 = c("1539309050", "2061028219", "5813055629", "1565802648", "2096914287", "1040609541","947858407", "2096909904")
-df[wp8,"cell.type"] = "WEDPN8"
+df[wp8,"cell.type"] = "WEDLHPN8"
 
 #####
 # u #
 #####
 
-wp10 = "1630048134"
-df[wp10,"cell.type"] = "WEDPN10"
+wp16 = "1630048134"
+df[wp16,"cell.type"] = "WEDLHPN16"
 
+wp15 = "1508615283"
+df[wp15,"cell.type"] = "WEDLHPN15"
+
+wp16 = c("5813041468")
+df[wp16,"cell.type"] = "WEDLHPN16"
+
+wp17 = "1098928012"
+df[wp17,"cell.type"] = "WEDLHPN17"
+
+wp18 = "698970725"
+df[wp18,"cell.type"] = "WEDLHPN18"
+
+wp19 = "886134689"
+df[wp19,"cell.type"] = "WEDLHPN19"
 
 ########
 # save #
@@ -146,7 +187,7 @@ df$pnt ="LHWEDT"
 state_results(df)
 
 # Write .csv
-write.csv(df, file = "data-raw/hemibrain/pnts/csv/WEDPN_celltyping.csv", row.names = FALSE)
+write.csv(df, file = "data-raw/hemibrain/pnts/csv/WEDLHPN_celltyping.csv", row.names = FALSE)
 
 # Process
 if(process){

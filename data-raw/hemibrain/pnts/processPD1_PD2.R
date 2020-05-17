@@ -18,9 +18,14 @@ pd2 = y = c("704798196", "263674097", "675800901", "676138357", "486850582",
             "329254539", "356429209", "5813089504", "509928512", "548872750",
             "5813129453", "571666400", "640963556", "573337611", "571666434",
             "542634516", "573329304", "760268555", "448869118", "5813014640",
-            "699178922", "675800901", "676138357", "704798196", "695500178",
-            "5813040707", "5813019487", "5813009445")
-z = c("5813021615")
+            "699178922", "695500178", "5813040707", "5813019487", "5813009445",
+            "392368893", "5813013630", "794088227", "831273322", "325743813",
+            "388924424", "822358700", "790641825", "644761952", "642387793",
+            "947858895", "790982851", "576502536", "579234980", "418516266",
+            "540967864", "674096140", "703702863", "358899943", "449205611",
+            "5813021728", "640963092", "449205588", "768192947", "417834021"
+)
+z = c("5813021615","483025951")
 pd1_pd2 = c(x,y,z)
 
 ### Get FAFB assigned hemilineage information
@@ -63,10 +68,10 @@ df$cell.type = NA
 rownames(df) = df$bodyid
 
 ### Hemilineages:
-df[x,"ItoLee_Hemilineage"] = "VLPd&p1_dorsal"
-df[x,"Hartenstein_Hemilineage"] = "DPLl2_posterior"
-df[y,"ItoLee_Hemilineage"] = "SLPad1_posterior"
-df[y,"Hartenstein_Hemilineage"] = "DPLl3_posterior"
+df[y,"ItoLee_Hemilineage"] = "VLPd&p1_dorsal"
+df[y,"Hartenstein_Hemilineage"] = "DPLl2_posterior"
+df[x,"ItoLee_Hemilineage"] = "SLPad1_posterior"
+df[x,"Hartenstein_Hemilineage"] = "DPLl3_posterior"
 df[z,"ItoLee_Hemilineage"] = "primary"
 df[z,"Hartenstein_Hemilineage"] = "primary"
 
@@ -84,10 +89,7 @@ df[z,"Hartenstein_Hemilineage"] = "primary"
 
 a1 = c("5813009497", "297524212", "5813040707", "267223027", "5813019487",
        "5813009445", "297520036", "330259272")# light = c("fru-M-600135")
-df[a1,"cell.type"] = "PD2a1"
-
-a2 = "389951232"
-df[a2,"cell.type"] = "PD1a2"
+df[a1,"cell.type"] = "PD1a1"
 
 b1 = c("5813035117", "325460206", "325458991", "5813009749")
 df[b1,"cell.type"] = "PD1b1"
@@ -97,6 +99,9 @@ df[c1,"cell.type"] = "PD1c1"
 
 d1 = c("359568460", "5813043073", "420977956")
 df[d1,"cell.type"] = "PD1d1"
+
+e1 = "483025951"
+df[e1,"cell.type"] = "PD1e1"
 
 ############
 ### PD2y ###
@@ -152,8 +157,34 @@ c1 = "356429209"
 df[c1,"cell.type"] = "PD2b1"
 
 d1 = "5813021615"
-df[d1,"cell.type"] = "PD1d1"
+df[d1,"cell.type"] = "PD2d1"
 
+c2 =c("418516266", "540967864", "674096140", "703702863")
+df[c2,"cell.type"] = "PD2c2"
+
+c3 = c("5813013630", "794088227", "831273322", "325743813")
+df[c3,"cell.type"] = "PD2c3"
+
+c4 = c("822358700", "790641825")
+df[c4,"cell.type"] = "PD2c4"
+
+c5 = c("644761952", "642387793")
+df[c5,"cell.type"] = "PD2c5"
+
+c6 = c("947858895", "790982851")
+df[c6,"cell.type"] = "PD2c6"
+
+c7 = c("576502536", "579234980")
+df[c7,"cell.type"] = "PD2c7"
+
+e1 = "392368893"
+df[e1,"cell.type"] = "PD2e1"
+
+e2 = "388924424"
+df[e2,"cell.type"] = "PD2e2"
+
+f1 = "358899943"
+df[f1,"cell.type"] = "PD2f1"
 
 ########
 # save #
@@ -176,3 +207,8 @@ if(process){
   # Make 2D Images
   take_pictures(df)
 }
+
+
+
+# a2 = "389951232"
+# df[a2,"cell.type"] = "PD1a2"

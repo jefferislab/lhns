@@ -35,9 +35,42 @@ for(csv in csvs){
   df = read.csv(file = csv)
   hemibrain.master = rbind(hemibrain.master,df)
 }
+rownames(hemibrain.master) = hemibrain.master$bodyid
+
+# Check that each letter is filled
+for(p in unique(hemibrain.master$pnt)){
+  pt = subset(hemibrain.master, pnt == p & !grepl("WED|CENT|PPL|MB",cell.type))
+  ags = sort(unique(gsub(".*([a-z]).*","\\1",pt$cell.type)))
+  cat(ags);  message(p)
+}
+
+# Fix classes
+hemibrain.master$class[is.na(hemibrain.master$class)] = "LHN"
+hemibrain.master$ItoLee_Hemilineage[is.na(hemibrain.master$ItoLee_Hemilineage)] = "unknown"
+hemibrain.master$Hartenstein_Hemilineage[is.na(hemibrain.master$Hartenstein_Hemilineage)] = "unknown"
 
 # Is this neuron an LHN?
 hemibrain.master$is.lhn = is.lhn(hemibrain.master$bodyid)
+for(ct in unique(hemibrain.master$cell.type)){
+  m = gsub('[a-z]$', '', ct)
+  inlh = sum(subset(hemibrain.master,grepl(m,hemibrain.master$cell.type))$is.lhn)>0
+  hemibrain.master$is.lhn[hemibrain.master$cell.type==ct] = inlh
+}
+
+# Manage connectiviy type
+hemibrain.master$connectivity.type = hemibrain.master$cell.type
+hemibrain.master$cell.type = gsub("[a-z]$","",hemibrain.master$cell.type)
+
+# Add in diffusion model results
+diff = read.csv("data-raw/csv/hemibrain_infection_results.csv")
+hemibrain.master$layer = diff[match(hemibrain.master$bodyid,diff$node),"layer_mean"]
+
+# Average layer per cell type
+hemibrain.master$ct.layer = NA
+for(ct in unique(hemibrain.master$cell.type)){
+  layer = floor(mean(subset(hemibrain.master,cell.type==ct)$layer))
+  hemibrain.master$ct.layer[hemibrain.master$cell.type==ct] = layer
+}
 
 # Create PNT to CBF mapping
 pnt_cbf = aggregate(list(count = hemibrain.master$bodyid),
@@ -47,8 +80,12 @@ pnt_cbf = aggregate(list(count = hemibrain.master$bodyid),
 pnt_cbf = pnt_cbf[order(pnt_cbf$count,decreasing = TRUE),]
 hemibrain_pnt_cbf = pnt_cbf[!duplicated(pnt_cbf$cbf),]
 rownames(hemibrain_pnt_cbf) = hemibrain_pnt_cbf$cbf
+
 # Save!
 usethis::use_data(hemibrain_pnt_cbf, overwrite = TRUE)
+
+# State
+state_results(hemibrain.master)
 
 # Assign
 ## Make 2D Images
@@ -57,4 +94,10 @@ take_pictures(hemibrain.master)
 ## Update googlesheet
 write_lhns(df = hemibrain.master, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
-
+# Add users
+hemibrain.lhns = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+                                                  ss = selected_file,
+                                                  sheet = "lhns",
+                                                  return = TRUE)
+hemibrain.master$User = hemibrain.lhns$User[match(hemibrain.master$bodyid,hemibrain.lhns$bodyid)]
+hemibrain.master$User[is.na(hemibrain.master$User)] = ""

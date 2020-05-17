@@ -19,7 +19,10 @@ x = c("511271574",
          "328861282",
          "487144598",
          "327499164",
-         "5813020988")
+         "5813020988",
+      "639585968",
+      "329897255",
+      "329225149")
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -55,31 +58,37 @@ df[x,"Hartenstein_Hemilineage"] = "primary"
 
 c8 = c("511271574",
        "360284300")
-df[c8,] = "CENT8"
+df[c8,"cell.type"] = "CENT8"
 
 c5 = c("579912201")
-df[c5,] = "CENT5"
+df[c5,"cell.type"] = "CENT5"
 
 c6 = c("5813068669")
-df[c6,] = "CENT6"
+df[c6,"cell.type"] = "CENT6"
 
 c4 = c("517506265")
-df[c4,] = "CENT4"
+df[c4,"cell.type"] = "CENT4"
 
 c9 = c("330268940")
-df[c9,] = "CENT9"
+df[c9,"cell.type"] = "CENT9"
 
 c1 = c("328861282")
-df[c1,] = "CENT1"
+df[c1,"cell.type"] = "CENT1"
 
 c3 = c("487144598")
-df[c3,] = "CENT3"
+df[c3,"cell.type"] = "CENT3"
 
 c2 = c("327499164")
-df[c2,] = "CENT2"
+df[c2,"cell.type"] = "CENT2"
+
+c10 = c("329225149", "329897255")
+df[c10,"cell.type"] = "CENT10"
+
+c11 = "639585968"
+df[c11,"cell.type"] = "CENT11"
 
 lhmb1 = c("5813020988")
-df[lhmb1,] = "LHMB1"
+df[lhmb1,"cell.type"] = "LHMB1"
 
 ########
 # save #
@@ -87,7 +96,9 @@ df[lhmb1,] = "LHMB1"
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
-df$pnt = ""
+df$pnt = pnt_cbf[match(df$cbf,pnt_cbf$cbf),"pnt"]
+df[lhmb1,"pnt"] = "LHPD2"
+df[c11,"pnt"] = "LHAD5"
 df$published = TRUE
 
 # Summarise results

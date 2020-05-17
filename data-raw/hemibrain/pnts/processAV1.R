@@ -17,7 +17,8 @@ x = c("5813013207", "824380581", "698888718",
 y = c("5813047150", "424366776", "361259770", "5813047192", "361959852",
       "424706955", "668489498")
 z = "390271033"
-av1 = c(x,y,z)
+w = c("765028935" ,"765050884")
+av1 = c(x,y,z,w)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -151,6 +152,8 @@ df[c1,"cell.type"] = "AV1c1"
 e1 = "390271033"
 df[e1,"cell.type"] = "AV1e1"
 
+f1 = c("765028935", "765050884")
+df[f1,"cell.type"] = "AV1f1"
 
 ########
 # save #

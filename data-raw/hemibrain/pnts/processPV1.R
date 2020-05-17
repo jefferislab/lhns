@@ -9,7 +9,7 @@ if(!exists("process")){
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
-x = c("542315097", "5812981753", "5813049105", "5813071348", "1006146837")
+x = c("542315097", "5812981753", "5813049105", "5813071348", "1006146837","294436967","328533761")
 pv1 = c(x)
 
 ### Get FAFB assigned hemilineage information

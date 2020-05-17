@@ -9,14 +9,18 @@ if(!exists("process")){
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
-x = c("609233083", "453031248", "515096130", "452673242", "541970375",
+av7 = x = c("609233083", "453031248", "515096130", "452673242", "541970375",
       "5813010471", "5813079244", "542652400", "608188506", "608534083",
       "791307174", "732686529", "853376855", "761636549", "456432557",
-      "821625208", "580231908", "604722017", "329216050", "602990602"
+      "821625208", "580231908", "604722017", "329216050", "602990602",
+      "5813049045", "5813071354", "361614914", "451982195", "760993807",
+      "516055524", "889497360", "858803404","577464071", "423351806",
+      "513741732", "517479202", "576161592"
 )
 av8 = y = "636789034"
-av7 = c(x)
-av7_av8 = c(av7,av7)
+av9 = z = c("794406234", "953755666", "793728667", "642660081", "671307834",
+        "579235017", "607195856")
+av7_av8_av9 = c(av7,av7,av8,av9)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -39,7 +43,7 @@ av7_av8 = c(av7,av7)
 # av7 = unique(av7, names(av7.hemi))
 
 ### Set-up data.frame
-df = subset(namelist, bodyid %in% av7_av8)
+df = subset(namelist, bodyid %in% av7_av8_av9)
 df$cbf.change = FALSE
 df$class = "LHN"
 df$cell.type = NA
@@ -50,6 +54,8 @@ df[x,"ItoLee_Hemilineage"] = "AOTUv2"
 df[x,"Hartenstein_Hemilineage"] = "DALl1"
 df[x,"ItoLee_Hemilineage"] = "primary"
 df[x,"Hartenstein_Hemilineage"] = "primary"
+df[z,"ItoLee_Hemilineage"] = "unknown"
+df[z,"Hartenstein_Hemilineage"] = "unknown"
 
 ##############################
 # Make and review cell types #
@@ -106,6 +112,12 @@ df[a6,"cell.type"] = "AV7a6"
 a7 = c("453031248", "515096130")
 df[a7,"cell.type"] = "AV7a7"
 
+b1 = c("889497360", "858803404")
+df[b1,"cell.type"] = "AV7b1"
+
+c1 = "516055524"
+df[c1,"cell.type"] = "AV7c1"
+
 ############
 ### AV7z ###
 ############
@@ -127,6 +139,27 @@ df[c2,"cell.type"] = "AV7c2"
 
 a1 = "636789034"
 df[a1,"cell.type"] = "AV8a1"
+
+
+############
+### AV9 ###
+############
+
+a1 = c("794406234", "953755666", "793728667")
+df[a1,"cell.type"] = "AV9a1"
+
+a2 = c("642660081", "671307834")
+df[a2,"cell.type"] = "AV9a1"
+
+a3 = c("579235017", "607195856")
+df[a3,"cell.type"] = "AV9a1"
+
+
+#####
+# a #
+#####
+
+a1
 
 ########
 # save #
