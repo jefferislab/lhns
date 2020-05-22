@@ -4,15 +4,12 @@
 \name{lh.em}
 \alias{lh.em}
 \alias{lh.fafb}
-\alias{lh.hemibrain}
 \alias{pn.fafb}
 \alias{fafb_lhns}
 \alias{lm_em_matches}
 \title{EM neuron skeletons for published lateral horn related reconstructions and all olfactory projection neurons.}
 \format{
 An object of class \code{neuronlist} (inherits from \code{list}) of length 218.
-
-An object of class \code{neuronlist} (inherits from \code{list}) of length 153.
 
 An object of class \code{neuronlist} (inherits from \code{list}) of length 346.
 
@@ -25,8 +22,6 @@ An object of class \code{data.frame} with 2877 rows and 8 columns.
 }
 \usage{
 lh.fafb
-
-lh.hemibrain
 
 pn.fafb
 

@@ -1,4 +1,4 @@
-"bodyid","type","cbf","m.type","c.type","cbf.change","class","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change","pnt"
-799945378,"CRE036f","AVM13","AVM13h","AVM13s_pct","FALSE","LHN","LHAV9a1c","unknown","unknown","none","none","none","none",FALSE,FALSE,"LHAV9"
-299082033,"SIP019b","PDL05","PDL05r","PDL05ob_pct","FALSE","LHN","LHPV5e1","DL2_medial","CP3_medial","1185009","good","none","none",TRUE,FALSE,"LHPV5"
-725701350,"SIP049a","PDM09","PDM09o","PDM09t_pct","FALSE","LHN","LHPV10d1","SIPp1","DPMpl2","none","none","none","none",FALSE,FALSE,"LHPV10"
+"bodyid","type","cbf","m.type","c.type","cbf.change","class","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change","pnt","connectivity.type"
+799945378,"CRE036f","AVM13","AVM13h","AVM13s_pct",FALSE,"LHN","LHAV9a1c","unknown","unknown","none","none","none","none",FALSE,FALSE,"LHAV9","LHAV9a1c"
+299082033,"SIP019b","PDL05","PDL05r","PDL05ob_pct",FALSE,"LHN","LHPV5e1","DL2_medial","CP3_medial","1185009","good","none","none",TRUE,FALSE,"LHPV5","LHPV5e1"
+725701350,"SIP049a","PDM09","PDM09o","PDM09t_pct",FALSE,"LHN","LHPV10d1","SIPp1","DPMpl2","none","none","none","none",FALSE,FALSE,"LHPV10","LHPV10d1"

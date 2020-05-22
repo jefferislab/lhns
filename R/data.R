@@ -174,14 +174,14 @@
 #' @source \url{https://doi.org/10.7554/eLife.43079}
 "cell_type_summary"
 
-#' Pre-calculated NBLAST scores between all neurons in this package
-#'
-#' Saves time re-calculating an NBLAST between all LH associated neuron morphologies
-#'
-#' @references Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
-#' “Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
-#' \href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
-"lh_nblast"
+#' #' Pre-calculated NBLAST scores between all neurons in this package
+#' #'
+#' #' Saves time re-calculating an NBLAST between all LH associated neuron morphologies
+#' #'
+#' #' @references Frechter, Shahar, Alexander Shakeel Bates, Sina Tootoonian, Michael-John Dolan, James D. Manton, Arian Rokkum Jamasb, Johannes Kohl, Davi Bock, and Gregory Sxe Jefferis. 2019.
+#' #' “Functional and Anatomical Specificity in a Higher Olfactory Centre.” eLife 8 (May).
+#' #' \href{https://doi.org/10.7554/eLife.44590}{doi:10.7554/eLife.44590}
+#' "lh_nblast"
 
 #' Odour responses for different LHN cell types
 #'
@@ -329,9 +329,6 @@
 "lh.fafb"
 #' @name lh.em
 #' @rdname lh.em
-"lh.hemibrain"
-#' @name lh.em
-#' @rdname lh.em
 "pn.fafb"
 #' @name lh.em
 #' @rdname lh.em
@@ -382,7 +379,16 @@
 "hemibrain.lhn.bodyids"
 #' @name hemibrain
 #' @rdname hemibrain
+"hemibrain.ton.bodyids"
+#' @name hemibrain
+#' @rdname hemibrain
 "hemibrain_lhns"
 #' @name hemibrain
 #' @rdname hemibrain
 "hemibrain_pnt_cbf"
+#' @name hemibrain
+#' @rdname hemibrain
+"hemibrain_pnt_cbf"
+#' @name hemibrain
+#' @rdname hemibrain
+"hemibrain_tons"

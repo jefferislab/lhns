@@ -19,12 +19,12 @@ x = c("728974338", "5812980156", "577546843", "727838223", "451355706",
       "454706029", "265120223", "356823065", "486501502", "5813129400",
       "5901208687")
 # Group Y
-y = c("360587642", "513050445", "705722260", "611274992", "699203489",
+y = c( "513050445", "705722260", "611274992", "699203489",
          "636798093", "361269751", "732354059", "455751103", "360254994",
          "391273276", "573328182", "485728655", "422640861", "424025668",
          "611620813", "768132738", "763034485", "423343583", "728836965",
          "422307542", "5813009429", "5813078563", "732034061","580244333", "5813048099",
-         "361964245", "5812981168", "851027931", "5901203559", "634069028",
+          "5812981168", "851027931", "5901203559", "634069028",
          "5813048346", "456083341", "912049625", "487795196", "513058708",
          "634741770", "794333532", "482974860", "641631962", "573005505",
          "5901196176", "487467388", "641631806", "484355342", "701577869",
@@ -336,8 +336,8 @@ df[b7,"cell.type"] = "PV5b7"
 # j #
 #####
 
-j1 = "357224041"
-df[j1,"cell.type"] = "PV5j1"
+l1 = "357224041"
+df[l1,"cell.type"] = "PV5l1"
 
 #####
 # l #
@@ -369,15 +369,60 @@ if(process){
   take_pictures(df)
 }
 
-##########
-# Issues #
-##########
-
-# "5813077562" "357224041"
-
-#####
-# f #
-#####
-
-# f1 = c("360587642", "361964245") # light = c("Gad1-F-400162",  "E0585-F-500000", "E0585-F-500001")
-# df[f1,"cell.type"] = "PV5f1"
+###########
+# example #
+###########
+#
+# # Create folder
+# folder = sprintf("data-raw/hemibrain/pnts/images/example/")
+# dir.create(folder, recursive = TRUE)
+#
+# # Set colours
+# reds = grDevices::colorRampPalette(colors = c(hemibrain_bright_colors["cerise"],"grey10"))
+# oranges = grDevices::colorRampPalette(colors = c(hemibrain_bright_colors["orange"],"grey10"))
+# blues = grDevices::colorRampPalette(colors = c(hemibrain_bright_colors["cyan"],"grey10"))
+# greens = grDevices::colorRampPalette(colors = c(hemibrain_bright_colors["green"],"grey10"))
+# purples = grDevices::colorRampPalette(colors = c(hemibrain_bright_colors["purple"],"grey10"))
+#
+# # Set view
+# nat::nopen3d(userMatrix = structure(c(0.827756524085999, 0.134821459650993,
+#                                       -0.544648587703705, 0, 0.557223737239838, -0.311243295669556,
+#                                       0.769824028015137, 0, -0.0657294392585754, -0.940718233585358,
+#                                       -0.332759499549866, 0, 0, 0, 0, 1), .Dim = c(4L, 4L)), zoom = 0.710681617259979,
+#              windowRect = c(0L, 45L, 1178L, 875L))
+#
+# # Plot hemilineages
+# clear3d();rgl::plot3d(hemibrain.surf, col="grey", alpha = 0.1)
+# x = db[names(db)%in%x]
+# y = db[names(db)%in%y]
+# z = db[names(db)%in%z]
+# plot3d(x, lwd = 2, soma = 200, col = oranges(length(x)+10)[1:length(x)])
+# plot3d(y, lwd = 2, soma = 200, col = purples(length(y)+10)[1:length(y)])
+# plot3d(z, lwd = 2, soma = 200, col = greens(length(z)+10)[1:length(z)])
+# rgl.snapshot(file=paste0(folder,"PV5_hemilineages.png"))
+#
+# # Plot anatomy groups
+# clear3d();rgl::plot3d(hemibrain.surf, col="grey", alpha = 0.1)
+# a = neuprint_read_neurons(subset(df, grepl("LHPV5a",cell.type))$bodyid, OmitFailures = TRUE, heal = FALSE)
+# b = neuprint_read_neurons(subset(df, grepl("LHPV5d",cell.type))$bodyid, OmitFailures = TRUE, heal = FALSE)
+# c = neuprint_read_neurons(subset(df, grepl("LHPV5g",cell.type))$bodyid, OmitFailures = TRUE, heal = FALSE)
+# plot3d(a, lwd = 2, soma = 200, col = reds(length(a)+5)[1:length(a)])
+# plot3d(b, lwd = 2, soma = 200, col = blues(length(b)+5)[1:length(b)])
+# plot3d(c, lwd = 2, soma = 200, col = greens(length(c)+5)[1:length(c)])
+# rgl.snapshot(file=paste0(folder,"PV5_anatomy_groups.png"))
+#
+# # Plot cell types
+# clear3d();rgl::plot3d(hemibrain.surf, col="grey", alpha = 0.1)
+# adf = subset(df, grepl("LHPV5a",cell.type))
+# adf$cell.type = gsub("[a-z]$","",adf$cell.type)
+# cols = hemibrain_bright_colors
+# for(i in 1:length(unique(adf$cell.type))){
+#   col = cols[i]
+#   ct = unique(adf$cell.type)[i]
+#   ctyp = subset(adf, cell.type == ct)
+#   ctype = a[as.character(ctyp$bodyid)]
+#   plot3d(ctype, lwd = 2, soma = 200, col = col)
+# }
+# rgl.snapshot(file=paste0(folder,"PV5_cell_types.png"))
+#
+#

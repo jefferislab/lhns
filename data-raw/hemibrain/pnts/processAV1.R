@@ -94,21 +94,21 @@ df[b4,"cell.type"] = "AV1b4"
 # a #
 #####
 
-a2 = c("789588935", "820563959", "883338122", "915724147")
+a1 = c("789588935", "820563959", "883338122", "915724147")
 # light = c("Gad1-F-800137", "Gad1-F-600174", "Gad1-F-200387", "Cha-F-300357", "VGlut-F-000366", "L1989#3",
 #         "VGlut-F-600078", "VGlut-F-500269", "L1990#2", "VGlut-F-500847", "VGlut-F-500378",
 #         "Gad1-F-500105", "VGlut-F-400535","L1989#4", "VGlut-F-600516", "VGlut-F-500113","VGlut-F-500507",
 #         "Cha-F-200201", "VGlut-F-500603","L1989#1","L1989#2","L1990#1","L1990#3","VGlut-F-500255",
 #         "VGlut-F-600069", "JJ16", "JJ17")
-df[a2,"cell.type"] = "AV1a2"
+df[a1,"cell.type"] = "AV1a1"
 
-a1 = c("855384597", "917450071") # light = c("Gad1-F-600303", "Gad1-F-900205")
+a2 = c("855384597", "917450071") # light = c("Gad1-F-600303", "Gad1-F-900205")
 # e.e = c("Gad1-F-800191", "Gad1-F-700243", "Gad1-F-700100", "Cha-F-100370", "Cha-F-700271",
 #         "VGlut-F-600109", "VGlut-F-500744", "VGlut-F-700284", "Gad1-F-300038", "L1990#5",
 #         "VGlut-F-700009", "fru-M-100125", "fru-F-400357","L1990#4","L1990#6","L1990#7","L1990#8",
 #         "VGlut-F-100009","VGlut-F-400241", "VGlut-F-600072","VGlut-F-600311","VGlut-F-600598",
 #         "VGlut-F-700213", "VGlut-F-700266", "JJ15", "JJ16", "JJ22", "JJ87")
-df[a1,"cell.type"] = "AV1a1"
+df[a2,"cell.type"] = "AV1a2"
 
 a3 = c("854680421", "883018168", "1041253084", "855439675", "823999645", "913341672")
 # light = c("Gad1-F-900217", "Gad1-F-500318", "Cha-F-300352", "5HT1A-M-800011", "fru-M-600094",
@@ -171,7 +171,7 @@ write.csv(df, file = "data-raw/hemibrain/pnts/csv/AV1_celltyping.csv", row.names
 # Process
 if(process){
    # Update googlesheet
-   write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+   write_lhns(df = df, column = c("class", "pnt", "cell.type", "connectivity.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
    # Make 2D Images
    take_pictures(df)

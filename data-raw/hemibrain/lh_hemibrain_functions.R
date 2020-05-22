@@ -2,15 +2,17 @@
 write_lhns <- function(df,
                        bodyids = NULL,
                        selected_file = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
-                       column = NULL){
+                       column = NULL,
+                       sheet = "lhns",
+                       id.field = "bodyid"){
   # Read the Google Sheet
   gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
                            ss = selected_file,
-                           sheet = "lhns",
+                           sheet = sheet,
                            guess_max = 3000,
                            return = TRUE)
-  gs$bodyid = correct_id(gs$bodyid)
-  rownames(gs) = gs$bodyid
+  gs[[id.field]] = correct_id(gs[[id.field]])
+  rownames(gs) = gs[[id.field]]
   # Check column
   if(is.null(column)){
     column = colnames(gs)
@@ -22,16 +24,16 @@ write_lhns <- function(df,
   }
   # Check df
   if(!is.null(bodyids)){
-    df = subset(df, df$bodyid %in% bodyids)
+    df = subset(df, df[[id.field]] %in% bodyids)
     message("Updating ", nrow(df), " entries")
   }
   # Add new rows if necessary
-  if(sum(!df$bodyid%in%gs$bodyid)){
-    write_lhns_missing(df, selected_file = selected_file)
-    df = subset(df, df$bodyid%in%gs$bodyid)
+  if(sum(!df[[id.field]]%in%gs[[id.field]])){
+    write_lhns_missing(df, selected_file = selected_file, sheet = sheet, id.field = id.field)
+    df = subset(df, df[[id.field]]%in%gs[[id.field]])
   }
   # Work out rows to update
-  rows = match(df$bodyid,gs$bodyid)+1
+  rows = match(df[[id.field]],gs[[id.field]])+1
   rownames(df) = rows
   for(r in rows){
     for(c in column){
@@ -41,7 +43,7 @@ write_lhns <- function(df,
                                        ss = selected_file,
                                        range = range,
                                        data = as.data.frame(df[as.character(r),c]),
-                                       sheet = "lhns",
+                                       sheet = sheet,
                                        col_names = FALSE)
     }
   }
@@ -49,37 +51,41 @@ write_lhns <- function(df,
 
 # hidden
 write_lhns_missing <- function(df,
+                               sheet = "lhns",
+                               id.field = "bodyid",
                                selected_file = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw"){
   # Read the Google Sheet
   gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
                                         ss = selected_file,
-                                        sheet = "lhns",
+                                        sheet = sheet,
                                         guess_max = 3000,
                                         return = TRUE)
-  gs$bodyid = correct_id(gs$bodyid)
-  rownames(gs) = gs$bodyid
-  df = subset(df, ! df$bodyid %in% gs$bodyid)
+  gs[[id.field]] = correct_id(gs[[id.field]])
+  rownames(gs) = gs[[id.field]]
+  df = subset(df, ! df[[id.field]] %in% gs[[id.field]])
   # Check column
   column = colnames(gs)
   column = intersect(column,colnames(df))
   column = intersect(column,colnames(gs))
   # input missing information
-  meta = neuprint_get_meta(df$bodyid)
-  for(c in setdiff(colnames(gs),colnames(df))){
-    if(c%in%colnames(meta)){
-      df[[c]] = meta[[c]][match(df$bodyid,meta$bodyid)]
-    }else{
-      df[[c]] = ""
+  if(!is.null(df$bodyid)){
+    meta = neuprint_get_meta(df$bodyid)
+    for(c in setdiff(colnames(gs),colnames(df))){
+      if(c%in%colnames(meta)){
+        df[[c]] = meta[[c]][match(df$bodyid,meta$bodyid)]
+      }else{
+        df[[c]] = ""
+      }
     }
   }
-  df = df[!duplicated(df$bodyid),]
+  df = df[!duplicated(df[[id.field]]),]
   df = df[,colnames(gs)]
   df[df=="none"] = ""
   # Write to google sheet
   hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
                                    ss = selected_file,
                                    data = as.data.frame(df),
-                                   sheet = "lhns")
+                                   sheet = sheet)
 }
 
 # hidden
@@ -177,6 +183,9 @@ process_types <- function(df, hemibrain_lhns){
   df$pnt = sub("^\\D*\\d+\\K.*", "", df$cell.type, perl=TRUE)
   # Other issues
   df$cbf.change[is.na(df$cbf.change)] = FALSE
+  # Connectivity type different from cell types
+  df$connectivity.type =
+  df$cell.type = gsub("[a-z]$","",df$cell.type)
   # Return
   df = df[!is.na(df$bodyid),]
   rownames(df) = df$bodyid

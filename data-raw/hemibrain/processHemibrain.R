@@ -5,12 +5,9 @@ library(natverse)
 library(hemibrainr)
 source("data-raw/hemibrain/pnts/misc.R")
 
-###################################################################################
-# LHNs are neurons with 1% of their synaptic input / 10 synapses coming from uPNs #
-###################################################################################
-# LHNs must be downstream of uPNs ...
-upns = neuprint_read_neurons(hemibrainr::pn.ids)
-upn.syns = hemibrainr::hemibrain_extract_connections(upns)
+##################################################################################
+# LHNs are neurons with 1% of their synaptic input / 10 synapses coming from PNs #
+##################################################################################
 # And they must be 'neuron' objects in the LH(R) ROI ...
 lh.info = neuprintr::neuprint_find_neurons(
   input_ROIs = "LH(R)",

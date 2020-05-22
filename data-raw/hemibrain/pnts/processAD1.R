@@ -262,6 +262,15 @@ df[h1,"cell.type"] = "AD1h1"
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
 
+# Fix connectivity types
+a= c("544107335", "673426956", "606461310", "769199010", "824349873",
+     "5813013202", "544107243", "730562988")
+b = c("573683438", "483017681", "5813022459")
+c= c("543321179", "574040939", "5813052205", "762274975")
+df[a,"connectivity.type"] = "LHAD1b2a"
+df[b,"connectivity.type"] = "LHAD1b2b"
+df[c,"connectivity.type"] = "LHAD1b2c"
+
 # Summarise results
 state_results(df)
 
@@ -274,7 +283,7 @@ if(process){
   take_pictures(df)
 
   # Update googlesheet
-  write_lhns(df = df, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+  write_lhns(df = df[c(a,b,c),], column = c("class", "pnt", "cell.type", "connectivity.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 }
 
 
