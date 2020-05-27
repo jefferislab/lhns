@@ -353,10 +353,12 @@ extract_ids <- function(x){
 }
 
 # hidden
-is.lhn <- function(x){
-  x%in%hemibrain.lhn.bodyids
+is.lhn <- function(x, logical = TRUE){
+  csv = read.csv("data-raw/csv/hemibrain_lh_list.csv")
+  csv$bodyid = correct_id(csv$bodyid)
+  islh = csv$lh[match(x,csv$bodyid)]
+  ifelse(islh=="FALSE",FALSE,TRUE)
 }
-
 
 # hidden
 hemibrain_ct3d <- function(df, someneuronlist = hemibrain_neurons()){

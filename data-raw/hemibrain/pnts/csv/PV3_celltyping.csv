@@ -1,7 +1,7 @@
 "bodyid","type","cbf","m.type","c.type","cbf.change","class","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change","pnt","connectivity.type"
 "912732057","PLP148a","PVL10","PVL10g","PVL10k_pct",FALSE,"LHN","LHPV3b1","VPNp1_posterior","BLD5_posterior","none","none","none","none",TRUE,FALSE,"LHPV3","LHPV3b1"
 "1068543885","PLP148a","PVL10","PVL10g","PVL10k_pct",FALSE,"LHN","LHPV3b1","VPNp1_posterior","BLD5_posterior","none","none","none","none",TRUE,FALSE,"LHPV3","LHPV3b1"
-"1068912795","PLP148a","PVL10","PVL10g","PVL10k_pct",FALSE,"LHN","LHPV3b1","VPNp1_posterior","BLD5_posterior","none","none","none","none",TRUE,FALSE,"LHPV3","LHPV3b1"
+"1068912795","PLP148a","PVL10","PVL10g","PVL10k_pct",FALSE,"LHN","LHPV3b1","VPNp1_posterior","BLD5_posterior","3931736","good","none","none",TRUE,FALSE,"LHPV3","LHPV3b1"
 "947172504","PLP148b","PVL10","PVL10g","PVL10q_pct",FALSE,"LHN","LHPV3b1","VPNp1_posterior","BLD5_posterior","none","none","none","none",TRUE,FALSE,"LHPV3","LHPV3b1"
 "1006160722","PLP148b","PVL10","PVL10g","PVL10q_pct",FALSE,"LHN","LHPV3b1","VPNp1_posterior","BLD5_posterior","none","none","none","none",TRUE,FALSE,"LHPV3","LHPV3b1"
 "1037535479","PLP148b","PVL10","PVL10g","PVL10q_pct",FALSE,"LHN","LHPV3b1","VPNp1_posterior","BLD5_posterior","none","none","none","none",TRUE,FALSE,"LHPV3","LHPV3b1"

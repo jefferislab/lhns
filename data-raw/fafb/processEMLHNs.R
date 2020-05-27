@@ -29,14 +29,14 @@ lh.fafb = flow.centrality(lh.fafb, polypre = FALSE, mode = "centrifugal", split 
 lh.fafb = xform_brain(lh.fafb, reference = FCWB, sample = FAFB)
 
 # Read in our favourite LHNs from the hemibrain project
-bis = as.character(unique(em.lh.meta$hemibrain_match))
-db = hemibrain_neurons()
-bis = intersect(bis, names(db))
-lh.hemibrain = hemibrainr::hemibrain_read_neurons(bis, microns = TRUE, OmitFailures = TRUE)
-lh.hemibrain[,] = em.lh.meta[match(em.lh.meta$bodyid,names(lh.hemibrain)),]
-lh.hemibrain[,"skeleton.type"] = "EM"
-lh.hemibrain[,"dataset"] = "hemibrain"
-lh.hemibrain = xform_brain(lh.hemibrain, reference= "FCWB", sample="JRCFIB2018F")
+# bis = as.character(unique(em.lh.meta$hemibrain_match))
+# db = hemibrain_neurons()
+# bis = intersect(bis, names(db))
+# lh.hemibrain = hemibrainr::hemibrain_read_neurons(bis, microns = TRUE, OmitFailures = TRUE)
+# lh.hemibrain[,] = em.lh.meta[match(em.lh.meta$bodyid,names(lh.hemibrain)),]
+# lh.hemibrain[,"skeleton.type"] = "EM"
+# lh.hemibrain[,"dataset"] = "hemibrain"
+# lh.hemibrain = xform_brain(lh.hemibrain, reference= "FCWB", sample="JRCFIB2018F")
 
 # And the same for FAFB PNs
 em.pn.meta = read.csv("data-raw/csv/pn_cell_types.csv")

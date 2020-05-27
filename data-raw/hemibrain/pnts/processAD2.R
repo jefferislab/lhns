@@ -85,38 +85,38 @@ df[b1,"cell.type"] = "AD2b1"
 ### ad2y ###
 ############
 
-c1 = "390952738"
-df[c1,"cell.type"] = "AD2c1"
+e1 = "390952738" # keep
+df[e1,"cell.type"] = "AD2e1"
 
-c2 = "330604760"
-df[c2,"cell.type"] = "AD2c2"
+e2 = "330604760"
+df[e2,"cell.type"] = "AD2e2"
 
-c3 = "361968122"
-df[c3,"cell.type"] = "AD2c3"
+e3 = "361968122"
+df[e3,"cell.type"] = "AD2e3"
 
 d1 = "706831482"
 df[d1,"cell.type"] = "AD2d1"
 
-d2 = c("541347811", "604070433")
+d2 = c("541347811", "604070433") # dead
 df[d2,"cell.type"] = "AD2d2"
 
-e1 = c("576843029", "573713481")
-df[e1,"cell.type"] = "AD2e1"
+c1 = c("576843029", "573713481")
+df[c1,"cell.type"] = "AD2c1"
 
-e2 = c("666136034", "917497441")
-df[e2,"cell.type"] = "AD2e2"
+c2 = c("666136034", "917497441")
+df[c2,"cell.type"] = "AD2c2"
 
-e3 = c("788519447", "574027813", "760272462")
-df[e3,"cell.type"] = "AD2e3"
+c3 = c("788519447", "574027813", "760272462")
+df[c3,"cell.type"] = "AD2c3"
 
-e4 = "670219670"
-df[e4,"cell.type"] = "AD2e4"
+c4 = "670219670"
+df[c4,"cell.type"] = "AD2c4"
 
 f1 = "421668365"
-df[f1,"cell.type"] = "AD2f1"
+df[f1,"cell.type"] = "AD2f1" # dead
 
 f2 = "5813010770"
-df[f2,"cell.type"] = "AD2f2"
+df[f2,"cell.type"] = "AD2f2" # dead
 
 ########
 # save #

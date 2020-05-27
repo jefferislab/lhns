@@ -149,13 +149,13 @@ df[d1,"cell.type"] = "AV5d1"
 e1 = "480276374"
 df[e1,"cell.type"] = "AV5e1"
 
-b1 = "390271275"
+b1 = "390271275" # dead
 df[b1,"cell.type"] = "AV5b1"
 
-b2 = "510282921"
+b2 = "510282921" # dead
 df[b2,"cell.type"] = "AV5b2"
 
-f1 = "327158831"
+f1 = "327158831" # dead
 df[f1,"cell.type"] = "AV5f1"
 
 

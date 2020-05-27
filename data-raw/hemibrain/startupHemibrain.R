@@ -59,4 +59,4 @@ xyzmatrix(most.lhins.hemibrain) = xyzmatrix(most.lhins.hemibrain)*(1000/8)
 # rownames(gs) = gs$bodyid
 
 ## Get LH volume
-# hemibrain.lhr = hemibrain_roi_meshes("LH(R)")
+hemibrain.lhr = hemibrain_roi_meshes("LH(R)")

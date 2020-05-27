@@ -38,6 +38,8 @@ for(csv in csvs){
 hemibrain.master = hemibrain.master[!duplicated(hemibrain.master$bodyid),]
 rownames(hemibrain.master) = hemibrain.master$bodyid
 
+# Check that each LHN
+
 # Check that each letter is filled
 for(p in unique(hemibrain.master$pnt)){
   pt = subset(hemibrain.master, pnt == p & !grepl("WED|CENT|PPL|MB",cell.type))
@@ -103,6 +105,20 @@ pnt_cbf = aggregate(list(count = hemibrain.master$bodyid),
 pnt_cbf = pnt_cbf[order(pnt_cbf$count,decreasing = TRUE),]
 hemibrain_pnt_cbf = pnt_cbf[!duplicated(pnt_cbf$cbf),]
 rownames(hemibrain_pnt_cbf) = hemibrain_pnt_cbf$cbf
+
+# How many LHNs not in this groups?
+lh.info = neuprintr::neuprint_find_neurons(
+  input_ROIs = "LH(R)",
+  output_ROIs =  'LH(R)',
+  all_segments = FALSE)
+lh.info = subset(lh.info, neuronStatus=="Traced")
+lh.ids = setdiff(lh.info$bodyid,c(hemibrainr::upn.ids,hemibrainr::mpn.ids,hemibrainr::dan.ids,hemibrainr::mbon.ids,hemibrainr::pn.ids))
+lh.roi.info = as.data.frame(neuprint_get_roiInfo(lh.ids))
+lh.roi.info = subset(lh.roi.info, `LH(R).pre` >=10|`LH(R).post`>=10|`LH(R).downstream`>=10|`LH(R).upstream`>=10)
+lh.ids = lh.roi.info$bodyid
+lh.ids = intersect(lh.ids, names(db))
+lh.ids = setdiff(lh.ids, hemibrain.master$bodyid)
+lh.ids = setdiff(lh.ids, hemibrainr::pn.ids)
 
 # Save!
 if(process){

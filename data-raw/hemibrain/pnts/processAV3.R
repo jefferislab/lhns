@@ -25,7 +25,7 @@ y = c("326154371", "480257882", "325814669", "480257743", "480257914",
       "359555689", "5813047178", "5901196932", "328543014", "665454282",
       "696143413", "544699051", "574377845", "5813009276", "357855613",
       "388898076", "424716408", "5813010511", "698180927", "359581549",
-      "698185483", "482680447", "296120593",  "633097828",
+      "698185483", "482680447", "296120593",
       "541624179","480253500", "479917126", "511271379",
       "480586157", "511621576", "511262952", "356832508", "325834652", "418861761",
       "448899493", "449223263", "5813047004", "295780154", "295461707", "357496172",
@@ -34,6 +34,7 @@ y = c("326154371", "480257882", "325814669", "480257743", "480257914",
 w = c("358538040", "5813109792", "510956058", "358541542", "510956443",
       "388898076", "358538491", "387538632","541965840", "5901194027",
       "513029260", "297851977")
+z = "633097828"
 av3 = c(x,y,w)
 
 ### Get FAFB assigned hemilineage information
@@ -47,9 +48,11 @@ av3 = c(x,y,w)
 # ### Meta info
 # mx = neuprint_get_meta(x)
 # my = neuprint_get_meta(y)
+# mw = neuprint_get_meta(w)
 # table(mx$cellBodyFiber)
 # table(my$cellBodyFiber)
-#
+# table(mw$cellBodyFiber)
+
 # ### CBFs:
 # ### AVL18^LEA2 AVL12^LEA5 ADL04^LBDL7 ADL10^LBDL6
 # AVL18 = neuprint_read_neurons("AVL18")
@@ -79,18 +82,19 @@ wrong1 = c("389205204")
 df[wrong1,"cbf.change"] = "AVL18^LEA2"
 wrong2 = c("358874595", "327857238", "356832459", "295470623", "327152465",
            "420235167", "294437328", "390254536", "5813057660", "451296290",
-           "390931864", "5901196932", "295456869", "453018720",
-           "633097828")
+           "390931864", "5901196932", "295456869", "453018720")
 df[wrong2,"cbf.change"] = "ADL10^LBDL6"
 df = subset(df, !is.na(class))
 
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "SLPav1_lateral"
 df[x,"Hartenstein_Hemilineage"] = "BLAl_lateral"
-df[y,"ItoLee_Hemilineage"] = "SLPpl3_lateral"
-df[y,"Hartenstein_Hemilineage"] = "new_lateral"
-df[w,"ItoLee_Hemilineage"] = "SLPpl3_lateral"
-df[w,"Hartenstein_Hemilineage"] = "new_lateral"
+df[y,"ItoLee_Hemilineage"] = "LHa3"
+df[y,"Hartenstein_Hemilineage"] = "BLVa2"
+df[w,"ItoLee_Hemilineage"] = "LHa3"
+df[w,"Hartenstein_Hemilineage"] = "BLVa2"
+df[z,"ItoLee_Hemilineage"] = "primary"
+df[z,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -139,10 +143,10 @@ df[e8,"cell.type"] = "AV3e8"
 # f1 = c("329225149", "329897255") # light = c("Gad1-F-500030") # AV6?
 # df[f1,"cell.type"] = "AV3f1"
 
-f1 = "5813021535"
+f1 = "5813021535" # dead
 df[f1,"cell.type"] = "AV3f1"
 
-f2 = c("454386099") # light = "Gad1-F-900160"
+f2 = c("454386099") # light = "Gad1-F-900160" # dead
 df[f2,"cell.type"] = "AV3f2"
 
 #####
@@ -301,10 +305,10 @@ df[o1,"cell.type"] = "AV3o1"
 p1 = "633793553"
 df[p1,"cell.type"] = "AV3p1"
 
-q1 = "295814411"
+q1 = "295814411" # dead
 df[q1,"cell.type"] = "AV3q1"
 
-m1 = "360255138"
+m1 = "360255138" # dead
 df[m1,"cell.type"] = "AV3m1"
 
 

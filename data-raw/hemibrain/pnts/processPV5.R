@@ -12,7 +12,7 @@ if(!exists("process")){
 x = c("728974338", "5812980156", "577546843", "727838223", "451355706",
       "573333903", "5813012375", "264779403", "546511447", "573683455",
       "573333284", "572651463", "609941228", "604368022", "696432315",
-      "356144721", "419216386", "451646125", "485387561", "702010197",
+        "702010197",
       "700982749", "639958133", "264783939", "481268762", "573333575",
       "5813010200", "602999843", "608240515", "329220439", "633684017",
       "265120324", "696082279", "5813009281", "573670049", "579576294",
@@ -36,9 +36,11 @@ z = c("294787849", "579575594", "328611004", "642504699", "299082033",
   "5813010180", "5813094592", "573708714", "605063393", "5813083717",
   "729228602", "5901213816", "759582005", "880323994", "973047668",
   "5812980282", "390599254", "511267279", "572647105", "5813010159",
-  "5813047174")
+  "5813047174", "356144721",  "419216386", "451646125",
+ "485387561")
 w = c("5813077562", "357224041")
 pv5 = unique(c(x,y,z,w))
+
 # cp2_dorsal = c("299082033",
 #                "328611004",
 #                "294787849",
@@ -111,6 +113,12 @@ pv5 = unique(c(x,y,z,w))
 #           "912049625")
 
 ## The PV5 assembly contains 3 cell body fibre bundles and 3 hemlineages
+mx = neuprint_get_meta(x)
+table(mx$cellBodyFiber)
+my = neuprint_get_meta(y)
+table(my$cellBodyFiber)
+mz = neuprint_get_meta(z)
+table(mz$cellBodyFiber)
 
 ### CBFs:
 ### x: PDL05^SFS1 PDL08^pLH2 PDL19^SFS3 PDL23^pLH10 PDL14^pLH6
@@ -136,16 +144,11 @@ df$class = "LHN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
-### Wrong CBF
-# PDL08 -> PDL23
-wrong1 = c("356144721", "419216386", "451646125", "485387561")
-df[wrong1,"cbf.change"] = "PDL23"
-
 ### Hemilineages:
 #### ItoLee: Dl2_lateral, DL1_dorsal, DL2_medial
 #### Hartenstein: CP3_lateral, CP2_dorsal, CP3_medial
-df[x,"ItoLee_Hemilineage"] = "DL2_lateral"
-df[x,"Hartenstein_Hemilineage"] = "CP3_lateral"
+df[x,"ItoLee_Hemilineage"] = "DL2_dorsal"
+df[x,"Hartenstein_Hemilineage"] = "CP3_dorsal"
 df[y,"ItoLee_Hemilineage"] = "DL1_dorsal"
 df[y,"Hartenstein_Hemilineage"] = "CP2_dorsal"
 df[z,"ItoLee_Hemilineage"] = "DL2_medial"
@@ -326,7 +329,7 @@ df[b3,"cell.type"] = "PV5b3"
 b5 = c("484355342", "794333532") # light = c("E0585-F-400001")
 df[b5,"cell.type"] = "PV5b5"
 
-b6 = c("580244333", "487467388", "5813047222", "5813048099", "697853509") # new, but: light = c("Cha-F-200204", "E0585-F-700001", "E0585-F-800004")
+b6 = c("580244333", "487467388", "5813047222", "5813048099", "697853509") # maybe # new, but: light = c("Cha-F-200204", "E0585-F-700001", "E0585-F-800004")
 df[b6,"cell.type"] = "PV5b6"
 
 b7 = c("611274992", "641631806", "641631962")

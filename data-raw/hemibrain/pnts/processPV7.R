@@ -155,7 +155,7 @@ df[c1,"cell.type"] = "PV10c1"
 d1 = "423748579"
 df[d1,"cell.type"] = "PV10d1"
 
-e1 = "883479122"
+e1 = "883479122" # dead
 df[e1,"cell.type"] = "PV10e1"
 
 #############

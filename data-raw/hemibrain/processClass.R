@@ -127,8 +127,8 @@ ton.meta %>%
   dplyr::mutate(class = replace(class, bodyid %in% dan.bodyids, "DAN")) %>%
   dplyr::mutate(class = replace(class, bodyid %in% centrifugal.bodyids, "CENT")) %>%
   dplyr::mutate(class = replace(class, bodyid %in% lhn.bodyids, "LHN")) %>%
-  dplyr::mutate(class = replace(class, bodyid %in% lhon.bodyids, "LHN")) %>%
-  dplyr::mutate(class = replace(class, bodyid %in% lhln.bodyids, "LHN")) %>%
+  dplyr::mutate(class = replace(class, bodyid %in% lhon.bodyids, "LHON")) %>%
+  dplyr::mutate(class = replace(class, bodyid %in% lhln.bodyids, "LHLN")) %>%
   dplyr::mutate(class = replace(class, bodyid %in% hemibrainr::upn.ids, "uPN")) %>%
   dplyr::mutate(class = replace(class, bodyid %in% hemibrainr::mpn.ids, "mPN")) %>%
   dplyr::mutate(class = replace(class, bodyid %in% hemibrainr::vppn.ids, "vPN")) %>%
@@ -146,11 +146,11 @@ ton.info[as.character(hemibrain.master$bodyid),"cell.type"] = hemibrain.master$c
                                                                                                         hemibrain.master$bodyid)]
 
 # The infection model results
-diff = read.csv("data-raw/csv/hemibrain_infection_results.csv")
-ton.info$layer = diff[match(ton.info$bodyid,diff$node),"layer_mean"]
+infection.model = read.csv("data-raw/csv/hemibrain_infection_results.csv")
+ton.info$layer = infection.model[match(ton.info$bodyid,infection.model$node),"layer_mean"]
 ton.info$ct.layer = NA
 for(ct in unique(ton.info$cell.type)){
-  layer = round(mean(subset(ton.info,cell.type==ct)$layer))
+  layer = round(mean(subset(ton.info,cell.type==ct)$layer, na.rm = TRUE))
   ton.info$ct.layer[ton.info$cell.type==ct] = layer
 }
 
