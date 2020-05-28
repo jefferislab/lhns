@@ -54,7 +54,7 @@ df[x,"Hartenstein_Hemilineage"] = "unknown"
 ### Easily plot several of your candidate types at once
 
 ############
-### PV1 ###
+### PV1 ####
 ############
 
 a1 = "328533761" # light = c("Cha-F-000461", "TH-F-000012", "TH-M-000030", "TH-M-000013")

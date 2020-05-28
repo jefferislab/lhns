@@ -7,7 +7,6 @@ if(!exists("process")){
 }
 # First read all LHNs in the related cell body fibres
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
-
 x = c("946153322", "789248033", "825032139", "856066807", "885435892",
       "913345831", "819220237", "917842566", "857806966", "828144363",
       "946485296", "763652770", "915792794", "5813013545", "764001607",
@@ -38,7 +37,7 @@ pv2 = c(x,y,z,w)
 # z.match = unique(hemibrain_lhns[z,"FAFB.match"])
 # z.match = z.match[!is.na(z.match)]
 # z.match = read.neurons.catmaid.meta(z.match)
-#
+
 # ### Meta info
 # mx = neuprint_get_meta(x)
 # my = neuprint_get_meta(y)
@@ -58,7 +57,7 @@ pv2 = c(x,y,z,w)
 # PDL12 = neuprint_read_neurons("PDL12")
 # PDL12 = PDL12[names(PDL12)%in%hemibrain.lhn.bodyids]
 # pv2.hemi = union(PDL12,PVL03,PVL01,PDL09)
-#
+
 # ### Re-define some of these CBFs
 # sd = setdiff(pv2, names(pv2.hemi))
 # ds = setdiff(names(pv2.hemi),pv2)
@@ -97,7 +96,8 @@ df[w,"Hartenstein_Hemilineage"] = "BLP1_posterior"
 # c #
 #####
 
-c1 = c("819220237", "917842566", "825032139", "856066807")
+c1 = c("819220237", "917842566", "825032139", "856066807",
+      "885435892", "913345831")
 # light = c("Gad1-F-400232", "L1385#18", "L1328#6",
 #         "Cha-F-000242", "L1328#2","L1328#5","L568#2")
 df[c1,"cell.type"] = "PV2c1"
@@ -108,14 +108,11 @@ df[c2,"cell.type"] = "PV2c2"
 c3 = c("789248033", "946153322")
 df[c3,"cell.type"] = "PV2c3"
 
-c4 = c("885435892", "913345831") # light = c("Gad1-F-600088", "L568#6")
-df[c4,"cell.type"] = "PV2c4"
+c4 = c("828144363", "946485296")
+df[c4,"cell.type"] = "PV2c5"
 
-c5 = c("828144363", "946485296")
-df[c5,"cell.type"] = "PV2c5"
-
-c6 = c("5813013545", "857806966", "764001607", "763652770", "915792794") # light = "Gad1-F-500328"
-df[c6,"cell.type"] = "PV2c6"
+c5 = c("5813013545", "857806966", "764001607", "763652770", "915792794") # light = "Gad1-F-500328"
+df[c5,"cell.type"] = "PV2c6"
 
 c7 = "823400451"
 df[c7,"cell.type"] = "PV2c7"
