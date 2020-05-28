@@ -155,7 +155,7 @@ process_types <- function(df, hemibrain_lhns){
     d = subset(df, df$cell.type==ct)
     ito.types = unique(d$type)
     if(length(ito.types)>1){
-      f = factor(d$type, levels = sort(unique(d$type)))
+      f = factor(d$type, levels = sort(unique(d$type), decreasing = TRUE))
       cell.types = paste0(d$cell.type,letters[f])
       df$cell.type[match(d$bodyid,df$bodyid)] = cell.types
     }
@@ -176,7 +176,7 @@ process_types <- function(df, hemibrain_lhns){
     }
   }
   # Add cell type prefix
-  prefix =!df$cell.type %in% c("MB-C1","LHMB1","PPL2ab-PN1","DNp44") | grepl("WED|aSP",df$cell.type)
+  prefix =!grepl("WED|aSP|MB-C1|LHMB1|PPL2ab-PN1|DNp44",df$cell.type)
   df$cell.type[prefix] = paste0("LH",df$cell.type[prefix])
   df$cell.type = gsub("NA","",df$cell.type)
   # Add primary neurite system
@@ -184,7 +184,7 @@ process_types <- function(df, hemibrain_lhns){
   # Other issues
   df$cbf.change[is.na(df$cbf.change)] = FALSE
   # Connectivity type different from cell types
-  df$connectivity.type =
+  df$connectivity.type = df$cell.type
   df$cell.type = gsub("[a-z]$","",df$cell.type)
   # Return
   df = df[!is.na(df$bodyid),]

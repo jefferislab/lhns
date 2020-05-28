@@ -18,6 +18,7 @@ rownames(ito.lhns) = ito.lhns$body.ID
 # All the newest names
 namelist =  read.csv("data-raw/csv/Namelist-04162020.csv")
 colnames(namelist) = c("bodyid","type","cbf","m.type","c.type")
+rownames(namelist) = namelist$bodyid
 
 # Get LH information
 lh.info = neuprintr::neuprint_find_neurons(

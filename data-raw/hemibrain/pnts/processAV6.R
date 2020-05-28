@@ -84,9 +84,6 @@ df[w,"Hartenstein_Hemilineage"] = "BLAd2_ventral"
 ### AV6w ###
 ############
 
-h1 = "421646999"
-df[h1,"cell.type"] = "AV6h1"
-
 # i1 = "823395525" #  dead
 # df[i1,"cell.type"] = "AV6i1"
 
@@ -211,8 +208,8 @@ df[f3,"cell.type"] = "AV6f3"
 # e2 = c("451386832", "482757982", "5813011061", "482762384", "5813019528") # dead
 # df[e2,"cell.type"] = "AV6e2"
 
-i1 = "672960748"
-df[i1,"cell.type"] = "AV6i1"
+h1 = "672960748"
+df[h1,"cell.type"] = "AV6h1"
 
 ########
 # save #

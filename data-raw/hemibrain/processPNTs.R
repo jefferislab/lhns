@@ -38,21 +38,21 @@ for(csv in csvs){
 hemibrain.master = hemibrain.master[!duplicated(hemibrain.master$bodyid),]
 rownames(hemibrain.master) = hemibrain.master$bodyid
 
-# Add alternative names
-# hemibrain.master$other = ""
-# hemibrain.master[c("5813078563", "732034061","5813061116"),"other"] = "LHPV5k1"
-# hemibrain.master["8927505","other"] = "AVLP-PN1"
-# hemibrain.master["608166388","other"] = "GNG-PN1"
-# hemibrain.master["5812993257","other"] = "LO-PN1"
-# hemibrain.master["1067223806","other"] = "LO-PN2"
-# hemibrain.master["1663021115","other"] = "VNC-PN1"
-
-
 # Check that each letter is filled
 for(p in unique(hemibrain.master$pnt)){
   pt = subset(hemibrain.master, pnt == p & !grepl("WED|CENT|PPL|MB",cell.type))
   ags = sort(unique(gsub(".*([a-z]).*","\\1",pt$cell.type)))
   cat(ags);  message(p)
+}
+
+# Check that anatomy groups do not cross hemilineage boundaries
+ags = unique(gsub("[1-9]$","",unique(hemibrain.master$cell.type)))
+for(ag in ags){
+  ns = subset(hemibrain.master, grepl(ag, cell.type))$bodyid
+  lins = unique(hemibrain.master[as.character(ns),"ItoLee_Hemilineage"])
+  if(length(lins)>1){
+    message(ag)
+  }
 }
 
 # Fix classes
@@ -157,4 +157,26 @@ if(process){
   write.csv(hemibrain_lhns, file = "data-raw/csv/hemibrain_olfactory_lateral_horn_neurons.csv", row.names = FALSE)
   write.csv(hemibrain_pnt_cbf, file = "data-raw/csv/hemibrain_pnt_cbf.csv", row.names = FALSE)
   usethis::use_data(hemibrain_lhns, overwrite = TRUE)
+
+  # Update spreadsheet for Kei
+  gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+                                        ss = "17wFJ3VpJOSHupo2_0A2yXvplz0iO9WjhHiRLdgpvoX0",
+                                        sheet = "asb",
+                                        guess_max = 3000,
+                                        return = TRUE)
+  rownames(gs) = hemibrainr:::correct_id(gs$bodyid)
+  gs$asb_ct = hemibrain.master[match(gs$bodyid,hemibrain.master$bodyid),"cell.type"]
+  gs$asb_ctype = hemibrain.master[match(gs$bodyid,hemibrain.master$bodyid),"connectivity.type"]
+  gs$asb_ct[is.na(gs$asb_ct)] = "JANELIA"
+  gs$asb_ctype[is.na(gs$asb_ctype)] = "JANELIA"
+  googlesheets4::write_sheet(gs[0,],
+                              ss = "17wFJ3VpJOSHupo2_0A2yXvplz0iO9WjhHiRLdgpvoX0",
+                              sheet = "asb")
+  batches = split(1:nrow(gs), ceiling(seq_along(1:nrow(gs))/500))
+  for(i in batches){
+    hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
+                        data = gs[min(i):max(i),],
+                        ss = "17wFJ3VpJOSHupo2_0A2yXvplz0iO9WjhHiRLdgpvoX0",
+                        sheet = "asb")
+  }
 }
