@@ -40,11 +40,13 @@ rownames(hemibrain.master) = hemibrain.master$bodyid
 
 # Add alternative names
 # hemibrain.master$other = ""
-# hemibrain.master[,"other"] = "LHPV5k1"
+# hemibrain.master[c("5813078563", "732034061","5813061116"),"other"] = "LHPV5k1"
 # hemibrain.master["8927505","other"] = "AVLP-PN1"
 # hemibrain.master["608166388","other"] = "GNG-PN1"
 # hemibrain.master["5812993257","other"] = "LO-PN1"
 # hemibrain.master["1067223806","other"] = "LO-PN2"
+# hemibrain.master["1663021115","other"] = "VNC-PN1"
+
 
 # Check that each letter is filled
 for(p in unique(hemibrain.master$pnt)){
