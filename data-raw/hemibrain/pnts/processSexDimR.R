@@ -18,11 +18,13 @@ mals = x = c("1472676490", "887519423", "5813017614", "5813057615", "642723975",
              "578189223", "5812980516", "610571450", "5812980330", "668876945",
              "703351975", "609867847", "667840305", "670914976", "360958913",
              "390616496", "452694446", "5813089487", "1142002856", "1485786914",
-             "545453209", "578530106", "672653737")
-asp = y = c("485430434", "855414220", "641278400", "887148641", "949534412",
-            "610916994", "485775679", "485430336", "5813115796", "421992069",
-            "329919036", "421650982", "421318649", "5813055904", "761661626",
-            "578189576", "582027317", "581013183")
+             "545453209", "578530106", "672653737", "611323175")
+y = c("421318649", "5813055904", "761661626", "578189576", "582027317",
+      "581013183")
+z = c("485430434", "855414220", "641278400", "887148641", "949534412",
+      "610916994", "485775679", "485430336", "5813115796", "421992069",
+      "329919036", "421650982")
+asp = c(y,z)
 sexdim = c(mals, asp)
 
 ### Get FAFB assigned hemilineage information
@@ -42,17 +44,18 @@ sexdim = c(mals, asp)
 ### Set-up data.frame
 df = subset(namelist, bodyid %in% sexdim)
 df$cbf.change = FALSE
-df$class[bodyid %in% asp] = "aSP"
-df$class[bodyid %in% mals] = "GNGPN"
+df$class[df$bodyid %in% asp] = "aSP"
+df$class[df$bodyid %in% mals] = "GNGPN"
 df$cell.type = NA
 rownames(df) = df$bodyid
 
 ### Hemilineages:
-df[x,"ItoLee_Hemilineage"] = "VLPl&p1_posterior"
-df[x,"Hartenstein_Hemilineage"] = "BLVp2_posterior"
-df[y,"ItoLee_Hemilineage"] = "SIPp1"
-df[y,"Hartenstein_Hemilineage"] = "DPMpl2"
-
+df[x,"ItoLee_Hemilineage"] = "CREa1_ventral"
+df[x,"Hartenstein_Hemilineage"] = "BAmd1_ventral"
+df[y,"ItoLee_Hemilineage"] = "SLPad1_anterior"
+df[y,"Hartenstein_Hemilineage"] = "DPLl3_anterior"
+df[z,"Hartenstein_Hemilineage"] = "DPLal2_medial"
+df[z,"ItoLee_Hemilineage"] = "LHl2_medial"
 
 ##############################
 # Make and review cell types #
@@ -63,87 +66,91 @@ df[y,"Hartenstein_Hemilineage"] = "DPMpl2"
 ### Easily plot several of your candidate types at once
 
 ############
-### PV7 ####
+### mAL ####
 ############
 
-a1 = c("392645639", "451308547")
-df[a1,"cell.type"] = "PV7a1"
+a = "1472676490"
+df[a,"cell.type"] = "mALa"
 
-a2 = c("635109166", "511685955")
-df[a2,"cell.type"] = "PV7a2"
+b = "887519423"
+df[b,"cell.type"] = "mALb"
 
-b1 = "359560762"
-df[b1,"cell.type"] = "PV7b1"
+c = c("5813017614","5813057615")
+df[c,"cell.type"] = "mALc"
 
-c1 = "667857582"
-df[c1,"cell.type"] = "PV7c1"
+d = c("642723975","887165687","703033179")
+df[d,"cell.type"] = "mALd"
 
-############
-### PV8 ####
-############
+e = c("607131089", "486073415")
+df[e,"cell.type"] = "mALe"
 
-a1 = "480258208"
-df[a1,"cell.type"] = "PV8a1"
+f = c("638882263", "763686208")
+df[f,"cell.type"] = "mALf"
 
-b1 = "728205616"
-df[b1,"cell.type"] = "PV8b1"
+g = c("670915068","700235813","671255587","825061437","637850749","666818214","732984478")
+df[g,"cell.type"] = "mALg"
 
-c1 = "694818168"
-df[c1,"cell.type"] = "PV8c1"
+h  = c("764399773", "889911741", "1014733888")
+df[h,"cell.type"] = "mALh"
 
-d1 = "694126781"
-df[d1,"cell.type"] = "PV8d1"
+i = c("580209760", "577473231")
+df[i,"cell.type"] = "mALi"
 
-#############
-### PV11 ####
-#############
+j = c("953004705","735073668","735415046","671604934","671600919","734724111", "921969761")
+df[j,"cell.type"] = "mALj"
 
-# a1 = c("483337285", "543718301")
-# df[a1,"cell.type"] = "PV11a1"
+k = c("578189223","5812980516","610571450", "5812980330","668876945","703351975")
+df[k,"cell.type"] = "mALk"
 
-a1 = c("422997837", "482356368", "482684855")
-df[a1,"cell.type"] = "PV11a1"
+l = c("609867847","667840305","670914976")
+df[l,"cell.type"] = "mALl"
 
-#############
-### PV10 ####
-#############
+m = c("360958913","390616496","452694446","5813089487","1142002856","1485786914")
+df[m,"cell.type"] = "mALm"
 
-a1 = c("387952104", "451049385")
-# light = c("Gad1-F-400411","Cha-F-100449", "Gad1-F-100290",
-#         "Cha-F-300297", "Gad1-F-200414", "Cha-F-000303","Gad1-F-200151")
-df[a1,"cell.type"] = "PV10a1"
+n = "545453209"
+df[n,"cell.type"] = "mALn"
 
-b1 = "604709727" # Centrifugal-like
-df[b1,"cell.type"] = "PV10b1"
+o = c("578530106", "672653737")
+df[o,"cell.type"] = "mALo"
 
-c1 = "544361987"
-df[c1,"cell.type"] = "PV10c1"
-
-d1 = "423748579"
-df[d1,"cell.type"] = "PV10d1"
-
-# e1 = "883479122" # dead
-# df[e1,"cell.type"] = "PV10e1"
+x = "611323175"
+df[x,"cell.type"] = "mALx"
 
 ############
-### PV9 ####
+### aSP ####
 ############
 
-DNp44 = "542751938"
-df[DNp44,"cell.type"] = "DNp44"
 
-a1 =  "602476655"
-df[a1,"cell.type"] = "PV9a1"
+f1 =c("421318649",
+      "5813055904",
+      "761661626")
+df[f1,"cell.type"] = "aSP-f1"
 
-#############
-### PV12 ####
-#############
+f2 = c("578189576",
+       "582027317",
+       "581013183")
+df[f2,"cell.type"] = "aSP-f2"
 
-a1 = c("480590566", "574688051")
-df[a1,"cell.type"] = "PV12a1"
+a = c("485430434",
+      "887148641",
+      "949534412",
+      "610916994",
+      "485775679")
+df[a,"cell.type"] = "aSP-g1a"
 
-# a1 = c("5813021882", "5813021874")
-# df[a1,"cell.type"] = "PV13a1"
+b = c("855414220",
+      "641278400",
+      "5813115796",
+      "421992069")
+df[b,"cell.type"] = "aSP-g1b"
+
+ta = c("329919036",
+       "421650982")
+df[ta,"cell.type"] = "aSP-g2a"
+
+tb = c("485430336")
+df[tb,"cell.type"] = "aSP-g2b"
 
 ########
 # save #
@@ -151,13 +158,16 @@ df[a1,"cell.type"] = "PV12a1"
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
-df["602476655","pnt"] = "LHPV9"
+df$connectivity.type = df$cell.type
+df[y,"pnt"] = "LHAD2"
+df[z,"pnt"] = "LHAD1"
+df[mals,"pnt"] = "mAL"
 
 # Summarise results
 state_results(df)
 
 # Write .csv
-write.csv(df, file = "data-raw/hemibrain/pnts/csv/PV_other_celltyping.csv", row.names = FALSE)
+write.csv(df, file = "data-raw/hemibrain/pnts/csv/sexdim_celltyping.csv", row.names = FALSE)
 
 # Process
 if(process){

@@ -27,6 +27,7 @@ source("data-raw/hemibrain/pnts/processPV6.R")
 source("data-raw/hemibrain/pnts/processPV7.R")
 source("data-raw/hemibrain/pnts/processWEDPNs.R")
 source("data-raw/hemibrain/pnts/processCENT.R")
+source("data-raw/hemibrain/pnts/processSexDimR.R")
 
 # Build master
 csvs = list.files("data-raw/hemibrain/pnts/csv/", full.names = TRUE)
@@ -35,6 +36,7 @@ for(csv in csvs){
   df = read.csv(file = csv)
   hemibrain.master = rbind(hemibrain.master,df)
 }
+hemibrain.master = hemibrain.master[!is.na(hemibrain.master$bodyid),]
 hemibrain.master = hemibrain.master[!duplicated(hemibrain.master$bodyid),]
 rownames(hemibrain.master) = hemibrain.master$bodyid
 
@@ -169,6 +171,9 @@ if(process){
   gs$asb_ctype = hemibrain.master[match(gs$bodyid,hemibrain.master$bodyid),"connectivity.type"]
   gs$asb_ct[is.na(gs$asb_ct)] = "JANELIA"
   gs$asb_ctype[is.na(gs$asb_ctype)] = "JANELIA"
+  new = subset(hemibrain.master, ! bodyid %in% gs$bodyid)[,c("bodyid","cell.type","connectivity.type")]
+  colnames(new) = colnames(gs)
+  gs = rbind(gs, new)
   googlesheets4::write_sheet(gs[0,],
                               ss = "17wFJ3VpJOSHupo2_0A2yXvplz0iO9WjhHiRLdgpvoX0",
                               sheet = "asb")

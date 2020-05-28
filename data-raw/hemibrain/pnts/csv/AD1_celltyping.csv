@@ -78,17 +78,6 @@
 "734693858","SLP020a","ADL03","ADL03j","ADL03j_pct",FALSE,"LHN","LHAD1a2","SLPal2_ventral","DPLal3_ventral","1056118","medium","none","none",TRUE,FALSE,"LHAD1","LHAD1a2a"
 "420615275","SLP021a","ADL03","ADL03m","ADL03q_pct",FALSE,"LHN","LHAD1a5","SLPal2_ventral","DPLal3_ventral","5675915","medium","130524c0","good",TRUE,FALSE,"LHAD1","LHAD1a5a"
 "421983723","SLP021a","ADL03","ADL03m","ADL03q_pct",FALSE,"LHN","LHAD1a5","SLPal2_ventral","DPLal3_ventral","1290929","poor","none","none",TRUE,FALSE,"LHAD1","LHAD1a5a"
-"485430336","SLP022a","ADL03","ADL03r","ADL03og_pct",FALSE,"LHN","aSP-g2","SLPal2_ventral","DPLal3_ventral","none","none","none","none",FALSE,FALSE,"LHAD1","aSP-g2d"
-"329919036","SLP022b","ADL03","ADL03r","ADL03oh_pct",FALSE,"LHN","aSP-g2","SLPal2_ventral","DPLal3_ventral","none","none","none","none",FALSE,FALSE,"LHAD1","aSP-g2c"
-"421992069","SLP022c","ADL03","ADL03r","ADL03or_pct",FALSE,"LHN","aSP-g2","SLPal2_ventral","DPLal3_ventral","1149437","good","Gad1-F-700032","good",FALSE,FALSE,"LHAD1","aSP-g2b"
-"5813115796","SLP022c","ADL03","ADL03r","ADL03or_pct",FALSE,"LHN","aSP-g2","SLPal2_ventral","DPLal3_ventral","1041505","good","none","none",FALSE,FALSE,"LHAD1","aSP-g2b"
-"485430434","SLP022d","ADL03","ADL03r","ADL03t_pct",FALSE,"LHN","aSP-g1","SLPal2_ventral","DPLal3_ventral","1064853","good","none","none",FALSE,TRUE,"LHAD1","aSP-g1"
-"485775679","SLP022d","ADL03","ADL03r","ADL03t_pct",FALSE,"LHN","aSP-g2","SLPal2_ventral","DPLal3_ventral","1070581","good","none","none",FALSE,TRUE,"LHAD1","aSP-g2a"
-"610916994","SLP022d","ADL03","ADL03r","ADL03t_pct",FALSE,"LHN","aSP-g1","SLPal2_ventral","DPLal3_ventral","1070581","medium","none","none",FALSE,TRUE,"LHAD1","aSP-g1"
-"641278400","SLP022d","ADL03","ADL03r","ADL03t_pct",FALSE,"LHN","aSP-g1","SLPal2_ventral","DPLal3_ventral","2477473","good","Gad1-F-200365","good",FALSE,TRUE,"LHAD1","aSP-g1"
-"855414220","SLP022d","ADL03","ADL03r","ADL03t_pct",FALSE,"LHN","aSP-g1","SLPal2_ventral","DPLal3_ventral","2477473","good","Gad1-F-200365","medium",FALSE,TRUE,"LHAD1","aSP-g1"
-"887148641","SLP022d","ADL03","ADL03r","ADL03t_pct",FALSE,"LHN","aSP-g1","SLPal2_ventral","DPLal3_ventral","1074687","medium","fru-F-300009","good",FALSE,TRUE,"LHAD1","aSP-g1"
-"949534412","SLP022d","ADL03","ADL03r","ADL03t_pct",FALSE,"LHN","aSP-g1","SLPal2_ventral","DPLal3_ventral","1074687","medium","none","none",FALSE,TRUE,"LHAD1","aSP-g1"
 "544107243","SLP023a","ADL03","ADL03q","ADL03s_pct",FALSE,"LHN","LHAD1b2","LHl2_medial","DPLal2_medial","4744251","good","Gad1-F-900037","good",TRUE,FALSE,"LHAD1","LHAD1b2a"
 "730562988","SLP023a","ADL03","ADL03q","ADL03s_pct",FALSE,"LHN","LHAD1b2","LHl2_medial","DPLal2_medial","2842610","good","120816c1","good",TRUE,FALSE,"LHAD1","LHAD1b2a"
 "456187010","SLP075a","ADL15","ADL15g","ADL15g_a_pct",FALSE,"LHN","LHAD1b1","LHl2_medial","DPLal2_medial","none","none","none","none",TRUE,FALSE,"LHAD1","LHAD1b1b"
@@ -103,3 +92,5 @@
 "517842578","SLP075f","ADL15","ADL15g","ADL15k_pct",FALSE,"LHN","LHAD1b5","LHl2_medial","DPLal2_medial","6901685","poor","none","none",FALSE,FALSE,"LHAD1","LHAD1b5"
 "5813067728","SLP075f","ADL15","ADL15g","ADL15k_pct",FALSE,"LHN","LHAD1b5","LHl2_medial","DPLal2_medial","6852364","medium","none","none",FALSE,FALSE,"LHAD1","LHAD1b5"
 "5901195496","SLP075f","ADL15","ADL15g","ADL15k_pct",FALSE,"LHN","LHAD1b5","LHl2_medial","DPLal2_medial","6852364","medium","none","none",FALSE,FALSE,"LHAD1","LHAD1b5"
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"LHAD1",NA
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"LHAD1",NA
