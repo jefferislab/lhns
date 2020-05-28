@@ -15,20 +15,15 @@ pv7 = c(x,z)
 
 y = c("604709727", "387952104", "451049385","423748579")
 u = "544361987"
-z = "883479122"
-pv10 = c(y,u,z)
+pv10 = c(y,u)
 
 pv8 = w = c("480258208", "728205616", "694818168", "694126781")
-
-pv11 = v = c("483337285", "543718301")
 
 pv9 = k = c("602476655","542751938")
 
 pv12 = j =c("480590566", "574688051")
 
-pv13 = i = c("5813021882", "5813021874")
-
-pv_other = c(pv7,pv8,pv9,pv10,pv11,pv12,pv13)
+pv_other = c(pv7,pv8,pv9,pv10,pv12)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -79,16 +74,10 @@ df[u,"ItoLee_Hemilineage"] = "DM1"
 df[u,"Hartenstein_Hemilineage"] = "DPMm1"
 df[z,"ItoLee_Hemilineage"] = "DM3"
 df[z,"Hartenstein_Hemilineage"] = "DPMpm2"
-df[i,"ItoLee_Hemilineage"] = "DM1"
-df[i,"Hartenstein_Hemilineage"] = "DPMm1"
-df[i,"ItoLee_Hemilineage"] = "DM6"
-df[i,"Hartenstein_Hemilineage"] = "CM3"
 df[j,"ItoLee_Hemilineage"] = "DM4"
 df[j,"Hartenstein_Hemilineage"] = "CM4"
 df[k,"ItoLee_Hemilineage"] = "DM6"
 df[k,"Hartenstein_Hemilineage"] = "CM3"
-df[v,"ItoLee_Hemilineage"] = "primary"
-df[v,"Hartenstein_Hemilineage"] = "primary"
 
 ##############################
 # Make and review cell types #
@@ -134,8 +123,8 @@ df[d1,"cell.type"] = "PV8d1"
 ### PV11 ####
 #############
 
-a1 = c("483337285", "543718301")
-df[a1,"cell.type"] = "PV11a1"
+# a1 = c("483337285", "543718301")
+# df[a1,"cell.type"] = "PV11a1"
 
 #############
 ### PV10 ####
@@ -155,18 +144,18 @@ df[c1,"cell.type"] = "PV10c1"
 d1 = "423748579"
 df[d1,"cell.type"] = "PV10d1"
 
-e1 = "883479122" # dead
-df[e1,"cell.type"] = "PV10e1"
+# e1 = "883479122" # dead
+# df[e1,"cell.type"] = "PV10e1"
 
-#############
-### PV11 ####
-#############
+############
+### PV9 ####
+############
 
-a1 = "602476655"
-df[a1,"cell.type"] = "DNp44"
+DNp44 = "542751938"
+df[DNp44,"cell.type"] = "DNp44"
 
-b1 = "542751938"
-df[b1,"cell.type"] = "PV9b1"
+a1 =  "602476655"
+df[a1,"cell.type"] = "PV9a1"
 
 #############
 ### PV12 ####
@@ -175,8 +164,8 @@ df[b1,"cell.type"] = "PV9b1"
 a1 = c("480590566", "574688051")
 df[a1,"cell.type"] = "PV12a1"
 
-a1 = c("5813021882", "5813021874")
-df[a1,"cell.type"] = "PV13a1"
+# a1 = c("5813021882", "5813021874")
+# df[a1,"cell.type"] = "PV13a1"
 
 ########
 # save #

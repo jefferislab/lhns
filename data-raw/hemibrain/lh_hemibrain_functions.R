@@ -176,7 +176,7 @@ process_types <- function(df, hemibrain_lhns){
     }
   }
   # Add cell type prefix
-  prefix =!df$cell.type %in% c("MB-C1","LHMB1","PPL2ab-PN1","DNp44") | grepl("WED",df$cell.type)
+  prefix =!df$cell.type %in% c("MB-C1","LHMB1","PPL2ab-PN1","DNp44") | grepl("WED|aSP",df$cell.type)
   df$cell.type[prefix] = paste0("LH",df$cell.type[prefix])
   df$cell.type = gsub("NA","",df$cell.type)
   # Add primary neurite system

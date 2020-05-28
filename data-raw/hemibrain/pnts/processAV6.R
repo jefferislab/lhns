@@ -20,15 +20,13 @@ x = c("420956527", "5813040095", "5813010494", "486116439", "573329873",
       "454697392", "514375643", "5813087438", "391631218", "360578625",
       "572988605", "514713432", "764408961", "5813040093", "5813047255",
       "483021600", "702674134", "696795331", "698180486", "572988717",
-      "425803370", "516425902", "451987038", "543446584", "512416525",
-      "605153844", "605801224", "672960748", "453009665", "391954490", "329581637", "360254511",
-      "451386832", "482757982", "5813011061", "482762384", "5813019528",
-      "5813078494", "5813057216", "423416887")
-y = "390275105"
-z = c("421646999", "823395525", "390589591", "421271305")
+      "425803370", "516425902", "451987038", "672960748", "453009665",
+      "391954490", "329581637", "360254511",
+      "5813057216")
+z = c("421646999")
 w = c("519249805", "5813067769", "609587618", "482732443", "548199677",
       "544435277", "607212413")
-av6 = c(x,y, z, w)
+av6 = c(x,z,w)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -37,13 +35,13 @@ av6 = c(x,y, z, w)
 # y.match = unique(hemibrain_lhns[y,"FAFB.match"])
 # y.match = y.match[!is.na(y.match)]
 # y.match = read.neurons.catmaid.meta(y.match)
-#
+
 # ### Meta info
 # mx = neuprint_get_meta(x)
 # my = neuprint_get_meta(y)
 # table(mx$cellBodyFiber)
 # table(my$cellBodyFiber)
-#
+
 # ### CBFs:
 # ### ADL11^LBDL5 ADL07^dlLHT ADL07^dlLHT
 # ADL13 = neuprint_read_neurons("ADL13")
@@ -53,7 +51,7 @@ av6 = c(x,y, z, w)
 # ADL20 = neuprint_read_neurons("ADL20")
 # ADL20 = ADL20[names(ADL20)%in%hemibrain.lhn.bodyids]
 # av6.hemi = c(ADL13,ADL16,ADL20)
-#
+
 # ### Re-define some of these CBFs
 # sd = setdiff(av6, names(av6.hemi))
 # ds = setdiff(names(av6.hemi),av6)
@@ -69,10 +67,8 @@ rownames(df) = df$bodyid
 ### Hemilineages:
 df[x,"ItoLee_Hemilineage"] = "LHa1_medial"
 df[x,"Hartenstein_Hemilineage"] = "BLAd1_medial"
-df[y,"ItoLee_Hemilineage"] = "SLPal3_dorsal"
-df[y,"Hartenstein_Hemilineage"] = "BLAd3_dorsal"
-df[y,"ItoLee_Hemilineage"] = "primary"
-df[y,"Hartenstein_Hemilineage"] = "primary"
+df[z,"ItoLee_Hemilineage"] = "primary"
+df[z,"Hartenstein_Hemilineage"] = "primary"
 df[w,"ItoLee_Hemilineage"] = "SIPa1_ventral"
 df[w,"Hartenstein_Hemilineage"] = "BLAd2_ventral"
 
@@ -91,39 +87,39 @@ df[w,"Hartenstein_Hemilineage"] = "BLAd2_ventral"
 h1 = "421646999"
 df[h1,"cell.type"] = "AV6h1"
 
-i1 = "823395525" #  dead
-df[i1,"cell.type"] = "AV6i1"
+# i1 = "823395525" #  dead
+# df[i1,"cell.type"] = "AV6i1"
 
-j1 = c("519249805", "5813067769", "609587618")
-df[j1,"cell.type"] = "AV6j1"
+d1 = c("519249805", "5813067769", "609587618")
+df[d1,"cell.type"] = "AV6d1"
 
-k1 = c("482732443", "548199677", "544435277", "607212413")
-df[k1,"cell.type"] = "AV6k1"
+c1 = c("482732443", "548199677", "544435277", "607212413")
+df[c1,"cell.type"] = "AV6c1"
 
-l1 = "421646999"
-df[l1,"cell.type"] = "AV6l1"
+e1 = "421646999"
+df[e1,"cell.type"] = "AV6e1"
 
-l2 = "421271305" # dead
-df[l2,"cell.type"] = "AV6l2"
+# l2 = "421271305" # dead
+# df[l2,"cell.type"] = "AV6l2"
+#
+# m1 = "390589591" # dead
+# df[m1,"cell.type"] = "AV6m1"
+#
+# n1 =  c("5813078494") # dead
+# df[n1,"cell.type"] = "AV6n1"
 
-m1 = "390589591" # dead
-df[m1,"cell.type"] = "AV6m1"
+g1 = "5813057216"
+df[g1,"cell.type"] = "AV6g1"
 
-n1 =  c("5813078494") # dead
-df[n1,"cell.type"] = "AV6n1"
-
-o1 = "5813057216"
-df[o1,"cell.type"] = "AV6o1"
-
-p1 = "423416887" # dead
-df[p1,"cell.type"] = "AV6p1"
+# p1 = "423416887" # dead
+# df[p1,"cell.type"] = "AV6p1"
 
 #####
 # d #
 #####
 
-d1 = c("390275105") # light = c("Gad1-F-400144", "Cha-F-100427", "Cha-F-500310") # dead
-df[d1,"cell.type"] = "AV6d1"
+# d1 = c("390275105") # light = c("Gad1-F-400144", "Cha-F-100427", "Cha-F-500310") # dead
+# df[d1,"cell.type"] = "AV6d1"
 
 ############
 ### AV6x ###
@@ -150,7 +146,7 @@ df[a3,"cell.type"] = "AV6a3"
 a4 = c("453665759", "422656780", "452664348") # light = c("Cha-F-000158", "Cha-F-400151")
 df[a4,"cell.type"] = "AV6a4"
 
-a5 = c("391954490", "329581637", "360254511") # dead
+a5 = c("391954490", "329581637", "360254511")
 df[a5,"cell.type"] = "AV6a5"
 
 a6 = c("422311625", "451987038") # light = c("Gad1-F-800112","L271#3", "JJ100")
@@ -209,14 +205,14 @@ df[f3,"cell.type"] = "AV6f3"
 # d #
 #####
 
-e1 = c("512416525", "605153844", "543446584", "605801224") # dead
-df[e1,"cell.type"] = "AV6e1"
+# e1 = c("512416525", "605153844", "543446584", "605801224") # dead
+# df[e1,"cell.type"] = "AV6e1"
+#
+# e2 = c("451386832", "482757982", "5813011061", "482762384", "5813019528") # dead
+# df[e2,"cell.type"] = "AV6e2"
 
-e2 = c("451386832", "482757982", "5813011061", "482762384", "5813019528") # dead
-df[e2,"cell.type"] = "AV6e2"
-
-c1 = "672960748"
-df[c1,"cell.type"] = "AV6c1"
+i1 = "672960748"
+df[i1,"cell.type"] = "AV6i1"
 
 ########
 # save #

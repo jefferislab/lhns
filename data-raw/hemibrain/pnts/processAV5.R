@@ -23,11 +23,9 @@ x = c("517138678", "541628695", "541632940", "5813047407", "673302212",
           "542298159", "419880519", "481941832", "329215923", "605399330",
           "668466304", "481941922", "541615798", "419884905", "603003871",
           "481941611", "636451654", "420230547", "451619617", "421633905",
-          "419885042")
-y = c("390271275",
-      "510282921", "327158831")
+          "419885042", "642612763", "765029085")
 z = "480276374"
-av5 = c(x,y,z)
+av5 = c(x,z)
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -73,8 +71,6 @@ df[x,"ItoLee_Hemilineage"] = "VPNl&d1_dorsal"
 df[x,"Hartenstein_Hemilineage"] = "BLAvm2_dorsal"
 df[z,"ItoLee_Hemilineage"] = "SIPa1_dorsal"
 df[z,"Hartenstein_Hemilineage"] = "BLAd2_dorsal"
-df[y,"ItoLee_Hemilineage"] = "SLPav2_dorsal"
-df[y,"Hartenstein_Hemilineage"] = "BLD2_dorsal"
 
 ##############################
 # Make and review cell types #
@@ -126,14 +122,21 @@ a10 = c("544012081", "673302212")
 df[a10,"cell.type"] = "AV5a10"
 
 #####
-# i #
+# c #
 #####
 
-c1 = c("541628695", "541632940")
-df[c1,"cell.type"] = "AV5c1"
+b1 = c("541628695", "541632940")
+df[b1,"cell.type"] = "AV5b1"
 
-c2 = c("360950551", "517138678")
-df[c2,"cell.type"] = "AV5c2"
+b2 = c("360950551", "517138678")
+df[b2,"cell.type"] = "AV5b2"
+
+#####
+# c #
+#####
+
+c1 = c("642612763", "765029085")
+df[c1,"cell.type"] = "AV5c1"
 
 #####
 # h #
@@ -149,15 +152,14 @@ df[d1,"cell.type"] = "AV5d1"
 e1 = "480276374"
 df[e1,"cell.type"] = "AV5e1"
 
-b1 = "390271275" # dead
-df[b1,"cell.type"] = "AV5b1"
-
-b2 = "510282921" # dead
-df[b2,"cell.type"] = "AV5b2"
-
-f1 = "327158831" # dead
-df[f1,"cell.type"] = "AV5f1"
-
+# b1 = "390271275" # dead
+# df[b1,"cell.type"] = "AV5b1"
+#
+# b2 = "510282921" # dead
+# df[b2,"cell.type"] = "AV5b2"
+#
+# f1 = "327158831" # dead
+# df[f1,"cell.type"] = "AV5f1"
 
 ########
 # save #

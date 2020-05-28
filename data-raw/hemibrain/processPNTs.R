@@ -25,8 +25,8 @@ source("data-raw/hemibrain/pnts/processPV4.R")
 source("data-raw/hemibrain/pnts/processPV5.R")
 source("data-raw/hemibrain/pnts/processPV6.R")
 source("data-raw/hemibrain/pnts/processPV7.R")
-source("data-raw/hemibrain/pnts/processCENT.R")
 source("data-raw/hemibrain/pnts/processWEDPNs.R")
+source("data-raw/hemibrain/pnts/processCENT.R")
 
 # Build master
 csvs = list.files("data-raw/hemibrain/pnts/csv/", full.names = TRUE)
@@ -38,7 +38,13 @@ for(csv in csvs){
 hemibrain.master = hemibrain.master[!duplicated(hemibrain.master$bodyid),]
 rownames(hemibrain.master) = hemibrain.master$bodyid
 
-# Check that each LHN
+# Add alternative names
+# hemibrain.master$other = ""
+# hemibrain.master[,"other"] = "LHPV5k1"
+# hemibrain.master["8927505","other"] = "AVLP-PN1"
+# hemibrain.master["608166388","other"] = "GNG-PN1"
+# hemibrain.master["5812993257","other"] = "LO-PN1"
+# hemibrain.master["1067223806","other"] = "LO-PN2"
 
 # Check that each letter is filled
 for(p in unique(hemibrain.master$pnt)){
