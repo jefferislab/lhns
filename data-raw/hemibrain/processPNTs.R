@@ -70,10 +70,6 @@ for(ct in unique(hemibrain.master$cell.type)){
   hemibrain.master$is.lhn[hemibrain.master$cell.type==ct] = inlh
 }
 
-# Manage connectivity type
-hemibrain.master$connectivity.type = hemibrain.master$cell.type
-hemibrain.master$cell.type = gsub("[a-z]$","",hemibrain.master$cell.type)
-
 # Add in diffusion model results
 diff = read.csv("data-raw/csv/hemibrain_infection_results.csv")
 hemibrain.master$layer = diff[match(hemibrain.master$bodyid,diff$node),"layer_mean"]
@@ -167,6 +163,7 @@ if(process){
                                         guess_max = 3000,
                                         return = TRUE)
   rownames(gs) = hemibrainr:::correct_id(gs$bodyid)
+  gs$asb_ct = gs$asb_ctype = NULL
   gs$asb_ct = hemibrain.master[match(gs$bodyid,hemibrain.master$bodyid),"cell.type"]
   gs$asb_ctype = hemibrain.master[match(gs$bodyid,hemibrain.master$bodyid),"connectivity.type"]
   gs$asb_ct[is.na(gs$asb_ct)] = "JANELIA"

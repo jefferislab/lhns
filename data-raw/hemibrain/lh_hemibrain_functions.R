@@ -151,7 +151,7 @@ process_types <- function(df, hemibrain_lhns){
   df$published = FALSE
   df$published[df$cell.type %in% pcts] = TRUE
   # Which cells to modify cell type names?
-  prefix =!grepl("WED|aSP|MB-C1|LHMB1|PPL2ab-PN1|DNp44|mAL",df$cell.type)
+  prefix =!grepl("WED|aSP|MB-C1|LHMB1|PPL2ab-PN1|DNp44|mAL|MBDL1",df$cell.type)
   ## Correct cell types
   for(ct in unique(df$cell.type[prefix])){
     d = subset(df, df$cell.type==ct)

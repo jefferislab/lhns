@@ -5,7 +5,7 @@
 "360284300","LH054a","ADL24","ADL24m","ADL24h_pct",FALSE,"CENT","LHCENT8","primary","primary","554327","good","none","none",TRUE,FALSE,"LHAV3","LHCENT8"
 "511271574","LH054a","ADL24","ADL24m","ADL24h_pct",FALSE,"CENT","LHCENT8","primary","primary","181551","good","none","none",TRUE,FALSE,"LHAV3","LHCENT8"
 "5813020988","LH096a","PDL26","PDL26c","PDL26c_pct",FALSE,"CENT","LHMB1","primary","primary","1299740","good","none","none",TRUE,FALSE,"LHPD2","LHMB1"
-"608922563","SIP035a","PDL18","PDL18i","PDL18p_pct",FALSE,"CENT","LHAL-MBDL1","primary","primary","none","none","none","none",TRUE,FALSE,"","LHAL-MBDL1"
+"608922563","SIP035a","PDL18","PDL18i","PDL18p_pct",FALSE,"CENT","AL-MBDL1","primary","primary","none","none","none","none",TRUE,FALSE,"","AL-MBDL1"
 "328861282","SLP004b","ADL01","ADL01w","ADL01oe_pct",FALSE,"CENT","LHCENT1","primary","primary","3394015","good","none","none",TRUE,FALSE,"LHAV4","LHCENT1"
 "5813068669","SLP036a","ADL05","ADL05j","ADL05b_pct",FALSE,"CENT","LHCENT6","primary","primary","1288606","good","none","none",TRUE,FALSE,"LHAV4","LHCENT6"
 "330268940","SLP036b","ADL05","ADL05j","ADL05lb_pct",FALSE,"CENT","LHCENT9","primary","primary","11519759","good","none","none",TRUE,FALSE,"LHAV4","LHCENT9"
