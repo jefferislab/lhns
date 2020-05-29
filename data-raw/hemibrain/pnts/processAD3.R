@@ -172,6 +172,7 @@ df[a1,"cell.type"] = "AD4a1"
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
+df[ad4,"pnt"] = "LHAD4"
 
 # Summarise results
 state_results(df)
