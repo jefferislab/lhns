@@ -1,5 +1,6 @@
 ## Load a save function
 write_lhns <- function(df,
+                       master = FALSE,
                        bodyids = NULL,
                        selected_file = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
                        column = NULL,
@@ -26,11 +27,30 @@ write_lhns <- function(df,
   if(!is.null(bodyids)){
     df = subset(df, df[[id.field]] %in% bodyids)
     message("Updating ", nrow(df), " entries")
+
   }
   # Add new rows if necessary
   if(sum(!df[[id.field]]%in%gs[[id.field]])){
     write_lhns_missing(df, selected_file = selected_file, sheet = sheet, id.field = id.field)
     df = subset(df, df[[id.field]]%in%gs[[id.field]])
+    gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+                                          ss = selected_file,
+                                          sheet = sheet,
+                                          guess_max = 3000,
+                                          return = TRUE)
+    gs[[id.field]] = correct_id(gs[[id.field]])
+    rownames(gs) = gs[[id.field]]
+  }
+  # If neuron is no longer named, take that into account
+  if(master){
+    missed = setdiff(gs$bodyid, df$bodyid)
+    mdf = subset(gs, bodyid %in% missed)
+    mdf[as.character(missed), "cell.type"] = gs[as.character(missed), "type"]
+    mdf[as.character(missed), "connectivity.type"] = gs[as.character(missed), "type"]
+    notthere = missed[is.na(gs[as.character(missed), "type"])]
+    mdf[as.character(notthere), "cell.type"] = neuprint_get_neuron_names(notthere)
+    mdf[as.character(notthere), "connectivity.type"] = neuprint_get_neuron_names(notthere)
+    df = plyr::rbind.fill(df,mdf)
   }
   # Work out rows to update
   rows = match(df[[id.field]],gs[[id.field]])+1

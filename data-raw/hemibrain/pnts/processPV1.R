@@ -58,7 +58,7 @@ df[x,"Hartenstein_Hemilineage"] = "unknown"
 ############
 
 a1 = "328533761" # light = c("Cha-F-000461", "TH-F-000012", "TH-M-000030", "TH-M-000013")
-df[a1,"cell.type"] = "PV1a1"
+df[a1,"cell.type"] =  "PPL201" #"PV1a1"
 
 c1 = c("542315097", "5812981753")
 df[c1,"cell.type"] = "PV1c1"
@@ -69,12 +69,12 @@ df[c2,"cell.type"] = "PV1c2"
 b1 = "5813071348"
 # c.c = c("TH-F-300078", "Cha-F-600061",
 #         "Gad1-F-500089", "TH-F-000011","TH-M-000071")
-df[b1,"cell.type"] = "PV1b1"
+df[b1,"cell.type"] = "PPL202" # "PV1b1"
 
 ppl2 = "294436967"
 # light = c("Gad1-F-500004","TH-M-200079","TH-M-300048","TH-M-000042","TH-M-200033","TH-M-200035",
 #         "MB583B#1","MB583B#2","MB583B#3")
-df[ppl2,"cell.type"] = "PPL2ab-PN1"
+df[ppl2,"cell.type"] = "PPL203" # "PPL2ab-PN1"
 
 d1 = "1006146837"
 df[d1,"cell.type"] = "PV1d1"
