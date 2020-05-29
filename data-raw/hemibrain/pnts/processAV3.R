@@ -198,11 +198,11 @@ df[a7,"cell.type"] = "AV3a7"
 # e #
 #####
 
-f2 = "574377845"
-df[f2,"cell.type"] = "AV3f2"
-
-f1 = c("633097828")
+f1 = "574377845"
 df[f1,"cell.type"] = "AV3f1"
+
+q1 = c("633097828")
+df[q1,"cell.type"] = "AV3q1"
 
 #####
 # g #

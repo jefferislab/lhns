@@ -1,9 +1,10 @@
-bodyid,old.name,citation
-5813078563,LHPV5k1,Dolan et al. 2019
-732034061,LHPV5k1,Dolan et al. 2020
-5813061116,LHPV5k1,Dolan et al. 2021
-8927505,AVLP-PN1,Dolan et al. 2022
-608166388,GNG-PN1,Dolan et al. 2023
-5812993257,LO-PN1,Dolan et al. 2024
-1067223806,LO-PN2,Dolan et al. 2025
-1663021115,VNC-PN1,Dolan et al. 2026
+bodyid,old.name,citation,name
+5813078563,LHPV5k1,Dolan et al. 2019,
+732034061,LHPV5k1,Dolan et al. 2019,
+5813061116,LHPV5k1,Dolan et al. 2019,
+8927505,AVLP-PN1,Dolan et al. 2019,
+608166388,GNG-PN1,Dolan et al. 2019,
+5812993257,LO-PN1,Dolan et al. 2019,
+1067223806,LO-PN2,Dolan et al. 2019,
+1663021115,VNC-PN1,Dolan et al. 2019,
+542751938,PV9a1,Frechter et al. 2019,DNp44

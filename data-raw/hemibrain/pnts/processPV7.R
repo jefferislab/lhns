@@ -159,8 +159,8 @@ df[d1,"cell.type"] = "PV10d1"
 DNp44 = "542751938"
 df[DNp44,"cell.type"] = "DNp44"
 
-a1 =  "602476655"
-df[a1,"cell.type"] = "PV9a1"
+b1 =  "602476655"
+df[b1,"cell.type"] = "PV9b1"
 
 #############
 ### PV12 ####

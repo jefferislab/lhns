@@ -1,6 +1,6 @@
 "bodyid","type","cbf","m.type","c.type","cbf.change","class","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change","pnt","connectivity.type"
 "542751938","CL217a","PVM09","PVM09b","PVM09g_pct",FALSE,"LHN","DNp44","DM6","CM3","3094186","good","VGlut-F-200225","good",FALSE,FALSE,"DNp44","DNp44"
-"602476655","CRE042a","PDM08","PDM08z","PDM08of_pct",FALSE,"LHN","LHPV9a1","DM6","CM3","none","none","none","none",TRUE,FALSE,"LHPV9","LHPV9a1"
+"602476655","CRE042a","PDM08","PDM08z","PDM08of_pct",FALSE,"LHN","LHPV9b1","DM6","CM3","none","none","none","none",TRUE,FALSE,"LHPV9","LHPV9b1"
 "667857582","CRE053a","PVL04","PVL04ad","PVL04on_pct",FALSE,"LHN","LHPV7c1","VLPl&p1_posterior","BLVp2_posterior","none","none","none","none",TRUE,FALSE,"LHPV7","LHPV7c1"
 "604709727","LH097a","PDM09","PDM09j","PDM09j_pct",FALSE,"LHN","LHPV10b1","SIPp1","DPMpl2","none","none","none","none",TRUE,FALSE,"LHPV10","LHPV10b1"
 "359560762","LH104a","PVL04","PVL04f","PVL04d_pct",FALSE,"LHN","LHPV7b1","DM3","DPMpm2","none","none","none","none",TRUE,FALSE,"LHPV7","LHPV7b1"
