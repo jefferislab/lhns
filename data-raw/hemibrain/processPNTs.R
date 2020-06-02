@@ -47,6 +47,17 @@ for(p in unique(hemibrain.master$pnt)){
   cat(ags);  message(p)
 }
 
+# Check that number is filled
+for(p in unique(hemibrain.master$pnt)){
+  pt = subset(hemibrain.master, pnt == p & !grepl("WED|CENT|PPL|MB|mAL",cell.type))
+  ags = gsub("[1-9]$","",pt$cell.type)
+  for(ag in unique(ags)){
+    at = subset(hemibrain.master, grepl(ag,cell.type))
+    cts = sort(unique(gsub(".*([1-9]).*","\\1",at$cell.type)))
+    cat(cts);  message(ag)
+  }
+}
+
 # Check that anatomy groups do not cross hemilineage boundaries
 ags = unique(gsub("[1-9]$","",unique(hemibrain.master$cell.type)))
 for(ag in ags){
@@ -140,7 +151,7 @@ if(process){
   take_pictures(hemibrain.master)
 
   ## Update googlesheet
-  write_lhns(df = hemibrain.master, master = TRUE, column = c("class", "pnt", "cell.type", "ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
+  write_lhns(df = hemibrain.master, master = TRUE, column = c("class", "pnt", "cell.type", "connectivity.type","ItoLee_Hemilineage", "Hartenstein_Hemilineage"))
 
   # Add users
   hemibrain.lhns = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,

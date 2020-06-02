@@ -245,7 +245,7 @@ f7 = c("5813067776", "5813021912")
 df[f7,"cell.type"] = "PV6f7"
 
 n1 = "664824047"
-df[n1,"cell.type"] = "PV6fn1"
+df[n1,"cell.type"] = "PV6n1"
 
 #####
 # h #

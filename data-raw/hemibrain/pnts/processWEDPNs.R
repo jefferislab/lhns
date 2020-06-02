@@ -109,8 +109,11 @@ df[wp1a,"cell.type"] = "WEDPN1A"
 wp1b = "2214846055"
 df[wp1b,"cell.type"] = "WEDPN1B"
 
-wp2 = c("973765182", "885788485", "915451074","853726809", "916828438") # light = c("Cha-F-000514","L1524#3","L1524#4","L452#1")
-df[wp2,"cell.type"] = "WEDPN2"
+wp2a = c("973765182", "885788485", "915451074")
+df[wp2,"cell.type"] = "WEDPN2A"
+
+wp2b = c("853726809", "916828438")
+df[wp2,"cell.type"] = "WEDPN2B"
 
 wp3 = c("5813013913", "5813020138", "1006854683") # light = c("Cha-F-600036","fru-M-300059","L1524#1","L1524#2","L1518#1","L1518#2","L1518#3","L1518#4","L1518#5", "L1949#3","L1668#1", "L1668#2", "L1668#3", "L1668#4","L1949#1", "L1949#2","L452#2")
 df[wp3,"cell.type"] = "WEDPN3"
@@ -175,13 +178,13 @@ wp10a = c("5813041468")
 df[wp10a,"cell.type"] = "WEDPN10A"
 
 wp10b = "1098928012"
-df[wp10b,"cell.type"] = "WEDPN10b"
+df[wp10b,"cell.type"] = "WEDPN10B"
 
-wp11 = "698970725"
-df[wp11,"cell.type"] = "WEDPN11"
-
-wp12 = "886134689"
+wp12 = "698970725"
 df[wp12,"cell.type"] = "WEDPN12"
+
+wp11 = "886134689"
+df[wp11,"cell.type"] = "WEDPN11"
 
 ########
 # save #

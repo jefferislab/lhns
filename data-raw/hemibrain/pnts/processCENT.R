@@ -23,7 +23,8 @@ x = c("511271574",
       "639585968",
       "329897255",
       "329225149",
-      "608922563")
+      "608922563",
+      "328533761")
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -59,6 +60,9 @@ df[x,"Hartenstein_Hemilineage"] = "primary"
 
 al = "608922563"
 df[al,"cell.type"] = "AL-MBDL1"
+
+c7 = c("328533761")
+df[c7,"cell.type"] = "CENT7"
 
 c8 = c("511271574",
        "360284300")
@@ -103,6 +107,7 @@ df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
 df$pnt = pnt_cbf[match(df$cbf,pnt_cbf$cbf),"pnt"]
 df[lhmb1,"pnt"] = "LHPD2"
 df[c11,"pnt"] = "LHAD5"
+df[c7,"pnt"] = "LHPV1"
 df[al,"pnt"] = ""
 df$published = TRUE
 

@@ -164,8 +164,8 @@ df[c1,"cell.type"] = "PD4c1"
 # e #
 #####
 
-e1 = c("359214479", "359891881", "5813046968") # light = c("Gad1-F-100025", "Gad1-F-000285", "Gad1-F-100218")
-df[e1,"cell.type"] = "PD4e1"
+cent12 = c("359214479", "359891881", "5813046968") # light = c("Gad1-F-100025", "Gad1-F-000285", "Gad1-F-100218")
+df[cent12,"cell.type"] = "CENT12"
 
 #####
 # a #
@@ -187,11 +187,11 @@ df[d1,"cell.type"] = "PD4d1"
 d2 = c("547129228", "5813057881", "574351760")
 df[d2,"cell.type"] = "PD4d2"
 
-f1 = "610601810"
-df[f1,"cell.type"] = "PD4f1"
+cent14 = "610601810"
+df[cent14,"cell.type"] = "CENT14"
 
-g1 = c("294786630", "295115794")
-df[g1,"cell.type"] = "PD4g1"
+e1 = c("294786630", "295115794")
+df[e1,"cell.type"] = "PD4e1"
 
 ########
 # save #
@@ -199,6 +199,7 @@ df[g1,"cell.type"] = "PD4g1"
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
+df[pd4,"pnt"] = "LHPD4"
 
 # Summarise results
 state_results(df)

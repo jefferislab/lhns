@@ -149,7 +149,7 @@ b1 = c("548872750", "509928512", "5813089504", "571666400")
 df[b1,"cell.type"] = "PD2b1"
 
 c1 = "356429209"
-df[c1,"cell.type"] = "PD2b1"
+df[c1,"cell.type"] = "PD2c1"
 
 # d1 = "5813021615" # dead
 # df[d1,"cell.type"] = "PD2d1"

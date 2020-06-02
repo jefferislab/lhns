@@ -168,23 +168,20 @@ df[k11,"cell.type"] = "AV2k11"
 k12 = c("606492411", "667841133", "699212545") #light = c("Gad1-F-800100","JJ82")
 df[k12,"cell.type"] = "AV2k12"
 
-k13 = c("391276906", "606479285") # light = c("Gad1-F-000203", "Gad1-F-000006")
-df[k13,"cell.type"] = "AV2k13"
+k7 = c("391276906", "606479285") # light = c("Gad1-F-000203", "Gad1-F-000006")
+df[k7,"cell.type"] = "AV2k7"
 
-k14 = "450951445"
-df[k14,"cell.type"] = "AV2k14"
+k2 = c("549521047", "5813061564", "574723544", "5813013203")
+df[k2,"cell.type"] = "AV2k2"
 
-k15 = c("549521047", "5813061564", "574723544", "5813013203")
-df[k15,"cell.type"] = "AV2k15"
+k9 = "636792984"
+df[k9,"cell.type"] = "AV2k9"
 
-k16 = "636792984"
-df[k16,"cell.type"] = "AV2k16"
+k6 = "546123239"
+df[k6,"cell.type"] = "AV2k6"
 
-k17 = "546123239"
-df[k17,"cell.type"] = "AV2k17"
-
-k18 = "638196102"
-df[k18,"cell.type"] = "AV2k18"
+k8 = "638196102"
+df[k8,"cell.type"] = "AV2k8"
 
 #####
 # d #
@@ -215,11 +212,11 @@ df[e3,"cell.type"] = "AV2e3"
 e4 = c("485732870", "576774002")
 df[e4,"cell.type"] = "AV2e4"
 
-e5 = "609168709"
-df[e5,"cell.type"] = "AV2e5"
+e2 = "609168709"
+df[e2,"cell.type"] = "AV2e2"
 
-e6 = c("575042709") # light = c("Gad1-F-600244")
-df[e6,"cell.type"] = "AV2e6"
+e1 = c("575042709") # light = c("Gad1-F-600244")
+df[e1,"cell.type"] = "AV2e1"
 
 #####
 # f #
@@ -245,7 +242,7 @@ i4 = c("450933288", "419880359", "450933392")
 df[i4,"cell.type"] = "AV2i4"
 
 i5 = c("450951445", "481989534")
-df[i5,"cell.type"] = "AV2i6"
+df[i5,"cell.type"] = "AV2i5"
 
 #####
 # u #
@@ -289,14 +286,11 @@ df[g3,"cell.type"] = "AV2g3"
 g4 = "1199181443"
 df[g4,"cell.type"] = "AV2g4"
 
-g5 = c("5813041458", "944423023")
-df[g4,"cell.type"] = "AV2g5"
+g5 = c("944720631")
+df[g5,"cell.type"] = "AV2g5"
 
-g6 = c("944720631")
+g6 = "945058110"
 df[g6,"cell.type"] = "AV2g6"
-
-g7 = "945058110"
-df[g7,"cell.type"] = "AV2g7"
 
 #####
 # b #

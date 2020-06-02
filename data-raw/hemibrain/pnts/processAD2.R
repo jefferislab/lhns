@@ -10,12 +10,12 @@ if(!exists("process")){
 ### Use plot3d(), nlscan() and find.neuron() to choose IDs.
 
 # Groups
-x = c("795745097",  "767433432", "790629881", "706831482",
-       "727153132",  "702364805" )
+x = c( "702364805", "706831482" )
 y = c("670219670", "574027813", "760272462", "576843029", "666136034",
       "573713481", "917497441", "361968122", "330604760", "390952738",
       "788519447")
 ad2 = c(x, y)
+
 
 ### Get FAFB assigned hemilineage information
 # x.match = unique(hemibrain_lhns[x,"FAFB.match"])
@@ -71,8 +71,8 @@ df[y,"Hartenstein_Hemilineage"] = "DPLam"
 ### ad2x ###
 ############
 
-a1 = c("767433432", "790629881", "727153132", "795745097") # light = c("fru-F-500117", "fru-F-400067", "fru-F-500116", "fru-F-500184","fru-F-700078")
-df[a1,"cell.type"] = "AD2a1"
+# a1 = c("767433432", "790629881", "727153132", "795745097") # light = c("fru-F-500117", "fru-F-400067", "fru-F-500116", "fru-F-500184","fru-F-700078")
+# df[a1,"cell.type"] = "AD2a1"
 
 # a2 = c("642948546", "391652073", "328543082", "359913281") # light = c("VGlut-F-500148")
 # df[a2,"cell.type"] = "AD2a2"
@@ -108,8 +108,8 @@ df[c2,"cell.type"] = "AD2c2"
 c3 = c("788519447", "574027813", "760272462")
 df[c3,"cell.type"] = "AD2c3"
 
-c4 = "670219670"
-df[c4,"cell.type"] = "AD2c4"
+ff = "670219670"
+df[f1,"cell.type"] = "AD2f1"
 
 # f1 = "421668365"
 # df[f1,"cell.type"] = "AD2f1" # dead

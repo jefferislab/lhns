@@ -269,12 +269,14 @@ df[e2,"pnt"] = "LHAD1"
 
 # Fix connectivity types
 a= c("544107335", "673426956", "606461310", "769199010", "824349873",
-     "5813013202", "544107243", "730562988")
+     "5813013202")
 b = c("573683438", "483017681", "5813022459")
 c= c("543321179", "574040939", "5813052205", "762274975")
-df[a,"connectivity.type"] = "LHAD1b2a"
-df[b,"connectivity.type"] = "LHAD1b2b"
-df[c,"connectivity.type"] = "LHAD1b2c"
+d = c("730562988","544107243")
+df[a,"connectivity.type"] = "LHAD1b2_a"
+df[b,"connectivity.type"] = "LHAD1b2_b"
+df[c,"connectivity.type"] = "LHAD1b2_c"
+df[d,"connectivity.type"] = "LHAD1b2_d"
 
 # Summarise results
 state_results(df)
