@@ -173,7 +173,8 @@ if(process){
                                         sheet = "asb",
                                         guess_max = 3000,
                                         return = TRUE)
-  rownames(gs) = hemibrainr:::correct_id(gs$bodyid)
+  gs$bodyid = hemibrainr:::correct_id(gs$bodyid)
+  rownames(gs) = gs$bodyid
   gs$asb_ct = gs$asb_ctype = NULL
   gs$asb_ct = hemibrain.master[match(gs$bodyid,hemibrain.master$bodyid),"cell.type"]
   gs$asb_ctype = hemibrain.master[match(gs$bodyid,hemibrain.master$bodyid),"connectivity.type"]
