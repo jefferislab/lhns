@@ -17,7 +17,7 @@ library(stringi)
 em.lh.meta.orig = read.csv("data-raw/csv/em_papers_lh_cell_types.csv")
 em.lh.meta = change_nonascii(em.lh.meta.orig)
 fafb_lhns = em.lh.meta
-rownames(fafb_lhns) = fafb_lhns$skid
+rownames(fafb_lhns) = hemibrainr:::correct_id(fafb_lhns$skid)
 usethis::use_data(fafb_lhns, overwrite = TRUE)
 
 # Read in our favourite LHNs from the FAFB project
@@ -50,10 +50,10 @@ pn.fafb = xform_brain(pn.fafb, reference = FCWB, sample = FAFB)
 
 # Save
 lh.fafb = as.neuronlistfh(lh.fafb, dbdir='inst/extdata/data')
-lh.hemibrain = as.neuronlistfh(lh.hemibrain, dbdir='inst/extdata/data')
+#lh.hemibrain = as.neuronlistfh(lh.hemibrain, dbdir='inst/extdata/data')
 pn.fafb = as.neuronlistfh(pn.fafb, dbdir='inst/extdata/data')
 write.neuronlistfh(lh.fafb, file='inst/extdata/lh.fafb.rds',overwrite = TRUE)
-write.neuronlistfh(lh.hemibrain, file='inst/extdata/lh.hemibrain.rds',overwrite = TRUE)
+# write.neuronlistfh(lh.hemibrain, file='inst/extdata/lh.hemibrain.rds',overwrite = TRUE)
 write.neuronlistfh(pn.fafb, file='inst/extdata/pn.fafb.rds',overwrite = TRUE)
 
 

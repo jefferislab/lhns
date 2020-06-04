@@ -64,18 +64,22 @@ usethis::use_data(hemibrain.lhn.bodyids, overwrite = TRUE)
 #                       sheet = "lhns")
 # }
 # ## And for light level data ###
-# most.lh = union(lhns::most.lhins, lhns::most.lhns)
-# lm.meta = most.lh[,c("cell.type","type")]
-# lm.meta = lm.meta[order(lm.meta$cell.type),]
-# lm.meta$id = rownames(lm.meta)
-# lm.meta$hemibrain.match = NA
-# lm.meta$hemibrain.match.quality = NA
-# lm.meta$FAFB.match = NA
-# lm.meta$FAFB.match.quality = NA
-# lm.meta$User = "ASB"
-# googlesheets4::write_sheet(lm.meta[0,],
-#                            ss = selected_file,
-#                            sheet = "lm")
+jlns = lhns::jfw.lhns
+jlns[,] = lhns::jfw.lhns[,intersect(colnames(lhns::most.lhns),colnames(lhns::jfw.lhns))]
+jlns[,"id"] = names(jlns)
+most.lh = union(lhns::most.lhins, lhns::most.lhns)
+most.lh = union(most.lh, jlns)
+lm.meta = most.lh[,c("cell.type","type")]
+lm.meta = lm.meta[order(lm.meta$cell.type),]
+lm.meta$id = rownames(lm.meta)
+lm.meta$hemibrain.match = NA
+lm.meta$hemibrain.match.quality = NA
+lm.meta$FAFB.match = NA
+lm.meta$FAFB.match.quality = NA
+lm.meta$User = "ASB"
+googlesheets4::write_sheet(lm.meta[0,],
+                           ss = selected_file,
+                           sheet = "lm")
 # batches = split(1:nrow(lm.meta), ceiling(seq_along(1:nrow(lm.meta))/500))
 # for(i in batches){
 #   hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
@@ -83,6 +87,21 @@ usethis::use_data(hemibrain.lhn.bodyids, overwrite = TRUE)
 #                       ss = selected_file,
 #                       sheet = "lm")
 # }
+# Add new neurons
+# Read the Google Sheet
+# ms = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+#                                       ss = selected_file,
+#                                       sheet = "lm",
+#                                       guess_max = 3000,
+#                                       return = TRUE)
+# ms$id = correct_id(ms$id)
+# rownames(ms) = ms$id
+# lm.meta.new = subset(lm.meta, ! id %in% ms$id)
+# hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
+#                                       data = lm.meta.new,
+#                                       ss = selected_file,
+#                                       sheet = "lm",
+#                                       return = TRUE)
 
 ##########################################################################
 # Save GooglesSheet Database for recording information on hemibrain LHNs #
