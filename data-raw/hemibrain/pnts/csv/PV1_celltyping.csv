@@ -1,5 +1,5 @@
 "bodyid","type","cbf","m.type","c.type","cbf.change","class","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change","pnt","connectivity.type"
-"5813071348","CL196a","PVL17","PVL17k","PVL17j_pct",FALSE,"LHN","PPL202","unknown","unknown","30571","good","TH-M-000071","good",FALSE,FALSE,"LHPV1","PPL202"
+"5813071348","CL196a","PVL17","PVL17k","PVL17j_pct",FALSE,"LHN","PPL202","unknown","unknown","30571","good","TH-M-000071","good",TRUE,FALSE,"LHPV1","PPL202"
 "542315097","LH107a","PVL17","PVL17n","PVL17m_pct",FALSE,"LHN","LHPV1c1","unknown","unknown","none","none","none","none",TRUE,FALSE,"LHPV1","LHPV1c1"
 "5812981753","LH107a","PVL17","PVL17n","PVL17m_pct",FALSE,"LHN","LHPV1c1","unknown","unknown","3469191","good","none","none",TRUE,FALSE,"LHPV1","LHPV1c1"
 "1006146837","PLP110a","PVL02","PVL02b","PVL02c_pct",FALSE,"LHN","LHPV1d1","unknown","unknown","none","none","none","none",TRUE,FALSE,"LHPV1","LHPV1d1"
