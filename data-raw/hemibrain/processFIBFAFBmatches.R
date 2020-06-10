@@ -149,4 +149,10 @@ write_lhns(df = n[ids,],
                       "hemibrain.match.quality","unique.assignment", "LM.match", "LM.match.quality", "User"
            ))
 
-
+# Write left-side neurons
+lskids = as.character(catmaid_skids("annotation:side: left"))
+write_lhns(df = data.frame(skid = lskids, side = "l"),
+           sheet = "fafb",
+           id.field = "skid",
+           column = c("side"
+           ))
