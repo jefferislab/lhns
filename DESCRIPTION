@@ -24,6 +24,6 @@ Imports: rgl, reshape2, flycircuit, nat.templatebrains, nat.utils (>= 0.5.1.9000
 Depends: R (>= 3.5.0), nat, nat.flybrains
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
-Remotes: natverse/nat.flybrains, natverse/flycircuit, natverse/nat.utils, flyconnectome/hemibrainr
+Remotes: natverse/nat.flybrains, natverse/flycircuit, jefferis/nat.utils, flyconnectome/hemibrainr
 Encoding: UTF-8
 Language: en-GB
