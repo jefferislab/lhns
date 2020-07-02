@@ -18,12 +18,12 @@ License: GPL-3
 LazyData: TRUE
 RoxygenNote: 7.1.0
 Suggests:
-    spelling, testthat
+    spelling, testthat, hemibrainr
 Imports: rgl, reshape2, flycircuit, nat.templatebrains, nat.utils (>= 0.5.1.9000),
     stringr, stringi
 Depends: R (>= 3.5.0), nat, nat.flybrains
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
-Remotes: jefferislab/nat.flybrains, jefferis/flycircuit, jefferis/nat.utils
+Remotes: natverse/nat.flybrains, natverse/flycircuit, natverse/nat.utils, flyconnectome/hemibrainr
 Encoding: UTF-8
 Language: en-GB
