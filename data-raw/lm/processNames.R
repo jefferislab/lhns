@@ -17,8 +17,8 @@ most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', Wr
 ####################
 # Update Meta-Data #
 ####################
-write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE)
-write.neuronlistfh(most.lhins.dps, file='inst/extdata/most.lhins.dps.rds',overwrite = TRUE)
+write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE, compress = TRUE, version = 2)
+write.neuronlistfh(most.lhins.dps, file='inst/extdata/most.lhins.dps.rds',overwrite = TRUE, compress = TRUE, version = 2)
 
 #############
 # most.lhns #
@@ -36,8 +36,8 @@ most.lhns.dps = as.neuronlistfh(most.lhns.dps,dbdir = 'inst/extdata/data/', Writ
 ####################
 # Update Meta-Data #
 ####################
-write.neuronlistfh(most.lhns, file='inst/extdata/most.lhns.rds',overwrite = TRUE)
-write.neuronlistfh(most.lhns.dps, file='inst/extdata/most.lhns.dps.rds',overwrite = TRUE)
+write.neuronlistfh(most.lhns, file='inst/extdata/most.lhns.rds',overwrite = TRUE, compress = TRUE, version = 2)
+write.neuronlistfh(most.lhns.dps, file='inst/extdata/most.lhns.dps.rds',overwrite = TRUE, compress = TRUE, version = 2)
 
 ########
 # MCFO #
@@ -56,8 +56,8 @@ lh.mcfo.dps = as.neuronlistfh(lh.mcfo.dps,dbdir = 'inst/extdata/data/', WriteObj
 ####################
 # Update Meta-Data #
 ####################
-write.neuronlistfh(lh.mcfo, file='inst/extdata/lh.mcfo.rds',overwrite = TRUE)
-write.neuronlistfh(lh.mcfo.dps, file='inst/extdata/lh.mcfo.dps.rds',overwrite = TRUE)
+write.neuronlistfh(lh.mcfo, file='inst/extdata/lh.mcfo.rds',overwrite = TRUE, compress = TRUE, version = 2)
+write.neuronlistfh(lh.mcfo.dps, file='inst/extdata/lh.mcfo.dps.rds',overwrite = TRUE, compress = TRUE, version = 2)
 
 ######
 # JJ #
@@ -75,8 +75,8 @@ jfw.lhns.dps = as.neuronlistfh(jfw.lhns.dps,dbdir = 'inst/extdata/data/', WriteO
 ####################
 # Update Meta-Data #
 ####################
-write.neuronlistfh(jfw.lhns, file='inst/extdata/jfw.lhns.rds',overwrite = TRUE)
-write.neuronlistfh(jfw.lhns.dps, file='inst/extdata/jfw.lhns.dps.rds',overwrite = TRUE)
+write.neuronlistfh(jfw.lhns, file='inst/extdata/jfw.lhns.rds',overwrite = TRUE, compress = TRUE, version = 2)
+write.neuronlistfh(jfw.lhns.dps, file='inst/extdata/jfw.lhns.dps.rds',overwrite = TRUE, compress = TRUE, version = 2)
 
 ##########
 # Splits #
@@ -105,7 +105,7 @@ lh.splits.dps = as.neuronlistfh(lh.splits.dps,dbdir = 'inst/extdata/data/', Writ
 ####################
 # Update Meta-Data #
 ####################
-write.neuronlistfh(lh.splits.dps, file='inst/extdata/lh.splits.dps.rds',overwrite = TRUE,compress=TRUE)
+write.neuronlistfh(lh.splits.dps, file='inst/extdata/lh.splits.dps.rds',overwrite = TRUE, compress = TRUE, version = 2)
 
 #########
 # Other #

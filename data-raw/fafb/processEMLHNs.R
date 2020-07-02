@@ -53,9 +53,9 @@ pn.fafb = xform_brain(pn.fafb, reference = FCWB, sample = FAFB)
 lh.fafb = as.neuronlistfh(lh.fafb, dbdir='inst/extdata/data')
 #lh.hemibrain = as.neuronlistfh(lh.hemibrain, dbdir='inst/extdata/data')
 pn.fafb = as.neuronlistfh(pn.fafb, dbdir='inst/extdata/data')
-write.neuronlistfh(lh.fafb, file='inst/extdata/lh.fafb.rds',overwrite = TRUE)
+write.neuronlistfh(lh.fafb, file='inst/extdata/lh.fafb.rds',overwrite = TRUE, compress = TRUE, version = 2)
 # write.neuronlistfh(lh.hemibrain, file='inst/extdata/lh.hemibrain.rds',overwrite = TRUE)
-write.neuronlistfh(pn.fafb, file='inst/extdata/pn.fafb.rds',overwrite = TRUE)
+write.neuronlistfh(pn.fafb, file='inst/extdata/pn.fafb.rds',overwrite = TRUE, compress = TRUE, version = 2)
 
 
 

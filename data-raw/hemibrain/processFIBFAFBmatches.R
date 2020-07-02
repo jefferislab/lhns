@@ -14,37 +14,41 @@ gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
 gs$bodyid = correct_id(gs$bodyid)
 rownames(gs) = gs$bodyid
 
-# # Add matches already made to Google Sheet
-matches = fafb_lhns
-matches$FAFB.match = matches$skid
-matches$FAFB.match.quality = "good"
-matches$hemibrain.match = matches$hemibrain_match
-matches$hemibrain.match.quality = "good"
-matches$bodyid = matches$hemibrain_match
-matches$User = "ASB"
-matches$pnt = matches$primary_neurite
-matches$LM.match = matches$closest_light_match
-matches$LM.match[matches$LM_match_quality!="cell.type"] = NA
-matches$LM.match[grepl("new",matches$LM.match)] = NA
-matches$LM.match.quality = "good"
-matches = matches[rev(order(matches$status)),]
-for(row in 1:nrow(matches)){
-  columns = c("FAFB.match", "FAFB.match.quality", "User")
-  r = match(matches[row,"bodyid"],gs$bodyid)+1
-  if(is.na(r)){
-    next
-  }
-  for(column in columns){
-    letter = LETTERS[match(column,colnames(gs))]
-    range = paste0(letter,r)
-    hemibrainr:::gsheet_manipulation(FUN = googlesheets4::range_write,
-                                     ss = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
-                                     range = range,
-                                     data = as.data.frame(matches[row,column]),
-                                     sheet = "lhns",
-                                     col_names = FALSE)
-  }
-}
+# Add matches already made to Google Sheet
+# matches = fafb_lhns
+# matches$FAFB.match = matches$skid
+# matches$FAFB.match.quality = "good"
+# matches$hemibrain.match = matches$hemibrain_match
+# matches$hemibrain.match.quality = "good"
+# matches$bodyid = matches$hemibrain_match
+# matches$User = "ASB"
+# matches$pnt = matches$primary_neurite
+# matches$LM.match = matches$closest_light_match
+# matches$LM.match[matches$LM_match_quality!="cell.type"] = NA
+# matches$LM.match[grepl("new",matches$LM.match)] = NA
+# matches$LM.match.quality = "good"
+# matches = matches[rev(order(matches$status)),]
+# for(row in 1:nrow(matches)){
+#   columns = c("FAFB.match", "FAFB.match.quality", "User")
+#   r = match(matches[row,"bodyid"],gs$bodyid)+1
+#   if(is.na(r)){
+#     next
+#   }
+#   for(column in columns){
+#     letter = LETTERS[match(column,colnames(gs))]
+#     range = paste0(letter,r)
+#     hemibrainr:::gsheet_manipulation(FUN = googlesheets4::range_write,
+#                                      ss = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
+#                                      range = range,
+#                                      data = as.data.frame(matches[row,column]),
+#                                      sheet = "lhns",
+#                                      col_names = FALSE)
+#   }
+# }
+
+############
+# FAFB tab #
+############
 
 # Get all lineage annotated neurons
 skids = catmaid::catmaid_skids("annotation:Lineage_annotated")
