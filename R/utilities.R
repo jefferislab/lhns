@@ -139,4 +139,77 @@ change_nonascii <- function(df){
   df
 }
 
+# hidden
+## Re-name Frechter et al. names, based on hemibrain naming and matching
+re_cell_type <-function(df, lhn = TRUE, hemibrain_lhns = lhns::hemibrain_lhns){
+
+  # Stop if no IDs
+  if(is.null(df$id) & is.null(df$file) & is.null(df$cell)){
+    stop("Data frame must have id column")
+  }
+
+  # Get matches
+  lm.matches = hemibrainr::lm_matches()
+  lm.matches = subset(lm.matches, ! lm.matches$quality %in% c("none","n"))
+  lm.matches.1 = subset(lm.matches, lm.matches$dataset == "lm")
+  lm.matches.2 = subset(lm.matches, lm.matches$dataset == "hemibrain")
+  in.other = setdiff(lm.matches.2$match, lm.matches.1$id)
+  in.other = in.other[in.other!="none"]
+  if(length(in.other)){
+    warning("Matched LM IDs unmathed in LM Gsheet: ", paste(in.other,sollapse = ", "))
+  }
+
+  # Which IDs to consider
+  nams = rownames(df)
+  ids = as.character(lm.matches.1$id[toupper(lm.matches.1$id)%in%toupper(nams)])
+  mids = match(toupper(ids),toupper(nams))
+
+  # Record old cell type
+  if(lhn){
+    df$frechter.cell.type = df$cell.type
+  }else{
+    df$cell.type = df$anatomy.group
+    df$frechter.cell.type =  df$anatomy.group
+  }
+
+  # Record new
+  df$cell.type[mids] = lm.matches.1[ids,"cell.type"]
+  notfound = is.na(df$cell.type) | df$cell.type=="uncertain"
+  notfound[is.na(notfound)] = TRUE
+  df$cell.type[notfound] = NA # type not found, have NA
+
+  # Process the rest of the name
+  df$connectivity.type = df$hemibrain.match = df$hemibrain.match.quality = "uncertain"
+  df$connectivity.type[mids] = lm.matches.1[ids,"connectivity.type"]
+  df$hemibrain.match[mids] = lm.matches.1[ids,"match"]
+  df$hemibrain.match.quality[mids] = lm.matches.1[ids,"quality"]
+  df$classic.transmitter = hemibrain_lhns[as.character(df$hemibrain.match),"classic.transmitter"]
+  df$ct.layer = hemibrain_lhns[as.character(df$hemibrain.match),"ct.layer"]
+  df$name.change = !gsub("LH","",df$cell.type)==gsub("LH","",df$frechter.cell.type)
+
+  # Use old name if not new one
+  df$cell.type[is.na(df$cell.type)] = df$frechter.cell.type[is.na(df$cell.type)]
+
+  # Name
+  if(lhn){
+    lh = grepl("^LH",df$cell.type)
+    df[lh,"cell.type"] = capitalise_cell_type_name(df[lh,"cell.type"])
+    df[lh,"pnt"] = process_lhn_name(df[lh,"cell.type"])$pnt
+    df[lh,"anatomy.group"] = process_lhn_name(df[lh,"cell.type"])$anatomy.group
+    for(i in 1:nrow(df)){
+      if(is.na(df[i,"pnt"])){
+        df[i,"pnt"] = hemibrain_lhns[as.character(df[i,"hemibrain.match"]),"pnt"]
+      }
+    }
+  }
+  df
+
+
+}
+
+
+
+
+
+
 

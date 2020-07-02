@@ -5,7 +5,7 @@
 \alias{most.lhns}
 \title{A comprehensive lateral horn neuron dataset}
 \format{
-An object of class \code{neuronlist} (inherits from \code{list}) of length 1619.
+An object of class \code{neuronlist} (inherits from \code{list}) of length 1646.
 }
 \source{
 \url{http://www.flycircuit.tw/}
@@ -17,7 +17,9 @@ most.lhns
 A dataset containing all of the FlyCircuit neurons that seem to have
 dendrites in the lateral horn (LH), as well as traced dye-fills from Frechter
 et al. 2019. The neurons are in the \code{nat} package's
-\code{\link[nat]{neuron}} format.
+\code{\link[nat]{neuron}} format. As of v2.0 of this package, the names from these neurons have been
+modified from those used in Frechter et al. 2019 due to changes in the LH naming scheme as it was
+exapnded to all lateral horn neurons within the hemibrain (Scheffer et al. 2020).
 }
 \examples{
 \donttest{

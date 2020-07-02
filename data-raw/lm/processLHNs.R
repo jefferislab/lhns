@@ -23,6 +23,9 @@ names(SF_clusters.FCWB)=sub("-000.swc","",x=names(SF_clusters.FCWB))
 
 # Get MCFO skeletons
 md.mcfo = nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lh.mcfo.rds',package='lhns')))
+if(!is.null(md.mcfo[,"frechter.cell.type"])){
+  md.mcfo[,"cell.type"] = md.mcfo[,"frechter.cell.type"]
+}
 
 # Create most.lhns
 most.lhns= c(fc.lhns,dye.fills,JFRCSH_clusters.FCWB,JFRCSH.DS_clusters.FCWB,SF_clusters.FCWB,md.mcfo)
@@ -691,7 +694,6 @@ df[pv6.a.3,]$cell.type = "pv6a3"
 df[pv6.b.1,]$cell.type = "pv6b1"
 df[pv6.c.1,]$cell.type = "pv6c1"
 df[pv6.d.1,]$cell.type = "pv6d1"
-df[pv6.d.2,]$cell.type = "pv6d2"
 df[pv6.e.1,]$cell.type = "pv6e1"
 
 # From Marin et al. 2020
@@ -1655,27 +1657,8 @@ df = df[,c("cell.type", "anatomy.group", "pnt",  "type", "skeleton.type", "id", 
 names_in_common=intersect(names(most.lhns), rownames(df))
 most.lhns = most.lhns[names_in_common]
 most.lhns[,]=df[names_in_common,]
-most.lhns = most.lhns[!names(most.lhns)%in%names(most.lhins)] # Remove skeletons also in most.lhins
 most.lhns = subset(most.lhns,skeleton.type!="FijiTrace"&!is.na(skeleton.type))
 
-
-####################
-# Update Meta-Data #
-####################
-
-
-most.lhns = as.neuronlistfh(most.lhns,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-most.lhns.dps = nat::dotprops(most.lhns,resample=1)
-most.lhns.dps = as.neuronlistfh(most.lhns.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-
-
-#####################
-# Write neuronlistfh #
-#####################
-
-
-write.neuronlistfh(most.lhns, file='inst/extdata/most.lhns.rds',overwrite = TRUE)
-write.neuronlistfh(most.lhns.dps, file='inst/extdata/most.lhns.dps.rds',overwrite = TRUE)
 
 
 

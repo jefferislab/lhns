@@ -1,7 +1,7 @@
 "bodyid","type","cbf","m.type","c.type","cbf.change","class","cell.type","ItoLee_Hemilineage","Hartenstein_Hemilineage","FAFB.match","FAFB.match.quality","LM.match","LM.match.quality","published","type.change","pnt","connectivity.type"
 "478613576","LH098a","PDM30","PDM30b","PDM30e_pct",FALSE,"LHN","LHPD5c1","SLPad1","DPLl3","none","none","none","none",FALSE,FALSE,"LHPD5","LHPD5c1"
 "639275368","SIP050a","PDM11","PDM11i","PDM11od_pct",FALSE,"LHN","LHPD5f1","VLPd&p1_anterior","DPLl2","none","none","none","none",FALSE,FALSE,"LHPD5","LHPD5f1"
-"514068564","SMP247a","PDM10","PDM10j","PDM10oe_pct",FALSE,"LHN","LHPD5a1","SLPpm3","DPLc3","5982276","good","none","none",TRUE,FALSE,"LHPD5","LHPD5a1"
+"514068564","SMP247a","PDM10","PDM10j","PDM10oe_pct",FALSE,"LHN","LHPD5a1","SLPpm3","DPLc3","5982276","good","none","none",FALSE,FALSE,"LHPD5","LHPD5a1"
 "642409381","SMP249a","PDM10","PDM10d","PDM10b_pct",FALSE,"LHN","LHPD5e1","VLPd&p1_anterior","DPLl2","none","none","none","none",FALSE,FALSE,"LHPD5","LHPD5e1"
 "5812980326","SMP249a","PDM10","PDM10d","PDM10b_pct",FALSE,"LHN","LHPD5e1","VLPd&p1_anterior","DPLl2","none","none","none","none",FALSE,FALSE,"LHPD5","LHPD5e1"
 "387568523","SMP254a","PDM10","PDM10c","PDM10a_pct",FALSE,"LHN","LHPD5d1","VLPd&p1_anterior","DPLl2","none","none","none","none",FALSE,FALSE,"LHPD5","LHPD5d1"

@@ -61,3 +61,40 @@ for(row in 1:nrow(matches)){
 }
 
 
+# Add new neurons
+gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
+                                      ss = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
+                                      sheet = "lm",
+                                      return = TRUE)
+gs$id = correct_id(gs$id)
+rownames(gs) = gs$id
+source("data-raw/lm/processDolanSplits.R")
+lm.matches = lm_matches()
+fafb.matches = hemibrain_matches()
+h.match = lm.matches[lh.splits.dps[,"match"],"match"]
+h.quality = lm.matches[lh.splits.dps[,"match"],"quality"]
+h.match[h.match=="none"] = h.quality[h.match=="none"] = NA
+f.match = fafb.matches[h.match,"match"]
+f.quality = fafb.matches[h.match,"quality"]
+f.match[f.match=="none"] = f.quality[f.match=="none"] = NA
+sdf = lh.splits.dps[,c("cell.type", "type", "imagecode")]
+colnames(sdf) = c("cell.type", "type", "id")
+sdf$hemibrain.match = h.match
+sdf$hemibrain.match.quality = h.quality
+sdf$FAFB.match = f.match
+sdf$FAFB.match.quality = f.quality
+sdf$User = "ASB"
+sdf = sdf[setdiff(sdf$id,gs$id),colnames(gs)]
+sdf[is.na(sdf)]=""
+rownames(sdf) = NULL
+if(nrow(sdf)){
+  hemibrainr:::gsheet_manipulation(FUN = googlesheets4::sheet_append,
+                                   data = sdf,
+                                   ss = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
+                                   sheet = "lm")
+}
+
+
+
+
+

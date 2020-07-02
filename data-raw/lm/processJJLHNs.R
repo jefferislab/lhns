@@ -230,24 +230,3 @@ df$skeleton.type = "JeanneDyeFill"
 # Re-attach data frame
 jfw.lhns = jj.m.fcwb
 attr(jfw.lhns,"df")  =  df
-
-
-#####################
-# Create neuronlistfh #
-#####################
-
-
-jfw.lhns = nlapply(jfw.lhns,nat::resample,stepsize = 1)
-jfw.lhns = as.neuronlistfh(jfw.lhns,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-jfw.lhns.dps = nat::dotprops(jfw.lhns,OmitFailures=TRUE)
-jfw.lhns.dps = as.neuronlistfh(jfw.lhns.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-
-
-###################
-# Update Meta-Data #
-###################
-
-write.neuronlistfh(jfw.lhns, file='inst/extdata/jfw.lhns.rds',overwrite = TRUE)
-write.neuronlistfh(jfw.lhns.dps, file='inst/extdata/jfw.lhns.dps.rds',overwrite = TRUE)
-
-

@@ -5,7 +5,7 @@
 \alias{cell_type_summary}
 \title{Summary of cell types with clean split-GAL4 lines from Dolan et al. 2018}
 \format{
-An object of class \code{data.frame} with 66 rows and 7 columns.
+An object of class \code{data.frame} with 87 rows and 7 columns.
 }
 \source{
 \url{https://doi.org/10.7554/eLife.43079}

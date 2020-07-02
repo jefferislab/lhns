@@ -14,13 +14,13 @@ An object of class \code{numeric} of length 1635.
 
 An object of class \code{character} of length 2361.
 
-An object of class \code{data.frame} with 1649 rows and 23 columns.
+An object of class \code{data.frame} with 1634 rows and 23 columns.
 
-An object of class \code{data.frame} with 83 rows and 5 columns.
+An object of class \code{data.frame} with 76 rows and 5 columns.
 
-An object of class \code{data.frame} with 83 rows and 5 columns.
+An object of class \code{data.frame} with 76 rows and 5 columns.
 
-An object of class \code{data.frame} with 4009 rows and 16 columns.
+An object of class \code{data.frame} with 4009 rows and 21 columns.
 }
 \source{
 \url{https://doi.org/10.1101/2020.01.21.911859}

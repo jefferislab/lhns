@@ -5,7 +5,7 @@
 \alias{lh.splits.dps}
 \title{Vector clouds of LH output neurons from split GAL4 lines}
 \format{
-An object of class \code{neuronlist} (inherits from \code{list}) of length 208.
+An object of class \code{neuronlist} (inherits from \code{list}) of length 220.
 }
 \source{
 \url{https://doi.org/10.7554/eLife.43079}
@@ -14,7 +14,9 @@ An object of class \code{neuronlist} (inherits from \code{list}) of length 208.
 lh.splits.dps
 }
 \description{
-Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
+Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. As of v2.0 of this package, the names from these neurons have been
+modified from those used in Frechter et al. 2019 due to changes in the LH naming scheme as it was
+exapnded to all lateral horn neurons within the hemibrain (Scheffer et al. 2020). Data from Mike Dolan.
 }
 \references{
 Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.

@@ -5,7 +5,10 @@ library(flycircuit)
 # Get data
 load("data-raw/lh.inputs.rda")
 md.mcfo = nat::as.neuronlist(nat::read.neuronlistfh(nat.utils::find_extdata('lh.mcfo.rds',package='lhns')))
-lhin.mcfo = lh.mcfo[names(lh.mcfo)%in%c("MB583B#1","MB583B#2","MB583B#3","L2444#1","L85#1", "L85#2", "L85#3", "L85#4", "L85#5",
+if(!is.null(md.mcfo[,"frechter.cell.type"])){
+  md.mcfo[,"cell.type"] = md.mcfo[,"frechter.cell.type"]
+}
+lhin.mcfo = md.mcfo[names(md.mcfo)%in%c("MB583B#1","MB583B#2","MB583B#3","L2444#1","L85#1", "L85#2", "L85#3", "L85#4", "L85#5",
                                         "L452#3", "L1668#4", "L452#1", "L1518#1", "L1518#4", "L1949#1",
                                         "L1949#3", "L1668#3", "L1668#2", "L1518#3", "L1518#5", "L1518#2",
                                         "L1668#1", "L452#2","L1949#2","L984#7", "L770#1", "L770#2", "L984#9", "L984#8", "L112#4",
@@ -764,32 +767,12 @@ df[notLHPNproper,]$neurotransmitter = "Unknown"
 
 df$anatomy.group = factor(df$anatomy.group,levels = sort(unique(df$anatomy.group)))
 df$cell.type = df$anatomy.group
-df[mbons,"type"] = "IN/MBON"
+df[mbons,"type"] = "MBON"
 df$skeleton.type = "FlyCircuit"
 df[names(lhin.mcfo),"skeleton.type"] = "MCFO"
+df$id = rownames(df)
 most.lhins = lh.inputs
 attr(most.lhins,"df") = df
-
-
-####################
-# Update Meta-Data #
-####################
-
-
-most.lhins = as.neuronlistfh(most.lhins,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-most.lhins.dps = nat::dotprops(most.lhins,resample=1)
-most.lhins.dps = as.neuronlistfh(most.lhins.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-
-
-######################
-# Write neuronlistfh #
-######################
-
-
-write.neuronlistfh(most.lhins, file='inst/extdata/most.lhins.rds',overwrite = TRUE)
-write.neuronlistfh(most.lhins.dps, file='inst/extdata/most.lhins.dps.rds',overwrite = TRUE)
-
-
 
 
 

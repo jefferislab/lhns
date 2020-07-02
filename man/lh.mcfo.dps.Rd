@@ -14,7 +14,9 @@ An object of class \code{neuronlist} (inherits from \code{list}) of length 538.
 lh.mcfo.dps
 }
 \description{
-Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
+Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. As of v2.0 of this package, the names from these neurons have been
+modified from those used in Frechter et al. 2019 due to changes in the LH naming scheme as it was
+exapnded to all lateral horn neurons within the hemibrain (Scheffer et al. 2020). Data from Mike Dolan.
 }
 \references{
 Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.

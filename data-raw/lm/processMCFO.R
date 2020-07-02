@@ -8,6 +8,15 @@ if(!exists("most.lhns")){
 }else if(!exists("most.lhins")){
   stop("Please run processLHNinputs.R!")
 }
+most.lhns.old = most.lhns
+most.lhins.old = most.lhins
+# Use olf Frechter et al. names for this file
+if(!is.null(most.lhns.old[,"frechter.cell.type"])){
+  most.lhns.old[,"cell.type"] = most.lhns.old[,"frechter.cell.type"]
+}
+if(!is.null(most.lhins.old[,"frechter.cell.type"])){
+  most.lhins.old[,"cell.type"] = most.lhins.old[,"frechter.cell.type"]
+}
 
 # # Read MCFO neurons
 # mcfo = read.neurons("/Users/abates/ImageData/MCFO/lastish_stacks/skels4")
@@ -1571,9 +1580,9 @@ mf["JRC_SS16329-20151125_23_A6-Aligned63xScale_c0.Smt.SptGraph.swc",]$match ="mi
 
 
 # If for MCFO skeleton is not, for some reason, in most.lhns
-df.a = most.lhns[,c("pnt","anatomy.group","cell.type","type")]
-df.b = data.frame(pnt = most.lhins[,c("tract")],anatomy.group=most.lhins[,c("anatomy.group")],cell.type=most.lhins[,c("anatomy.group")], type = "IN")
-rownames(df.b) = names(most.lhins)
+df.a = most.lhns.old[,c("pnt","anatomy.group","cell.type","type")]
+df.b = data.frame(pnt = most.lhins.old[,c("tract")],anatomy.group=most.lhins.old[,c("anatomy.group")],cell.type=most.lhins.old[,c("anatomy.group")], type = "IN")
+rownames(df.b) = names(most.lhins.old)
 df = rbind(df.b,df.a[!rownames(df.a)%in%rownames(df.b),])
 mf$pnt = as.character(sapply(mf$match,function(x) df[x,]$pnt))
 mf$anatomy.group = as.character(sapply(mf$match,function(x) df[x,]$anatomy.group))
@@ -1687,7 +1696,6 @@ mf[c("JRC_SS22723-20170324_29_F2-Aligned63xScale_c2.Smt.SptGraph.swc",
      "JRC_SS04720-20170623_23_A8-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS04720-20160819_21_C2-Aligned63xScale_c1a.Smt.SptGraph.swc",
      "JRC_SS04720-20160819_21_C2-Aligned63xScale_c0b.Smt.SptGraph.swc",
-     "JRC_SS04973-20151125_23_E4-Aligned63xScale_c0.Smt.SptGraph.swc",
      "JRC_SS04967-20151022_20_A5-Aligned63xScale_c2a.Smt.SptGraph.swc",
      "JRC_SS23347-20170303_26_E2-Aligned63xScale_c1.Smt.SptGraph.swc",
      "JRC_SS16351-20160819_23_C4-Aligned63xScale_c0.Smt.SptGraph.swc",
@@ -1743,33 +1751,14 @@ attr(lh.mcfo,"df") = mf
 
 
 # Synchronise with most.lhns
-most.lh = c(most.lhns,most.lhins)
+most.lh = nat::union(most.lhns.old,most.lhins.old)
 in.most.lhns = names(lh.mcfo)[names(lh.mcfo)%in%names(most.lh)]
 lh.mcfo[in.most.lhns,c("pnt","anatomy.group","cell.type","type","coreLH")] = most.lh[in.most.lhns,c("pnt","anatomy.group","cell.type","type","coreLH")]
+lh.mcfo[,"id"] = names(lh.mcfo)
 
 # remove non=ASCII chracter
 lh.mcfo[,] = change_nonascii(lh.mcfo[,])
-lh.mcfo.dps[,] = change_nonascii(lh.mcfo.dps[,])
-
-#######################
-# Create neuronlistfh #
-#######################
 
 
-lh.mcfo = subset(lh.mcfo,!match%in%c("mis-registered","notLHproper"))
-#lh.mcfo = subset(lh.mcfo,!is.na(cell.type))
-lh.mcfo = nlapply(lh.mcfo,nat::resample,stepsize = 1)
-lh.mcfo = as.neuronlistfh(lh.mcfo,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-lh.mcfo.dps = nat::dotprops(lh.mcfo,OmitFailures=TRUE)
-lh.mcfo.dps = as.neuronlistfh(lh.mcfo.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-
-
-####################
-# Update Meta-Data #
-####################
-
-
-write.neuronlistfh(lh.mcfo, file='inst/extdata/lh.mcfo.rds',overwrite = TRUE)
-write.neuronlistfh(lh.mcfo.dps, file='inst/extdata/lh.mcfo.dps.rds',overwrite = TRUE)
 
 

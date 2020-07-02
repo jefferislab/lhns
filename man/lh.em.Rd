@@ -9,11 +9,11 @@
 \alias{lm_em_matches}
 \title{EM neuron skeletons for published lateral horn related reconstructions and all olfactory projection neurons.}
 \format{
-An object of class \code{neuronlist} (inherits from \code{list}) of length 218.
+An object of class \code{neuronlist} (inherits from \code{list}) of length 238.
 
 An object of class \code{neuronlist} (inherits from \code{list}) of length 346.
 
-An object of class \code{data.frame} with 218 rows and 20 columns.
+An object of class \code{data.frame} with 239 rows and 17 columns.
 
 An object of class \code{data.frame} with 2877 rows and 8 columns.
 }
@@ -59,10 +59,6 @@ Neuron 100 (3): 651–68.e8.\href{https://doi.org/10.1016/j.neuron.2018.08.037}{
 Huoviala, Paavo, Michael-John Dolan, Fiona M. Love, Shahar Frechter, Ruairí J. V. Roberts, Zane Mitrevica, Philipp Schlegel, et al. 2018.
 “Neural Circuit Basis of Aversive Odour Processing in Drosophila from Sensory Input to Descending Output.”
 bioRxiv. \href{https://doi.org/10.1101/394403}{doi:10.1101/394403}
-
-Shan Xu, C., Michal Januszewski, Zhiyuan Lu, Shin-Ya Takemura, Kenneth J. Hayworth, Gary Huang, Kazunori Shinomiya, et al. 2020.
-“A Connectome of the Adult Drosophila Central Brain.”
-bioRxiv. \href{https://doi.org/10.1101/2020.01.21.911859}{doi:10.1101/2020.01.21.911859}
 
 Li, Peter H., Larry F. Lindsey, Michał Januszewski, Zhihao Zheng, Alexander Shakeel Bates, István Taisz, Mike Tyka, et al. 2019.
 “Automated Reconstruction of a Serial-Section EM Drosophila Brain with Flood-Filling Networks and Local Realignment.”

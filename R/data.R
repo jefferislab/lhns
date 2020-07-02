@@ -3,7 +3,9 @@
 #' A dataset containing all of the FlyCircuit neurons that seem to have
 #' dendrites in the lateral horn (LH), as well as traced dye-fills from Frechter
 #' et al. 2019. The neurons are in the \code{nat} package's
-#' \code{\link[nat]{neuron}} format.
+#' \code{\link[nat]{neuron}} format. As of v2.0 of this package, the names from these neurons have been
+#' modified from those used in Frechter et al. 2019 due to changes in the LH naming scheme as it was
+#' exapnded to all lateral horn neurons within the hemibrain (Scheffer et al. 2020).
 #'
 #' @source \url{http://www.flycircuit.tw/}
 #' @seealso \code{\link{most.lhns.dps}}
@@ -206,7 +208,9 @@
 
 #' Vector clouds of LH output neurons from split GAL4 lines
 #'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
+#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. As of v2.0 of this package, the names from these neurons have been
+#' modified from those used in Frechter et al. 2019 due to changes in the LH naming scheme as it was
+#' exapnded to all lateral horn neurons within the hemibrain (Scheffer et al. 2020). Data from Mike Dolan.
 #'
 #' @references Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
 #' “Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
@@ -216,7 +220,9 @@
 
 #' Single skeletons of LHNs from MCFO
 #'
-#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
+#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. As of v2.0 of this package, the names from these neurons have been
+#' modified from those used in Frechter et al. 2019 due to changes in the LH naming scheme as it was
+#' exapnded to all lateral horn neurons within the hemibrain (Scheffer et al. 2020). Data from Mike Dolan.
 #'
 #' @references Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
 #' “Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
@@ -226,54 +232,15 @@
 
 #' Vector clouds for single LHNs from MCFO
 #'
-#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
+#' Single skeletons of LH neurons from split GAL4 line multi-colour-flip-out data. Meta-data contains experimentally verified information on neurotransmitter expression. As of v2.0 of this package, the names from these neurons have been
+#' modified from those used in Frechter et al. 2019 due to changes in the LH naming scheme as it was
+#' exapnded to all lateral horn neurons within the hemibrain (Scheffer et al. 2020). Data from Mike Dolan.
 #'
 #' @references Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
 #' “Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
 #' \href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
 #' @source \url{https://doi.org/10.7554/eLife.43079}
 "lh.mcfo.dps"
-
-#' Vector clouds of LH output neurons from split GAL4 lines
-#'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
-#'
-#' @references Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
-#' “Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
-#' \href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
-#' @source \url{https://doi.org/10.7554/eLife.43079}
-"lhon.splits.dps"
-
-
-#' Vector clouds of LH local neurons from split GAL4 lines
-#'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
-#'
-#' @references Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
-#' “Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
-#' \href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
-#' @source \url{https://doi.org/10.7554/eLife.43079}
-"lhln.splits.dps"
-
-#' Vector clouds of LH input neurons from split GAL4 lines
-#'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
-#'
-#' @references Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
-#' “Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
-#' \href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
-#' @source \url{https://doi.org/10.7554/eLife.43079}
-"lhin.splits.dps"
-
-#' Vector clouds of peri-LH  neurons from split GAL4 lines
-#'
-#' Vector cloud objects from segmented image data. Meta-data contains experimentally verified information on neurotransmitter expression. Data from Mike Dolan.
-#'
-#' @references Dolan, Michael-John, Shahar Frechter, Alexander Shakeel Bates, Chuntao Dan, Paavo Huoviala, Ruairí Jv Roberts, Philipp Schlegel, et al. 2019.
-#' “Neurogenetic Dissection of the Drosophila Lateral Horn Reveals Major Outputs, Diverse Behavioural Functions, and Interactions with the Mushroom Body.” eLife 8 (May).
-#' \href{https://doi.org/10.7554/eLife.43079}{doi:10.7554/eLife.43079}
-#' @source \url{https://doi.org/10.7554/eLife.43079}
-"lhin.splits.dps"
 
 #' Mushroom body output neuron Vector clouds representing
 #'
@@ -314,10 +281,6 @@
 #' @references Huoviala, Paavo, Michael-John Dolan, Fiona M. Love, Shahar Frechter, Ruairí J. V. Roberts, Zane Mitrevica, Philipp Schlegel, et al. 2018.
 #' “Neural Circuit Basis of Aversive Odour Processing in Drosophila from Sensory Input to Descending Output.”
 #' bioRxiv. \href{https://doi.org/10.1101/394403}{doi:10.1101/394403}
-#'
-#' @references Shan Xu, C., Michal Januszewski, Zhiyuan Lu, Shin-Ya Takemura, Kenneth J. Hayworth, Gary Huang, Kazunori Shinomiya, et al. 2020.
-#' “A Connectome of the Adult Drosophila Central Brain.”
-#' bioRxiv. \href{https://doi.org/10.1101/2020.01.21.911859}{doi:10.1101/2020.01.21.911859}
 #'
 #' Li, Peter H., Larry F. Lindsey, Michał Januszewski, Zhihao Zheng, Alexander Shakeel Bates, István Taisz, Mike Tyka, et al. 2019.
 #' “Automated Reconstruction of a Serial-Section EM Drosophila Brain with Flood-Filling Networks and Local Realignment.”

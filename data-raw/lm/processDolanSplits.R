@@ -9,6 +9,15 @@ if(!exists("most.lhns")){
 }else if(!exists("most.lhins")){
   stop("Please run processLHNinputs.R!")
 }
+most.lhns.old = most.lhns
+most.lhins.old = most.lhins
+# Use olf Frechter et al. names for this file
+if(!is.null(most.lhns.old[,"frechter.cell.type"])){
+  most.lhns.old[,"cell.type"] = most.lhns.old[,"frechter.cell.type"]
+}
+if(!is.null(most.lhins.old[,"frechter.cell.type"])){
+  most.lhins.old[,"cell.type"] = most.lhins.old[,"frechter.cell.type"]
+}
 
 
 ###### Read data from NRRD files ######
@@ -363,9 +372,9 @@ md["GMR_41H09_AV_01-20150626_32_D1",]$match = "Trh-F-500222"
 
 
 
-df.a = most.lhns[,c("pnt","anatomy.group","cell.type","type")]
-df.b = data.frame(pnt = most.lhins[,c("tract")],anatomy.group= most.lhins[,c("anatomy.group")],cell.type= most.lhins[,c("anatomy.group")], type = "IN")
-rownames(df.b) = names(most.lhins)
+df.a = most.lhns.old[,c("pnt","anatomy.group","cell.type","type")]
+df.b = data.frame(pnt = most.lhins.old[,c("tract")],anatomy.group= most.lhins.old[,c("anatomy.group")],cell.type= most.lhins.old[,c("anatomy.group")], type = "IN")
+rownames(df.b) = names(most.lhins.old)
 df = rbind(df.b,df.a[!rownames(df.a)%in%rownames(df.b),])
 md$pnt = as.character(sapply(md$match,function(x) df[x,]$pnt))
 md$anatomy.group = as.character(sapply(md$match,function(x) df[x,]$anatomy.group))
@@ -516,26 +525,24 @@ md[c("JRC_SS23107-20160629_31_E6", "JRC_SS23107-20160629_31_F6",
 ################
 
 
-# Synchronise with lh.mcfo
-lh.mcfo.df.clean = subset(lh.mcfo,InLine==TRUE)[,]
-for(o in md$old.cell.type){
-  if(o%in%lh.mcfo[,"old.cell.type"]){
-    cts = sort(lh.mcfo.df.clean[lh.mcfo.df.clean$old.cell.type==o,"cell.type"])
-    cts = unique(unlist(strsplit(cts,"/")))
-    cts = paste(sort(na.omit(unique(cts))),collapse="/")
-    t = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"type"])),collapse="/")
-    md[md$old.cell.type==o,"cell.type"] = cts
-    md[md$old.cell.type==o,"anatomy.group"] = paste(sort(na.omit(unique(process_lhn_name(unique(cts))$anatomy.group))),collapse="/")
-    md[md$old.cell.type==o,"pnt"] = paste(sort(na.omit(unique(process_lhn_name(unique(cts))$pnt))),collapse="/")
-    md[md$old.cell.type==o,"type"] = t
-  }
-}
-
-
-### Save ###
-
+# # Synchronise with lh.mcfo
+# lh.mcfo.df.clean = subset(lh.mcfo,InLine==TRUE)[,]
+# for(o in md$old.cell.type){
+#   if(o%in%lh.mcfo[,"old.cell.type"]){
+#     cts = sort(lh.mcfo.df.clean[lh.mcfo.df.clean$old.cell.type==o,"cell.type"])
+#     cts = unique(unlist(strsplit(cts,"/")))
+#     cts = paste(sort(na.omit(unique(cts))),collapse="/")
+#     t = paste(sort(unique(subset(most.lh,cell.type%in%unlist(strsplit(cts,"/")))[,"type"])),collapse="/")
+#     md[md$old.cell.type==o,"cell.type"] = cts
+#     md[md$old.cell.type==o,"anatomy.group"] = paste(sort(na.omit(unique(process_lhn_name(unique(cts))$anatomy.group))),collapse="/")
+#     md[md$old.cell.type==o,"pnt"] = paste(sort(na.omit(unique(process_lhn_name(unique(cts))$pnt))),collapse="/")
+#     md[md$old.cell.type==o,"type"] = t
+#   }
+# }
 
 # Sort
+
+# Parallelise
 md$file = rownames(md)
 attr(dolan.splits,"df") = md
 dolan.splits[,"skeleton.type"] = "ConfocalStack"
@@ -545,21 +552,3 @@ lhin.splits.dps = dolan.splits[rownames(subset(md,type%in%c("IN","ON/IN")))]
 lh.splits.dps = c(lhon.splits.dps,lhln.splits.dps,lhin.splits.dps)
 
 
-# #################
-# Update Meta-Data #
-###################
-
-
-lhon.splits.dps = as.neuronlistfh(lhon.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-lhln.splits.dps = as.neuronlistfh(lhln.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-lhin.splits.dps = as.neuronlistfh(lhin.splits.dps,dbdir = 'inst/extdata/data/', WriteObjects="missing")
-
-
-#####################
-# Write neuronlistfh #
-#####################
-
-
-write.neuronlistfh(lhon.splits.dps, file='inst/extdata/lhon.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-write.neuronlistfh(lhln.splits.dps, file='inst/extdata/lhln.splits.dps.rds',overwrite = TRUE,compress=TRUE)
-write.neuronlistfh(lhin.splits.dps, file='inst/extdata/lhin.splits.dps.rds',overwrite = TRUE,compress=TRUE)
