@@ -58,7 +58,7 @@
 "24","","","","","","ChA, GABA"
 "27A","LHAV2a1/LHAV2i2/LHAV2k2","ON/ON/ON","TRUE/TRUE/TRUE","L907","3","ChA"
 "27A","LHAV2a1/LHAV2i2/LHAV2k2","ON/ON/ON","TRUE/TRUE/TRUE","L629","4±0","ChA"
-"27C","","","","L325","6±1","Unknown"
+"27C","LHAV6b1","ON","TRUE","L325","6±1","Unknown"
 "29B","LHAV3c1/LHPV6a10/LHPV6a3/LHPV6h2","ON/ON/ON/ON","TRUE/TRUE/TRUE/TRUE","L2193","5±1","ChA"
 "29C","","","","L188","6±2","ChA"
 "29D","LHPV4d4/LHPV4j3","ON/ON","TRUE/TRUE","L979","4±1","Vglut"

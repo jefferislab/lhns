@@ -130,6 +130,10 @@ for(l in 1:nrow(lh_line_info)){
   }
 }
 
+# Fix L1000
+## Old, AV6b1, new, 4902612
+lh_line_info[lh_line_info$old.cell.type=="27C","cell.type"] = "LHAV6b1"
+
 # Create an old to new cell.type mapping
 most.lh = nat::union(subset(most.lhns, cell.type!="notLHproper"),most.lhins)
 old = sort(na.omit(unique(gsub("\\(|\\)|/[\\]","",sort(unlist(strsplit(lh_line_info$old.cell.type,"/")))))))

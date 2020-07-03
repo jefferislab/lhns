@@ -90,7 +90,7 @@ for(lc in linecodes){
   }
 
   # Plot MCFO
-  mcfo = names(subset(lh.mcfo,linecode == lc & InLine == TRUE))
+  mcfo = names(subset(lh.mcfo, grepl(search,cell.type) & InLine == TRUE))
 
   # Plot cloud
   splits = names(subset(lh.splits.dps, linecode == lc | cell.type %in% cts))
