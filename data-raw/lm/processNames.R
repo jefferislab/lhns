@@ -118,3 +118,32 @@ source("data-raw/lm/processEPhys.R")
 source("data-raw/lm/processFunctionalConnectivity.R")
 source("data-raw/lm/processNBLAST.R")
 
+## Delete things not needed:
+###Delete filehash files we no longer need
+files = c('mbons.light.dps.rds',
+          "pn.axons.light.rds",
+          "pn.axons.light.dps.rds",
+          "most.lhns.rds",
+          "most.lhns.dps.rds",
+          "most.lhins.rds",
+          "most.lhins.dps.rds",
+          "lh.splits.dps.rds",
+          "lh.mcfo.rds",
+          "lh.mcfo.dps.rds",
+          "jfw.lhns.rds",
+          "jfw.lhns.dps.rds",
+          "lh.fafb.rds",
+          "pn.fafb.rds")
+all.keys = c()
+for(f in files){
+  a = readRDS(paste0("inst/extdata/",f))
+  b = attributes(a)
+  keys = b$keyfilemap
+  all.keys = c(all.keys,keys)
+}
+all.files = list.files("inst/extdata/data/")
+delete = setdiff(all.files,all.keys)
+delete = paste0("inst/extdata/data/",delete)
+file.remove(delete)
+
+
