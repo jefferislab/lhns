@@ -189,7 +189,7 @@ skid,catmaid_name,ItoLee_Lineage,ItoLee_Hemilineage,Hartenstein_Lineage,Hartenst
 8820702,LAC PD4i2#4 8820703 ECM Aemon,SLPpm3,SLPpm3_lateral,DPLc3,DPLc3_lateral,ON,PD5g1,PD5g1#4,449634539,none,cell.type,preliminary,unknown,,Marin et al 2020,Marin et al 2020
 11210831,LAC PD4i2#1 11210830 PMJ ECM Eyrie,SLPpm3,SLPpm3_lateral,DPLc3,DPLc3_lateral,ON,PD5g1,PD5g1#1,417558532,fru-F-000092,anatomy.group,complete,unknown,,Marin et al 2020,Marin et al 2020
 4974403,PV2 4974404 Hobby ASB,VPNp&v1,VPNp&v1_posterior,BLP1,BLP1_posterior,ON,PLP156,PLP156#1,882400424,none,cell.type,preliminary,acetylcholine,,Dolan et al 2019,Dolan et al 2019
-30571,putative TH-F-000011 30572 BH,unknown2,unknown2,unknown2,unknown2,ON,PPL202,PPL202#1,5813071348,TH-F-000011,cell.type,rough,unknown,PV1b4 (Dolan et al 2019),Dolan et al 2019,Dolan et al 2019
+30571,putative TH-F-000011 30572 BH,unknown2,unknown2,unknown2,unknown2,ON,PPL202,PPL202#1,5813071348,TH-F-000011,cell.type,rough,unknown,PV1b4 (Dolan et al 2019),Dolan et al 2019; Marin et al 2020,Dolan et al 2019
 1478950,putative peptidergic neuron 1478951 NM ASB,unknown2,unknown2,unknown2,unknown2,IN,PPL203,PPL203#1,294436967,MB583B#1,cell.type,rough,GABA,PPL2ab-PN1 (Dolan et al 2019),Dolan et al 2019,Dolan et al 2019
 8880705,LAC neuron 8880706 Baratheon MT ECM,DPMpl1?,DPMpl1/2,SMPpv1/2,SMPpv1/2,ON,PV7c11,PV7c1#1,none,fru-F-000092,anatomy.group,rough,unknown,,Marin et al 2020,Marin et al 2020
 9951834,LAC PD4i2#3 9951835 ECM Randyll,SLPpm3,SLPpm3_lateral,DPLc3,DPLc3_lateral,ON,PD5g13,PD5g1#3,449244969,fru-F-000092,anatomy.group,rough,unknown,,Marin et al 2020,Marin et al 2020
