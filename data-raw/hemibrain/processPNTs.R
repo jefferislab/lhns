@@ -137,6 +137,13 @@ lh.ids = intersect(lh.ids, names(db))
 lh.ids = setdiff(lh.ids, hemibrain.master$bodyid)
 lh.ids = setdiff(lh.ids, hemibrainr::pn.ids)
 
+# Other CBFs
+m = neuprint_get_meta(hemibrain_neuron_bodyids())
+cc = unique(m$cellBodyFiber)
+cc = data.frame(cbf=cc)
+hemibrain_pnt_cbf = merge(hemibrain_pnt_cbf,cc,all.x = TRUE, all.y = TRUE)
+hemibrain_pnt_cbf = hemibrain_pnt_cbf[!is.na(hemibrain_pnt_cbf$cbf),]
+
 # Save!
 if(process){
   usethis::use_data(hemibrain_pnt_cbf, overwrite = TRUE)
