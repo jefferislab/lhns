@@ -189,13 +189,6 @@ catmaid::catmaid_set_meta_annotations(meta_annotations = "citation", annotations
 #   }
 # }
 
-old1 = catmaid_skids("annotation:ItoLee_Hemilineage: DL2_lateral")
-old2 = catmaid_skids("annotation:Hartenstein_Hemilineage: CP3_lateral")
-old = unique(c(old2,old2))
-catmaid::catmaid_set_annotations_for_skeletons(skids = old, annotations = c("ItoLee_Hemilineage: DL2_dorsal","Hartenstein_Hemilineage: CP3_dorsal"), force = TRUE)
-catmaid::catmaid_remove_annotations_for_skeletons(skids = old, annotations = c("ItoLee_Hemilineage: DL2_lateral","Hartenstein_Hemilineage: CP3_lateral"))
-
-
 ## Remove meta annotations
 # catmaid_remove_meta_annotations(
 #   annotations = cats,

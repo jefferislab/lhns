@@ -4,7 +4,7 @@ write_lhns <- function(df,
                        bodyids = NULL,
                        selected_file = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
                        column = NULL,
-                       sheet = "lhns",
+                       sheet = "hemibrain",
                        id.field = "bodyid"){
   # Read the Google Sheet
   gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
@@ -71,7 +71,7 @@ write_lhns <- function(df,
 
 # hidden
 write_lhns_missing <- function(df,
-                               sheet = "lhns",
+                               sheet = "hemibrain",
                                id.field = "bodyid",
                                selected_file = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw"){
   # Read the Google Sheet

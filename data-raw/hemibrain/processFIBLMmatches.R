@@ -36,7 +36,7 @@ matches = matches[!duplicated(matches$bodyid),]
 # Read the main Google Sheet
 gs = hemibrainr:::gsheet_manipulation(FUN = googlesheets4::read_sheet,
                                       ss = selected_file,
-                                      sheet = "lhns",
+                                      sheet = "hemibrain",
                                       return = TRUE)
 gs$bodyid = correct_id(gs$bodyid)
 rownames(gs) = gs$bodyid
@@ -55,7 +55,7 @@ for(row in 1:nrow(matches)){
                                      ss = "1OSlDtnR3B1LiB5cwI5x5Ql6LkZd8JOS5bBr-HTi0pOw",
                                      range = range,
                                      data = as.data.frame(matches[row,column]),
-                                     sheet = "lhns",
+                                     sheet = "hemibrain",
                                      col_names = FALSE)
   }
 }
