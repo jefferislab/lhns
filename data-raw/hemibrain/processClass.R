@@ -181,10 +181,12 @@ lh.info = neuprintr::neuprint_find_neurons(
   input_ROIs = "LH(R)",
   output_ROIs =  'LH(R)',
   all_segments = FALSE )
-lh.ids = intersect(hemibrain.ton.bodyids,lh.info$bodyid)
+s.info = subset(ton.info, class %in% c("LHN","LHON","LHLN","unknown","TON"))
+lh.ids = intersect(unique(s.info$bodyid),unique(lh.info$bodyid))
 lh.meta = neuprint_get_meta(unique(lh.ids))
 ns = neuprint_search(paste(unique(lh.meta$type),collapse="|"),field="type")
 hemibrain.lhn.bodyids =  unique(c(ns$bodyid,lh.ids))
+ton.info[ton.info$bodyid%in%hemibrain.lhn.bodyids & ! ton.info$class %in% c("LHON","LHLN"),"class"] = "LHN"
 
 ########
 # Save #
