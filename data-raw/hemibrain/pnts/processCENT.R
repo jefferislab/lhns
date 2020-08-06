@@ -104,7 +104,7 @@ df[lhmb1,"cell.type"] = "LHMB1"
 
 # Organise cell types
 df = process_types(df = df, hemibrain_lhns = hemibrain_lhns)
-df$pnt = pnt_cbf[match(df$cbf,pnt_cbf$cbf),"pnt"]
+df$pnt = #pnt_cbf[match(df$cbf,pnt_cbf$cbf),"pnt"]
 df[lhmb1,"pnt"] = "LHPD2"
 df[c11,"pnt"] = "LHAD5"
 df[c7,"pnt"] = "LHPV1"

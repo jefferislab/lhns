@@ -89,6 +89,8 @@ bis = hemibrainr::hemibrain_neuron_bodyids()
 ton.ids = intersect(bis, unique(as.character(subset(pn.syns.out)$partner)))
 ton.ids = setdiff(ton.ids,c(hemibrainr::upn.ids,hemibrainr::mpn.ids,hemibrainr::pn.ids))
 ton.info = neuprintr::neuprint_get_meta(ton.ids)
+upns = neuprint_read_neurons(hemibrainr::pn.ids)
+upn.syns = hemibrainr::hemibrain_extract_connections(upns)
 upn.syns %>%
   dplyr::filter(partner %in% ton.ids & prepost == 1) %>%
   dplyr::mutate(npost = ton.info[,"post"][match(partner,ton.info$bodyid)]) %>%
@@ -136,6 +138,7 @@ ton.meta %>%
   dplyr::filter(!class %in% c("APL","AL","KC","ORN","MODPN")) %>%
   as.data.frame() ->
   ton.info
+ton.info$notes = NULL
 
 # Cell types
 ton.info$cell.type = ton.info$type
@@ -158,32 +161,40 @@ for(ct in unique(ton.info$cell.type)){
 ton.info$ItoLee_Hemilineage = "unknown"
 ton.info$pnt = "unknown"
 ton.info$classic.transmitter = "unknown"
-for(cbf in hemibrain_pnt_cbf$cbf){
+for(cbf in hemibrainr::hemibrain_hemilineages$cellBodyFiber){
   ins = grepl(cbf,ton.info$cellBodyFiber)
-  ton.info[ins,"pnt"] = hemibrain_pnt_cbf[cbf,"pnt"]
-  ton.info[ins,"ItoLee_Hemilineage"] = hemibrain_pnt_cbf[cbf,"ItoLee_Hemilineage"]
-  ton.info[ins,"classic.transmitter"] = hemibrain_pnt_cbf[cbf,"classic.transmitter"]
+  ton.info[ins,"ItoLee_Hemilineage"] = hemibrainr::hemibrain_hemilineages[match(cbf, hemibrainr::hemibrain_hemilineages$cellBodyFiber),"ItoLee_Hemilineage"]
+  ton.info[ins,"classic.transmitter"] = hemibrainr::hemibrain_hemilineages[match(cbf, hemibrainr::hemibrain_hemilineages$cellBodyFiber),"putative.classic.transmitter"]
 }
+ton.info$classic.transmitter = standardise(ton.info$classic.transmitter)
+ton.info = ton.info[!duplicated(ton.info$bodyid),]
+ton.info = ton.info[!is.na(ton.info$bodyid),]
+rownames(ton.info) = ton.info$bodyid
+hemibrain.ton.bodyids = unique(as.character(ton.info$bodyid))
+
+
+###################################################################################
+# LHNs are neurons with 1% of their synaptic input / 10 synapses coming from uPNs #
+###################################################################################
+# And they must be 'neuron' objects in the LH(R) ROI ...
+lh.info = neuprintr::neuprint_find_neurons(
+  input_ROIs = "LH(R)",
+  output_ROIs =  'LH(R)',
+  all_segments = FALSE )
+lh.ids = intersect(hemibrain.ton.bodyids,lh.info$bodyid)
+lh.meta = neuprint_get_meta(unique(lh.ids))
+ns = neuprint_search(paste(unique(lh.meta$type),collapse="|"),field="type")
+hemibrain.lhn.bodyids =  unique(c(ns$bodyid,lh.ids))
+
+########
+# Save #
+########
 
 # Write!
 write.csv(ton.info, file = "data-raw/csv/hemibrain_olfactory_third_order_neurons.csv", row.names = FALSE,)
 hemibrain_tons = ton.info
 
 # Save!
-hemibrain.ton.bodyids = unique(as.character(hemibrain_tons$bodyid))
 usethis::use_data(hemibrain_tons, overwrite = TRUE)
 usethis::use_data(hemibrain.ton.bodyids, overwrite = TRUE)
-
-# NBLAST stuff
-# nb = hemibrain_nblast()
-# res = nb[rownames(nb) %in% ids, colnames(nb)%in%ids]
-# hckcs = nhclust(scoremat=res)
-# k = 5
-# dkcs=dendroextras::colour_clusters(hckcs, k=k)
-# for(j in 1:k){
-#   clear3d();plot3d(hemibrain.surf,col="grey",alpha = 0.1)
-#   plot3d(hckcs,k=k,db=db, group = j)
-#   print(dput(subset(hckcs, k=k, group=j)))
-#   p = readline()
-# }
-
+usethis::use_data(hemibrain.lhn.bodyids, overwrite = TRUE)
