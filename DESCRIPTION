@@ -16,7 +16,7 @@ Description: Skeleton data from light-level and electron microscopy studies of
     neurons associated with the lateral horn of Drosophila melanogaster.
 License: GPL-3
 LazyData: TRUE
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests:
     spelling, testthat, hemibrainr
 Imports: rgl, reshape2, flycircuit, nat.templatebrains, nat.utils (>= 0.5.1.9000),
