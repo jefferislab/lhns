@@ -177,12 +177,14 @@ hemibrain.ton.bodyids = unique(as.character(ton.info$bodyid))
 # LHNs are neurons with 1% of their synaptic input / 10 synapses coming from uPNs #
 ###################################################################################
 # And they must be 'neuron' objects in the LH(R) ROI ...
-lh.info = neuprintr::neuprint_find_neurons(
-  input_ROIs = "LH(R)",
-  output_ROIs =  'LH(R)',
-  all_segments = FALSE )
-s.info = subset(ton.info, class %in% c("LHN","LHON","LHLN","unknown","TON"))
-lh.ids = intersect(unique(s.info$bodyid),unique(lh.info$bodyid))
+# lh.info = neuprintr::neuprint_find_neurons(
+#   input_ROIs = "LH(R)",
+#   output_ROIs =  'LH(R)',
+#   all_segments = FALSE )
+# s.info = subset(ton.info, class %in% c("LHN","LHON","LHLN","unknown","TON"))
+lh.info = neuprint_search("^LH.*",field ="type")
+lh.ids = unique(lh.info$bodyid)
+lh.ids = intersect(unique(ton.info$bodyid),unique(lh.info$bodyid))
 lh.meta = neuprint_get_meta(unique(lh.ids))
 ns = neuprint_search(paste(unique(lh.meta$type),collapse="|"),field="type")
 hemibrain.lhn.bodyids =  unique(c(ns$bodyid,lh.ids))
