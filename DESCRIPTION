@@ -19,9 +19,9 @@ LazyData: TRUE
 RoxygenNote: 7.1.1
 Suggests:
     spelling, testthat, hemibrainr
-Imports: rgl, reshape2, flycircuit, nat.templatebrains, nat.utils (>= 0.5.1.9000),
+Imports: rgl, reshape2, flycircuit, nat.templatebrains,
     stringr, stringi
-Depends: R (>= 3.5.0), nat, nat.flybrains
+Depends: R (>= 3.5.0), nat, nat.flybrains, nat.utils (>= 0.5.1.9000)
 URL: https://github.com/jefferislab/lhns
 BugReports: https://github.com/jefferislab/lhns/issues
 Remotes: natverse/nat.flybrains, natverse/flycircuit, jefferis/nat.utils, flyconnectome/hemibrainr
